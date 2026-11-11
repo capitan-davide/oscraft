@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="400" fill="#ffffff"/>
+  <rect class="u" x="20" y="20" width="150" height="360" rx="4"/>
+  <text x="95" y="40" class="h c">the guest's driver</text>
+  <rect class="n" x="630" y="20" width="150" height="360" rx="4"/>
+  <text x="705" y="40" class="h c">the device (host)</text>
+  <rect class="frame" x="190" y="20" width="420" height="360" rx="4"/>
+  <text x="400" y="40" class="s c">the guest's memory, which the host can also reach</text>
+  <rect class="y" x="206" y="56" width="250" height="132" rx="3"/>
+  <text x="331" y="74" class="b c">descriptor table</text>
+  <text x="218" y="94" class="s">#</text>
+  <text x="244" y="94" class="s">address</text>
+  <text x="330" y="94" class="s">length</text>
+  <text x="374" y="94" class="s">flags</text>
+  <text x="424" y="94" class="s">next</text>
+  <text x="218" y="112" class="ms">0</text>
+  <text x="244" y="112" class="ms">of buffer A</text>
+  <text x="330" y="112" class="ms">64</text>
+  <text x="374" y="112" class="ms">NEXT</text>
+  <text x="424" y="112" class="ms">1</text>
+  <text x="218" y="128" class="ms">1</text>
+  <text x="244" y="128" class="ms">of buffer B</text>
+  <text x="330" y="128" class="ms">2048</text>
+  <text x="374" y="128" class="ms">-</text>
+  <text x="424" y="128" class="ms">-</text>
+  <text x="218" y="144" class="ms">2</text>
+  <text x="244" y="144" class="ms">of buffer C</text>
+  <text x="330" y="144" class="ms">2048</text>
+  <text x="374" y="144" class="ms">-</text>
+  <text x="424" y="144" class="ms">-</text>
+  <text x="218" y="160" class="ms">3</text>
+  <text x="244" y="160" class="ms">...</text>
+  <text x="330" y="160" class="ms"></text>
+  <text x="374" y="160" class="ms"></text>
+  <text x="424" y="160" class="ms"></text>
+  <text x="331" y="180" class="s c">addresses are guest-physical</text>
+  <rect class="y" x="480" y="56" width="116" height="132" rx="3"/>
+  <text x="538" y="74" class="b c">buffers</text>
+  <rect class="w" x="492" y="84" width="92" height="22" rx="2"/>
+  <text x="538" y="99" class="s c">A</text>
+  <rect class="w" x="492" y="112" width="92" height="30" rx="2"/>
+  <text x="538" y="131" class="s c">B</text>
+  <rect class="w" x="492" y="148" width="92" height="30" rx="2"/>
+  <text x="538" y="167" class="s c">C</text>
+  <path class="ln" d="M456,108 L490,97" marker-end="url(#a)"/>
+  <path class="ln" d="M456,124 L490,127" marker-end="url(#a)"/>
+  <path class="ln" d="M456,140 L490,160" marker-end="url(#a)"/>
+  <rect class="y" x="206" y="206" width="390" height="60" rx="3"/>
+  <text x="216" y="224" class="b">available ring</text>
+  <text x="330" y="224" class="s">written by the driver, read by the device</text>
+  <text x="216" y="248" class="m">idx = 2</text>
+  <rect class="w" x="300" y="233" width="46" height="22" rx="0"/>
+  <text x="323" y="248" class="ms c">0</text>
+  <rect class="w" x="346" y="233" width="46" height="22" rx="0"/>
+  <text x="369" y="248" class="ms c">2</text>
+  <rect class="w" x="392" y="233" width="46" height="22" rx="0"/>
+  <text x="415" y="248" class="ms c"></text>
+  <rect class="w" x="438" y="233" width="46" height="22" rx="0"/>
+  <text x="461" y="248" class="ms c"></text>
+  <rect class="w" x="484" y="233" width="46" height="22" rx="0"/>
+  <text x="507" y="248" class="ms c"></text>
+  <rect class="w" x="530" y="233" width="46" height="22" rx="0"/>
+  <text x="553" y="248" class="ms c"></text>
+  <rect class="y" x="206" y="286" width="390" height="76" rx="3"/>
+  <text x="216" y="304" class="b">used ring</text>
+  <text x="330" y="304" class="s">written by the device, read by the driver</text>
+  <text x="216" y="330" class="m">idx = 1</text>
+  <rect class="w" x="300" y="315" width="46" height="22" rx="0"/>
+  <text x="323" y="330" class="ms c">0, 78</text>
+  <rect class="w" x="346" y="315" width="46" height="22" rx="0"/>
+  <text x="369" y="330" class="ms c"></text>
+  <rect class="w" x="392" y="315" width="46" height="22" rx="0"/>
+  <text x="415" y="330" class="ms c"></text>
+  <rect class="w" x="438" y="315" width="46" height="22" rx="0"/>
+  <text x="461" y="330" class="ms c"></text>
+  <rect class="w" x="484" y="315" width="46" height="22" rx="0"/>
+  <text x="507" y="330" class="ms c"></text>
+  <rect class="w" x="530" y="315" width="46" height="22" rx="0"/>
+  <text x="553" y="330" class="ms c"></text>
+  <text x="400" y="354" class="s c">each entry: a chain's first descriptor, and how many bytes were written</text>
+  <rect class="wu" x="32" y="216" width="126" height="40" rx="3"/>
+  <text x="95" y="233" class="s c">offers the chains</text>
+  <text x="95" y="247" class="s c">starting at 0 and 2</text>
+  <path class="lnk" d="M158,236 L204,236" marker-end="url(#ak)"/>
+  <circle cx="180" cy="222" r="9" fill="#2c5d9b"/>
+  <text x="180" y="226" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <rect class="wu" x="32" y="304" width="126" height="40" rx="3"/>
+  <text x="95" y="321" class="s c">takes the data,</text>
+  <text x="95" y="335" class="s c">offers the chain again</text>
+  <path class="lng" d="M204,324 L160,324" marker-end="url(#ag)"/>
+  <circle cx="180" cy="310" r="9" fill="#3e7b34"/>
+  <text x="180" y="314" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <text x="95" y="80" class="s c">after 1, a notify:</text>
+  <text x="95" y="94" class="s c">one register write</text>
+  <text x="95" y="130" class="s c">after 3, an interrupt</text>
+  <text x="95" y="144" class="s c">from the device</text>
+  <rect class="w" x="642" y="100" width="126" height="54" rx="3"/>
+  <text x="705" y="117" class="s c">data arrives:</text>
+  <text x="705" y="131" class="s c">writes 78 bytes</text>
+  <text x="705" y="145" class="s c">into chain 0</text>
+  <path class="lnk" d="M596,236 L685,236 L685,156" marker-end="url(#ak)"/>
+  <circle cx="620" cy="222" r="9" fill="#2c5d9b"/>
+  <text x="620" y="226" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <path class="lng" d="M725,154 L725,324 L598,324" marker-end="url(#ag)"/>
+  <circle cx="620" cy="310" r="9" fill="#3e7b34"/>
+  <text x="620" y="314" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="705" y="350" class="s c">reads and writes the</text>
+  <text x="705" y="364" class="s c">guest's memory directly</text>
+</svg>

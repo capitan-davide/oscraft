@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="330" viewBox="0 0 820 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="820" height="330" fill="#ffffff"/>
+  <text x="100" y="64" class="s e">normal</text>
+  <text x="100" y="144" class="s e">low</text>
+  <text x="100" y="30" class="b e">priority</text>
+  <path d="M110,60 L154,60 L154,140 L330,140 L330,60 L374,60 L374,140 L550,140 L550,60 L594,60 L594,140 L770,140" fill="none" stroke="#3e7b34" stroke-width="2.5"/>
+  <rect class="g" x="110" y="46" width="44" height="12" rx="0"/>
+  <rect class="g" x="330" y="46" width="44" height="12" rx="0"/>
+  <rect class="g" x="550" y="46" width="44" height="12" rx="0"/>
+  <text x="132" y="40" class="s c">2 ms</text>
+  <text x="242" y="132" class="s c">runs only when nothing</text>
+  <text x="242" y="156" class="s c">above the low priority is ready</text>
+  <text x="100" y="204" class="b e">budget</text>
+  <path d="M110,180 L154,220 L330,220 L330,180 L374,220 L550,220 L550,180 L594,220 L770,220" fill="none" stroke="#2c5d9b" stroke-width="2"/>
+  <text x="176" y="176" class="s">2 ms</text>
+  <text x="176" y="232" class="s">0: used up</text>
+  <polyline class="ln" points="110,268 780,268" marker-end="url(#a)"/>
+  <line x1="110" y1="264" x2="110" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="110" y="286" class="s c">0</text>
+  <line x1="154" y1="264" x2="154" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="154" y="286" class="s c">2</text>
+  <line x1="198" y1="264" x2="198" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="198" y="286" class="s c">4</text>
+  <line x1="242" y1="264" x2="242" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="242" y="286" class="s c">6</text>
+  <line x1="286" y1="264" x2="286" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="286" y="286" class="s c">8</text>
+  <line x1="330" y1="264" x2="330" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="330" y="286" class="s c">10</text>
+  <line x1="374" y1="264" x2="374" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="374" y="286" class="s c">12</text>
+  <line x1="418" y1="264" x2="418" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="418" y="286" class="s c">14</text>
+  <line x1="462" y1="264" x2="462" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="462" y="286" class="s c">16</text>
+  <line x1="506" y1="264" x2="506" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="506" y="286" class="s c">18</text>
+  <line x1="550" y1="264" x2="550" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="550" y="286" class="s c">20</text>
+  <line x1="594" y1="264" x2="594" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="594" y="286" class="s c">22</text>
+  <line x1="638" y1="264" x2="638" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="638" y="286" class="s c">24</text>
+  <line x1="682" y1="264" x2="682" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="682" y="286" class="s c">26</text>
+  <line x1="726" y1="264" x2="726" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="726" y="286" class="s c">28</text>
+  <line x1="770" y1="264" x2="770" y2="272" stroke="#333" stroke-width="1"/>
+  <text x="770" y="286" class="s c">30</text>
+  <text x="784" y="272" class="s">ms</text>
+  <line x1="330" y1="40" x2="330" y2="268" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="334" y="36" class="s">replenished: 0 + 10 ms</text>
+  <line x1="550" y1="40" x2="550" y2="268" stroke="#999" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="554" y="36" class="s">replenished: 10 + 10 ms</text>
+  <text x="110" y="316" class="s">The thread is busy throughout. Each 10 ms it gets 2 ms at its normal priority, then drops.</text>
+</svg>

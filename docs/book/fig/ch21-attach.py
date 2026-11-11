@@ -1,0 +1,21 @@
+from svg import Fig
+f = Fig(800, 400)
+S, M = 170, 590
+f.box("u", S - 110, 16, 220, 44); f.text(S, 35, "tmpfs", "b c"); f.text(S, 51, "resmgr_attach(\"/tmp\")", "ms c")
+f.box("k", M - 130, 16, 260, 44); f.text(M, 35, "process 1", "b c"); f.text(M, 51, "the pathname manager", "s c")
+f.line([(S, 60), (S, 384)], "life"); f.line([(M, 60), (M, 384)], "life")
+def step(n, y, x0, x1, text, cls="lnk", m="ak", col="#2c5d9b"):
+    f.arrow([(x0, y), (x1, y)], cls, m)
+    f.num(min(x0, x1) + 22, y - 13, n, col); f.text(min(x0, x1) + 38, y - 9, text, "s")
+f.box("wu", S - 110, 74, 220, 30, 3); f.text(S, 93, "a channel, and a handle for /tmp", "s c")
+step(1, 138, S, M - 2, "link /tmp, on the connection every process has")
+f.box("wk", M - 110, 146, 220, 30, 3); f.text(M, 165, "may this process attach names?", "s c")
+step(2, 204, M, S + 2, "ask again, on a connection of your own", "lng", "ag", "#3e7b34")
+f.box("wu", S - 110, 212, 220, 30, 3); f.text(S, 231, "a new connection to process 1", "s c")
+step(3, 270, S, M - 2, "link /tmp: my process, channel, handle, flags")
+f.box("y", M - 130, 278, 260, 46, 3)
+f.text(M, 296, "a new row in the table:", "s c")
+f.text(M, 312, "tmp -> tmpfs, owned by that connection", "ms c")
+step(4, 352, M, S + 2, "done", "lng", "ag", "#3e7b34")
+f.box("g", S - 110, 360, 220, 30, 3); f.text(S, 379, "the name lives while it is open", "s c")
+f.save("ch21-attach.svg")

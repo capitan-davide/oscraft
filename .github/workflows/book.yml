@@ -1,0 +1,67 @@
+# Check the book (docs/book) against the source tree, build it and, if
+# the repository variable BOOK_PAGES is "true", publish it on GitHub Pages
+# (which needs Pages enabled with "GitHub Actions" as the source). Code
+# changes trigger it too: the book includes code by anchor, and the check
+# fails when an anchor it uses was moved or removed.
+name: book
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/book/**"
+      - "kernel/**"
+      - "tools/**"
+      - "user/**"
+      - "tests/**"
+      - "images/**"
+      - "Makefile"
+      - ".github/workflows/book.yml"
+  pull_request:
+    paths:
+      - "docs/book/**"
+      - "kernel/**"
+      - "tools/**"
+      - "user/**"
+      - "tests/**"
+      - "images/**"
+      - "Makefile"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: docs/book
+    steps:
+      - uses: actions/checkout@v4
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: mdbook
+      - run: make check
+      - run: make html
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request' && vars.BOOK_PAGES == 'true'
+        with:
+          path: docs/book/build/html
+
+  deploy:
+    if: github.event_name != 'pull_request' && vars.BOOK_PAGES == 'true'
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="330" viewBox="0 0 800 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="330" fill="#ffffff"/>
+  <text x="130" y="22" class="h c">In the startup program</text>
+  <rect class="wk" x="20" y="34" width="220" height="138" rx="3"/>
+  <text x="30" y="51" class="s">display_char, as written:</text>
+  <text x="30" y="70" class="ms red">movz x7, #0</text>
+  <text x="30" y="84" class="ms red">movk x7, #0, lsl #16</text>
+  <text x="30" y="98" class="ms red">movk x7, #0, lsl #32</text>
+  <text x="30" y="112" class="ms red">movk x7, #0, lsl #48</text>
+  <text x="30" y="126" class="ms">ldr  w2, [x7, #0x18]</text>
+  <text x="30" y="140" class="ms">...</text>
+  <text x="30" y="154" class="ms">str  w0, [x7]</text>
+  <text x="30" y="168" class="ms">ret</text>
+  <text x="130" y="196" class="s c">The first four instructions load</text>
+  <text x="130" y="210" class="s c">a 64-bit constant, still zero:</text>
+  <text x="130" y="224" class="s c">the UART's address is not known</text>
+  <text x="130" y="238" class="s c">until startup has mapped it.</text>
+  <path class="ln" d="M242,100 L288,100" marker-end="url(#a)"/>
+  <text x="265" y="88" class="s c">copy,</text>
+  <text x="265" y="122" class="s c">patch</text>
+  <text x="410" y="22" class="h c">In the system page</text>
+  <rect class="y" x="290" y="34" width="250" height="240" rx="4"/>
+  <rect class="w" x="300" y="44" width="230" height="138" rx="3"/>
+  <text x="310" y="61" class="s">the copy, patched:</text>
+  <text x="310" y="80" class="ms red">movz x7, #&lt;bits 0-15&gt;</text>
+  <text x="310" y="94" class="ms red">movk x7, #&lt;bits 16-31&gt;, lsl #16</text>
+  <text x="310" y="108" class="ms red">movk x7, #&lt;bits 32-47&gt;, lsl #32</text>
+  <text x="310" y="122" class="ms red">movk x7, #&lt;bits 48-63&gt;, lsl #48</text>
+  <text x="310" y="136" class="ms">ldr  w2, [x7, #0x18]</text>
+  <text x="310" y="150" class="ms">...</text>
+  <text x="310" y="164" class="ms">str  w0, [x7]</text>
+  <text x="310" y="178" class="ms">ret</text>
+  <rect class="w" x="300" y="200" width="230" height="64" rx="3"/>
+  <text x="310" y="217" class="s">the callout section:</text>
+  <text x="310" y="235" class="ms">debug[0].display_char =</text>
+  <text x="310" y="250" class="ms">    address of the copy</text>
+  <path class="ln" d="M415,200 L415,186" marker-end="url(#a)"/>
+  <text x="415" y="292" class="s c">x7 = where startup mapped the PL011's</text>
+  <text x="415" y="306" class="s c">registers in the kernel's address space</text>
+  <text x="680" y="22" class="h c">In the kernel</text>
+  <rect class="k" x="580" y="60" width="200" height="60" rx="4"/>
+  <text x="680" y="82" class="m c">kprintln!(...)</text>
+  <text x="680" y="102" class="s c">for each byte: putc()</text>
+  <rect class="k" x="580" y="150" width="200" height="76" rx="4"/>
+  <text x="680" y="172" class="m c">putc()</text>
+  <text x="680" y="190" class="s c">reads the pointer from the</text>
+  <text x="680" y="204" class="s c">system page and calls it:</text>
+  <text x="680" y="218" class="ms c">display_char(syspage, byte)</text>
+  <path class="lnk" d="M680,120 L680,148" marker-end="url(#ak)"/>
+  <path class="lnk" d="M578,188 L542,188 L542,110 L532,110" marker-end="url(#ak)"/>
+  <text x="680" y="256" class="s c">The kernel contains no UART driver</text>
+  <text x="680" y="270" class="s c">and no UART address.</text>
+</svg>

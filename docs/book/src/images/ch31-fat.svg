@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="420" fill="#ffffff"/>
+  <text x="400" y="24" class="h c">A FAT volume, from block 0</text>
+  <rect class="y" x="20" y="36" width="90" height="50" rx="2"/>
+  <text x="65.0" y="58" class="c">boot sector</text>
+  <text x="65.0" y="74" class="s c">sizes, counts</text>
+  <rect class="k" x="110" y="36" width="130" height="50" rx="2"/>
+  <text x="175.0" y="58" class="c">FAT</text>
+  <text x="175.0" y="74" class="s c">one entry per cluster</text>
+  <rect class="k" x="240" y="36" width="130" height="50" rx="2"/>
+  <text x="305.0" y="58" class="c">FAT, second copy</text>
+  <text x="305.0" y="74" class="s c">kept identical</text>
+  <rect class="y" x="370" y="36" width="110" height="50" rx="2"/>
+  <text x="425.0" y="58" class="c">root directory</text>
+  <text x="425.0" y="74" class="s c">fixed size (FAT12/16)</text>
+  <rect class="g" x="480" y="36" width="300" height="50" rx="2"/>
+  <text x="630.0" y="58" class="c">data area: clusters 2, 3, 4, ...</text>
+  <text x="630.0" y="74" class="s c">files and the other directories</text>
+  <text x="20" y="126" class="b">a directory entry, 32 bytes</text>
+  <rect class="w" x="20" y="136" width="150" height="30" rx="2"/>
+  <text x="95.0" y="155" class="ms c">name: TODO    TXT</text>
+  <rect class="w" x="170" y="136" width="90" height="30" rx="2"/>
+  <text x="215.0" y="155" class="ms c">attributes</text>
+  <rect class="w" x="260" y="136" width="120" height="30" rx="2"/>
+  <text x="320.0" y="155" class="ms c">time, date</text>
+  <rect class="w" x="380" y="136" width="130" height="30" rx="2"/>
+  <text x="445.0" y="155" class="ms c">first cluster: 5</text>
+  <rect class="w" x="510" y="136" width="130" height="30" rx="2"/>
+  <text x="575.0" y="155" class="ms c">size: 1300</text>
+  <text x="20" y="214" class="b">the FAT</text>
+  <text x="20" y="230" class="s">entry n says which</text>
+  <text x="20" y="244" class="s">cluster follows n</text>
+  <text x="200" y="204" class="s c">2</text>
+  <rect class="w" x="170" y="210" width="60" height="34" rx="2"/>
+  <text x="200" y="231" class="s c">free</text>
+  <text x="266" y="204" class="s c">3</text>
+  <rect class="w" x="236" y="210" width="60" height="34" rx="2"/>
+  <text x="266" y="231" class="s c">free</text>
+  <text x="332" y="204" class="s c">4</text>
+  <rect class="w" x="302" y="210" width="60" height="34" rx="2"/>
+  <text x="332" y="231" class="s c">free</text>
+  <text x="398" y="204" class="s c">5</text>
+  <rect class="g" x="368" y="210" width="60" height="34" rx="2"/>
+  <text x="398" y="231" class="m c">6</text>
+  <text x="464" y="204" class="s c">6</text>
+  <rect class="g" x="434" y="210" width="60" height="34" rx="2"/>
+  <text x="464" y="231" class="m c">9</text>
+  <text x="530" y="204" class="s c">7</text>
+  <rect class="w" x="500" y="210" width="60" height="34" rx="2"/>
+  <text x="530" y="231" class="s c">free</text>
+  <text x="596" y="204" class="s c">8</text>
+  <rect class="w" x="566" y="210" width="60" height="34" rx="2"/>
+  <text x="596" y="231" class="s c">free</text>
+  <text x="662" y="204" class="s c">9</text>
+  <rect class="g" x="632" y="210" width="60" height="34" rx="2"/>
+  <text x="662" y="231" class="m c">end</text>
+  <text x="728" y="204" class="s c">10</text>
+  <rect class="w" x="698" y="210" width="60" height="34" rx="2"/>
+  <text x="728" y="231" class="s c">free</text>
+  <path class="lnk" d="M445,166 L445,180 L398,180 L398,192" marker-end="url(#ak)"/>
+  <path class="lng" d="M398,244 L398,262 L464,262 L464,246" marker-end="url(#ag)"/>
+  <path class="lng" d="M476,244 L476,272 L662,272 L662,246" marker-end="url(#ag)"/>
+  <text x="20" y="330" class="b">the data area</text>
+  <text x="20" y="346" class="s">a cluster is one or</text>
+  <text x="20" y="360" class="s">more blocks</text>
+  <rect class="n" x="170" y="318" width="60" height="44" rx="2"/>
+  <text x="200" y="336" class="s c">cluster 2</text>
+  <rect class="n" x="236" y="318" width="60" height="44" rx="2"/>
+  <text x="266" y="336" class="s c">cluster 3</text>
+  <rect class="n" x="302" y="318" width="60" height="44" rx="2"/>
+  <text x="332" y="336" class="s c">cluster 4</text>
+  <rect class="g" x="368" y="318" width="60" height="44" rx="2"/>
+  <text x="398" y="336" class="s c">cluster 5</text>
+  <text x="398" y="352" class="s c">bytes 0…</text>
+  <rect class="g" x="434" y="318" width="60" height="44" rx="2"/>
+  <text x="464" y="336" class="s c">cluster 6</text>
+  <text x="464" y="352" class="s c">…</text>
+  <rect class="n" x="500" y="318" width="60" height="44" rx="2"/>
+  <text x="530" y="336" class="s c">cluster 7</text>
+  <rect class="n" x="566" y="318" width="60" height="44" rx="2"/>
+  <text x="596" y="336" class="s c">cluster 8</text>
+  <rect class="g" x="632" y="318" width="60" height="44" rx="2"/>
+  <text x="662" y="336" class="s c">cluster 9</text>
+  <text x="662" y="352" class="s c">…1299</text>
+  <rect class="n" x="698" y="318" width="60" height="44" rx="2"/>
+  <text x="728" y="336" class="s c">cluster 10</text>
+  <text x="400" y="398" class="s c">The file's clusters are 5, 6 and 9: the directory entry names the first, the FAT links the rest.</text>
+</svg>

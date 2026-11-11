@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="500" fill="#ffffff"/>
+  <rect class="n" x="20" y="20" width="150" height="140" rx="4"/>
+  <text x="95" y="40" class="h c">the device (QEMU)</text>
+  <rect class="k" x="190" y="20" width="420" height="460" rx="4"/>
+  <text x="400" y="40" class="h c">netd</text>
+  <rect class="u" x="630" y="20" width="150" height="460" rx="4"/>
+  <text x="705" y="40" class="h c">a program</text>
+  <rect class="wk" x="204" y="54" width="230" height="414" rx="3"/>
+  <text x="319" y="72" class="b c">the driver's interrupt thread</text>
+  <rect class="wk" x="446" y="54" width="150" height="414" rx="3"/>
+  <text x="521" y="72" class="b c">a serving thread</text>
+  <rect class="g" x="216" y="86" width="206" height="58" rx="3"/>
+  <text x="319" y="102" class="c">virtio_pci: the handler</text>
+  <text x="319" y="117" class="s c">reads the interrupt status,</text>
+  <text x="319" y="130" class="s c">calls each queue's handler</text>
+  <rect class="g" x="216" y="154" width="206" height="72" rx="3"/>
+  <text x="319" y="170" class="c">vtnet: the receive queue</text>
+  <text x="319" y="185" class="s c">takes the used chain: an mbuf,</text>
+  <text x="319" y="198" class="s c">already filled by the device;</text>
+  <text x="319" y="211" class="s c">offers a fresh mbuf in its place</text>
+  <rect class="g" x="216" y="236" width="206" height="44" rx="3"/>
+  <text x="319" y="252" class="c">Ethernet input</text>
+  <text x="319" y="267" class="s c">checks the frame, strips its header</text>
+  <rect class="g" x="216" y="290" width="206" height="44" rx="3"/>
+  <text x="319" y="306" class="c">IP input</text>
+  <text x="319" y="321" class="s c">checks the header, finds the protocol</text>
+  <rect class="g" x="216" y="344" width="206" height="58" rx="3"/>
+  <text x="319" y="360" class="c">UDP input</text>
+  <text x="319" y="375" class="s c">finds the socket by address and port,</text>
+  <text x="319" y="388" class="s c">appends the mbuf to its receive buffer</text>
+  <rect class="g" x="216" y="412" width="206" height="44" rx="3"/>
+  <text x="319" y="428" class="c">wakes the socket's sleepers</text>
+  <text x="319" y="443" class="s c">and whoever polls it</text>
+  <path class="ln" d="M319,144 L319,154" marker-end="url(#a)"/>
+  <path class="ln" d="M319,226 L319,236" marker-end="url(#a)"/>
+  <path class="ln" d="M319,280 L319,290" marker-end="url(#a)"/>
+  <path class="ln" d="M319,334 L319,344" marker-end="url(#a)"/>
+  <path class="ln" d="M319,402 L319,412" marker-end="url(#a)"/>
+  <rect class="w" x="32" y="86" width="126" height="58" rx="3"/>
+  <text x="95" y="104" class="s c">writes the frame into</text>
+  <text x="95" y="118" class="s c">a buffer of the receive</text>
+  <text x="95" y="132" class="s c">queue; interrupt</text>
+  <path class="lng" d="M158,115 L214,115" marker-end="url(#ag)"/>
+  <circle cx="182" cy="101" r="9" fill="#3e7b34"/>
+  <text x="182" y="105" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="95" y="186" class="s c">through the kernel,</text>
+  <text x="95" y="200" class="s c">which wakes the thread</text>
+  <text x="95" y="214" class="s c">(Chapter 15)</text>
+  <rect class="k" x="20" y="290" width="150" height="80" rx="4"/>
+  <text x="95" y="310" class="h c">process 1</text>
+  <text x="95" y="330" class="s c">answers: the fresh</text>
+  <text x="95" y="344" class="s c">mbuf's physical</text>
+  <text x="95" y="358" class="s c">address</text>
+  <path class="lnk" d="M216,214 L180,214 L180,330 L172,330" marker-end="url(#ak)" marker-start="url(#ak)"/>
+  <circle cx="180" cy="262" r="9" fill="#2c5d9b"/>
+  <text x="180" y="266" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <rect class="y" x="456" y="86" width="130" height="72" rx="3"/>
+  <text x="521" y="104" class="s c">asleep in</text>
+  <text x="521" y="118" class="s c">soreceive() since the</text>
+  <text x="521" y="132" class="s c">program's recv()</text>
+  <text x="521" y="146" class="s c">arrived</text>
+  <rect class="g" x="456" y="398" width="130" height="62" rx="3"/>
+  <text x="521" y="416" class="s c">soreceive() copies</text>
+  <text x="521" y="430" class="s c">the datagram out</text>
+  <text x="521" y="444" class="s c">and frees the mbuf</text>
+  <path class="lng" d="M422,434 L454,434" marker-end="url(#ag)"/>
+  <circle cx="438" cy="420" r="9" fill="#3e7b34"/>
+  <text x="438" y="424" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <path class="life" d="M521,158 L521,398"/>
+  <rect class="y" x="642" y="86" width="126" height="44" rx="3"/>
+  <text x="705" y="104" class="s c">REPLY-blocked</text>
+  <text x="705" y="120" class="s c">in recv()</text>
+  <rect class="g" x="642" y="408" width="126" height="44" rx="3"/>
+  <text x="705" y="426" class="s c">recv() returns</text>
+  <text x="705" y="442" class="s c">the datagram</text>
+  <path class="lng" d="M586,430 L640,430" marker-end="url(#ag)"/>
+  <circle cx="613" cy="416" r="9" fill="#3e7b34"/>
+  <text x="613" y="420" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <path class="life" d="M705,130 L705,408"/>
+  <text x="705" y="478" class="s"></text>
+</svg>

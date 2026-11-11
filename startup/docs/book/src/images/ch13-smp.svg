@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="520" viewBox="0 0 820 520" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker></defs>
+  <style>
+    .k { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .g { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .n { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 4 3; }
+    .ln { fill: none; stroke: #333333; stroke-width: 1.2; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.2; }
+    .t { text-anchor: middle; }
+    .b { font-weight: bold; }
+    .s { font-size: 11px; fill: #333333; }
+  </style>
+  <rect width="820" height="520" fill="#ffffff"/>
+  <!-- heads -->
+  <rect class="k" x="60" y="16" width="160" height="34" rx="5"/>
+  <text class="t b" x="140" y="38">Boot CPU (startup)</text>
+  <rect class="n" x="420" y="16" width="160" height="34" rx="5"/>
+  <text class="t b" x="500" y="38">CPU n</text>
+  <rect class="u" x="640" y="16" width="160" height="34" rx="5"/>
+  <text class="t b" x="720" y="38">Kernel</text>
+  <path class="life" d="M140,50 L140,505"/>
+  <path class="life" d="M500,50 L500,505"/>
+  <path class="life" d="M720,50 L720,505"/>
+  <!-- phase 1 -->
+  <text class="b" x="10" y="78">Start</text>
+  <rect class="n" x="430" y="62" width="140" height="26" rx="4"/>
+  <text class="t s" x="500" y="80">powered off (PSCI)</text>
+  <path class="ln" d="M140,110 L498,110" marker-end="url(#a)"/>
+  <text class="s" x="150" y="104">CPU_STARTING = n + 1; release(n, entry)</text>
+  <rect class="k" x="420" y="120" width="160" height="82" rx="4"/>
+  <text class="t s" x="500" y="138">to EL1, own stack</text>
+  <text class="t s" x="500" y="154">vectors, clean caches</text>
+  <text class="t s" x="500" y="170">cpuinfo[n], idreg_dump[n]</text>
+  <text class="t s" x="500" y="186">GIC interface, gic_map[n]</text>
+  <path class="ln" d="M498,212 L142,212" marker-end="url(#a)"/>
+  <text class="s" x="150" y="206">CPU_STARTING = 0</text>
+  <text class="s" x="150" y="232">... the next CPU ...</text>
+  <rect class="n" x="430" y="222" width="140" height="26" rx="4"/>
+  <text class="t s" x="500" y="240">wait: CPU_RELEASED</text>
+  <!-- syspage written -->
+  <rect class="k" x="60" y="260" width="160" height="40" rx="4"/>
+  <text class="t s" x="140" y="278">write the system page,</text>
+  <text class="t s" x="140" y="292">callouts, cpupages</text>
+  <!-- phase 2 -->
+  <text class="b" x="10" y="326">Transfer</text>
+  <path class="ln" d="M140,330 L498,330" marker-end="url(#a)"/>
+  <text class="s" x="150" y="324">smp.pending = 1; CPU_RELEASED = n</text>
+  <rect class="g" x="420" y="340" width="160" height="40" rx="4"/>
+  <text class="t s" x="500" y="358">MMU on (own L0),</text>
+  <text class="t s" x="500" y="372">jump to smp_spin</text>
+  <path class="ln" d="M498,392 L142,392" marker-end="url(#a)"/>
+  <text class="s" x="150" y="386">smp.pending = 0, cleaned to RAM</text>
+  <rect class="g" x="430" y="402" width="140" height="26" rx="4"/>
+  <text class="t s" x="500" y="420">wait: smp.start_addr</text>
+  <rect class="u" x="60" y="440" width="160" height="26" rx="4"/>
+  <text class="t s" x="140" y="458">after the last CPU: vstart</text>
+  <path class="ln" d="M220,453 L718,453" marker-end="url(#a)"/>
+  <!-- kernel releases -->
+  <path class="lnk" d="M720,485 L502,485" marker-end="url(#ak)"/>
+  <text class="s" x="520" y="479">smp.start_addr = per-CPU entry</text>
+  <text class="s" x="520" y="500">CPU n takes it (exclusively) and enters the kernel</text>
+</svg>

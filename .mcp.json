@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "qnx-docs": {
+      "type": "stdio",
+      "command": "sh",
+      "args": [
+        "-c",
+        "d=\"$HOME/Code/qnx-developer-docs\"; export QNX_DOCS_SRCS=\"$HOME/Code/oscraft/qnx-documentation/srcs\"; exec uv run --project \"$d\" python \"$d/mcp_server.py\""
+      ]
+    }
+  }
+}

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="330" viewBox="0 0 820 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="820" height="330" fill="#ffffff"/>
+  <text x="40" y="30" class="b">caller-saved: a called function may overwrite them</text>
+  <rect class="n" x="40" y="42" width="170" height="46" rx="0"/>
+  <text x="125" y="61.5" class="m c">x0–x7</text>
+  <text x="125" y="76.5" class="s c">arguments, results</text>
+  <rect class="n" x="210" y="42" width="120" height="46" rx="0"/>
+  <text x="270" y="61.5" class="m c">x8</text>
+  <text x="270" y="76.5" class="s c">indirect result</text>
+  <rect class="n" x="330" y="42" width="150" height="46" rx="0"/>
+  <text x="405" y="61.5" class="m c">x9–x15</text>
+  <text x="405" y="76.5" class="s c">temporaries</text>
+  <rect class="n" x="480" y="42" width="140" height="46" rx="0"/>
+  <text x="550" y="61.5" class="m c">x16–x17</text>
+  <text x="550" y="76.5" class="s c">call scratch</text>
+  <rect class="n" x="620" y="42" width="120" height="46" rx="0"/>
+  <text x="680" y="61.5" class="m c">x18</text>
+  <text x="680" y="76.5" class="s c">platform</text>
+  <text x="40" y="110" class="s">saved, if still needed, by the compiled code of the caller, on the thread's own stack</text>
+  <text x="40" y="150" class="b">callee-saved, and the return address: what a thread needs back after a call</text>
+  <rect class="g" x="40" y="162" width="200" height="46" rx="0"/>
+  <text x="140" y="181.5" class="m c">x19–x28</text>
+  <text x="140" y="196.5" class="s c">general purpose</text>
+  <rect class="g" x="240" y="162" width="130" height="46" rx="0"/>
+  <text x="305" y="181.5" class="m c">x29</text>
+  <text x="305" y="196.5" class="s c">frame pointer</text>
+  <rect class="g" x="370" y="162" width="130" height="46" rx="0"/>
+  <text x="435" y="181.5" class="m c">x30</text>
+  <text x="435" y="196.5" class="s c">link register</text>
+  <rect class="g" x="500" y="162" width="110" height="46" rx="0"/>
+  <text x="555" y="181.5" class="m c">sp</text>
+  <text x="555" y="196.5" class="s c">stack pointer</text>
+  <rect class="g" x="640" y="162" width="150" height="46" rx="0"/>
+  <text x="715" y="181.5" class="m c">TPIDR_EL0</text>
+  <text x="715" y="196.5" class="s c">user thread pointer</text>
+  <text x="40" y="230" class="s">saved by cpu_switch in the thread's Context: 14 registers, 112 bytes</text>
+  <rect class="w" x="40" y="254" width="440" height="46" rx="0"/>
+  <text x="260" y="273.5" class="m c">v0–v31, FPCR, FPSR</text>
+  <text x="260" y="288.5" class="s c">never used by the kernel: switched lazily (FpState)</text>
+  <text x="500" y="268" class="s">TPIDR_EL0 is not covered by the</text>
+  <text x="500" y="282" class="s">convention: the kernel never uses it,</text>
+  <text x="500" y="296" class="s">so the switch carries it along.</text>
+</svg>

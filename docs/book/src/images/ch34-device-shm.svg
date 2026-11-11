@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="320" viewBox="0 0 800 320" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="320" fill="#ffffff"/>
+  <text x="180" y="24" class="h c">Physical addresses on QEMU's virt</text>
+  <rect class="n" x="140" y="44" width="180" height="44" rx="2"/>
+  <text x="230.0" y="71" class="s c">the PL011 serial port</text>
+  <text x="132" y="71" class="ms e">0x0900_0000</text>
+  <rect class="g" x="140" y="96" width="180" height="44" rx="2"/>
+  <text x="230.0" y="123" class="s c">the PL031 real-time clock</text>
+  <text x="132" y="123" class="ms e">0x0901_0000</text>
+  <rect class="w" x="140" y="148" width="180" height="44" rx="2"/>
+  <text x="230.0" y="175" class="s c">other devices</text>
+  <text x="132" y="175" class="ms e">...</text>
+  <rect class="r" x="140" y="200" width="180" height="44" rx="2"/>
+  <text x="230.0" y="227" class="s c">nothing answers here</text>
+  <text x="132" y="227" class="ms e">0x0910_0000</text>
+  <rect class="u" x="420" y="44" width="360" height="96" rx="4"/>
+  <text x="600" y="64" class="b c">a memory object placed over the clock</text>
+  <text x="600" y="84" class="s c">read() of 4 bytes, twice, 1.2 s apart:</text>
+  <text x="600" y="100" class="ms c">two different values</text>
+  <text x="600" y="120" class="s c">mmap() and a load from the page: the same</text>
+  <path class="lng" d="M420,92 L322,118" marker-end="url(#ag)"/>
+  <rect class="u" x="420" y="170" width="360" height="96" rx="4"/>
+  <text x="600" y="190" class="b c">a memory object placed where no device is</text>
+  <text x="600" y="210" class="s c">write() of 4 bytes:</text>
+  <text x="600" y="226" class="ms c">-1, ESRVRFAULT</text>
+  <text x="600" y="246" class="s c">and the system carries on</text>
+  <path class="lnr" d="M420,218 L322,222" marker-end="url(#ar)"/>
+  <text x="400" y="300" class="s c">read() and write() are requests to process 1, which touches the device's memory itself: a fault there is reported as the server's.</text>
+</svg>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="420" fill="#ffffff"/>
+  <text x="20" y="24" class="h">The hardware</text>
+  <rect class="n" x="20" y="40" width="220" height="64" rx="4"/>
+  <text x="130" y="64" class="b c">counter</text>
+  <text x="130" y="81" class="s c">counts up at a fixed rate</text>
+  <text x="130" y="95" class="s c">reading it tells the time</text>
+  <rect class="n" x="300" y="40" width="220" height="64" rx="4"/>
+  <text x="410" y="64" class="b c">comparator</text>
+  <text x="410" y="81" class="s c">holds one value,</text>
+  <text x="410" y="95" class="s c">set by the kernel</text>
+  <path class="ln" d="M240,72 L298,72" marker-end="url(#a)"/>
+  <rect class="r" x="600" y="50" width="180" height="44" rx="4"/>
+  <text x="690" y="69" class="b c">interrupt</text>
+  <text x="690" y="85" class="s c">when counter &gt;= value</text>
+  <path class="lnr" d="M520,72 L598,72" marker-end="url(#ar)"/>
+  <text x="20" y="160" class="h">Periodic tick</text>
+  <text x="20" y="176" class="s">The comparator is set one period ahead, every time. Each tick, the kernel looks for deadlines that have passed.</text>
+  <path class="ln" d="M60,232 L770,232" marker-end="url(#a)"/>
+  <text x="775" y="236" class="s"></text>
+  <path class="lnk" d="M90,220 L90,244"/>
+  <path class="lnk" d="M150,220 L150,244"/>
+  <path class="lnk" d="M210,220 L210,244"/>
+  <path class="lnk" d="M270,220 L270,244"/>
+  <path class="lnk" d="M330,220 L330,244"/>
+  <path class="lnk" d="M390,220 L390,244"/>
+  <path class="lnk" d="M450,220 L450,244"/>
+  <path class="lnk" d="M510,220 L510,244"/>
+  <path class="lnk" d="M570,220 L570,244"/>
+  <path class="lnk" d="M630,220 L630,244"/>
+  <path class="lnk" d="M690,220 L690,244"/>
+  <path class="lnr dash" d="M232,202 L232,234"/>
+  <text x="232" y="198" class="s c red">deadline A</text>
+  <path class="lnr dash" d="M490,202 L490,234"/>
+  <text x="490" y="198" class="s c red">deadline B</text>
+  <path class="lng" d="M232,254 L268,254" marker-end="url(#ag)"/>
+  <text x="270" y="272" class="s c green">A noticed</text>
+  <path class="lng" d="M490,254 L508,254" marker-end="url(#ag)"/>
+  <text x="510" y="272" class="s c green">B noticed</text>
+  <text x="690" y="272" class="s c blue">11 interrupts</text>
+  <text x="20" y="290" class="h">One-shot (tickless)</text>
+  <text x="20" y="306" class="s">The comparator is set to the next deadline itself. Nothing happens in between.</text>
+  <path class="ln" d="M60,362 L770,362" marker-end="url(#a)"/>
+  <text x="775" y="366" class="s"></text>
+  <path class="lnr dash" d="M232,332 L232,364"/>
+  <text x="232" y="328" class="s c red">deadline A</text>
+  <path class="lnr dash" d="M490,332 L490,364"/>
+  <text x="490" y="328" class="s c red">deadline B</text>
+  <path class="lnk" d="M232,350 L232,374"/>
+  <path class="lnk" d="M490,350 L490,374"/>
+  <text x="232" y="390" class="s c green">A handled</text>
+  <text x="490" y="390" class="s c green">B handled</text>
+  <text x="690" y="390" class="s c blue">2 interrupts</text>
+  <text x="400" y="410" class="s c">Blue marks are timer interrupts. Time runs to the right.</text>
+</svg>

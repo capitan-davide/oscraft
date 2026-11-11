@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="350" viewBox="0 0 800 350" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="350" fill="#ffffff"/>
+  <rect class="n" x="40" y="20" width="150" height="44" rx="4"/>
+  <text x="115" y="46" class="b c">CPUs</text>
+  <rect class="n" x="230" y="20" width="150" height="44" rx="4"/>
+  <text x="305" y="46" class="b c">memory</text>
+  <path class="ln" d="M115,64 L115,84"/>
+  <path class="ln" d="M305,64 L305,84"/>
+  <path class="ln" d="M40,84 L380,84"/>
+  <text x="390" y="88" class="s">the processor's own bus: CPU physical addresses</text>
+  <rect class="k" x="130" y="104" width="160" height="46" rx="4"/>
+  <text x="210" y="123" class="b c">host bridge</text>
+  <text x="210" y="139" class="s c">the root complex</text>
+  <path class="ln" d="M210,84 L210,104"/>
+  <path class="ln" d="M210,150 L210,176"/>
+  <path class="ln" d="M40,176 L760,176"/>
+  <text x="760" y="168" class="b e">bus 0</text>
+  <path class="ln" d="M115.0,176 L115.0,198"/>
+  <rect class="w" x="40" y="198" width="150" height="46" rx="4"/>
+  <text x="115.0" y="217" class="c">network device</text>
+  <text x="115.0" y="234" class="ms c">00:01.0</text>
+  <path class="ln" d="M295.0,176 L295.0,198"/>
+  <rect class="w" x="220" y="198" width="150" height="46" rx="4"/>
+  <text x="295.0" y="217" class="c">USB controller</text>
+  <text x="295.0" y="234" class="ms c">00:02.0</text>
+  <path class="ln" d="M475.0,176 L475.0,198"/>
+  <rect class="k" x="400" y="198" width="150" height="46" rx="4"/>
+  <text x="475.0" y="217" class="c">PCI-to-PCI bridge</text>
+  <text x="475.0" y="234" class="ms c">00:03.0</text>
+  <path class="ln" d="M475,244 L475,270"/>
+  <path class="ln" d="M400,270 L760,270"/>
+  <text x="760" y="262" class="b e">bus 1</text>
+  <path class="ln" d="M590,270 L590,292"/>
+  <rect class="w" x="440" y="292" width="300" height="46" rx="4"/>
+  <text x="590" y="308" class="c">one device, two functions</text>
+  <rect class="y" x="452" y="314" width="130" height="20" rx="3"/>
+  <text x="517" y="328" class="ms c">01:00.0</text>
+  <rect class="y" x="598" y="314" width="130" height="20" rx="3"/>
+  <text x="663" y="328" class="ms c">01:00.1</text>
+  <rect class="y" x="40" y="282" width="340" height="56" rx="4"/>
+  <text x="210" y="302" class="b c">a function's address</text>
+  <text x="210" y="322" class="ms c">bus : device . function    (8, 5 and 3 bits)</text>
+  <text x="320" y="123" class="s">Every bridge has a bus behind it. Software numbers</text>
+  <text x="320" y="139" class="s">the buses as it discovers them.</text>
+</svg>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="320" viewBox="0 0 820 320" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12">
+  <style>
+    .k { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .y { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .u { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .g { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .n { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .t { text-anchor: middle; }
+    .b { font-weight: bold; }
+    .s { font-size: 10px; fill: #444444; }
+    .m { font-family: DejaVu Sans Mono, monospace; font-size: 11px; }
+  </style>
+  <rect width="820" height="320" fill="#ffffff"/>
+  <!-- page descriptor -->
+  <text class="b" x="20" y="24">Page descriptor (L3): maps a page, with its attributes</text>
+  <g>
+    <rect class="n" x="20" y="48" width="60" height="42"/>
+    <text class="t s" x="50" y="42">63-55</text>
+    <text class="t s" x="50" y="73">other</text>
+    <rect class="y" x="80" y="48" width="50" height="42"/>
+    <text class="t s" x="105" y="42">54</text>
+    <text class="t m" x="105" y="73">UXN</text>
+    <rect class="y" x="130" y="48" width="50" height="42"/>
+    <text class="t s" x="155" y="42">53</text>
+    <text class="t m" x="155" y="73">PXN</text>
+    <rect class="n" x="180" y="48" width="50" height="42"/>
+    <text class="t s" x="205" y="42">52-48</text>
+    <text class="t s" x="205" y="73">other</text>
+    <rect class="k" x="230" y="48" width="210" height="42"/>
+    <text class="t s" x="335" y="42">47-12</text>
+    <text class="t b" x="335" y="73">physical page address</text>
+    <rect class="y" x="440" y="48" width="44" height="42"/>
+    <text class="t s" x="462" y="42">11</text>
+    <text class="t m" x="462" y="73">nG</text>
+    <rect class="y" x="484" y="48" width="44" height="42"/>
+    <text class="t s" x="506" y="42">10</text>
+    <text class="t m" x="506" y="73">AF</text>
+    <rect class="y" x="528" y="48" width="50" height="42"/>
+    <text class="t s" x="553" y="42">9-8</text>
+    <text class="t m" x="553" y="73">SH</text>
+    <rect class="y" x="578" y="48" width="50" height="42"/>
+    <text class="t s" x="603" y="42">7-6</text>
+    <text class="t m" x="603" y="73">AP</text>
+    <rect class="n" x="628" y="48" width="30" height="42"/>
+    <text class="t s" x="643" y="42">5</text>
+    <rect class="y" x="658" y="48" width="82" height="42"/>
+    <text class="t s" x="699" y="42">4-2</text>
+    <text class="t m" x="699" y="73">AttrIndx</text>
+    <rect class="u" x="740" y="48" width="60" height="42"/>
+    <text class="t s" x="770" y="42">1-0</text>
+    <text class="t m" x="770" y="73">11</text>
+  </g>
+  <!-- table descriptor -->
+  <text class="b" x="20" y="130">Table descriptor (L0-L2): points to the next table</text>
+  <g>
+    <rect class="n" x="20" y="154" width="210" height="42"/>
+    <text class="t s" x="125" y="148">63-48</text>
+    <text class="t s" x="125" y="179">ignored, or limits on tables below</text>
+    <rect class="k" x="230" y="154" width="210" height="42"/>
+    <text class="t s" x="335" y="148">47-12</text>
+    <text class="t b" x="335" y="179">physical table address</text>
+    <rect class="n" x="440" y="154" width="300" height="42"/>
+    <text class="t s" x="590" y="148">11-2</text>
+    <text class="t s" x="590" y="179">ignored</text>
+    <rect class="u" x="740" y="154" width="60" height="42"/>
+    <text class="t s" x="770" y="148">1-0</text>
+    <text class="t m" x="770" y="179">11</text>
+  </g>
+  <!-- low bits -->
+  <text class="b" x="20" y="236">The low two bits</text>
+  <text class="m" x="20" y="258">x0</text>
+  <text x="60" y="258">invalid: a walk that meets it faults</text>
+  <text class="m" x="20" y="276">01</text>
+  <text x="60" y="276">at L1, L2: a block (1 GB, 2 MB)</text>
+  <text class="m" x="20" y="294">11</text>
+  <text x="60" y="294">at L0-L2: a table; at L3: a page</text>
+  <text class="s" x="430" y="258">The address sits at the same bits in both, and both end in 11.</text>
+  <text class="s" x="430" y="276">Only the level tells them apart: this is what makes the recursive</text>
+  <text class="s" x="430" y="290">entries of Figure 10.4 work.</text>
+</svg>

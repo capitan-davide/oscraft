@@ -1,0 +1,26 @@
+from svg import Fig
+f = Fig(820, 400)
+f.box("n", 20, 150, 120, 70); f.text(80, 180, "the UART", "b c"); f.text(80, 198, "PL011", "s c")
+f.box("k", 190, 16, 420, 368)
+f.text(206, 36, "process 1: the console, /dev/text", "b")
+# input path
+f.box("wk", 210, 56, 170, 62, 3); f.text(295, 76, "poller thread", "b c"); f.text(295, 93, "asks the UART every 10 ms,", "s c"); f.text(295, 108, "only while input is wanted", "s c")
+f.box("y", 420, 62, 170, 50, 3); f.text(505, 82, "input queue", "s c"); f.text(505, 98, "at most 2048 bytes", "s c")
+f.box("wk", 210, 150, 380, 150, 3); f.text(226, 170, "server thread, on channel 2", "b")
+f.box("y", 226, 182, 348, 66, 3); f.text(400, 200, "line discipline, set by termios", "s c")
+f.text(400, 217, "canonical: edit a line, echo, hand over whole lines", "s c")
+f.text(400, 234, "Ctrl-C, Ctrl-\\, Ctrl-Z: a signal to the foreground group", "s c")
+f.box("y", 226, 258, 348, 30, 3); f.text(400, 277, "held reads: requests not yet answered", "s c")
+f.box("wk", 210, 326, 380, 40, 3); f.text(400, 343, "output: written through the startup's", "s c"); f.text(400, 358, "print-a-character routine", "s c")
+# programs
+f.box("u", 660, 150, 140, 60); f.text(730, 174, "sh", "b c"); f.text(730, 192, "read(0, ...)", "ms c")
+f.box("u", 660, 316, 140, 60); f.text(730, 340, "any program", "b c"); f.text(730, 358, "write(1, ...)", "ms c")
+# arrows
+f.arrow([(140, 170), (165, 170), (165, 87), (208, 87)], "ln", "a"); f.num(165, 128, 1)
+f.arrow([(380, 87), (418, 87)], "ln", "a"); f.num(399, 70, 2)
+f.arrow([(505, 112), (505, 148)], "lnk", "ak", dash=True); f.num(524, 131, 3, "#2c5d9b"); f.text(540, 135, "pulse", "s")
+f.arrow([(658, 172), (592, 172)], "lnk", "ak"); f.text(625, 164, "read", "s c")
+f.arrow([(592, 273), (630, 273), (630, 196), (658, 196)], "lng", "ag"); f.num(630, 236, 4, "#3e7b34")
+f.arrow([(658, 346), (592, 346)], "lnk", "ak"); f.text(625, 338, "write", "s c")
+f.arrow([(208, 346), (80, 346), (80, 222)], "ln", "a")
+f.save("ch22-console.svg")

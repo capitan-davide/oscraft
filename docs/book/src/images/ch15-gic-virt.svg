@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="400" fill="#ffffff"/>
+  <text x="170" y="24" class="h c">The GICv2 of QEMU's virt</text>
+  <rect class="n" x="20" y="36" width="300" height="150" rx="4"/>
+  <rect class="w" x="32" y="48" width="276" height="58" rx="3"/>
+  <text x="44" y="66" class="b">distributor, at 0x08000000</text>
+  <text x="44" y="82" class="s">one for the machine: per interrupt, an enable</text>
+  <text x="44" y="95" class="s">bit, a priority and the CPU it goes to</text>
+  <rect class="w" x="32" y="116" width="276" height="58" rx="3"/>
+  <text x="44" y="134" class="b">CPU interface, at 0x08010000</text>
+  <text x="44" y="150" class="s">one per CPU, all at the same address:</text>
+  <text x="44" y="163" class="s">acknowledge, end of interrupt, priority mask</text>
+  <text x="170" y="214" class="h c">Its interrupt numbers</text>
+  <rect class="k" x="20" y="226" width="300" height="44" rx="3"/>
+  <text x="34" y="252" class="m">0 to 15</text>
+  <text x="120" y="245" class="s">software-generated: one CPU</text>
+  <text x="120" y="259" class="s">interrupts another</text>
+  <rect class="k" x="20" y="278" width="300" height="44" rx="3"/>
+  <text x="34" y="304" class="m">16 to 31</text>
+  <text x="120" y="297" class="s">private to each CPU:</text>
+  <text x="120" y="311" class="s">its timer</text>
+  <rect class="n" x="20" y="330" width="300" height="44" rx="3"/>
+  <text x="34" y="356" class="m">32 to 287</text>
+  <text x="120" y="349" class="s">shared: the devices'</text>
+  <text x="120" y="363" class="s">interrupt lines</text>
+  <text x="580" y="24" class="h c">As the system page describes it</text>
+  <rect class="y" x="400" y="36" width="380" height="126" rx="4"/>
+  <text x="414" y="56" class="b">interrupt entry 1: the per-CPU interrupts</text>
+  <text x="424" y="76" class="m">vectors</text>
+  <text x="550" y="76" class="s">0 to 31 on CPU 0</text>
+  <text x="424" y="92" class="m">stride</text>
+  <text x="550" y="92" class="s">0x8000: CPU n adds n × 0x8000</text>
+  <text x="424" y="108" class="m">id, eoi</text>
+  <text x="550" y="108" class="s">code fragments: acknowledge, end</text>
+  <text x="424" y="124" class="m">mask, unmask</text>
+  <text x="550" y="124" class="s">callouts: clear or set the enable bit</text>
+  <text x="424" y="140" class="m">config</text>
+  <text x="550" y="140" class="s">callout: says interrupt 0 is the IPI</text>
+  <rect class="y" x="400" y="176" width="380" height="94" rx="4"/>
+  <text x="414" y="196" class="b">interrupt entry 2: the shared interrupts</text>
+  <text x="424" y="216" class="m">vectors</text>
+  <text x="550" y="216" class="s">32 to 287, the same on every CPU</text>
+  <text x="424" y="232" class="m">id, eoi</text>
+  <text x="550" y="232" class="s">code fragments</text>
+  <text x="424" y="248" class="m">mask, unmask</text>
+  <text x="550" y="248" class="s">callouts</text>
+  <rect class="w" x="400" y="286" width="380" height="96" rx="3"/>
+  <text x="414" y="306" class="b">Vectors the kernel uses on virt</text>
+  <text x="424" y="326" class="ms">0, 0x8000, 0x10000, 0x18000</text>
+  <text x="620" y="326" class="s">the IPI of CPUs 0 to 3</text>
+  <text x="424" y="343" class="ms">27, 0x801b, 0x1001b, 0x1801b</text>
+  <text x="620" y="343" class="s">the timer of CPUs 0 to 3</text>
+  <text x="424" y="360" class="ms">32 + n</text>
+  <text x="620" y="360" class="s">shared interrupt n: a device</text>
+  <path class="lnk" d="M320,248 L360,248 L360,100 L400,100" marker-end="url(#ak)"/>
+  <path class="lnk" d="M320,300 L372,300 L372,112 L400,112" marker-end="url(#ak)"/>
+  <path class="lnk" d="M320,352 L384,352 L384,222 L400,222" marker-end="url(#ak)"/>
+</svg>

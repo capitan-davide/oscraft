@@ -1,0 +1,41 @@
+From db019ac7356d4624d6edfc5913a7fdc494d4d6d4 Mon Sep 17 00:00:00 2001
+From: Davide Cunial <dcunial@proton.me>
+Date: Wed, 4 Nov 2026 14:43:45 +0100
+Subject: [PATCH 1/5] libsys: take OsCraft's prebuilt stub object in place of
+ the generated trap stubs (OSCRAFT_LIBSYS_OBJ)
+
+---
+ lib/libsys/Makefile.sys | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/lib/libsys/Makefile.sys b/lib/libsys/Makefile.sys
+index afe24345bc5..7112b7ab0b3 100644
+--- a/lib/libsys/Makefile.sys
++++ b/lib/libsys/Makefile.sys
+@@ -100,6 +100,16 @@ INTERPOSED = \
+ 
+ PSEUDO+=	${INTERPOSED}
+ 
++# OsCraft: the system calls are not traps but kernel calls and messages,
++# in one prebuilt object (oscraft-runtimes/libsys, in Rust), which takes
++# the place of the generated stubs, cerror and vfork.
++.if defined(OSCRAFT_LIBSYS_OBJ)
++MDASM:=	${MDASM:Ncerror.S:Nvfork.S}
++OBJS+=	oscraft_libsys.o
++oscraft_libsys.o oscraft_libsys.pico oscraft_libsys.nossppico: ${OSCRAFT_LIBSYS_OBJ}
++	cp ${.ALLSRC} ${.TARGET}
++.endif
++
+ # Add machine dependent asm sources:
+ SRCS+=${MDASM}
+ 
+@@ -117,7 +127,9 @@ SASM=	${ASM:S/.o/.S/}
+ 
+ SPSEUDO= ${PSEUDO:C/^.*$/_&.S/}
+ 
++.if !defined(OSCRAFT_LIBSYS_OBJ)
+ SRCS+=	${SASM} ${SPSEUDO}
++.endif
+ 
+ SYM_MAPS+=	${LIBSYS_SRCTOP}/syscalls.map
+ SYM_MAPS+=	${LIBSYS_SRCTOP}/Symbol.sys.map

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="470" viewBox="0 0 800 470" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="470" fill="#ffffff"/>
+  <rect class="u" x="20" y="16" width="500" height="438" rx="4"/>
+  <text x="270" y="36" class="h c">diskd-md, one process</text>
+  <rect class="k" x="36" y="50" width="220" height="60" rx="3"/>
+  <text x="146" y="70" class="b c">the device: /dev/md0</text>
+  <text x="146" y="86" class="s c">raw blocks, sizes, the mount request</text>
+  <text x="146" y="99" class="s c">user/diskd</text>
+  <rect class="k" x="284" y="50" width="220" height="60" rx="3"/>
+  <text x="394" y="70" class="b c">fsd: the mount point, /md0</text>
+  <text x="394" y="86" class="s c">open files, permissions, directories</text>
+  <text x="394" y="99" class="s c">user/fsd</text>
+  <rect class="wk" x="284" y="136" width="220" height="40" rx="3"/>
+  <text x="394" y="153" class="c">Fat: the FileSystem trait for FAT</text>
+  <text x="394" y="168" class="s c">user/diskd</text>
+  <rect class="k" x="284" y="202" width="220" height="52" rx="3"/>
+  <text x="394" y="222" class="b c">msdosfs: Volume</text>
+  <text x="394" y="239" class="s c">FAT12, 16, 32; long names</text>
+  <rect class="y" x="36" y="290" width="468" height="52" rx="3"/>
+  <text x="270" y="310" class="b c">bufcache: Cache</text>
+  <text x="270" y="327" class="s c">up to 2048 blocks; owned by the device while raw, by the Volume while mounted</text>
+  <rect class="wk" x="36" y="372" width="468" height="26" rx="3"/>
+  <text x="270" y="390" class="c">the BlockDevice trait</text>
+  <rect class="k" x="36" y="404" width="224" height="38" rx="3"/>
+  <text x="148" y="420" class="b c">md: Memory</text>
+  <text x="148" y="434" class="s c">a vector of bytes</text>
+  <rect class="k" x="280" y="404" width="224" height="38" rx="3"/>
+  <text x="392" y="420" class="b c">md: Image</text>
+  <text x="392" y="434" class="s c">a file, opened for reading and writing</text>
+  <path class="ln" d="M394,110 L394,134" marker-end="url(#a)"/>
+  <path class="ln" d="M394,176 L394,200" marker-end="url(#a)"/>
+  <path class="ln" d="M394,254 L394,288" marker-end="url(#a)"/>
+  <path class="ln dash" d="M146,110 L146,288" marker-end="url(#a)"/>
+  <text x="154" y="200" class="s">only while</text>
+  <text x="154" y="214" class="s">not mounted</text>
+  <path class="ln" d="M270,342 L270,370" marker-end="url(#a)"/>
+  <rect class="u" x="560" y="16" width="220" height="250" rx="4"/>
+  <text x="670" y="36" class="h c">tmpfs, another process</text>
+  <rect class="k" x="576" y="50" width="188" height="60" rx="3"/>
+  <text x="670" y="70" class="b c">fsd: /tmp and /var</text>
+  <text x="670" y="86" class="s c">the same serving layer</text>
+  <text x="670" y="99" class="s c">user/fsd</text>
+  <rect class="k" x="576" y="136" width="188" height="52" rx="3"/>
+  <text x="670" y="156" class="b c">Tmpfs: FileSystem</text>
+  <text x="670" y="173" class="s c">files in the process's memory</text>
+  <path class="ln" d="M670,110 L670,134" marker-end="url(#a)"/>
+  <text x="670" y="214" class="s c">no cache and no device:</text>
+  <text x="670" y="228" class="s c">there is no disk (Chapter 25)</text>
+  <text x="670" y="320" class="s c">Blue: Rust libraries of OsCraft.</text>
+  <text x="670" y="335" class="s c">Each layer knows only</text>
+  <text x="670" y="350" class="s c">the one below it.</text>
+</svg>

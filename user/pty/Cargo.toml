@@ -1,0 +1,19 @@
+[package]
+name = "pty"
+description = "OsCraft's pseudo-terminals: a native resource manager with a line discipline"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "pty"
+path = "src/main.rs"
+test = false
+
+[dependencies]
+resmgr = { path = "../resmgr" }
+kercall = { path = "../kercall" }
+proto = { path = "../proto" }
+
+[lints]
+workspace = true

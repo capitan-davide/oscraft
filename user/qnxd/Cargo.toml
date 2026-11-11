@@ -1,0 +1,20 @@
+[package]
+name = "qnxd"
+description = "The QNX personality's translation service"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "qnxd"
+path = "src/main.rs"
+test = false
+
+[dependencies]
+kercall = { path = "../kercall" }
+proto = { path = "../proto" }
+qnxabi = { path = "../qnxabi" }
+resmgr = { path = "../resmgr" }
+
+[lints]
+workspace = true

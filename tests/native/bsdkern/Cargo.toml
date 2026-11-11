@@ -1,0 +1,24 @@
+[package]
+name = "bsdkern-tests"
+description = "bsdkern's own checks on the target: its slots, locks and memory (tests bsdkern-slots, bsdkern-locks, bsdkern-mem)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "bsdkern-slots"
+path = "src/bin/slots.rs"
+test = false
+
+[[bin]]
+name = "bsdkern-locks"
+path = "src/bin/locks.rs"
+test = false
+
+[[bin]]
+name = "bsdkern-mem"
+path = "src/bin/mem.rs"
+test = false
+
+[dependencies]
+bsdkern = { path = "../../../user/bsdkern" }

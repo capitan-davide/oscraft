@@ -1,0 +1,19 @@
+[package]
+name = "pipe"
+description = "OsCraft's pipe manager: a native resource manager over the kernel's pipes (PipeOpen() and co.)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "pipe"
+path = "src/main.rs"
+test = false
+
+[dependencies]
+resmgr = { path = "../resmgr" }
+kercall = { path = "../kercall" }
+proto = { path = "../proto" }
+
+[lints]
+workspace = true

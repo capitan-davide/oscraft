@@ -1,0 +1,21 @@
+[package]
+name = "tmpfs"
+description = "A file system in memory, as FreeBSD's tmpfs, served by fsd"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "tmpfs"
+path = "src/bin/tmpfs.rs"
+test = false
+
+[dependencies]
+fsd = { path = "../fsd" }
+proto = { path = "../proto" }
+
+[lints]
+workspace = true

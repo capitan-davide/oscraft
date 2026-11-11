@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="360" viewBox="0 0 820 360" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="820" height="360" fill="#ffffff"/>
+  <text x="120" y="24" class="h c">connections</text>
+  <text x="120" y="40" class="s c">what the kernel knows</text>
+  <text x="400" y="24" class="h c">the map</text>
+  <text x="400" y="40" class="s c">(process, connection) -&gt; context</text>
+  <text x="690" y="24" class="h c">open-file contexts</text>
+  <text x="690" y="40" class="s c">shared, each with its own lock</text>
+  <rect class="u" x="20" y="56" width="200" height="90" rx="4"/>
+  <text x="120" y="74" class="s c">process 12</text>
+  <rect class="wu" x="40" y="82" width="160" height="24" rx="3"/>
+  <text x="120" y="98" class="m c">fd 3</text>
+  <rect class="wu" x="40" y="112" width="160" height="24" rx="3"/>
+  <text x="120" y="128" class="m c">fd 4 = dup(3)</text>
+  <rect class="u" x="20" y="160" width="200" height="60" rx="4"/>
+  <text x="120" y="178" class="s c">process 13, forked from 12</text>
+  <rect class="wu" x="40" y="186" width="160" height="24" rx="3"/>
+  <text x="120" y="202" class="m c">fd 3</text>
+  <rect class="u" x="20" y="236" width="200" height="90" rx="4"/>
+  <text x="120" y="254" class="s c">process 20</text>
+  <rect class="wu" x="40" y="262" width="160" height="24" rx="3"/>
+  <text x="120" y="278" class="m c">fd 0</text>
+  <rect class="wu" x="40" y="292" width="160" height="24" rx="3"/>
+  <text x="120" y="308" class="m c">fd 5</text>
+  <rect class="k" x="320" y="56" width="160" height="284" rx="4"/>
+  <rect class="y" x="580" y="76" width="220" height="48" rx="4"/>
+  <text x="690" y="96" class="m c">Image</text>
+  <text x="690" y="113" class="s c">bin/sh, position 4096</text>
+  <rect class="y" x="580" y="186" width="220" height="48" rx="4"/>
+  <text x="690" y="206" class="m c">Text</text>
+  <text x="690" y="223" class="s c">the console's open flags</text>
+  <rect class="y" x="580" y="276" width="220" height="48" rx="4"/>
+  <text x="690" y="296" class="m c">Proc</text>
+  <text x="690" y="313" class="s c">/proc/20/cmdline, position 0</text>
+  <rect class="wk" x="336" y="82" width="128" height="24" rx="3"/>
+  <text x="400" y="98" class="m c">(12, 3)</text>
+  <path class="lnk" d="M200,94 L334,94" marker-end="url(#ak)"/>
+  <path class="ln" d="M464,94 L578,96.4" marker-end="url(#a)"/>
+  <rect class="wk" x="336" y="112" width="128" height="24" rx="3"/>
+  <text x="400" y="128" class="m c">(12, 4)</text>
+  <path class="lnk" d="M200,124 L334,124" marker-end="url(#ak)"/>
+  <path class="ln" d="M464,124 L578,100.0" marker-end="url(#a)"/>
+  <rect class="wk" x="336" y="186" width="128" height="24" rx="3"/>
+  <text x="400" y="202" class="m c">(13, 3)</text>
+  <path class="lnk" d="M200,198 L334,198" marker-end="url(#ak)"/>
+  <path class="ln" d="M464,198 L578,108.88" marker-end="url(#a)"/>
+  <rect class="wk" x="336" y="262" width="128" height="24" rx="3"/>
+  <text x="400" y="278" class="m c">(20, 0)</text>
+  <path class="lnk" d="M200,274 L334,274" marker-end="url(#ak)"/>
+  <path class="ln" d="M464,274 L578,210" marker-end="url(#a)"/>
+  <rect class="wk" x="336" y="292" width="128" height="24" rx="3"/>
+  <text x="400" y="308" class="m c">(20, 5)</text>
+  <path class="lnk" d="M200,304 L334,304" marker-end="url(#ak)"/>
+  <path class="ln" d="M464,304 L578,300" marker-end="url(#a)"/>
+</svg>

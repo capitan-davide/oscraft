@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="430" viewBox="0 0 800 430" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="430" fill="#ffffff"/>
+  <rect class="u" x="150" y="20" width="300" height="44" rx="4"/>
+  <text x="300.0" y="39" class="b c">a program</text>
+  <text x="300.0" y="55" class="ms c">send(s, buf, n)   recv(s, buf, n)</text>
+  <rect class="w" x="150" y="96" width="300" height="60" rx="4"/>
+  <text x="300.0" y="115" class="b c">the socket layer</text>
+  <text x="300.0" y="132" class="s c">a socket per descriptor, with a send</text>
+  <text x="300.0" y="146" class="s c">buffer and a receive buffer</text>
+  <rect class="w" x="150" y="176" width="300" height="60" rx="4"/>
+  <text x="300.0" y="195" class="b c">the protocols: TCP, UDP, IP</text>
+  <text x="300.0" y="212" class="s c">a control block per socket: addresses,</text>
+  <text x="300.0" y="226" class="s c">ports, the connection's state</text>
+  <rect class="w" x="150" y="256" width="300" height="60" rx="4"/>
+  <text x="300.0" y="275" class="b c">the interface layer</text>
+  <text x="300.0" y="292" class="s c">routing picks an interface; Ethernet</text>
+  <text x="300.0" y="306" class="s c">framing; address resolution</text>
+  <rect class="w" x="150" y="336" width="300" height="60" rx="4"/>
+  <text x="300.0" y="355" class="b c">a device driver</text>
+  <text x="300.0" y="372" class="s c">queues of buffers shared with</text>
+  <text x="300.0" y="386" class="s c">the device</text>
+  <rect class="n" x="150" y="400" width="300" height="24" rx="4"/>
+  <text x="300.0" y="416" class="c">the network device</text>
+  <path class="lnk" d="M70,70 L70,396" marker-end="url(#ak)"/>
+  <text x="70" y="60" class="c blue">sending</text>
+  <path class="lng" d="M110,396 L110,70" marker-end="url(#ag)"/>
+  <text x="110" y="412" class="c green">receiving</text>
+  <text x="640" y="34" class="h c">what travels between the layers</text>
+  <rect class="y" x="500" y="68" width="120" height="24" rx="2"/>
+  <text x="560.0" y="84" class="s c">the program's bytes</text>
+  <rect class="y" x="500" y="148" width="120" height="24" rx="2"/>
+  <text x="560.0" y="164" class="s c">data</text>
+  <text x="630" y="164" class="s">a chain of buffers</text>
+  <rect class="k" x="500" y="228" width="44" height="24" rx="2"/>
+  <text x="522.0" y="244" class="s c">IP</text>
+  <rect class="k" x="544" y="228" width="44" height="24" rx="2"/>
+  <text x="566.0" y="244" class="s c">TCP</text>
+  <rect class="y" x="588" y="228" width="120" height="24" rx="2"/>
+  <text x="648.0" y="244" class="s c">data</text>
+  <rect class="g" x="500" y="308" width="52" height="24" rx="2"/>
+  <text x="526.0" y="324" class="s c">Ethernet</text>
+  <rect class="k" x="552" y="308" width="44" height="24" rx="2"/>
+  <text x="574.0" y="324" class="s c">IP</text>
+  <rect class="k" x="596" y="308" width="44" height="24" rx="2"/>
+  <text x="618.0" y="324" class="s c">TCP</text>
+  <rect class="y" x="640" y="308" width="120" height="24" rx="2"/>
+  <text x="700.0" y="324" class="s c">data</text>
+  <text x="640" y="364" class="s c">each layer going down puts its</text>
+  <text x="640" y="378" class="s c">header in front; each layer going</text>
+  <text x="640" y="392" class="s c">up takes its header off</text>
+  <path class="life" d="M450,80 L494,80"/>
+  <path class="life" d="M450,160 L494,160"/>
+  <path class="life" d="M450,240 L494,240"/>
+  <path class="life" d="M450,320 L494,320"/>
+</svg>

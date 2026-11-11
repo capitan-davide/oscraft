@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="430" viewBox="0 0 800 430" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="430" fill="#ffffff"/>
+  <rect class="k" x="20" y="20" width="200" height="44" rx="4"/>
+  <text x="120" y="39" class="b c">kernel/</text>
+  <text x="120" y="55" class="s c">Rust, no std</text>
+  <path class="ln" d="M220,42 L318,42" marker-end="url(#a)"/>
+  <text x="269" y="34" class="s c">cargo</text>
+  <rect class="w" x="320" y="20" width="250" height="44" rx="4"/>
+  <text x="445" y="39" class="c">the kernel</text>
+  <text x="445" y="55" class="s c">one ELF file: microkernel and process 1</text>
+  <path class="ln" d="M570,42 L610,42"/>
+  <rect class="k" x="20" y="76" width="200" height="44" rx="4"/>
+  <text x="120" y="95" class="b c">startup/</text>
+  <text x="120" y="111" class="s c">Rust, no std</text>
+  <path class="ln" d="M220,98 L318,98" marker-end="url(#a)"/>
+  <text x="269" y="90" class="s c">cargo</text>
+  <rect class="w" x="320" y="76" width="250" height="44" rx="4"/>
+  <text x="445" y="95" class="c">startup-qemu-virt</text>
+  <text x="445" y="111" class="s c">runs first, describes the machine</text>
+  <path class="ln" d="M570,98 L610,98"/>
+  <rect class="k" x="20" y="132" width="200" height="44" rx="4"/>
+  <text x="120" y="151" class="b c">user/libsys/</text>
+  <text x="120" y="167" class="s c">Rust</text>
+  <path class="ln" d="M220,154 L318,154" marker-end="url(#a)"/>
+  <text x="269" y="146" class="s c">cargo</text>
+  <rect class="w" x="320" y="132" width="250" height="44" rx="4"/>
+  <text x="445" y="151" class="c">libsys object</text>
+  <text x="445" y="167" class="s c">linked into FreeBSD's libc and loader</text>
+  <path class="ln" d="M570,154 L610,154"/>
+  <rect class="g" x="20" y="188" width="200" height="44" rx="4"/>
+  <text x="120" y="207" class="b c">FreeBSD's source</text>
+  <text x="120" y="223" class="s c">the fork, stable/15</text>
+  <path class="ln" d="M220,210 L318,210" marker-end="url(#a)"/>
+  <text x="269" y="202" class="s c">FreeBSD's build</text>
+  <rect class="w" x="320" y="188" width="250" height="44" rx="4"/>
+  <text x="445" y="207" class="c">libc, rtld, sh, utilities</text>
+  <text x="445" y="223" class="s c">the sysroot, for aarch64-unknown-freebsd</text>
+  <path class="ln" d="M570,210 L610,210"/>
+  <rect class="k" x="20" y="244" width="200" height="44" rx="4"/>
+  <text x="120" y="263" class="b c">user/ servers</text>
+  <text x="120" y="279" class="s c">Rust, with FreeBSD's kernel C</text>
+  <path class="ln" d="M220,266 L318,266" marker-end="url(#a)"/>
+  <text x="269" y="258" class="s c">cargo + clang</text>
+  <rect class="w" x="320" y="244" width="250" height="44" rx="4"/>
+  <text x="445" y="263" class="c">netd, pcid, tmpfs, ...</text>
+  <text x="445" y="279" class="s c">ordinary FreeBSD programs</text>
+  <path class="ln" d="M570,266 L610,266"/>
+  <rect class="g" x="20" y="300" width="200" height="44" rx="4"/>
+  <text x="120" y="319" class="b c">FreeBSD drivers</text>
+  <text x="120" y="335" class="s c">sys/dev/..., unchanged</text>
+  <path class="ln" d="M220,322 L318,322" marker-end="url(#a)"/>
+  <text x="269" y="314" class="s c">clang</text>
+  <rect class="w" x="320" y="300" width="250" height="44" rx="4"/>
+  <text x="445" y="319" class="c">modules (.ko)</text>
+  <text x="445" y="335" class="s c">loaded into netd at run time</text>
+  <path class="ln" d="M570,322 L610,322"/>
+  <path class="ln" d="M610,42 L610,322"/>
+  <path class="ln" d="M610,100 L648,100" marker-end="url(#a)"/>
+  <rect class="k" x="650" y="70" width="130" height="80" rx="4"/>
+  <text x="715" y="100" class="b c">mkifs</text>
+  <text x="715" y="117" class="s c">tools/mkifs</text>
+  <text x="715" y="132" class="s c">packs the image</text>
+  <rect class="y" x="20" y="362" width="550" height="40" rx="4"/>
+  <text x="295" y="380" class="b c">images/qemu-virt.build</text>
+  <text x="295" y="395" class="s c">the buildfile: which file goes where, and the boot script</text>
+  <path class="ln" d="M570,382 L630,382 L630,130 L648,130" marker-end="url(#a)"/>
+  <rect class="y" x="650" y="220" width="130" height="76" rx="4"/>
+  <text x="715" y="244" class="b c">build/oscraft.ifs</text>
+  <text x="715" y="262" class="s c">startup, kernel,</text>
+  <text x="715" y="277" class="s c">boot script, files</text>
+  <path class="ln" d="M715,150 L715,218" marker-end="url(#a)"/>
+  <rect class="n" x="650" y="356" width="130" height="60" rx="4"/>
+  <text x="715" y="380" class="m c">make run</text>
+  <text x="715" y="398" class="s c">QEMU's virt</text>
+  <path class="ln" d="M715,296 L715,354" marker-end="url(#a)"/>
+</svg>

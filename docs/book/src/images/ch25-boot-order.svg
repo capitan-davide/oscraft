@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="330" viewBox="0 0 800 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="330" fill="#ffffff"/>
+  <text x="130" y="93" class="m e">pipe</text>
+  <rect class="k" x="156" y="78" width="614" height="20" rx="3"/>
+  <text x="130" y="121" class="m e">random</text>
+  <rect class="k" x="156" y="106" width="614" height="20" rx="3"/>
+  <text x="130" y="149" class="m e">pty</text>
+  <rect class="k" x="156" y="134" width="614" height="20" rx="3"/>
+  <text x="130" y="177" class="m e">tmpfs</text>
+  <rect class="k" x="268" y="162" width="502" height="20" rx="3"/>
+  <text x="130" y="205" class="m e">syslogd</text>
+  <rect class="k" x="380" y="190" width="390" height="20" rx="3"/>
+  <text x="130" y="233" class="m e">netd</text>
+  <rect class="g" x="492" y="218" width="278" height="20" rx="3"/>
+  <text x="130" y="261" class="m e">pcid</text>
+  <rect class="g" x="604" y="246" width="166" height="20" rx="3"/>
+  <text x="130" y="289" class="m e">sh</text>
+  <rect class="u" x="716" y="274" width="54" height="20" rx="3"/>
+  <path class="lnr dash" d="M262,60 L262,302"/>
+  <text x="262" y="52" class="ms c">/dev/pipe</text>
+  <path class="lnr dash" d="M374,60 L374,302"/>
+  <text x="374" y="52" class="ms c">/var</text>
+  <path class="lnr dash" d="M486,60 L486,302"/>
+  <text x="486" y="26" class="ms c">/var/run/log</text>
+  <text x="486" y="39" class="ms c">/dev/urandom</text>
+  <text x="486" y="52" class="ms c">/dev/ptyp0</text>
+  <path class="lnr dash" d="M598,60 L598,302"/>
+  <text x="598" y="52" class="ms c">/dev/netd</text>
+  <path class="lnr dash" d="M710,60 L710,302"/>
+  <text x="710" y="52" class="ms c">/dev/pci</text>
+  <text x="130" y="52" class="s e">the script waits for</text>
+  <path class="ln" d="M150,316 L770,316" marker-end="url(#a)"/>
+  <text x="130" y="320" class="s e">time</text>
+  <text x="386" y="156" class="s"></text>
+</svg>

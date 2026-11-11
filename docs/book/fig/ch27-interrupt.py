@@ -1,0 +1,33 @@
+from svg import Fig
+f = Fig(800, 400)
+cols = [("the device", 20, "n"), ("the microkernel", 215, "k"), ("bsdkern's interrupt thread", 410, "k"), ("the driver (FreeBSD's)", 605, "g")]
+for t, x, cls in cols:
+    f.box(cls, x, 14, 175, 30); f.text(x + 87, 34, t, "b c"); f.line([(x + 87, 44), (x + 87, 384)], "life")
+def step(col, y, t, s=None, cls="w", mono=True):
+    x = cols[col][1]; h = 38 if s else 26
+    f.box(cls, x + 4, y, 167, h, 3); f.text(x + 87, y + 16, t, "ms c" if mono else "c")
+    if s: f.text(x + 87, y + 31, s, "s c")
+step(3, 56, "bus_setup_intr()", "filter, handler, argument")
+f.arrow([(609, 75), (583, 75)]); f.num(596, 60, 1)
+step(2, 56, "kthread_add()", "a thread for this handler")
+f.arrow([(497, 94), (497, 104)])
+step(2, 106, "InterruptAttachThread()", "this thread owns the vector")
+f.arrow([(414, 125), (388, 125)])
+step(1, 106, "attach the thread", None, "w", False)
+step(2, 162, "InterruptWait(UNMASK)", "blocks", "y")
+f.arrow([(414, 181), (388, 181)]); f.num(401, 166, 2)
+step(1, 162, "unmask the line", "the thread waits", "w", False)
+step(0, 218, "raises its interrupt", None, "r", False)
+f.arrow([(191, 231), (217, 231)]); f.num(204, 216, 3)
+step(1, 218, "mask the line,", "make the thread ready", "w", False)
+f.arrow([(386, 247), (412, 247)], "lng", "ag")
+step(2, 228, "InterruptWait() returns", None, "g")
+f.arrow([(581, 281), (607, 281)]); f.num(594, 266, 4)
+step(2, 268, "call the filter;", "the handler if it asks, or alone", "w", False)
+step(3, 268, "filter(arg), handler(arg)", "read status, complete work")
+f.arrow([(497, 254), (497, 266)])
+f.arrow([(497, 306), (497, 340), (400, 340), (400, 181)], "ln", "a", True)
+f.num(450, 340, 5)
+f.text(600, 336, "back to step 2: the wait unmasks the line again,", "s c")
+f.text(600, 351, "so the device stays quiet while its handler runs", "s c")
+f.save("ch27-interrupt.svg")

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="370" viewBox="0 0 820 370" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12">
+  <defs><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b03a2e"/></marker></defs>
+  <style>
+    .k { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .y { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .u { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .g { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.4; }
+    .lnr { fill: none; stroke: #b03a2e; stroke-width: 1.6; }
+    .t { text-anchor: middle; }
+    .b { font-weight: bold; }
+    .s { font-size: 10px; fill: #444444; }
+    .m { font-family: DejaVu Sans Mono, monospace; font-size: 11px; }
+    .r { fill: #b03a2e; font-weight: bold; }
+  </style>
+  <rect width="820" height="370" fill="#ffffff"/>
+  <!-- step headers -->
+  <text class="b" x="20" y="24">The walker's step:</text>
+  <text class="t b" x="205" y="24">L0</text>
+  <text class="t b" x="345" y="24">L1</text>
+  <text class="t b" x="485" y="24">L2</text>
+  <text class="t b" x="625" y="24">L3</text>
+  <text class="t b" x="760" y="24">the page</text>
+  <!-- normal walk -->
+  <text class="b" x="20" y="62">Normal walk</text>
+  <text class="m" x="20" y="80">ffffff80_40213018</text>
+  <text class="s" x="20" y="96">indexes 1, 1, 1, 19</text>
+  <text class="s" x="20" y="110">offset 0x018</text>
+  <rect class="k" x="160" y="50" width="90" height="56" rx="3"/>
+  <text class="t b" x="205" y="72">L0 table</text>
+  <text class="t m" x="205" y="92">[1]</text>
+  <rect class="k" x="300" y="50" width="90" height="56" rx="3"/>
+  <text class="t b" x="345" y="72">L1 table</text>
+  <text class="t m" x="345" y="92">[1]</text>
+  <rect class="y" x="440" y="50" width="90" height="56" rx="3"/>
+  <text class="t b" x="485" y="72">L2 table</text>
+  <text class="t m" x="485" y="92">[1]</text>
+  <rect class="g" x="580" y="50" width="90" height="56" rx="3"/>
+  <text class="t b" x="625" y="72">L3 table</text>
+  <text class="t m" x="625" y="92">[19]</text>
+  <rect class="u" x="720" y="50" width="84" height="56" rx="3"/>
+  <text class="t b" x="762" y="72">UART</text>
+  <text class="t m" x="762" y="92">+ 0x018</text>
+  <path class="lnk" d="M250,78 L298,78" marker-end="url(#ak)"/>
+  <path class="lnk" d="M390,78 L438,78" marker-end="url(#ak)"/>
+  <path class="lnk" d="M530,78 L578,78" marker-end="url(#ak)"/>
+  <path class="lnk" d="M670,78 L718,78" marker-end="url(#ak)"/>
+  <!-- recursive walk -->
+  <text class="b" x="20" y="202">Recursive walk</text>
+  <text class="m" x="20" y="220">ffffff80_00201098</text>
+  <text class="s" x="20" y="236">indexes 1, 0, 1, 1</text>
+  <text class="s" x="20" y="250">offset 0x098</text>
+  <rect class="k" x="160" y="190" width="90" height="56" rx="3"/>
+  <text class="t b" x="205" y="212">L0 table</text>
+  <text class="t m" x="205" y="232">[1]</text>
+  <rect class="k" x="300" y="190" width="90" height="56" rx="3"/>
+  <text class="t b" x="345" y="212">L1 table</text>
+  <text class="t m r" x="345" y="232">[0]</text>
+  <rect class="k" x="440" y="190" width="90" height="56" rx="3"/>
+  <text class="t b" x="485" y="212">L1 table</text>
+  <text class="t m" x="485" y="232">[1]</text>
+  <rect class="y" x="580" y="190" width="90" height="56" rx="3"/>
+  <text class="t b" x="625" y="212">L2 table</text>
+  <text class="t m" x="625" y="232">[1]</text>
+  <rect class="g" x="720" y="190" width="84" height="56" rx="3"/>
+  <text class="t b" x="762" y="212">L3 table</text>
+  <text class="t m" x="762" y="232">+ 0x098</text>
+  <path class="lnk" d="M250,218 L298,218" marker-end="url(#ak)"/>
+  <path class="lnr" d="M390,218 L438,218" marker-end="url(#ar)"/>
+  <path class="lnk" d="M530,218 L578,218" marker-end="url(#ak)"/>
+  <path class="lnk" d="M670,218 L718,218" marker-end="url(#ak)"/>
+  <text class="t s r" x="415" y="182">L1[0] points back</text>
+  <text class="t s r" x="415" y="170">the recursive entry:</text>
+  <!-- same table links -->
+  <path class="lnk" d="M625,106 C625,140 762,140 762,188" stroke-dasharray="5 4" marker-end="url(#ak)"/>
+  <text class="s" x="668" y="160" text-anchor="end">the same table, now read as data</text>
+  <!-- notes -->
+  <text class="s" x="20" y="288">Every table in the second row appears one step later than in the first. The walk runs out of steps at the L3 table, so the CPU</text>
+  <text class="s" x="20" y="304">reads it like a page: offset 0x098 is entry 19 (19 * 8 bytes), the very entry the normal walk used to reach the UART.</text>
+  <text class="s" x="20" y="328">A write to ffffff80_00201098, with a TLB invalidation, changes where ffffff80_40213000 is mapped. The kernel computes such an</text>
+  <text class="s" x="20" y="344">address from the indexes of the mapping it wants to change.</text>
+</svg>

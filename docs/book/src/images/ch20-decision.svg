@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="520" fill="#ffffff"/>
+  <text x="400" y="22" class="h c">What a _MEM_MAP request maps</text>
+  <rect class="y" x="20" y="40" width="150" height="40" rx="4"/>
+  <text x="95" y="57" class="b c">no descriptor</text>
+  <text x="95" y="72" class="s c">fd is -1</text>
+  <rect class="y" x="20" y="268" width="150" height="40" rx="4"/>
+  <text x="95" y="285" class="b c">a descriptor</text>
+  <text x="95" y="300" class="s c">fd names an open file</text>
+  <rect class="w" x="200" y="40" width="250" height="40" rx="3"/>
+  <text x="325.0" y="57" class="c">a physical address</text>
+  <text x="325.0" y="72" class="s c">MAP_PHYS, not MAP_ANON</text>
+  <rect class="n" x="480" y="40" width="300" height="40" rx="3"/>
+  <text x="630.0" y="57" class="c">device memory, as it is</text>
+  <text x="630.0" y="72" class="s c">needs an ability; nothing is allocated</text>
+  <path class="lnk" d="M450,60 L477,60" marker-end="url(#ak)"/>
+  <path class="ln" d="M170,60 L200,60"/>
+  <rect class="w" x="200" y="90" width="250" height="40" rx="3"/>
+  <text x="325.0" y="107" class="c">memory for a device</text>
+  <text x="325.0" y="122" class="s c">MAP_PHYS with MAP_ANON, or uncached</text>
+  <rect class="k" x="480" y="90" width="300" height="40" rx="3"/>
+  <text x="630.0" y="107" class="c">contiguous RAM below 4 GiB</text>
+  <text x="630.0" y="122" class="s c">one run of zeroed frames</text>
+  <path class="lnk" d="M450,110 L477,110" marker-end="url(#ak)"/>
+  <path class="ln" d="M185,110 L200,110"/>
+  <rect class="w" x="200" y="140" width="250" height="40" rx="3"/>
+  <text x="325.0" y="157" class="c">anonymous, shared</text>
+  <text x="325.0" y="172" class="s c">MAP_ANON | MAP_SHARED</text>
+  <rect class="k" x="480" y="140" width="300" height="40" rx="3"/>
+  <text x="630.0" y="157" class="c">a new memory object, mapped shared</text>
+  <text x="630.0" y="172" class="s c">a forked child shares its frames</text>
+  <path class="lnk" d="M450,160 L477,160" marker-end="url(#ak)"/>
+  <path class="ln" d="M185,160 L200,160"/>
+  <rect class="w" x="200" y="190" width="250" height="40" rx="3"/>
+  <text x="325.0" y="207" class="c">anonymous, private</text>
+  <text x="325.0" y="222" class="s c">MAP_ANON | MAP_PRIVATE</text>
+  <rect class="k" x="480" y="190" width="300" height="40" rx="3"/>
+  <text x="630.0" y="207" class="c">zeroed frames of the process's own</text>
+  <text x="630.0" y="222" class="s c">a thread's stack gets a guard at its low end</text>
+  <path class="lnk" d="M450,210 L477,210" marker-end="url(#ak)"/>
+  <path class="ln" d="M185,210 L200,210"/>
+  <path class="ln" d="M185,60 L185,210"/>
+  <rect class="w" x="200" y="268" width="250" height="40" rx="3"/>
+  <text x="325.0" y="285" class="c">a shared memory object</text>
+  <text x="325.0" y="300" class="s c">opened under /dev/shmem</text>
+  <rect class="y" x="480" y="268" width="300" height="40" rx="3"/>
+  <text x="630.0" y="292" class="c">its frames (shared) or a copy (private)</text>
+  <path class="lnk" d="M450,288 L477,288" marker-end="url(#ak)"/>
+  <path class="ln" d="M170,288 L200,288"/>
+  <rect class="w" x="200" y="318" width="250" height="40" rx="3"/>
+  <text x="325.0" y="335" class="c">a typed memory pool</text>
+  <text x="325.0" y="350" class="s c">opened to allocate, or not</text>
+  <rect class="k" x="480" y="318" width="300" height="40" rx="3"/>
+  <text x="630.0" y="335" class="c">contiguous RAM from the pool,</text>
+  <text x="630.0" y="350" class="s c">or the pool's memory at the offset</text>
+  <path class="lnk" d="M450,338 L477,338" marker-end="url(#ak)"/>
+  <path class="ln" d="M185,338 L200,338"/>
+  <rect class="w" x="200" y="368" width="250" height="40" rx="3"/>
+  <text x="325.0" y="385" class="c">a file of the boot image</text>
+  <text x="325.0" y="400" class="s c">read-only mapping, page-aligned</text>
+  <rect class="y" x="480" y="368" width="300" height="40" rx="3"/>
+  <text x="630.0" y="385" class="c">the image's own pages, in place</text>
+  <text x="630.0" y="400" class="s c">shared by every process that maps them</text>
+  <path class="lnk" d="M450,388 L477,388" marker-end="url(#ak)"/>
+  <path class="ln" d="M185,388 L200,388"/>
+  <rect class="w" x="200" y="418" width="250" height="40" rx="3"/>
+  <text x="325.0" y="435" class="c">a file of the boot image</text>
+  <text x="325.0" y="450" class="s c">any other mapping</text>
+  <rect class="k" x="480" y="418" width="300" height="40" rx="3"/>
+  <text x="630.0" y="435" class="c">a private copy of the file's bytes</text>
+  <text x="630.0" y="450" class="s c">shared and writable: EACCES</text>
+  <path class="lnk" d="M450,438 L477,438" marker-end="url(#ak)"/>
+  <path class="ln" d="M185,438 L200,438"/>
+  <rect class="w" x="200" y="468" width="250" height="40" rx="3"/>
+  <text x="325.0" y="492" class="c">a file on another server</text>
+  <rect class="r" x="480" y="468" width="300" height="40" rx="3"/>
+  <text x="630.0" y="485" class="c">ENODEV</text>
+  <text x="630.0" y="500" class="s c">libsys then reads the file into anonymous memory</text>
+  <path class="lnk" d="M450,488 L477,488" marker-end="url(#ak)"/>
+  <path class="ln" d="M185,488 L200,488"/>
+  <path class="ln" d="M185,288 L185,488"/>
+</svg>

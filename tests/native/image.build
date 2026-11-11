@@ -1,0 +1,49 @@
+###############################################################################
+# The native test programs, for `make test`: appended by the Makefile to
+# images/qemu-virt.build. C programs over FreeBSD's libc and libsys
+# (tests/native, the Makefile's native-tests), as any program for OsCraft,
+# and what else only the tests in tests/target.tests use.
+###############################################################################
+
+[+script] .script = {
+    # The minimal native program: Rust, no libc, the kernel's own ABI.
+    hello
+    # A program that fails to start (a text file): reported, and no
+    # process left behind (bootfailtest).
+    /proc/boot/notaprogram
+}
+
+# tests/native/hello (OSCRAFT_USER is the cargo output directory).
+/proc/boot/hello=${OSCRAFT_USER}/hello
+/proc/boot/hello-test=${OSCRAFT_NATIVE_TESTS}/hello-test
+/proc/boot/libc-test=${OSCRAFT_NATIVE_TESTS}/libc-test
+/proc/boot/dyn-test=${OSCRAFT_NATIVE_TESTS}/dyn-test
+/proc/boot/fork-test=${OSCRAFT_NATIVE_TESTS}/fork-test
+/proc/boot/tty-test=${OSCRAFT_NATIVE_TESTS}/tty-test
+/proc/boot/net-test=${OSCRAFT_NATIVE_TESTS}/net-test
+/proc/boot/misc-test=${OSCRAFT_NATIVE_TESTS}/misc-test
+/proc/boot/pipe-test=${OSCRAFT_NATIVE_TESTS}/pipe-test
+/proc/boot/netstress-test=${OSCRAFT_NATIVE_TESTS}/netstress-test
+/proc/boot/net6-test=${OSCRAFT_NATIVE_TESTS}/net6-test
+/proc/boot/netintr-test=${OSCRAFT_NATIVE_TESTS}/netintr-test
+/proc/boot/vtnet-test=${OSCRAFT_NATIVE_TESTS}/vtnet-test
+/proc/boot/exec-test=${OSCRAFT_NATIVE_TESTS}/exec-test
+/proc/boot/ttyselect-test=${OSCRAFT_NATIVE_TESTS}/ttyselect-test
+/proc/boot/pty-test=${OSCRAFT_NATIVE_TESTS}/pty-test
+# bsdkern's own checks (tests/native/bsdkern).
+/proc/boot/bsdkern-slots=${OSCRAFT_NATIVE}/bsdkern-slots
+/proc/boot/bsdkern-locks=${OSCRAFT_NATIVE}/bsdkern-locks
+/proc/boot/bsdkern-mem=${OSCRAFT_NATIVE}/bsdkern-mem
+/proc/boot/fs-test=${OSCRAFT_NATIVE_TESTS}/fs-test
+/proc/boot/usbd-test=${OSCRAFT_NATIVE_TESTS}/usbd-test
+# A FAT image for diskd-md (fs-test).
+/proc/boot/fat.img=${OSCRAFT_NATIVE_TESTS}/fat.img
+/proc/boot/syslog-test=${OSCRAFT_NATIVE_TESTS}/syslog-test
+# A netd module, a pfil(9) filter (user/netd/mods/pfil_test.c).
+/boot/modules/pfil_test.ko=${OSCRAFT_FREEBSD_DIR}/mods/pfil_test.ko
+/proc/boot/thr-test=${OSCRAFT_NATIVE_TESTS}/thr-test
+/proc/boot/thr-dyn-test=${OSCRAFT_NATIVE_TESTS}/thr-dyn-test
+
+[perms=0755] /proc/boot/notaprogram = {
+not a program
+}

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="470" viewBox="0 0 800 470" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="470" fill="#ffffff"/>
+  <rect class="frame" x="20" y="14" width="360" height="300" rx="4"/>
+  <text x="34" y="36" class="h">CPU 0</text>
+  <text x="34" y="62" class="s">timeout queue: blocked threads, by deadline</text>
+  <rect class="y" x="34" y="70" width="104" height="40" rx="3"/>
+  <text x="86" y="87" class="ms c">t = 12 ms</text>
+  <text x="86" y="102" class="s c">thread A</text>
+  <rect class="y" x="146" y="70" width="104" height="40" rx="3"/>
+  <text x="198" y="87" class="ms c">t = 40 ms</text>
+  <text x="198" y="102" class="s c">thread B</text>
+  <path class="ln" d="M138,90 L145,90" marker-end="url(#a)"/>
+  <rect class="y" x="258" y="70" width="104" height="40" rx="3"/>
+  <text x="310" y="87" class="ms c">t = 900 ms</text>
+  <text x="310" y="102" class="s c">thread C</text>
+  <path class="ln" d="M250,90 L257,90" marker-end="url(#a)"/>
+  <rect class="wk" x="34" y="150" width="160" height="46" rx="4"/>
+  <text x="114" y="169" class="c">next tick</text>
+  <text x="114" y="186" class="ms c">t = 8 ms</text>
+  <rect class="wk" x="206" y="150" width="160" height="46" rx="4"/>
+  <text x="286" y="169" class="c">next high-res timer</text>
+  <text x="286" y="186" class="ms c">none</text>
+  <text x="114" y="138" class="s c">on the grid</text>
+  <text x="286" y="138" class="s c">an exact time</text>
+  <path class="lnk" d="M114,196 L114,222 L170,222 L170,248" marker-end="url(#ak)"/>
+  <path class="lnk" d="M286,196 L286,222 L230,222 L230,248" marker-end="url(#ak)"/>
+  <text x="200" y="216" class="s c blue">the earlier</text>
+  <rect class="n" x="110" y="250" width="180" height="48" rx="4"/>
+  <text x="200" y="270" class="b c">comparator</text>
+  <text x="200" y="287" class="s c">set to 8 ms</text>
+  <rect class="frame" x="420" y="14" width="360" height="300" rx="4"/>
+  <text x="434" y="36" class="h">CPU 1</text>
+  <text x="434" y="62" class="s">timeout queue: blocked threads, by deadline</text>
+  <rect class="y" x="434" y="70" width="104" height="40" rx="3"/>
+  <text x="486" y="87" class="ms c">t = 25 ms</text>
+  <text x="486" y="102" class="s c">thread D</text>
+  <rect class="wk" x="434" y="150" width="160" height="46" rx="4"/>
+  <text x="514" y="169" class="c">next tick</text>
+  <text x="514" y="186" class="ms c">t = 8 ms</text>
+  <rect class="wk" x="606" y="150" width="160" height="46" rx="4"/>
+  <text x="686" y="169" class="c">next high-res timer</text>
+  <text x="686" y="186" class="ms c">t = 7.35 ms</text>
+  <text x="514" y="138" class="s c">on the grid</text>
+  <text x="686" y="138" class="s c">an exact time</text>
+  <path class="lnk" d="M514,196 L514,222 L570,222 L570,248" marker-end="url(#ak)"/>
+  <path class="lnk" d="M686,196 L686,222 L630,222 L630,248" marker-end="url(#ak)"/>
+  <text x="600" y="216" class="s c blue">the earlier</text>
+  <rect class="n" x="510" y="250" width="180" height="48" rx="4"/>
+  <text x="600" y="270" class="b c">comparator</text>
+  <text x="600" y="287" class="s c">set to 7.35 ms</text>
+  <text x="20" y="344" class="s">timers: one list for the system, each timer marked with the CPU that armed it</text>
+  <rect class="k" x="20" y="354" width="178" height="62" rx="4"/>
+  <text x="109" y="372" class="c">timer 0 of pid 12</text>
+  <text x="109" y="389" class="ms c">cpu 0, t = 30 ms</text>
+  <text x="109" y="405" class="s c">every 10 ms</text>
+  <rect class="k" x="214" y="354" width="178" height="62" rx="4"/>
+  <text x="303" y="372" class="c">alarm of pid 31</text>
+  <text x="303" y="389" class="ms c">cpu 0, t = 2 s</text>
+  <text x="303" y="405" class="s c">once</text>
+  <rect class="k" x="408" y="354" width="178" height="62" rx="4"/>
+  <text x="497" y="372" class="c">timer 0 of pid 44</text>
+  <text x="497" y="389" class="ms c">cpu 1, t = 7.35 ms</text>
+  <text x="497" y="405" class="s c">high-resolution</text>
+  <rect class="k" x="602" y="354" width="178" height="62" rx="4"/>
+  <text x="691" y="372" class="c">timer 1 of pid 44</text>
+  <text x="691" y="389" class="ms c">cpu 1, t = 60 ms</text>
+  <text x="691" y="405" class="s c">once</text>
+  <text x="400" y="440" class="s c">A tick on CPU n expires the due entries of queue n and the due timers marked n. No CPU looks through another's.</text>
+  <text x="400" y="456" class="s c">Times are of the monotonic clock; the tick is 1 ms.</text>
+</svg>

@@ -1,0 +1,26 @@
+from svg import Fig
+f = Fig(800, 300)
+def lane(y, name):
+    f.text(70, y + 4, name, "e")
+# case 1
+f.text(20, 24, "The parent waits first", "h")
+lane(52, "parent"); lane(92, "child")
+f.box("g", 80, 40, 150, 24, 3); f.text(155, 56, "runs", "s c")
+f.box("y", 230, 40, 250, 24, 3); f.text(355, 56, "blocked in wait()", "s c")
+f.box("g", 480, 40, 120, 24, 3); f.text(540, 56, "has the status", "s c")
+f.box("g", 150, 80, 330, 24, 3); f.text(315, 96, "runs", "s c")
+f.arrow([(150, 64), (150, 78)]); f.text(144, 76, "fork()", "s e")
+f.arrow([(480, 80), (480, 66)], "lng", "ag"); f.text(488, 96, "exit(3): no zombie is ever seen", "s")
+# case 2
+f.text(20, 144, "The child ends first", "h")
+lane(172, "parent"); lane(212, "child")
+f.box("g", 80, 160, 480, 24, 3); f.text(320, 176, "runs, busy with something else", "s c")
+f.box("g", 560, 160, 120, 24, 3); f.text(620, 176, "has the status", "s c")
+f.box("g", 150, 200, 150, 24, 3); f.text(225, 216, "runs", "s c")
+f.box("r", 300, 200, 260, 24, 3); f.text(430, 216, "zombie: an ID and the status 3", "s c")
+f.arrow([(150, 184), (150, 198)]); f.text(144, 196, "fork()", "s e")
+f.arrow([(300, 200), (300, 186)], "ln", "a", True); f.text(306, 196, "", "s")
+f.text(232, 240, "exit(3): SIGCHLD to the parent", "s")
+f.arrow([(560, 200), (560, 186)], "lng", "ag"); f.text(568, 216, "wait() returns at once; the zombie goes", "s")
+f.text(400, 280, "A child whose parent ends first is given to the first process, which collects every child it is handed.", "s c")
+f.save("ch18-zombie.svg")

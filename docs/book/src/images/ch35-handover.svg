@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="420" fill="#ffffff"/>
+  <rect class="k" x="30" y="20" width="200" height="34" rx="4"/>
+  <text x="130" y="34" class="c">CPU 2: the kernel</text>
+  <text x="130" y="48" class="s c">emitting events</text>
+  <rect class="k" x="300" y="20" width="200" height="34" rx="4"/>
+  <text x="400" y="34" class="c">the kernel, on any CPU</text>
+  <text x="400" y="48" class="s c">at a safe point</text>
+  <rect class="r" x="570" y="20" width="200" height="34" rx="4"/>
+  <text x="670" y="34" class="c">the logger's thread</text>
+  <text x="670" y="48" class="s c">bound to CPU 2</text>
+  <path class="life" d="M130,54 L130,380"/>
+  <path class="life" d="M400,54 L400,380"/>
+  <path class="life" d="M670,54 L670,380"/>
+  <circle cx="608" cy="92" r="9" fill="#333333"/>
+  <text x="608" y="96" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="594" y="89" class="s e">waits for a</text>
+  <text x="594" y="102" class="s e">full buffer</text>
+  <rect class="y" x="625" y="70" width="90" height="150" rx="3"/>
+  <text x="670" y="140" class="s c">blocked</text>
+  <text x="670" y="153" class="s c">(no CPU time)</text>
+  <rect class="g" x="85" y="70" width="90" height="60" rx="3"/>
+  <text x="130" y="97" class="s c">writes slots</text>
+  <text x="130" y="110" class="s c">into buffer 8</text>
+  <circle cx="192" cy="142" r="9" fill="#333333"/>
+  <text x="192" y="146" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <text x="206" y="139" class="s">buffer 8 is full: end marker,</text>
+  <text x="206" y="152" class="s">queued; "something is pending"</text>
+  <rect class="g" x="85" y="160" width="90" height="200" rx="3"/>
+  <text x="130" y="250" class="s c">goes on in</text>
+  <text x="130" y="263" class="s c">buffer 9</text>
+  <circle cx="338" cy="196" r="9" fill="#2c5d9b"/>
+  <text x="338" y="200" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="324" y="193" class="s e">end of a kernel call,</text>
+  <text x="324" y="206" class="s e">or the clock tick</text>
+  <rect class="k" x="355" y="180" width="90" height="34" rx="3"/>
+  <text x="400" y="201" class="m c">kick()</text>
+  <path class="lnk" d="M445,220 L623,220" marker-end="url(#ak)"/>
+  <text x="535" y="213" class="s c">wakes the thread</text>
+  <rect class="g" x="625" y="228" width="90" height="92" rx="3"/>
+  <text x="670" y="262" class="s c">gets index 8,</text>
+  <text x="670" y="275" class="s c">writes the buffer</text>
+  <text x="670" y="288" class="s c">to its file</text>
+  <circle cx="608" cy="262" r="9" fill="#333333"/>
+  <text x="608" y="266" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <path class="ln dash" d="M623,320 L177,320" marker-end="url(#a)"/>
+  <circle cx="290" cy="306" r="9" fill="#333333"/>
+  <text x="290" y="310" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <text x="304" y="310" class="s">clears the buffer's header: buffer 8 is free again</text>
+  <rect class="y" x="625" y="328" width="90" height="40" rx="3"/>
+  <text x="670" y="345" class="s c">waits for</text>
+  <text x="670" y="358" class="s c">the next</text>
+  <text x="400" y="402" class="s c">Time runs downwards. The writer never waits for the logger; if the logger falls behind and no buffer is free, events are dropped.</text>
+</svg>

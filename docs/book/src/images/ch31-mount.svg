@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="520" fill="#ffffff"/>
+  <rect class="u" x="15" y="14" width="150" height="36" rx="4"/>
+  <text x="90" y="30" class="b c">mount</text>
+  <text x="90" y="43" class="s c">FreeBSD's mount(8)</text>
+  <path class="life" d="M90,50 L90,440"/>
+  <rect class="g" x="195" y="14" width="150" height="36" rx="4"/>
+  <text x="270" y="30" class="b c">libsys</text>
+  <text x="270" y="43" class="s c">in mount's process</text>
+  <path class="life" d="M270,50 L270,440"/>
+  <rect class="k" x="395" y="14" width="150" height="36" rx="4"/>
+  <text x="470" y="30" class="b c">diskd-md</text>
+  <text x="470" y="43" class="s c">serves /dev/md1</text>
+  <path class="life" d="M470,50 L470,440"/>
+  <rect class="k" x="605" y="14" width="150" height="36" rx="4"/>
+  <text x="680" y="30" class="b c">process 1</text>
+  <text x="680" y="43" class="s c">pathname manager</text>
+  <path class="life" d="M680,50 L680,440"/>
+  <text x="20" y="72" class="ms">mount -t msdosfs /dev/md1 /tmp/mnt</text>
+  <path class="lnk" d="M90,104 L270,104" marker-end="url(#ak)"/>
+  <circle cx="104" cy="92" r="9" fill="#2c5d9b"/>
+  <text x="104" y="96" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="118" y="96" class="s">nmount(fstype, from, fspath)</text>
+  <path class="lnk" d="M270,140 L470,140" marker-end="url(#ak)"/>
+  <circle cx="284" cy="128" r="9" fill="#2c5d9b"/>
+  <text x="284" y="132" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <text x="298" y="132" class="s">open /dev/md1</text>
+  <path class="lnk" d="M270,176 L470,176" marker-end="url(#ak)"/>
+  <circle cx="284" cy="164" r="9" fill="#2c5d9b"/>
+  <text x="284" y="168" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="298" y="168" class="s">devctl: mount at /tmp/mnt</text>
+  <rect class="y" x="375" y="186" width="190" height="62" rx="3"/>
+  <text x="470" y="204" class="s c">is block 0 a FAT boot sector?</text>
+  <text x="470" y="219" class="s c">the cache goes to a Volume;</text>
+  <text x="470" y="234" class="s c">the device is busy from now on</text>
+  <path class="lnk" d="M470,288 L680,288" marker-end="url(#ak)"/>
+  <circle cx="484" cy="276" r="9" fill="#2c5d9b"/>
+  <text x="484" y="280" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <text x="498" y="280" class="s">attach the path /tmp/mnt</text>
+  <rect class="y" x="375" y="298" width="190" height="30" rx="3"/>
+  <text x="470" y="317" class="s c">add a line to /var/run/mounts</text>
+  <path class="lng" d="M470,356 L270,356" marker-end="url(#ag)"/>
+  <circle cx="284" cy="344" r="9" fill="#3e7b34"/>
+  <text x="284" y="348" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <text x="298" y="348" class="s">reply: 0</text>
+  <path class="lng" d="M270,392 L90,392" marker-end="url(#ag)"/>
+  <circle cx="104" cy="380" r="9" fill="#3e7b34"/>
+  <text x="104" y="384" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">6</text>
+  <text x="118" y="384" class="s">returns 0</text>
+  <path class="life" d="M20,452 L780,452"/>
+  <text x="400" y="474" class="s c">Afterwards, open("/tmp/mnt/note.txt") resolves to diskd-md like any path: the pathname manager</text>
+  <text x="400" y="490" class="s c">names the server with the longest matching prefix, and the file's messages go to it directly.</text>
+</svg>

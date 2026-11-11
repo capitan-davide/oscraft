@@ -1,0 +1,24 @@
+From 14860701ca99c543a09b28bde9b595eac5c22e08 Mon Sep 17 00:00:00 2001
+From: Davide Cunial <dcunial@proton.me>
+Date: Fri, 6 Nov 2026 20:45:03 +0100
+Subject: [PATCH 11/11] arm64: OSCRAFT_NET: debug info
+
+---
+ sys/arm64/conf/OSCRAFT_NET | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sys/arm64/conf/OSCRAFT_NET b/sys/arm64/conf/OSCRAFT_NET
+index fd2ee174973..f1c92077d24 100644
+--- a/sys/arm64/conf/OSCRAFT_NET
++++ b/sys/arm64/conf/OSCRAFT_NET
+@@ -9,6 +9,7 @@ cpu		ARM64
+ ident		OSCRAFT_NET
+ makeoptions	CONF_CFLAGS="-DOSCRAFT_BSDKERN -DMUTEX_NOINLINE -DRWLOCK_NOINLINE -DSX_NOINLINE"
+ makeoptions	WITHOUT_MODULES=1
++makeoptions	DEBUG=-g
+ 
+ options 	INET
+ options 	SMP
+-- 
+2.56.0
+

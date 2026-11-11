@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="360" fill="#ffffff"/>
+  <path class="ln" d="M90,300 L760,300" marker-end="url(#a)"/>
+  <text x="760" y="318" class="s e">real time</text>
+  <path class="ln" d="M90,300 L90,30" marker-end="url(#a)"/>
+  <text x="82" y="36" class="s e">clock</text>
+  <text x="82" y="49" class="s e">reads</text>
+  <text x="90" y="318" class="s c">boot</text>
+  <path class="lnk" d="M90,300.0 L740,157.0"/>
+  <text x="748" y="161.0" class="s"></text>
+  <text x="560" y="228.6" class="b c blue">monotonic</text>
+  <text x="560" y="242.6" class="s c">0 at boot, never set</text>
+  <path class="lng" d="M90,180.0 L430,105.19999999999999"/>
+  <path class="lnr dash" d="M430,105.19999999999999 L430,155.2"/>
+  <path class="lng" d="M430,155.2 L740,87.0"/>
+  <text x="250" y="114.80000000000001" class="b c green">realtime (time of day)</text>
+  <text x="440" y="111.19999999999999" class="s red">the time of day is set:</text>
+  <text x="440" y="125.19999999999999" class="s red">the clock jumps (here, back)</text>
+  <path class="ln" d="M160,281.6 L160,167.60000000000002" marker-end="url(#a)" marker-start="url(#a)"/>
+  <text x="168" y="228.60000000000002" class="s">offset: the time of day at boot</text>
+  <path class="ln" d="M670,169.4 L670,105.4" marker-end="url(#a)" marker-start="url(#a)"/>
+  <text x="678" y="141.4" class="s">new offset</text>
+  <path class="ln" d="M370,296 L370,304"/>
+  <path class="ln" d="M520,296 L520,304"/>
+  <path class="ln" d="M370,286 L520,286" marker-end="url(#a)" marker-start="url(#a)"/>
+  <text x="445.0" y="280" class="s c">an interval measured across the jump</text>
+  <text x="400" y="348" class="s c">Only the monotonic clock gives the interval's true length; the realtime clock would report it too short.</text>
+</svg>

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="360" fill="#ffffff"/>
+  <rect class="k" x="20" y="30" width="170" height="44" rx="4"/>
+  <text x="105.0" y="49" class="c">check(ability, value)</text>
+  <text x="105.0" y="64" class="c">by the calling process</text>
+  <path class="ln" d="M190,52 L228,52" marker-end="url(#a)"/>
+  <rect class="y" x="230" y="30" width="170" height="44" rx="4"/>
+  <text x="315.0" y="49" class="c">effective user ID</text>
+  <text x="315.0" y="64" class="c">is 0?</text>
+  <path class="ln" d="M400,42 L448,42" marker-end="url(#a)"/>
+  <text x="424" y="36" class="s c">yes</text>
+  <path class="ln" d="M400,62 L424,62 L424,92 L448,92" marker-end="url(#a)"/>
+  <text x="412" y="86" class="s c">no</text>
+  <rect class="wk" x="450" y="28" width="150" height="28" rx="4"/>
+  <text x="525" y="46" class="c">root domain</text>
+  <rect class="wk" x="450" y="78" width="150" height="28" rx="4"/>
+  <text x="525" y="96" class="c">non-root domain</text>
+  <path class="ln" d="M600,42 L630,42 L630,92 L600,92"/>
+  <path class="ln" d="M630,67 L700,67 L700,140 L105,140 L105,168" marker-end="url(#a)"/>
+  <text x="560" y="132" class="s c">every ability has one setting per domain</text>
+  <rect class="y" x="20" y="170" width="170" height="44" rx="4"/>
+  <text x="105.0" y="189" class="c">has this process</text>
+  <text x="105.0" y="204" class="c">changed the ability?</text>
+  <path class="ln" d="M105,218 L105,268" marker-end="url(#a)"/>
+  <text x="112" y="246" class="s">no</text>
+  <rect class="w" x="20" y="270" width="170" height="59" rx="4"/>
+  <text x="105.0" y="289" class="c">the default:</text>
+  <text x="105.0" y="304" class="c">root: every ability</text>
+  <text x="105.0" y="319" class="c">non-root: a fixed few</text>
+  <path class="ln" d="M190,194 L228,194" marker-end="url(#a)"/>
+  <text x="209" y="188" class="s c">yes</text>
+  <rect class="y" x="230" y="170" width="150" height="44" rx="4"/>
+  <text x="305.0" y="189" class="c">allowed in this</text>
+  <text x="305.0" y="204" class="c">domain?</text>
+  <path class="ln" d="M380,194 L418,194" marker-end="url(#a)"/>
+  <text x="399" y="188" class="s c">yes</text>
+  <rect class="y" x="420" y="170" width="150" height="44" rx="4"/>
+  <text x="495.0" y="189" class="c">restricted to</text>
+  <text x="495.0" y="204" class="c">ranges of values?</text>
+  <path class="ln" d="M570,194 L608,194" marker-end="url(#a)"/>
+  <text x="589" y="188" class="s c">yes</text>
+  <rect class="y" x="610" y="170" width="170" height="44" rx="4"/>
+  <text x="695.0" y="189" class="c">is the value</text>
+  <text x="695.0" y="204" class="c">inside one range?</text>
+  <rect class="g" x="420" y="286" width="150" height="34" rx="4"/>
+  <text x="495" y="308" class="h c">allowed</text>
+  <rect class="r" x="230" y="286" width="150" height="34" rx="4"/>
+  <text x="305" y="308" class="h c">EPERM</text>
+  <path class="lnr" d="M305,218 L305,284" marker-end="url(#ar)"/>
+  <text x="312" y="250" class="s">no</text>
+  <path class="lng" d="M495,218 L495,284" marker-end="url(#ag)"/>
+  <text x="502" y="250" class="s">no</text>
+  <path class="lng" d="M640,218 L640,303 L572,303" marker-end="url(#ag)"/>
+  <text x="648" y="250" class="s">yes</text>
+  <rect class="r" x="680" y="286" width="100" height="34" rx="4"/>
+  <text x="730" y="308" class="h c">EPERM</text>
+  <path class="lnr" d="M730,218 L730,284" marker-end="url(#ar)"/>
+  <text x="738" y="250" class="s">no</text>
+  <path class="lnr" d="M190,296 L228,296" marker-end="url(#ar)"/>
+  <text x="209" y="290" class="s c">no</text>
+  <path class="lng" d="M190,312 L210,312 L210,336 L495,336 L495,322" marker-end="url(#ag)"/>
+  <text x="400" y="332" class="s c">yes</text>
+</svg>

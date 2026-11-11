@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="330" viewBox="0 0 800 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="330" fill="#ffffff"/>
+  <text x="138" y="64" class="e">the CPU runs</text>
+  <text x="138" y="134" class="e">thread A's FP state is</text>
+  <rect class="g" x="150" y="40" width="170" height="40" rx="3"/>
+  <text x="235" y="64" class="c">thread A</text>
+  <rect class="u" x="320" y="40" width="150" height="40" rx="3"/>
+  <text x="395" y="64" class="c">thread B</text>
+  <rect class="g" x="470" y="40" width="170" height="40" rx="3"/>
+  <text x="555" y="64" class="c">thread A</text>
+  <rect class="u" x="640" y="40" width="130" height="40" rx="3"/>
+  <text x="705" y="64" class="c">thread B</text>
+  <path class="lnr" d="M210,16 L210,39" marker-end="url(#ar)"/>
+  <text x="218" y="24" class="s red">uses floating point</text>
+  <path class="lnr" d="M540,16 L540,39" marker-end="url(#ar)"/>
+  <text x="548" y="24" class="s red">uses floating point</text>
+  <rect class="y" x="150" y="110" width="60" height="40" rx="3"/>
+  <text x="180" y="134" class="s c">saved</text>
+  <rect class="g" x="210" y="110" width="110" height="40" rx="3"/>
+  <text x="265" y="134" class="s c">in the registers</text>
+  <rect class="y" x="320" y="110" width="220" height="40" rx="3"/>
+  <text x="430" y="134" class="s c">saved in A's thread structure</text>
+  <rect class="g" x="540" y="110" width="100" height="40" rx="3"/>
+  <text x="590" y="134" class="s c">in the registers</text>
+  <rect class="y" x="640" y="110" width="130" height="40" rx="3"/>
+  <text x="705" y="134" class="s c">saved</text>
+  <path class="life" d="M210,80 L210,110"/>
+  <path class="life" d="M210,150 L210,172"/>
+  <circle cx="210" cy="182" r="9" fill="#aa2222"/>
+  <text x="210" y="186" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <path class="life" d="M320,80 L320,110"/>
+  <path class="life" d="M320,150 L320,172"/>
+  <circle cx="320" cy="182" r="9" fill="#333333"/>
+  <text x="320" y="186" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <path class="life" d="M470,80 L470,110"/>
+  <path class="life" d="M470,150 L470,172"/>
+  <circle cx="470" cy="182" r="9" fill="#333333"/>
+  <text x="470" y="186" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <path class="life" d="M540,80 L540,110"/>
+  <path class="life" d="M540,150 L540,172"/>
+  <circle cx="540" cy="182" r="9" fill="#aa2222"/>
+  <text x="540" y="186" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <path class="life" d="M640,80 L640,110"/>
+  <path class="life" d="M640,150 L640,172"/>
+  <circle cx="640" cy="182" r="9" fill="#333333"/>
+  <text x="640" y="186" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <path class="ln" d="M150,206 L770,206" marker-end="url(#a)"/>
+  <text x="770" y="222" class="s e">time</text>
+  <circle cx="48" cy="242" r="9" fill="#aa2222"/>
+  <text x="48" y="246" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="64" y="246" class="s">A's first floating-point instruction traps. The kernel loads A's state and lets the instruction run again.</text>
+  <circle cx="48" cy="259" r="9" fill="#333333"/>
+  <text x="48" y="263" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <text x="64" y="263" class="s">Switch to B. A used the registers, so they are saved. Floating-point instructions are set to trap.</text>
+  <circle cx="48" cy="276" r="9" fill="#333333"/>
+  <text x="48" y="280" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="64" y="280" class="s">Switch back to A. B never used the registers: nothing is saved and nothing is loaded.</text>
+  <circle cx="48" cy="293" r="9" fill="#aa2222"/>
+  <text x="48" y="297" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <text x="64" y="297" class="s">A's next floating-point instruction traps, and its state is loaded again.</text>
+  <circle cx="48" cy="310" r="9" fill="#333333"/>
+  <text x="48" y="314" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <text x="64" y="314" class="s">Switch to B: A's state is saved, as at 2.</text>
+</svg>

@@ -1,0 +1,27 @@
+From ffd4f5bbab954cea3915cd3c118ee95d883f04f8 Mon Sep 17 00:00:00 2001
+From: Davide Cunial <dcunial@proton.me>
+Date: Wed, 4 Nov 2026 15:24:33 +0100
+Subject: [PATCH 4/5] rtld: auxv.pico next to OsCraft's libsys object
+
+---
+ libexec/rtld-elf/rtld-libc/Makefile.inc | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/libexec/rtld-elf/rtld-libc/Makefile.inc b/libexec/rtld-elf/rtld-libc/Makefile.inc
+index d7e7cb74297..10817bdba6c 100644
+--- a/libexec/rtld-elf/rtld-libc/Makefile.inc
++++ b/libexec/rtld-elf/rtld-libc/Makefile.inc
+@@ -88,9 +88,10 @@ CLEANFILES+=${_obj}.nossppico
+ .endfor
+ _rtld_libsys_objs=
+ .if defined(OSCRAFT_LIBSYS_OBJ)
+-# OsCraft: the system calls are one object (lib/libsys/Makefile.sys).
+-_rtld_libsys_objs+=oscraft_libsys.pico
+-CLEANFILES+=oscraft_libsys.pico
++# OsCraft: the system calls are one object (lib/libsys/Makefile.sys),
++# which reads the auxiliary vector through auxv.c.
++_rtld_libsys_objs+=oscraft_libsys.pico auxv.pico
++CLEANFILES+=oscraft_libsys.pico auxv.pico
+ .else
+ .for _obj in ${_libsys_other_objects}
+ _rtld_libsys_objs+=${_obj}.pico

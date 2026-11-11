@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="370" viewBox="0 0 800 370" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="370" fill="#ffffff"/>
+  <text x="20" y="26" class="h">threads of the server (the microkernel schedules them on the real CPUs)</text>
+  <rect class="g" x="20" y="40" width="136" height="74" rx="4"/>
+  <text x="88" y="58" class="b c">a client's request</text>
+  <text x="88" y="74" class="s c">in a critical section</text>
+  <rect class="w" x="30" y="82" width="116" height="24" rx="3"/>
+  <text x="88" y="98" class="ms c">curthread, curpcpu</text>
+  <path class="lng" d="M88,114 L130,202" marker-end="url(#ag)"/>
+  <rect class="g" x="176" y="40" width="136" height="74" rx="4"/>
+  <text x="244" y="58" class="b c">the clock</text>
+  <text x="244" y="74" class="s c">in a critical section</text>
+  <rect class="w" x="186" y="82" width="116" height="24" rx="3"/>
+  <text x="244" y="98" class="ms c">curthread, curpcpu</text>
+  <path class="lng" d="M244,114 L310,202" marker-end="url(#ag)"/>
+  <rect class="g" x="332" y="40" width="136" height="74" rx="4"/>
+  <text x="400" y="58" class="b c">an interrupt thread</text>
+  <text x="400" y="74" class="s c">preempted inside one</text>
+  <rect class="w" x="342" y="82" width="116" height="24" rx="3"/>
+  <text x="400" y="98" class="ms c">curthread, curpcpu</text>
+  <path class="lng" d="M400,114 L490,202" marker-end="url(#ag)"/>
+  <rect class="g" x="488" y="40" width="136" height="74" rx="4"/>
+  <text x="556" y="58" class="b c">a client's request</text>
+  <text x="556" y="74" class="s c">in a critical section</text>
+  <rect class="w" x="498" y="82" width="116" height="24" rx="3"/>
+  <text x="556" y="98" class="ms c">curthread, curpcpu</text>
+  <path class="lng" d="M556,114 L650,202" marker-end="url(#ag)"/>
+  <rect class="y" x="644" y="40" width="136" height="74" rx="4"/>
+  <text x="712" y="58" class="b c">a taskqueue</text>
+  <text x="712" y="74" class="s c">waits for a slot</text>
+  <rect class="w" x="654" y="82" width="116" height="24" rx="3"/>
+  <text x="712" y="98" class="ms c">curthread, curpcpu</text>
+  <path class="lnr dash" d="M712,114 L700,202" marker-end="url(#ar)"/>
+  <text x="780" y="192" class="h e">slots: as many as CPUs</text>
+  <rect class="k" x="60" y="204" width="140" height="64" rx="4"/>
+  <text x="130" y="222" class="b c">slot 0</text>
+  <rect class="wk" x="68" y="230" width="76" height="30" rx="3"/>
+  <text x="106" y="249" class="s c">struct pcpu</text>
+  <rect class="y" x="150" y="230" width="42" height="30" rx="3"/>
+  <text x="171" y="249" class="s c">mutex</text>
+  <rect class="k" x="240" y="204" width="140" height="64" rx="4"/>
+  <text x="310" y="222" class="b c">slot 1</text>
+  <rect class="wk" x="248" y="230" width="76" height="30" rx="3"/>
+  <text x="286" y="249" class="s c">struct pcpu</text>
+  <rect class="y" x="330" y="230" width="42" height="30" rx="3"/>
+  <text x="351" y="249" class="s c">mutex</text>
+  <rect class="k" x="420" y="204" width="140" height="64" rx="4"/>
+  <text x="490" y="222" class="b c">slot 2</text>
+  <rect class="wk" x="428" y="230" width="76" height="30" rx="3"/>
+  <text x="466" y="249" class="s c">struct pcpu</text>
+  <rect class="y" x="510" y="230" width="42" height="30" rx="3"/>
+  <text x="531" y="249" class="s c">mutex</text>
+  <rect class="k" x="600" y="204" width="140" height="64" rx="4"/>
+  <text x="670" y="222" class="b c">slot 3</text>
+  <rect class="wk" x="608" y="230" width="76" height="30" rx="3"/>
+  <text x="646" y="249" class="s c">struct pcpu</text>
+  <rect class="y" x="690" y="230" width="42" height="30" rx="3"/>
+  <text x="711" y="249" class="s c">mutex</text>
+  <text x="20" y="296" class="s">curthread and curpcpu are thread-local: each thread has its own struct thread, and curpcpu is the slot it holds.</text>
+  <text x="20" y="313" class="s">critical_enter(): lock the slot used last time; if it is busy, any free slot; if none is free, wait for the first.</text>
+  <text x="20" y="330" class="s">critical_exit(): unlock it. A thread may be preempted while it holds a slot: nobody else can take that slot meanwhile.</text>
+  <text x="20" y="347" class="s">A spin mutex is a mutex taken inside a critical section, so a slot always comes before a spin lock.</text>
+</svg>

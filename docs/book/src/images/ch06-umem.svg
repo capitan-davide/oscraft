@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="450" fill="#ffffff"/>
+  <rect class="u" x="20" y="50" width="190" height="230" rx="4"/>
+  <text x="115" y="70" class="b c">client process</text>
+  <text x="115" y="86" class="s c">(its own tables)</text>
+  <rect class="wu" x="40" y="150" width="150" height="34" rx="4"/>
+  <text x="115" y="171" class="s c">send buffer</text>
+  <rect class="u" x="590" y="50" width="190" height="230" rx="4"/>
+  <text x="685" y="70" class="b c">server process</text>
+  <text x="685" y="86" class="s c">(its own tables)</text>
+  <rect class="wu" x="610" y="150" width="150" height="34" rx="4"/>
+  <text x="685" y="171" class="s c">receive buffer</text>
+  <rect class="k" x="270" y="40" width="260" height="130" rx="4"/>
+  <text x="400" y="60" class="b c">kernel: umem::copy()</text>
+  <rect class="wk" x="282" y="76" width="116" height="80" rx="4"/>
+  <text x="340" y="106" class="c">linear map</text>
+  <text x="340" y="120" class="s c">all RAM at</text>
+  <text x="340" y="134" class="s c">LINEAR_BASE + pa</text>
+  <rect class="wk" x="404" y="76" width="116" height="80" rx="4"/>
+  <text x="462" y="106" class="c">copy windows</text>
+  <text x="462" y="120" class="s c">2 pages per CPU,</text>
+  <text x="462" y="134" class="s c">for the rest</text>
+  <rect class="n" x="160" y="340" width="480" height="56" rx="4"/>
+  <text x="400" y="360" class="b c">physical memory</text>
+  <rect class="w" x="230" y="368" width="70" height="20" rx="2"/>
+  <text x="265" y="382" class="s c">frame A</text>
+  <rect class="w" x="500" y="368" width="70" height="20" rx="2"/>
+  <text x="535" y="382" class="s c">frame B</text>
+  <polyline class="ln" points="115,184 115,300 265,300 265,366" marker-end="url(#a)"/>
+  <text x="122" y="296" class="s">translate through the client's tables</text>
+  <polyline class="ln" points="685,184 685,300 535,300 535,366" marker-end="url(#a)"/>
+  <text x="678" y="296" class="s e">through the server's tables</text>
+  <polyline class="lnk dash" points="320,156 265,366" marker-end="url(#ak)"/>
+  <polyline class="lnk dash" points="360,156 535,366" marker-end="url(#ak)"/>
+  <text x="400" y="420" class="s c">One copy, from frame A to frame B, through kernel mappings:</text>
+  <text x="400" y="434" class="s c">it works whichever address space the CPU has loaded.</text>
+</svg>

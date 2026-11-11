@@ -1,0 +1,31 @@
+from svg import Fig
+f = Fig(800, 380)
+def life(x, y0, y1): f.line([(x, y0), (x, y1)], "life")
+# left: fork + exec
+f.text(200, 24, "fork(), then exec()", "h c")
+px, cx = 90, 300
+f.box("u", px - 60, 40, 120, 30); f.text(px, 60, "parent", "c")
+life(px, 70, 340)
+f.arrow([(px, 100), (cx - 62, 100)], "lnk", "ak"); f.num(190, 86, 1, "#2c5d9b"); f.text(204, 90, "fork()", "s")
+f.box("u", cx - 60, 86, 120, 30); f.text(cx, 106, "child", "c")
+f.box("wu", cx - 75, 126, 150, 44, 3); f.text(cx, 144, "a copy of the parent:", "s c"); f.text(cx, 158, "same program, same files", "s c")
+f.num(cx - 90, 200, 2); f.box("y", cx - 75, 180, 150, 44, 3); f.text(cx, 198, "the parent's own code", "s c"); f.text(cx, 212, "rearranges descriptors ...", "s c")
+f.num(cx - 90, 254, 3, "#3e7b34"); f.box("g", cx - 75, 234, 150, 44, 3); f.text(cx, 252, "exec(): same process,", "s c"); f.text(cx, 266, "new program", "s c")
+f.box("g", px - 50, 290, 100, 34, 3); f.text(px, 311, "runs on", "s c")
+f.box("g", cx - 75, 290, 150, 34, 3); f.text(cx, 311, "the new program runs", "s c")
+f.line([(400, 16), (400, 350)], "life")
+# right: spawn
+f.text(600, 24, "spawn()", "h c")
+px, cx = 490, 700
+f.box("u", px - 60, 40, 120, 30); f.text(px, 60, "parent", "c")
+life(px, 70, 340)
+f.arrow([(px, 150), (cx - 77, 150)], "lnk", "ak"); f.num(560, 136, 1, "#2c5d9b")
+f.lines(576, 106, ["spawn(program,", "descriptors, attributes)"], "s", 13)
+f.box("wu", px - 62, 84, 124, 44, 3); f.text(px, 102, "describes the child", "s c"); f.text(px, 116, "as data", "s c")
+f.box("g", cx - 75, 134, 150, 60, 3); f.text(cx, 154, "a new process,", "s c"); f.text(cx, 168, "made by the system", "s c"); f.text(cx, 182, "with the new program", "s c")
+f.box("g", px - 50, 290, 100, 34, 3); f.text(px, 311, "runs on", "s c")
+f.box("g", cx - 75, 290, 150, 34, 3); f.text(cx, 311, "the new program runs", "s c")
+life(cx, 194, 290)
+f.text(200, 364, "Two steps: the copy is made only to be replaced.", "s c")
+f.text(600, 364, "One step: nothing is copied.", "s c")
+f.save("ch19-fork-exec-spawn.svg")

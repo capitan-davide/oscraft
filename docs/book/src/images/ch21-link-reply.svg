@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="330" viewBox="0 0 820 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="820" height="330" fill="#ffffff"/>
+  <text x="30" y="26" class="h">The answer to "who owns /var/run/log?"</text>
+  <text x="646" y="26" class="h">the program then asks</text>
+  <rect class="y" x="30" y="40" width="560" height="34" rx="3"/>
+  <text x="42" y="61" class="b">header</text>
+  <text x="110" y="61" class="s">3 servers follow; the caller's umask; the length of the path</text>
+  <text x="42" y="98" class="s">server</text>
+  <text x="220" y="98" class="s">channel</text>
+  <text x="320" y="98" class="s">handle</text>
+  <text x="420" y="98" class="s">prefix length</text>
+  <rect class="u" x="30" y="106" width="560" height="34" rx="3"/>
+  <text x="42" y="127" class="">syslogd's process</text>
+  <text x="220" y="127" class="s">its channel</text>
+  <text x="320" y="127" class="s">its handle</text>
+  <text x="420" y="127" class="m">12</text>
+  <circle cx="570" cy="123" r="9" fill="#333333"/>
+  <text x="570" y="127" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <path class="ln" d="M596,123 L636,123" marker-end="url(#a)"/>
+  <text x="646" y="120" class="s">syslogd, to open</text>
+  <text x="646" y="135" class="m">""</text>
+  <rect class="u" x="30" y="148" width="560" height="34" rx="3"/>
+  <text x="42" y="169" class="">tmpfs's process</text>
+  <text x="220" y="169" class="s">its channel</text>
+  <text x="320" y="169" class="s">its handle</text>
+  <text x="420" y="169" class="m">5</text>
+  <circle cx="570" cy="165" r="9" fill="#333333"/>
+  <text x="570" y="169" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <path class="ln" d="M596,165 L636,165" marker-end="url(#a)"/>
+  <text x="646" y="162" class="s">tmpfs, to open</text>
+  <text x="646" y="177" class="m">"run/log"</text>
+  <rect class="k" x="30" y="190" width="560" height="34" rx="3"/>
+  <text x="42" y="211" class="">process 1</text>
+  <text x="220" y="211" class="s">1</text>
+  <text x="320" y="211" class="s">1: the image</text>
+  <text x="420" y="211" class="m">1</text>
+  <circle cx="570" cy="207" r="9" fill="#333333"/>
+  <text x="570" y="211" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <path class="ln" d="M596,207 L636,207" marker-end="url(#a)"/>
+  <text x="646" y="204" class="s">process 1, to open</text>
+  <text x="646" y="219" class="m">"var/run/log"</text>
+  <rect class="y" x="30" y="232" width="560" height="34" rx="3"/>
+  <text x="42" y="253" class="b">path</text>
+  <text x="110" y="253" class="m">/var/run/log</text>
+  <text x="220" y="253" class="s">absolute: the working directory, . and .. resolved</text>
+  <text x="42" y="296" class="s">prefix lengths:</text>
+  <rect class="w" x="160" y="280" width="13" height="22" rx="0"/>
+  <text x="166.5" y="296" class="m c">/</text>
+  <rect class="w" x="173" y="280" width="13" height="22" rx="0"/>
+  <text x="179.5" y="296" class="m c">v</text>
+  <rect class="w" x="186" y="280" width="13" height="22" rx="0"/>
+  <text x="192.5" y="296" class="m c">a</text>
+  <rect class="w" x="199" y="280" width="13" height="22" rx="0"/>
+  <text x="205.5" y="296" class="m c">r</text>
+  <rect class="w" x="212" y="280" width="13" height="22" rx="0"/>
+  <text x="218.5" y="296" class="m c">/</text>
+  <rect class="w" x="225" y="280" width="13" height="22" rx="0"/>
+  <text x="231.5" y="296" class="m c">r</text>
+  <rect class="w" x="238" y="280" width="13" height="22" rx="0"/>
+  <text x="244.5" y="296" class="m c">u</text>
+  <rect class="w" x="251" y="280" width="13" height="22" rx="0"/>
+  <text x="257.5" y="296" class="m c">n</text>
+  <rect class="w" x="264" y="280" width="13" height="22" rx="0"/>
+  <text x="270.5" y="296" class="m c">/</text>
+  <rect class="w" x="277" y="280" width="13" height="22" rx="0"/>
+  <text x="283.5" y="296" class="m c">l</text>
+  <rect class="w" x="290" y="280" width="13" height="22" rx="0"/>
+  <text x="296.5" y="296" class="m c">o</text>
+  <rect class="w" x="303" y="280" width="13" height="22" rx="0"/>
+  <text x="309.5" y="296" class="m c">g</text>
+  <path class="lnr" d="M173,274 L173,308"/>
+  <text x="173" y="322" class="s c red">1</text>
+  <path class="lnr" d="M225,274 L225,308"/>
+  <text x="225" y="322" class="s c red">5</text>
+  <path class="lnr" d="M316,274 L316,308"/>
+  <text x="316" y="322" class="s c red">12</text>
+  <text x="340" y="296" class="s">each server is sent what follows its own prefix</text>
+</svg>

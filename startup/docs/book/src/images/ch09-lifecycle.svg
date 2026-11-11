@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="300" viewBox="0 0 820 300" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker></defs>
+  <style>
+    .k { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .y { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .u { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .ln { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .t { text-anchor: middle; }
+    .b { font-weight: bold; }
+    .s { font-size: 10px; fill: #444444; }
+    .m { font-family: DejaVu Sans Mono, monospace; font-size: 11px; }
+  </style>
+  <rect width="820" height="300" fill="#ffffff"/>
+  <!-- states -->
+  <rect class="n" x="20" y="100" width="150" height="56" rx="28"/>
+  <text class="t b" x="95" y="124">Inactive</text>
+  <text class="t s" x="95" y="142">nothing to do</text>
+  <rect class="y" x="320" y="100" width="150" height="56" rx="28"/>
+  <text class="t b" x="395" y="124">Pending</text>
+  <text class="t s" x="395" y="142">waiting for a CPU</text>
+  <rect class="u" x="640" y="100" width="160" height="56" rx="28"/>
+  <text class="t b" x="720" y="124">Active</text>
+  <text class="t s" x="720" y="142">a CPU is handling it</text>
+  <!-- inactive -> pending -->
+  <path class="ln" d="M170,128 L318,128" marker-end="url(#a)"/>
+  <text class="t" x="244" y="118">device raises</text>
+  <text class="t" x="244" y="146">its line</text>
+  <!-- pending -> active -->
+  <path class="ln" d="M470,128 L638,128" marker-end="url(#a)"/>
+  <text class="t" x="554" y="104">CPU reads</text>
+  <text class="t m" x="554" y="120">GICC_IAR</text>
+  <text class="t s" x="554" y="146">acknowledge: the id callout</text>
+  <!-- active -> inactive -->
+  <path class="ln" d="M720,156 C720,228 95,228 95,158" marker-end="url(#a)"/>
+  <text class="t" x="408" y="232">CPU writes <tspan class="m">GICC_EOIR</tspan>: end of interrupt, the eoi callout</text>
+  <text class="t s" x="408" y="248">(the interrupt's priority no longer blocks lower ones on that CPU)</text>
+  <!-- active -> pending again -->
+  <path class="ln dash" d="M700,100 C660,50 440,50 405,98" marker-end="url(#a)"/>
+  <text class="t s" x="552" y="24">level-triggered and the line still raised at EOI:</text>
+  <text class="t s" x="552" y="38">pending again, taken again at once</text>
+  <!-- notes -->
+  <text class="s" x="20" y="276">The distributor signals a pending interrupt to a CPU only if it is enabled and its priority</text>
+  <text class="s" x="20" y="290">beats the CPU interface's priority mask. A masked (disabled) interrupt can still be pending.</text>
+  <text class="t s" x="470" y="178">reading <tspan class="m">GICC_IAR</tspan> again returns another interrupt, or 1023: none</text>
+</svg>

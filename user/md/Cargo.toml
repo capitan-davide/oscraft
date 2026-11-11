@@ -1,0 +1,13 @@
+[package]
+name = "md"
+description = "Memory and file backed disks, as FreeBSD's md"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+bufcache = { path = "../bufcache" }
+
+
+[lints]
+workspace = true

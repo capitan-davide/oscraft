@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="372" viewBox="0 0 800 372" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="372" fill="#ffffff"/>
+  <text x="165.0" y="24" class="h c">The file on disk</text>
+  <rect class="w" x="40" y="36" width="250" height="46" rx="2"/>
+  <text x="165.0" y="57.0" class="c">ELF header</text>
+  <text x="165.0" y="72.0" class="s c">type, machine, OS/ABI, entry point</text>
+  <rect class="w" x="40" y="82" width="250" height="46" rx="2"/>
+  <text x="165.0" y="103.0" class="c">program headers</text>
+  <text x="165.0" y="118.0" class="s c">one entry per segment</text>
+  <rect class="k" x="40" y="128" width="250" height="78" rx="2"/>
+  <text x="165.0" y="165.0" class="c">segment 1: code and constants</text>
+  <text x="165.0" y="180.0" class="s c">read, execute</text>
+  <rect class="y" x="40" y="206" width="250" height="56" rx="2"/>
+  <text x="165.0" y="232.0" class="c">segment 2: initialised data</text>
+  <text x="165.0" y="247.0" class="s c">read, write</text>
+  <rect class="n" x="40" y="262" width="250" height="46" rx="2"/>
+  <text x="165.0" y="283.0" class="c">sections, symbols, debug data</text>
+  <text x="165.0" y="298.0" class="s c">for the linker and tools: not loaded</text>
+  <path class="ln dash" d="M40,105 L18,105 L18,167.0 L38,167.0" marker-end="url(#a)"/>
+  <path class="ln dash" d="M40,105 L18,105 L18,234.0 L38,234.0" marker-end="url(#a)"/>
+  <text x="40" y="334" class="s">Each program header says: these bytes of the file,</text>
+  <text x="40" y="348" class="s">at this address, this many bytes of memory,</text>
+  <text x="40" y="362" class="s">with these permissions.</text>
+  <text x="630.0" y="24" class="h c">The program in memory</text>
+  <text x="768" y="52" class="s">low</text>
+  <rect class="k" x="500" y="40" width="260" height="78" rx="2"/>
+  <text x="630.0" y="64" class="c">code and constants</text>
+  <text x="630.0" y="80" class="s c">pages: read, execute</text>
+  <rect class="y" x="500" y="132" width="260" height="56" rx="2"/>
+  <text x="630.0" y="158.0" class="c">data</text>
+  <text x="630.0" y="173.0" class="s c">pages: read, write</text>
+  <rect class="w" x="500" y="188" width="260" height="50" rx="2"/>
+  <text x="630.0" y="211.0" class="c">.bss</text>
+  <text x="630.0" y="226.0" class="s c">zero-filled; not in the file</text>
+  <path class="lnk" d="M290,167 L497,79" marker-end="url(#ak)"/>
+  <text x="425" y="134" class="s c">file size = memory size</text>
+  <path class="lnk" d="M290,234 L497,160" marker-end="url(#ak)"/>
+  <text x="395" y="204" class="s c">memory size &gt; file size:</text>
+  <text x="395" y="218" class="s c">the rest is zeros</text>
+  <path class="ln" d="M768,132 L776,132 L776,238 L768,238"/>
+  <text x="764" y="256" class="s e">segment 2</text>
+  <rect class="g" x="516" y="94" width="14" height="14" rx="2"/>
+  <text x="536" y="106" class="s">entry point: the first instruction to run</text>
+</svg>

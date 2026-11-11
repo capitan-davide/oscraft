@@ -1,0 +1,14 @@
+[book]
+title = "OsCraft System Architecture"
+description = "How OsCraft works: a real-time microkernel in Rust with FreeBSD's ABI and userland."
+authors = ["The OsCraft authors"]
+language = "en"
+src = "src"
+
+[build]
+build-dir = "build/html"
+
+[output.html]
+git-repository-url = "https://github.com/capitan-davide/oscraft"
+default-theme = "light"
+preferred-dark-theme = "navy"

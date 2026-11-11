@@ -1,0 +1,58 @@
+# Check the book (docs/book) against the source, build it, and publish it
+# on GitHub Pages. Code changes trigger it too: the book includes code by
+# anchor, and the check fails when an anchor it uses was moved or removed.
+name: book
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/book/**"
+      - "src/**"
+      - "abi/**"
+      - "startup.ld"
+      - "Makefile"
+      - ".github/workflows/book.yml"
+  pull_request:
+    paths:
+      - "docs/book/**"
+      - "src/**"
+      - "abi/**"
+      - "startup.ld"
+      - "Makefile"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: mdbook@0.5.4
+      # Checks every listing's anchor, then builds into docs/book/build.
+      - run: make book
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+        with:
+          path: docs/book/build
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

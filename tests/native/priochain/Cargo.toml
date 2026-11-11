@@ -1,0 +1,17 @@
+[package]
+name = "priochain"
+description = "A native test server: answers with the priority it runs at"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "priochain"
+path = "src/main.rs"
+test = false
+
+[dependencies]
+kercall = { path = "../../../user/kercall" }
+
+[lints]
+workspace = true

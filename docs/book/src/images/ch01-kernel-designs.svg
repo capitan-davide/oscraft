@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="400" viewBox="0 0 820 400" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="820" height="400" fill="#ffffff"/>
+  <text x="200" y="26" class="h c">monolithic kernel</text>
+  <text x="610" y="26" class="h c">microkernel</text>
+  <line x1="410" y1="16" x2="410" y2="384" stroke="#999999" stroke-width="1"/>
+  <line x1="20" y1="150" x2="400" y2="150" stroke="#aa2222" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text x="24" y="144" class="s red">user mode</text>
+  <text x="24" y="165" class="s red">kernel mode</text>
+  <line x1="420" y1="150" x2="800" y2="150" stroke="#aa2222" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text x="424" y="144" class="s red">user mode</text>
+  <text x="424" y="165" class="s red">kernel mode</text>
+  <rect class="u" x="220" y="50" width="140" height="50" rx="4"/>
+  <text x="290" y="71.5" class="c">program</text>
+  <text x="290" y="86.5" class="ms c">read(fd, buf, n)</text>
+  <rect class="k" x="40" y="180" width="340" height="190" rx="4"/>
+  <text x="120" y="200" class="b c">kernel</text>
+  <rect class="wk" x="55" y="214" width="150" height="38" rx="4"/>
+  <text x="130" y="237" class="c">filesystems</text>
+  <rect class="r" x="215" y="214" width="150" height="38" rx="4"/>
+  <text x="290" y="237" class="c">serial driver</text>
+  <rect class="wk" x="55" y="264" width="150" height="38" rx="4"/>
+  <text x="130" y="287" class="c">network stack</text>
+  <rect class="wk" x="215" y="264" width="150" height="38" rx="4"/>
+  <text x="290" y="287" class="c">other drivers</text>
+  <rect class="wk" x="55" y="314" width="310" height="38" rx="4"/>
+  <text x="210" y="337" class="c">scheduling, memory, IPC</text>
+  <polyline class="ln" points="290,100 290,212" marker-end="url(#a)"/>
+  <text x="296" y="170" class="s">system call</text>
+  <text x="48" y="388" class="s">A bug in any part can corrupt all of it.</text>
+  <rect class="u" x="430" y="50" width="120" height="50" rx="4"/>
+  <text x="490" y="71.5" class="c">program</text>
+  <text x="490" y="86.5" class="ms c">read()</text>
+  <rect class="r" x="570" y="50" width="110" height="50" rx="4"/>
+  <text x="625" y="71.5" class="c">serial</text>
+  <text x="625" y="86.5" class="c">driver</text>
+  <rect class="u" x="700" y="50" width="90" height="50" rx="4"/>
+  <text x="745" y="71.5" class="c">filesystem</text>
+  <text x="745" y="86.5" class="s c">server</text>
+  <rect class="u" x="700" y="106" width="90" height="34" rx="4"/>
+  <text x="745" y="127" class="s c">network</text>
+  <rect class="k" x="440" y="220" width="340" height="60" rx="4"/>
+  <text x="610" y="246.5" class="c">microkernel</text>
+  <text x="610" y="261.5" class="s c">threads, messages, memory, interrupts</text>
+  <polyline class="ln" points="465,100 465,218" marker-end="url(#a)"/>
+  <text x="471" y="196" class="s">1 send</text>
+  <polyline class="ln" points="590,218 590,102" marker-end="url(#a)"/>
+  <text x="596" y="196" class="s">2 deliver</text>
+  <polyline class="ln dash" points="660,102 660,218" marker-end="url(#a)"/>
+  <text x="666" y="196" class="s">3 reply</text>
+  <polyline class="ln dash" points="525,218 525,102" marker-end="url(#a)"/>
+  <text x="531" y="196" class="s">4 data</text>
+  <text x="440" y="314" class="s">The driver is a process: a bug in it can</text>
+  <text x="440" y="328" class="s">only crash the driver, which can be restarted.</text>
+  <text x="440" y="352" class="s red">red: the code that handles the read()</text>
+</svg>

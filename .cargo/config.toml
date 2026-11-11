@@ -1,0 +1,6 @@
+# aarch64-unknown-none-softfloat already builds with +strict-align (needed
+# while the MMU is off: all data accesses are Device memory, where unaligned
+# accesses fault), -neon (no FP/SIMD state in the kernel), a static relocation
+# model and panic=abort.
+[target.aarch64-unknown-none-softfloat]
+rustflags = ["-C", "force-frame-pointers=yes"]

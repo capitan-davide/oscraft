@@ -1,0 +1,12 @@
+[package]
+name = "msdosfs"
+description = "FAT file systems, as FreeBSD msdosfs behaves, for diskd"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+bufcache = { path = "../bufcache" }
+
+[lints]
+workspace = true

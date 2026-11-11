@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="360" fill="#ffffff"/>
+  <text x="150.0" y="24" class="h c">A process's virtual addresses</text>
+  <text x="640.0" y="24" class="h c">What is behind them</text>
+  <rect class="u" x="40" y="44" width="220" height="52" rx="2"/>
+  <text x="150.0" y="66" class="c">anonymous</text>
+  <text x="150.0" y="82" class="s c">a heap, a thread's stack</text>
+  <rect class="k" x="520" y="44" width="240" height="52" rx="3"/>
+  <text x="640.0" y="66" class="c">fresh page frames, zeroed</text>
+  <text x="640.0" y="82" class="s c">nobody else has them</text>
+  <path class="lnk" d="M260,70 L517,70" marker-end="url(#ak)"/>
+  <text x="390.0" y="62" class="ms c">mmap(MAP_ANON)</text>
+  <rect class="w" x="40" y="96" width="220" height="22" rx="0"/>
+  <text x="150.0" y="111" class="s c">unmapped</text>
+  <rect class="u" x="40" y="118" width="220" height="52" rx="2"/>
+  <text x="150.0" y="140" class="c">a file</text>
+  <text x="150.0" y="156" class="s c">a library's code</text>
+  <rect class="y" x="520" y="118" width="240" height="52" rx="3"/>
+  <text x="640.0" y="140" class="c">the bytes of the file</text>
+  <text x="640.0" y="156" class="s c">its pages, or a copy of them</text>
+  <path class="lnk" d="M260,144 L517,144" marker-end="url(#ak)"/>
+  <text x="390.0" y="136" class="ms c">mmap(fd of a file)</text>
+  <rect class="w" x="40" y="170" width="220" height="22" rx="0"/>
+  <text x="150.0" y="185" class="s c">unmapped</text>
+  <rect class="u" x="40" y="192" width="220" height="52" rx="2"/>
+  <text x="150.0" y="214" class="c">a shared memory object</text>
+  <text x="150.0" y="230" class="s c">a buffer two programs use</text>
+  <rect class="y" x="520" y="192" width="240" height="52" rx="3"/>
+  <text x="640.0" y="214" class="c">the object's page frames</text>
+  <text x="640.0" y="230" class="s c">the same ones in every process</text>
+  <path class="lnk" d="M260,218 L517,218" marker-end="url(#ak)"/>
+  <text x="390.0" y="210" class="ms c">mmap(fd of the object)</text>
+  <rect class="w" x="40" y="244" width="220" height="22" rx="0"/>
+  <text x="150.0" y="259" class="s c">unmapped</text>
+  <rect class="u" x="40" y="266" width="220" height="52" rx="2"/>
+  <text x="150.0" y="288" class="c">device memory</text>
+  <text x="150.0" y="304" class="s c">a UART's registers</text>
+  <rect class="n" x="520" y="266" width="240" height="52" rx="3"/>
+  <text x="640.0" y="288" class="c">not RAM at all</text>
+  <text x="640.0" y="304" class="s c">a physical address the device answers</text>
+  <path class="lnk" d="M260,292 L517,292" marker-end="url(#ak)"/>
+  <text x="390.0" y="284" class="ms c">mmap of a physical address</text>
+  <text x="400" y="346" class="s c">Every mapping is a range of pages with a protection: read, write, execute, or none.</text>
+</svg>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="440" viewBox="0 0 800 440" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="440" fill="#ffffff"/>
+  <text x="400" y="22" class="h c">execve() in process 1</text>
+  <rect class="frame" x="166" y="34" width="468" height="150" rx="6"/>
+  <rect class="k" x="180" y="40" width="440" height="30" rx="3"/>
+  <circle cx="196" cy="55.0" r="9" fill="#333333"/>
+  <text x="196" y="59.0" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="214" y="59.0" class="s">the caller may start programs (an ability)</text>
+  <rect class="k" x="180" y="80" width="440" height="30" rx="3"/>
+  <circle cx="196" cy="95.0" r="9" fill="#333333"/>
+  <text x="196" y="99.0" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <text x="214" y="99.0" class="s">find the file; a script names its interpreter instead</text>
+  <rect class="k" x="180" y="120" width="440" height="40" rx="3"/>
+  <circle cx="196" cy="140.0" r="9" fill="#333333"/>
+  <text x="196" y="144.0" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="214" y="137" class="s">check the image without mapping it: headers, segments,</text>
+  <text x="214" y="151" class="s">the dynamic loader it names, enough free memory</text>
+  <text x="156" y="80" class="s e">A failure here is an</text>
+  <text x="156" y="94" class="s e">ordinary error return:</text>
+  <text x="156" y="108" class="s e">ENOENT, EACCES,</text>
+  <text x="156" y="122" class="s e">ENOEXEC, ENOMEM ...</text>
+  <text x="156" y="136" class="s e">The old program</text>
+  <text x="156" y="150" class="s e">is untouched.</text>
+  <path class="lnr" d="M40,182 L760,182"/>
+  <text x="400" y="176" class="b c red">the point of no return</text>
+  <rect class="frame" x="166" y="198" width="468" height="206" rx="6"/>
+  <rect class="u" x="180" y="204" width="440" height="30" rx="3"/>
+  <circle cx="196" cy="219.0" r="9" fill="#9a6b2f"/>
+  <text x="196" y="223.0" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <text x="214" y="223.0" class="s">end the process's other threads</text>
+  <rect class="u" x="180" y="244" width="440" height="30" rx="3"/>
+  <circle cx="196" cy="259.0" r="9" fill="#9a6b2f"/>
+  <text x="196" y="263.0" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <text x="214" y="263.0" class="s">close the close-on-exec descriptors; caught signals back to default</text>
+  <rect class="u" x="180" y="284" width="440" height="30" rx="3"/>
+  <circle cx="196" cy="299.0" r="9" fill="#9a6b2f"/>
+  <text x="196" y="303.0" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">6</text>
+  <text x="214" y="303.0" class="s">empty the address space</text>
+  <rect class="g" x="180" y="324" width="440" height="30" rx="3"/>
+  <circle cx="196" cy="339.0" r="9" fill="#3e7b34"/>
+  <text x="196" y="343.0" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">7</text>
+  <text x="214" y="343.0" class="s">map the new image, its stack and the system page; write the initial stack</text>
+  <rect class="g" x="180" y="364" width="440" height="30" rx="3"/>
+  <circle cx="196" cy="379.0" r="9" fill="#3e7b34"/>
+  <text x="196" y="383.0" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">8</text>
+  <text x="214" y="383.0" class="s">create a new first thread at the entry point; the calling thread ends</text>
+  <text x="644" y="244" class="s">No program is left to</text>
+  <text x="644" y="258" class="s">return an error to.</text>
+  <text x="644" y="272" class="s">A failure here ends</text>
+  <text x="644" y="286" class="s">the process, as if</text>
+  <text x="644" y="300" class="s">killed by SIGKILL.</text>
+  <text x="156" y="244" class="s e">The process keeps its</text>
+  <text x="156" y="258" class="s e">ID, its parent, its</text>
+  <text x="156" y="272" class="s e">open descriptors and</text>
+  <text x="156" y="286" class="s e">its ignored signals.</text>
+  <text x="400" y="428" class="s c">Everything that can fail for a reason the caller could act on is checked above the line.</text>
+</svg>

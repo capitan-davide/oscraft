@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="470" viewBox="0 0 860 470" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+
+  <rect x="0" y="0" width="860" height="470" fill="#ffffff"/>
+  <rect class="n" x="30" y="20" width="220" height="40" rx="4"/>
+  <text x="140.0" y="37.0" class="b c">memory</text>
+  <text x="140.0" y="51.0" class="s c">0 - 2^44-1</text>
+  <rect class="n" x="80" y="80" width="220" height="40" rx="4"/>
+  <text x="190.0" y="97.0" class="b c">below4G</text>
+  <text x="190.0" y="111.0" class="s c">0 - 0xffff_ffff</text>
+  <rect class="y" x="130" y="140" width="260" height="40" rx="4"/>
+  <text x="260.0" y="157.0" class="b c">ram</text>
+  <text x="260.0" y="171.0" class="s c">0x4000_0000 - 0xbfff_ffff</text>
+  <rect class="g" x="180" y="200" width="300" height="40" rx="4"/>
+  <text x="330.0" y="217.0" class="b c">sysram</text>
+  <text x="330.0" y="231.0" class="s c">0x4000_b140 - 0x4008_00ff</text>
+  <rect class="g" x="180" y="250" width="300" height="40" rx="4"/>
+  <text x="330.0" y="267.0" class="b c">sysram</text>
+  <text x="330.0" y="281.0" class="s c">0x5359_f31c - 0x535f_ffff</text>
+  <rect class="g" x="180" y="300" width="300" height="40" rx="4"/>
+  <text x="330.0" y="317.0" class="b c">sysram</text>
+  <text x="330.0" y="331.0" class="s c">0x5370_0000 - 0xbfff_ffff</text>
+  <polyline class="ln" points="50,60 50,100 78,100"/>
+  <polyline class="ln" points="100,120 100,160 128,160"/>
+  <polyline class="ln" points="150,180 150,220 178,220"/>
+  <polyline class="ln" points="150,180 150,270 178,270"/>
+  <polyline class="ln" points="150,180 150,320 178,320"/>
+  <rect class="wk" x="560" y="20" width="260" height="40" rx="4"/>
+  <text x="690.0" y="37.0" class="b c">gicd</text>
+  <text x="690.0" y="51.0" class="s c">0x0800_0000</text>
+  <polyline class="ln" points="250,40 540,40 540,40 558,40"/>
+  <rect class="wk" x="560" y="76" width="260" height="40" rx="4"/>
+  <text x="690.0" y="93.0" class="b c">gicc</text>
+  <text x="690.0" y="107.0" class="s c">0x0801_0000</text>
+  <polyline class="ln" points="250,40 540,40 540,96 558,96"/>
+  <rect class="wk" x="560" y="132" width="260" height="40" rx="4"/>
+  <text x="690.0" y="149.0" class="b c">startup</text>
+  <text x="690.0" y="163.0" class="s c">0x4008_0100</text>
+  <polyline class="ln" points="250,40 540,40 540,152 558,152"/>
+  <rect class="wk" x="560" y="188" width="260" height="40" rx="4"/>
+  <text x="690.0" y="205.0" class="b c">imagefs, bootram</text>
+  <text x="690.0" y="219.0" class="s c">0x400f_05c4</text>
+  <polyline class="ln" points="250,40 540,40 540,208 558,208"/>
+  <rect class="wk" x="560" y="244" width="260" height="40" rx="4"/>
+  <text x="690.0" y="261.0" class="b c">fdt</text>
+  <text x="690.0" y="275.0" class="s c">0x5360_0000</text>
+  <polyline class="ln" points="250,40 540,40 540,264 558,264"/>
+  <text x="30" y="400" class="s">QEMU virt with 2 GB, as OsCraft&#x27;s startup describes it. sysram is the kernel&#x27;s free RAM: ram less what</text>
+  <text x="30" y="416" class="s">startup kept (its own page, the image, the device tree). Each entry points to its parent by offset:</text>
+  <text x="30" y="432" class="s">the array is the tree, in the order the entries were added.</text>
+</svg>

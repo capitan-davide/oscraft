@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="300" fill="#ffffff"/>
+  <text x="136" y="54" class="b e">H</text>
+  <text x="136" y="68" class="s e">priority 30</text>
+  <path class="life" d="M150,72 L770,72"/>
+  <text x="136" y="104" class="b e">M</text>
+  <text x="136" y="118" class="s e">priority 20</text>
+  <path class="life" d="M150,122 L770,122"/>
+  <text x="136" y="154" class="b e">L</text>
+  <text x="136" y="168" class="s e">priority 10</text>
+  <path class="life" d="M150,172 L770,172"/>
+  <rect class="k" x="150" y="140" width="60" height="30" rx="3"/>
+  <text x="180.0" y="159" class="s c">runs</text>
+  <rect class="y" x="210" y="140" width="180" height="30" rx="3"/>
+  <text x="300.0" y="159" class="s c">holds the mutex: runs at 30</text>
+  <rect class="g" x="390" y="40" width="150.0" height="30" rx="3"/>
+  <text x="465.0" y="59" class="s c">locks, runs, unlocks</text>
+  <rect class="u" x="540.0" y="90" width="120.0" height="30" rx="3"/>
+  <text x="600.0" y="109" class="s c">runs</text>
+  <rect class="k" x="660.0" y="140" width="90.0" height="30" rx="3"/>
+  <text x="705.0" y="159" class="s c">runs at 10</text>
+  <path class="life" d="M210,30 L210,186"/>
+  <text x="210" y="200" class="s c">L locks:</text>
+  <text x="210" y="214" class="s c">raised at once</text>
+  <path class="ln" d="M270,76 L270,88" marker-end="url(#a)"/>
+  <text x="270" y="70" class="s c">M ready</text>
+  <path class="ln" d="M330,26 L330,38" marker-end="url(#a)"/>
+  <text x="330" y="20" class="s c">H ready</text>
+  <path class="life" d="M390,30 L390,186"/>
+  <text x="390" y="200" class="s c">L unlocks:</text>
+  <text x="390" y="214" class="s c">back to 10</text>
+  <text x="400" y="256" class="s c">The mutex's ceiling is 30, the priority of the highest thread that uses it. From lock to unlock its holder runs at 30,</text>
+  <text x="400" y="272" class="s c">so no thread that could want the mutex preempts it, and H never finds the mutex taken.</text>
+</svg>

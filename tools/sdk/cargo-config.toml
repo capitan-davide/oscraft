@@ -1,0 +1,20 @@
+# Cargo configuration for OsCraft programs: copy into a project's
+# .cargo/config.toml, or merge. `aarch64-unknown-freebsd` is a tier-3
+# Rust target without a prebuilt standard library, so std is built from
+# source: a nightly toolchain with the rust-src component
+# (`rustup toolchain install nightly --component rust-src`), and
+# `cargo +nightly build --target aarch64-unknown-freebsd`. The linker is
+# the SDK's wrapper, on PATH (<sdk>/bin) or named by its full path.
+[build]
+target = "aarch64-unknown-freebsd"
+
+[unstable]
+build-std = ["std", "panic_abort"]
+
+[target.aarch64-unknown-freebsd]
+linker = "oscraft-cc"
+# Static by default: a program then needs nothing but itself in an image.
+# Dynamic programs (drop the flag) also need, in the image, the libraries
+# std links on FreeBSD: libexecinfo, libkvm, libmemstat, libprocstat,
+# libdevstat, libelf, next to libc and libthr.
+rustflags = ["-C", "target-feature=+crt-static"]

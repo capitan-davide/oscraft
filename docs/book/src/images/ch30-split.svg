@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="520" fill="#ffffff"/>
+  <rect class="u" x="20" y="16" width="330" height="300" rx="4"/>
+  <text x="185" y="36" class="h c">netd</text>
+  <text x="185" y="51" class="s c">the network stack's process</text>
+  <rect class="g" x="36" y="62" width="298" height="34" rx="3"/>
+  <text x="185" y="77" class="c">FreeBSD's network stack</text>
+  <text x="185" y="90" class="s c">sees an interface, ue0</text>
+  <rect class="g" x="36" y="110" width="298" height="44" rx="3"/>
+  <text x="185" y="127" class="c">class driver: if_cdce, on uether</text>
+  <text x="185" y="143" class="ms c">if_cdce.ko, uether.ko</text>
+  <rect class="g" x="36" y="168" width="298" height="44" rx="3"/>
+  <text x="185" y="185" class="c">FreeBSD's USB core</text>
+  <text x="185" y="201" class="s c">transfers, requests, the hub driver</text>
+  <rect class="k" x="36" y="226" width="298" height="44" rx="3"/>
+  <text x="185" y="243" class="b c">client controller: usbcl</text>
+  <text x="185" y="259" class="s c">a host controller with no hardware</text>
+  <text x="185" y="292" class="s c">the last two are usb.ko</text>
+  <path class="life" d="M40,280 L330,280"/>
+  <path class="ln" d="M185,96 L185,109" marker-end="url(#a)"/>
+  <path class="ln" d="M185,154 L185,167" marker-end="url(#a)"/>
+  <path class="ln" d="M185,212 L185,225" marker-end="url(#a)"/>
+  <rect class="u" x="450" y="16" width="330" height="300" rx="4"/>
+  <text x="615" y="36" class="h c">usbd</text>
+  <text x="615" y="51" class="s c">owns the controllers and the devices</text>
+  <rect class="k" x="466" y="62" width="298" height="44" rx="3"/>
+  <text x="615" y="79" class="b c">/dev/usbd</text>
+  <text x="615" y="95" class="s c">list, control request, one frame, wait</text>
+  <rect class="g" x="466" y="120" width="298" height="44" rx="3"/>
+  <text x="615" y="137" class="c">FreeBSD's USB core</text>
+  <text x="615" y="153" class="s c">enumerates; attaches no class drivers</text>
+  <rect class="g" x="466" y="178" width="298" height="44" rx="3"/>
+  <text x="615" y="195" class="c">host controller driver: xhci</text>
+  <text x="615" y="211" class="s c">FreeBSD's xhci.c and xhci_pci.c</text>
+  <rect class="k" x="466" y="236" width="298" height="44" rx="3"/>
+  <text x="615" y="253" class="b c">PCI client bus</text>
+  <text x="615" y="269" class="s c">the driver's parent bus, backed by pcid</text>
+  <path class="ln" d="M615,106 L615,119" marker-end="url(#a)"/>
+  <path class="ln" d="M615,164 L615,177" marker-end="url(#a)"/>
+  <path class="ln" d="M615,222 L615,235" marker-end="url(#a)"/>
+  <path class="lnk" d="M334,248 L400,248 L400,198"/>
+  <path class="lnk" d="M400,138 L400,84 L464,84" marker-end="url(#ak)"/>
+  <circle cx="400" cy="150" r="9" fill="#2c5d9b"/>
+  <text x="400" y="154" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="400" y="178" class="s c">ioctl():</text>
+  <text x="400" y="192" class="s c">a message</text>
+  <rect class="u" x="20" y="350" width="330" height="70" rx="4"/>
+  <text x="185" y="372" class="h c">pcid</text>
+  <text x="185" y="390" class="s c">/dev/pci: configuration space,</text>
+  <text x="185" y="404" class="s c">where a device's registers and interrupt are</text>
+  <path class="lnk" d="M540,280 L540,385 L352,385" marker-end="url(#ak)"/>
+  <circle cx="540" cy="340" r="9" fill="#2c5d9b"/>
+  <text x="540" y="344" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <text x="528" y="344" class="s e">set-up only</text>
+  <rect class="n" x="450" y="440" width="330" height="60" rx="4"/>
+  <text x="615" y="462" class="c">QEMU's xhci controller, on the PCIe bus</text>
+  <text x="615" y="480" class="s c">a USB Ethernet adapter on its port</text>
+  <path class="lnk" d="M650,280 L650,438" marker-end="url(#ak)"/>
+  <circle cx="650" cy="340" r="9" fill="#2c5d9b"/>
+  <text x="650" y="344" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="662" y="336" class="s">registers,</text>
+  <text x="662" y="350" class="s">mapped</text>
+  <path class="lnr dash" d="M740,438 L740,282" marker-end="url(#ar)"/>
+  <circle cx="740" cy="392" r="9" fill="#aa2222"/>
+  <text x="740" y="396" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <text x="730" y="414" class="s e red">interrupt</text>
+  <text x="185" y="462" class="s c">1: every USB transfer of the class driver</text>
+  <text x="185" y="478" class="s c">2, 3: as any PCI driver in a server (Chapter 29)</text>
+  <text x="185" y="494" class="s c red">4: does not arrive yet on QEMU's virt</text>
+</svg>

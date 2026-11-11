@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="330" viewBox="0 0 800 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="330" fill="#ffffff"/>
+  <text x="200" y="24" class="h c">A pipe: a stream of bytes</text>
+  <text x="20" y="52" class="s">written:</text>
+  <rect class="k" x="80" y="38" width="56" height="24" rx="0"/>
+  <text x="108.0" y="55" class="s c">5 bytes</text>
+  <rect class="k" x="144" y="38" width="90" height="24" rx="0"/>
+  <text x="189.0" y="55" class="s c">9 bytes</text>
+  <rect class="k" x="242" y="38" width="56" height="24" rx="0"/>
+  <text x="270.0" y="55" class="s c">3 bytes</text>
+  <path class="ln" d="M200,66 L200,88" marker-end="url(#a)"/>
+  <rect class="y" x="80" y="90" width="218" height="26" rx="0"/>
+  <text x="189" y="107" class="s c">17 bytes, in the order written</text>
+  <path class="ln" d="M200,120 L200,142" marker-end="url(#a)"/>
+  <text x="20" y="162" class="s">read:</text>
+  <rect class="g" x="80" y="146" width="96" height="24" rx="0"/>
+  <text x="128.0" y="163" class="s c">8</text>
+  <rect class="g" x="180" y="146" width="96" height="24" rx="0"/>
+  <text x="228.0" y="163" class="s c">8</text>
+  <rect class="g" x="280" y="146" width="14" height="24" rx="0"/>
+  <text x="287.0" y="163" class="s c">1</text>
+  <text x="20" y="204" class="s">The writes' boundaries are gone: the reader asked for</text>
+  <text x="20" y="219" class="s">8 bytes at a time and got 8, 8 and 1.</text>
+  <text x="20" y="234" class="s"></text>
+  <text x="20" y="249" class="s">One order only: first in, first out.</text>
+  <text x="20" y="264" class="s">The two ends are a writer and a reader; whoever</text>
+  <text x="20" y="279" class="s">holds the descriptors may use them.</text>
+  <path class="life" d="M400,14 L400,316"/>
+  <text x="600" y="24" class="h c">A message queue: whole messages</text>
+  <text x="420" y="52" class="s">sent:</text>
+  <rect class="k" x="470" y="38" width="70" height="24" rx="0"/>
+  <text x="505" y="55" class="s c">A  prio 5</text>
+  <rect class="k" x="546" y="38" width="70" height="24" rx="0"/>
+  <text x="581" y="55" class="s c">B  prio 20</text>
+  <rect class="k" x="622" y="38" width="70" height="24" rx="0"/>
+  <text x="657" y="55" class="s c">C  prio 5</text>
+  <rect class="k" x="698" y="38" width="70" height="24" rx="0"/>
+  <text x="733" y="55" class="s c">D  prio 20</text>
+  <path class="ln" d="M600,66 L600,88" marker-end="url(#a)"/>
+  <text x="420" y="107" class="s">queue:</text>
+  <rect class="y" x="470" y="90" width="146" height="26" rx="0"/>
+  <text x="543" y="107" class="s c">prio 20:  B  D</text>
+  <rect class="y" x="622" y="90" width="146" height="26" rx="0"/>
+  <text x="695" y="107" class="s c">prio 5:  A  C</text>
+  <path class="ln" d="M600,120 L600,142" marker-end="url(#a)"/>
+  <text x="420" y="162" class="s">received:</text>
+  <rect class="g" x="480" y="146" width="64" height="24" rx="0"/>
+  <text x="512" y="163" class="s c">B</text>
+  <rect class="g" x="550" y="146" width="64" height="24" rx="0"/>
+  <text x="582" y="163" class="s c">D</text>
+  <rect class="g" x="620" y="146" width="64" height="24" rx="0"/>
+  <text x="652" y="163" class="s c">A</text>
+  <rect class="g" x="690" y="146" width="64" height="24" rx="0"/>
+  <text x="722" y="163" class="s c">C</text>
+  <text x="420" y="204" class="s">Each receive returns exactly one message, as sent.</text>
+  <text x="420" y="219" class="s"></text>
+  <text x="420" y="234" class="s">The highest priority first; among equals, the oldest.</text>
+  <text x="420" y="249" class="s">The queue has a name; any process allowed to open</text>
+  <text x="420" y="264" class="s">it may send or receive. Its size is fixed when it is</text>
+  <text x="420" y="279" class="s">made: so many messages of at most so many bytes.</text>
+</svg>

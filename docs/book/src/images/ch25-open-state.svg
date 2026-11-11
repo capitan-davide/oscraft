@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="330" viewBox="0 0 800 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="330" fill="#ffffff"/>
+  <rect class="u" x="20" y="40" width="170" height="92" rx="4"/>
+  <text x="105" y="60" class="b c">program A</text>
+  <rect class="wu" x="40" y="72" width="130" height="22" rx="2"/>
+  <text x="105" y="87" class="m c">fd 3</text>
+  <rect class="wu" x="40" y="98" width="130" height="22" rx="2"/>
+  <text x="105" y="113" class="m c">fd 4 = dup(3)</text>
+  <rect class="u" x="20" y="200" width="170" height="66" rx="4"/>
+  <text x="105" y="220" class="b c">program B</text>
+  <rect class="wu" x="40" y="232" width="130" height="22" rx="2"/>
+  <text x="105" y="247" class="m c">fd 5</text>
+  <rect class="u" x="270" y="16" width="510" height="296" rx="4"/>
+  <text x="525" y="36" class="b c">server</text>
+  <text x="390" y="62" class="s c">one record per open</text>
+  <rect class="y" x="300" y="72" width="180" height="78" rx="3"/>
+  <text x="390" y="92" class="b c">open file</text>
+  <text x="390" y="110" class="s c">opened read-only</text>
+  <text x="390" y="125" class="s c">position 120</text>
+  <text x="390" y="140" class="s c">used by 2 descriptors</text>
+  <rect class="y" x="300" y="196" width="180" height="78" rx="3"/>
+  <text x="390" y="216" class="b c">open file</text>
+  <text x="390" y="234" class="s c">opened read-write</text>
+  <text x="390" y="249" class="s c">position 0</text>
+  <text x="390" y="264" class="s c">used by 1 descriptor</text>
+  <text x="655" y="100" class="s c">one record per file</text>
+  <rect class="g" x="560" y="110" width="190" height="126" rx="3"/>
+  <text x="655" y="132" class="b c">file  /tmp/notes</text>
+  <text x="655" y="152" class="s c">size 4096</text>
+  <text x="655" y="167" class="s c">owner, group, mode</text>
+  <text x="655" y="182" class="s c">times</text>
+  <text x="655" y="197" class="s c">open 2 times: 2 readers,</text>
+  <text x="655" y="212" class="s c">1 writer</text>
+  <path class="lnk" d="M170,83 L298,100" marker-end="url(#ak)"/>
+  <path class="lnk" d="M170,109 L298,120" marker-end="url(#ak)"/>
+  <path class="lnk" d="M170,243 L298,235" marker-end="url(#ak)"/>
+  <path class="ln" d="M480,111 L558,150" marker-end="url(#a)"/>
+  <path class="ln" d="M480,235 L558,196" marker-end="url(#a)"/>
+  <text x="105" y="296" class="s c">a descriptor is a connection</text>
+</svg>

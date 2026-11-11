@@ -1,0 +1,23 @@
+From 82b892a58b8c95d040082a7496fa064ed4e9c564 Mon Sep 17 00:00:00 2001
+From: Davide Cunial <dcunial@proton.me>
+Date: Wed, 4 Nov 2026 15:38:53 +0100
+Subject: [PATCH 5/5] libgcc_eh: no -Wpragma-clang-attribute, for a newer host
+ clang's libc++ headers
+
+---
+ lib/libgcc_eh/Makefile.inc | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/lib/libgcc_eh/Makefile.inc b/lib/libgcc_eh/Makefile.inc
+index 529ef717048..17ef62d3e19 100644
+--- a/lib/libgcc_eh/Makefile.inc
++++ b/lib/libgcc_eh/Makefile.inc
+@@ -50,3 +50,8 @@ CFLAGS+=	-I${SRCTOP}/lib/libc++
+ GENDIRDEPS_FILTER+= Nlib/libc++
+ .endif
+ .endif
++
++# OsCraft: cross-built with a newer host clang, whose own libc++ headers
++# come before the sysroot's and trip this warning under -Werror.
++CXXFLAGS+=	-Wno-pragma-clang-attribute
++CFLAGS+=	-Wno-pragma-clang-attribute

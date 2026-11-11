@@ -1,0 +1,23 @@
+from svg import Fig
+f = Fig(800, 430)
+f.box("u", 20, 14, 200, 76); f.text(120, 34, "kldload(8)", "b c"); f.text(120, 52, "FreeBSD's program, as it is", "s c"); f.text(120, 72, "kldload /boot/modules/pci.ko", "ms c")
+f.box("frame", 250, 8, 530, 410); f.text(770, 26, "netd", "s e")
+f.box("k", 270, 34, 230, 46); f.text(385, 53, "/dev/netd", "b c"); f.text(385, 69, "the call's number and arguments", "s c")
+f.arrow([(220, 57), (268, 57)], "lnk", "ak"); f.num(244, 43, 1, "#2c5d9b")
+f.box("g", 270, 100, 230, 46); f.text(385, 119, "sys_kldload(), kern_linker.c", "b c"); f.text(385, 135, "FreeBSD's linker, not edited", "s c")
+f.arrow([(385, 80), (385, 98)])
+f.box("k", 270, 166, 230, 150); f.text(385, 185, "the linker class \"dl\" (bsdkern)", "b c")
+steps = ["dlopen() the file", "check bsdkern_module_abi", "room for its per-CPU variables", "sets: dlsym(\"__start_set_x\")"]
+for i, t in enumerate(steps):
+    f.box("wk", 282, 196 + i * 29, 206, 23, 3); f.text(385, 212 + i * 29, t, "ms c")
+f.arrow([(385, 146), (385, 164)]); f.num(400, 155, 2)
+f.box("y", 540, 166, 220, 150); f.text(650, 185, "pci.ko: a shared object", "b c")
+f.lines(650, 206, ["FreeBSD kernel C, compiled with", "the library's flags and renames", "", "set_modmetadata_set", "set_sysinit_set, set_sysctl_set", "set_pcpu"], "s c", 16)
+f.arrow([(500, 207), (538, 207)], "ln", "a", True); f.text(519, 199, "rtld", "s c")
+f.arrow([(538, 294), (502, 294)], "ln", "a", True)
+f.box("g", 270, 336, 490, 66); f.text(515, 355, "back in kern_linker.c, as in a kernel", "b c")
+f.lines(515, 373, ["register the module's modules, sysctls and drivers; run its SYSINITs;", "newbus then probes the new drivers against the devices already found"], "s c", 16)
+f.arrow([(385, 316), (385, 334)]); f.num(400, 325, 3)
+f.lines(20, 130, ["The module's undefined", "symbols (malloc(9),", "device_get_softc() ...)", "bind to the server itself:", "it is linked at a fixed", "address and exports", "all its symbols."], "s", 16)
+f.lines(20, 270, ["kldunload reverses it:", "MOD_QUIESCE,", "MOD_UNLOAD,", "SYSUNINITs, dlclose()."], "s", 16)
+f.save("ch27-module.svg")

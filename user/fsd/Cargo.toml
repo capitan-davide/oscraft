@@ -1,0 +1,20 @@
+[package]
+name = "fsd"
+description = "A file system's server: the resource manager, generic over the file system"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+test = false
+
+[dependencies]
+proto = { path = "../proto" }
+
+[target.'cfg(target_os = "freebsd")'.dependencies]
+kercall = { path = "../kercall" }
+resmgr = { path = "../resmgr" }
+
+[lints]
+workspace = true

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="600" viewBox="0 0 820 600" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="820" height="600" fill="#ffffff"/>
+  <rect class="u" x="230" y="20" width="300" height="56" rx="4"/>
+  <text x="380" y="44.5" class="c">user program at EL0</text>
+  <text x="380" y="59.5" class="s c">runs until an svc, a fault or an IRQ</text>
+  <line x1="20" y1="100" x2="800" y2="100" stroke="#aa2222" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text x="26" y="94" class="s red">EL0</text>
+  <text x="26" y="116" class="s red">EL1</text>
+  <polyline class="ln" points="380,76 380,122" marker-end="url(#a)"/>
+  <rect class="n" x="230" y="124" width="300" height="112" rx="4"/>
+  <text x="380" y="144" class="c">the processor takes the exception</text>
+  <text x="380" y="160" class="s c">1. ELR_EL1 ← return address</text>
+  <text x="380" y="176" class="s c">2. SPSR_EL1 ← PSTATE</text>
+  <text x="380" y="192" class="s c">3. ESR_EL1, FAR_EL1 ← cause, fault address</text>
+  <text x="380" y="208" class="s c">4. EL1, interrupts masked, SP_EL1</text>
+  <text x="380" y="224" class="s c">5. jump into the vector table</text>
+  <polyline class="ln" points="380,236 380,258" marker-end="url(#a)"/>
+  <rect class="k" x="230" y="260" width="300" height="44" rx="4"/>
+  <text x="380" y="278.5" class="c">vector entry</text>
+  <text x="380" y="293.5" class="s c">VBAR_EL1 + 128 × kind</text>
+  <polyline class="ln" points="380,304 380,326" marker-end="url(#a)"/>
+  <rect class="k" x="230" y="328" width="300" height="44" rx="4"/>
+  <text x="380" y="346.5" class="c">exception_common</text>
+  <text x="380" y="361.5" class="s c">save the registers as a TrapFrame</text>
+  <polyline class="ln" points="380,372 380,394" marker-end="url(#a)"/>
+  <rect class="k" x="230" y="396" width="300" height="44" rx="4"/>
+  <text x="380" y="414.5" class="c">exception_entry() → handle()</text>
+  <text x="380" y="429.5" class="s c">may change the frame</text>
+  <polyline class="ln" points="380,440 380,462" marker-end="url(#a)"/>
+  <rect class="k" x="230" y="464" width="300" height="44" rx="4"/>
+  <text x="380" y="482.5" class="c">exception_return</text>
+  <text x="380" y="497.5" class="s c">load the registers from the frame</text>
+  <polyline class="ln" points="380,508 380,530" marker-end="url(#a)"/>
+  <rect class="n" x="230" y="532" width="300" height="44" rx="4"/>
+  <text x="380" y="550.5" class="c">eret</text>
+  <text x="380" y="565.5" class="s c">PSTATE ← SPSR_EL1, PC ← ELR_EL1</text>
+  <polyline class="ln" points="230,554 150,554 150,48 228,48" marker-end="url(#a)"/>
+  <text x="144" y="300" class="s e">back to</text>
+  <text x="144" y="314" class="s e">the program</text>
+  <rect class="y" x="600" y="128" width="160" height="24" rx="2"/>
+  <text x="680" y="144" class="m c">ELR_EL1</text>
+  <rect class="y" x="600" y="154" width="160" height="24" rx="2"/>
+  <text x="680" y="170" class="m c">SPSR_EL1</text>
+  <rect class="y" x="600" y="180" width="160" height="24" rx="2"/>
+  <text x="680" y="196" class="m c">ESR_EL1</text>
+  <rect class="y" x="600" y="206" width="160" height="24" rx="2"/>
+  <text x="680" y="222" class="m c">FAR_EL1</text>
+  <polyline class="ln dash" points="530,180 598,180" marker-end="url(#a)"/>
+  <text x="680" y="122" class="s c">system registers</text>
+  <rect class="y" x="600" y="318" width="160" height="60" rx="4"/>
+  <text x="680" y="338" class="c">TrapFrame</text>
+  <text x="680" y="352" class="s c">on the kernel stack:</text>
+  <text x="680" y="366" class="s c">x0–x30, sp_el0 and copies</text>
+  <polyline class="ln dash" points="680,232 680,316" marker-end="url(#a)"/>
+  <text x="686" y="270" class="s">mrs, stp</text>
+  <polyline class="lnk" points="530,350 598,350" marker-end="url(#ak)"/>
+  <polyline class="lnk" points="600,372 532,486" marker-end="url(#ak)"/>
+  <text x="570" y="440" class="s">ldp, msr</text>
+  <rect class="w" x="600" y="520" width="200" height="56" rx="4"/>
+  <text x="700" y="544" class="s c">grey: done by the processor</text>
+  <text x="700" y="560" class="s c">blue: OsCraft's code</text>
+</svg>

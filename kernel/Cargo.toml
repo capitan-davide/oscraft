@@ -1,0 +1,18 @@
+[package]
+name = "kernel"
+description = "OsCraft microkernel"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "kernel"
+test = false
+bench = false
+
+[lints]
+workspace = true
+
+[dependencies]
+proto = { path = "../user/proto" }
+qnxabi = { path = "../user/qnxabi" }

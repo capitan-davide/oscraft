@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="300" fill="#ffffff"/>
+  <text x="400" y="22" class="h c">one packet: a chain of mbufs</text>
+  <rect class="w" x="30" y="50" width="370" height="150" rx="4"/>
+  <text x="215" y="68" class="b c">mbuf (the first of the packet)</text>
+  <rect class="y" x="44" y="80" width="130" height="106" rx="3"/>
+  <text x="54" y="98" class="m">m_next</text>
+  <text x="54" y="116" class="m">m_data</text>
+  <text x="54" y="134" class="m">m_len = 54</text>
+  <text x="54" y="154" class="s">the packet's length,</text>
+  <text x="54" y="168" class="s">its interface</text>
+  <rect class="w" x="210" y="100" width="70" height="40" rx="0"/>
+  <text x="245" y="124" class="s c">free</text>
+  <rect class="g" x="280" y="100" width="30" height="40" rx="0"/>
+  <text x="295" y="124" class="s c">Eth</text>
+  <rect class="k" x="310" y="100" width="30" height="40" rx="0"/>
+  <text x="325" y="124" class="s c">IP</text>
+  <rect class="k" x="340" y="100" width="40" height="40" rx="0"/>
+  <text x="360" y="124" class="s c">TCP</text>
+  <text x="295" y="92" class="s c">the mbuf's own storage</text>
+  <path class="ln" d="M104,112 L192,112 L192,154 L280,154 L280,142" marker-end="url(#a)"/>
+  <text x="295" y="174" class="s c">room in front for one</text>
+  <text x="295" y="188" class="s c">more header</text>
+  <rect class="w" x="450" y="50" width="150" height="150" rx="4"/>
+  <text x="525" y="68" class="b c">mbuf</text>
+  <rect class="y" x="464" y="80" width="122" height="106" rx="3"/>
+  <text x="474" y="98" class="m">m_next = NULL</text>
+  <text x="474" y="116" class="m">m_data</text>
+  <text x="474" y="134" class="m">m_len = 1400</text>
+  <path class="ln" d="M104,94 L192,94 L192,38 L525,38 L525,48" marker-end="url(#a)"/>
+  <rect class="y" x="650" y="86" width="130" height="100" rx="3"/>
+  <text x="715" y="106" class="c">a cluster:</text>
+  <text x="715" y="124" class="s c">a larger buffer,</text>
+  <text x="715" y="138" class="s c">which chains</text>
+  <text x="715" y="152" class="s c">can share</text>
+  <text x="715" y="174" class="b c">the data</text>
+  <path class="ln" d="M524,112 L648,112" marker-end="url(#a)"/>
+  <text x="400" y="236" class="s c">The layers do not copy a packet: they pass the pointer to its chain, add or remove</text>
+  <text x="400" y="252" class="s c">headers at its front by moving m_data, and split or join chains by relinking mbufs.</text>
+  <text x="400" y="276" class="s c">A socket's send and receive buffers are queues of such chains.</text>
+</svg>

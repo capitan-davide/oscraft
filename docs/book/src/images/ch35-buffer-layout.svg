@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="470" viewBox="0 0 800 470" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="470" fill="#ffffff"/>
+  <text x="400" y="22" class="h c">One block of contiguous memory, here with four buffers per CPU</text>
+  <rect class="y" x="40" y="62" width="45" height="30" rx="0"/>
+  <text x="62" y="81" class="s c">0</text>
+  <rect class="y" x="85" y="62" width="45" height="30" rx="0"/>
+  <text x="107" y="81" class="s c">1</text>
+  <rect class="y" x="130" y="62" width="45" height="30" rx="0"/>
+  <text x="152" y="81" class="s c">2</text>
+  <rect class="y" x="175" y="62" width="45" height="30" rx="0"/>
+  <text x="197" y="81" class="s c">3</text>
+  <text x="130" y="108" class="s c">CPU 0 writes these</text>
+  <rect class="y" x="220" y="62" width="45" height="30" rx="0"/>
+  <text x="242" y="81" class="s c">4</text>
+  <rect class="y" x="265" y="62" width="45" height="30" rx="0"/>
+  <text x="287" y="81" class="s c">5</text>
+  <rect class="y" x="310" y="62" width="45" height="30" rx="0"/>
+  <text x="332" y="81" class="s c">6</text>
+  <rect class="y" x="355" y="62" width="45" height="30" rx="0"/>
+  <text x="377" y="81" class="s c">7</text>
+  <text x="310" y="108" class="s c">CPU 1 writes these</text>
+  <rect class="y" x="400" y="62" width="45" height="30" rx="0"/>
+  <text x="422" y="81" class="s c">8</text>
+  <rect class="y" x="445" y="62" width="45" height="30" rx="0"/>
+  <text x="467" y="81" class="s c">9</text>
+  <rect class="y" x="490" y="62" width="45" height="30" rx="0"/>
+  <text x="512" y="81" class="s c">10</text>
+  <rect class="y" x="535" y="62" width="45" height="30" rx="0"/>
+  <text x="557" y="81" class="s c">11</text>
+  <text x="490" y="108" class="s c">CPU 2 writes these</text>
+  <rect class="y" x="580" y="62" width="45" height="30" rx="0"/>
+  <text x="602" y="81" class="s c">12</text>
+  <rect class="y" x="625" y="62" width="45" height="30" rx="0"/>
+  <text x="647" y="81" class="s c">13</text>
+  <rect class="y" x="670" y="62" width="45" height="30" rx="0"/>
+  <text x="692" y="81" class="s c">14</text>
+  <rect class="y" x="715" y="62" width="45" height="30" rx="0"/>
+  <text x="737" y="81" class="s c">15</text>
+  <text x="670" y="108" class="s c">CPU 3 writes these</text>
+  <rect class="k" x="40" y="30" width="200" height="22" rx="4"/>
+  <text x="140" y="45" class="s c">mapped in the kernel</text>
+  <rect class="u" x="560" y="30" width="200" height="22" rx="4"/>
+  <text x="660" y="45" class="s c">mapped, shared, in the logger</text>
+  <path class="lnk" d="M140,52 L140,61" marker-end="url(#ak)"/>
+  <path class="ln" d="M660,52 L660,61" marker-end="url(#a)"/>
+  <text x="400" y="142" class="h c">One buffer: 16 KiB</text>
+  <rect class="n" x="40" y="150" width="130" height="44" rx="0"/>
+  <text x="105" y="169" class="c">header</text>
+  <text x="105" y="185" class="s c">208 bytes</text>
+  <rect class="k" x="170" y="150" width="80" height="44" rx="0"/>
+  <text x="210" y="169" class="c">TIME</text>
+  <text x="210" y="185" class="s c">slot 0</text>
+  <rect class="k" x="250" y="150" width="80" height="44" rx="0"/>
+  <text x="290" y="169" class="c">BUFFER</text>
+  <text x="290" y="185" class="s c">slot 1</text>
+  <rect class="y" x="330" y="150" width="250" height="44" rx="0"/>
+  <text x="455" y="169" class="c">events</text>
+  <text x="455" y="185" class="s c">16-byte slots, 1011 in a buffer</text>
+  <rect class="k" x="580" y="150" width="100" height="44" rx="0"/>
+  <text x="630" y="169" class="c">BUFFER_END</text>
+  <text x="630" y="185" class="s c">last used slot</text>
+  <rect class="w" x="680" y="150" width="80" height="44" rx="0"/>
+  <text x="105" y="212" class="s c">flags, slots used,</text>
+  <text x="105" y="225" class="s c">sequence number</text>
+  <text x="250" y="212" class="s c">the full clock value,</text>
+  <text x="250" y="225" class="s c">the buffer's number</text>
+  <text x="680" y="212" class="s c">written when the buffer</text>
+  <text x="680" y="225" class="s c">is full or tracing stops</text>
+  <path class="life" d="M330,194 L120,290"/>
+  <path class="life" d="M390,194 L680,290"/>
+  <text x="400" y="266" class="h c">One slot: four 32-bit words</text>
+  <rect class="k" x="120" y="290" width="200" height="34" rx="0"/>
+  <text x="220" y="311" class="c">header</text>
+  <rect class="y" x="320" y="290" width="120" height="34" rx="0"/>
+  <text x="380" y="311" class="c">time, low half</text>
+  <rect class="w" x="440" y="290" width="120" height="34" rx="0"/>
+  <text x="500" y="311" class="c">data 0</text>
+  <rect class="w" x="560" y="290" width="120" height="34" rx="0"/>
+  <text x="620" y="311" class="c">data 1</text>
+  <path class="life" d="M120,324 L60,362"/>
+  <path class="life" d="M320,324 L540,362"/>
+  <rect class="wk" x="60" y="362" width="90" height="34" rx="0"/>
+  <text x="105" y="376" class="s c">bits 31-30</text>
+  <text x="105" y="390" class="s c b">part</text>
+  <rect class="wk" x="150" y="362" width="110" height="34" rx="0"/>
+  <text x="205" y="376" class="s c">bits 29-24</text>
+  <text x="205" y="390" class="s c b">CPU</text>
+  <rect class="n" x="260" y="362" width="80" height="34" rx="0"/>
+  <text x="300" y="376" class="s c">bits 23-15</text>
+  <text x="300" y="390" class="s c b"></text>
+  <rect class="wk" x="340" y="362" width="90" height="34" rx="0"/>
+  <text x="385" y="376" class="s c">bits 14-10</text>
+  <text x="385" y="390" class="s c b">class</text>
+  <rect class="wk" x="430" y="362" width="110" height="34" rx="0"/>
+  <text x="485" y="376" class="s c">bits 9-0</text>
+  <text x="485" y="390" class="s c b">event</text>
+  <text x="60" y="416" class="s">part: this slot is a whole event, or the beginning, a continuation or the end of a longer one.</text>
+  <text x="60" y="448" class="s">A longer event:</text>
+  <rect class="y" x="170" y="432" width="130" height="26" rx="0"/>
+  <text x="235" y="449" class="s c">begin: 2 words</text>
+  <rect class="y" x="300" y="432" width="130" height="26" rx="0"/>
+  <text x="365" y="449" class="s c">continue: 2 words</text>
+  <rect class="y" x="430" y="432" width="130" height="26" rx="0"/>
+  <text x="495" y="449" class="s c">end: 2 words</text>
+  <text x="570" y="449" class="s">same header and time in each slot</text>
+</svg>

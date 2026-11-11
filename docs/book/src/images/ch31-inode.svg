@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="360" fill="#ffffff"/>
+  <text x="120" y="26" class="h c">a directory</text>
+  <text x="120" y="42" class="s c">names to file numbers</text>
+  <rect class="y" x="30" y="52" width="180" height="112" rx="4"/>
+  <rect class="w" x="40" y="62" width="110" height="26" rx="2"/>
+  <text x="48" y="79" class="m">todo.txt</text>
+  <rect class="w" x="150" y="62" width="50" height="26" rx="2"/>
+  <text x="175" y="79" class="m c">17</text>
+  <rect class="w" x="40" y="94" width="110" height="26" rx="2"/>
+  <text x="48" y="111" class="m">report.txt</text>
+  <rect class="w" x="150" y="94" width="50" height="26" rx="2"/>
+  <text x="175" y="111" class="m c">23</text>
+  <rect class="w" x="40" y="126" width="110" height="26" rx="2"/>
+  <text x="48" y="143" class="m">old</text>
+  <rect class="w" x="150" y="126" width="50" height="26" rx="2"/>
+  <text x="175" y="143" class="m c">9</text>
+  <text x="400" y="26" class="h c">the file's record (an inode)</text>
+  <text x="400" y="42" class="s c">everything about file 17 but its name</text>
+  <rect class="k" x="300" y="52" width="200" height="190" rx="4"/>
+  <text x="312" y="74" class="s">type: regular file</text>
+  <text x="312" y="92" class="s">owner, group, mode</text>
+  <text x="312" y="110" class="s">size: 1300 bytes</text>
+  <text x="312" y="128" class="s">times</text>
+  <text x="312" y="146" class="s">link count: 1</text>
+  <text x="312" y="172" class="s b">blocks:</text>
+  <rect class="w" x="312" y="182" width="52" height="26" rx="2"/>
+  <text x="338" y="199" class="m c">812</text>
+  <rect class="w" x="370" y="182" width="52" height="26" rx="2"/>
+  <text x="396" y="199" class="m c">813</text>
+  <rect class="w" x="428" y="182" width="52" height="26" rx="2"/>
+  <text x="454" y="199" class="m c">96</text>
+  <text x="312" y="230" class="s">in order: bytes 0-511, 512-1023, ...</text>
+  <path class="ln" d="M200,75 L298,75" marker-end="url(#a)"/>
+  <text x="250" y="68" class="s c">1</text>
+  <text x="660" y="26" class="h c">data blocks</text>
+  <text x="660" y="42" class="s c">the file's bytes</text>
+  <rect class="g" x="600" y="56" width="120" height="30" rx="3"/>
+  <text x="660" y="76" class="m c">block 96</text>
+  <rect class="n" x="600" y="94" width="120" height="30" rx="3"/>
+  <text x="660" y="114" class="m c">block 97</text>
+  <rect class="n" x="600" y="132" width="120" height="30" rx="3"/>
+  <text x="660" y="152" class="m c">…</text>
+  <rect class="g" x="600" y="170" width="120" height="30" rx="3"/>
+  <text x="660" y="190" class="m c">block 812</text>
+  <rect class="g" x="600" y="208" width="120" height="30" rx="3"/>
+  <text x="660" y="228" class="m c">block 813</text>
+  <path class="ln" d="M338,208 L338,262 L560,262 L560,185 L598,185" marker-end="url(#a)"/>
+  <path class="ln" d="M396,208 L396,276 L574,276 L574,223 L598,223" marker-end="url(#a)"/>
+  <path class="ln" d="M454,208 L454,248 L546,248 L546,71 L598,71" marker-end="url(#a)"/>
+  <text x="400" y="316" class="s c">Opening a path walks directories to find a file number (1); reading follows the record to the blocks.</text>
+  <text x="400" y="334" class="s c">A name is an entry in a directory, not a property of the file: two names may give the same number.</text>
+</svg>

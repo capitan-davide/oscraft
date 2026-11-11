@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="300" fill="#ffffff"/>
+  <line x1="110" y1="50" x2="110" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="110" y="248" class="s c">0</text>
+  <line x1="155" y1="50" x2="155" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="155" y="248" class="s c">1</text>
+  <line x1="200" y1="50" x2="200" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="200" y="248" class="s c">2</text>
+  <line x1="245" y1="50" x2="245" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="245" y="248" class="s c">3</text>
+  <line x1="290" y1="50" x2="290" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="290" y="248" class="s c">4</text>
+  <line x1="335" y1="50" x2="335" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="335" y="248" class="s c">5</text>
+  <line x1="380" y1="50" x2="380" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="380" y="248" class="s c">6</text>
+  <line x1="425" y1="50" x2="425" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="425" y="248" class="s c">7</text>
+  <line x1="470" y1="50" x2="470" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="470" y="248" class="s c">8</text>
+  <line x1="515" y1="50" x2="515" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="515" y="248" class="s c">9</text>
+  <line x1="560" y1="50" x2="560" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="560" y="248" class="s c">10</text>
+  <line x1="605" y1="50" x2="605" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="605" y="248" class="s c">11</text>
+  <line x1="650" y1="50" x2="650" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="650" y="248" class="s c">12</text>
+  <line x1="695" y1="50" x2="695" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="695" y="248" class="s c">13</text>
+  <line x1="740" y1="50" x2="740" y2="230" stroke="#dddddd" stroke-width="1"/>
+  <text x="740" y="248" class="s c">14</text>
+  <text x="100" y="248" class="s e">tick</text>
+  <text x="20" y="104" class="b">CPU 0</text>
+  <text x="20" y="184" class="b">CPU 1</text>
+  <circle cx="110" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="155" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="200" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="245" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="290" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="335" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="380" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="425" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="470" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="515" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="560" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="605" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="650" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="695" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="740" cy="100" r="5" fill="#3e7b34"/>
+  <circle cx="110" cy="180" r="5" fill="#3e7b34"/>
+  <circle cx="155" cy="180" r="5" fill="#3e7b34"/>
+  <circle cx="200" cy="180" r="5" fill="#3e7b34"/>
+  <circle cx="425" cy="180" r="5" fill="#3e7b34"/>
+  <circle cx="515" cy="180" r="5" fill="#3e7b34"/>
+  <circle cx="560" cy="180" r="5" fill="#3e7b34"/>
+  <circle cx="605" cy="180" r="5" fill="#3e7b34"/>
+  <circle cx="650" cy="180" r="5" fill="#3e7b34"/>
+  <circle cx="695" cy="180" r="5" fill="#3e7b34"/>
+  <circle cx="740" cy="180" r="5" fill="#3e7b34"/>
+  <rect x="218.0" y="166" width="175.5" height="28" fill="#eeeeee" stroke="#999999" stroke-dasharray="4 3"/>
+  <rect x="436.25" y="166" width="69.75000000000006" height="28" fill="#eeeeee" stroke="#999999" stroke-dasharray="4 3"/>
+  <text x="254" y="184" class="s">idle: tick stopped, wfi</text>
+  <polyline class="ln" points="218,214 218,196" marker-end="url(#a)"/>
+  <text x="214" y="228" class="s">stop_tick(): idle_until = tick 9</text>
+  <polyline class="lnr" points="393.5,106 393.5,164" marker-end="url(#ar)"/>
+  <text x="398" y="132" class="s red">a thread on CPU 0 arms a timeout of</text>
+  <text x="398" y="145" class="s red">CPU 1's family due at tick 7:</text>
+  <text x="398" y="158" class="s red">deadline_armed() sends an IPI</text>
+  <text x="398" y="214" class="s">woken: idle_until = tick 7</text>
+  <text x="110" y="40" class="s">One grid of ticks for all CPUs; an idle CPU keeps only the tick of its first deadline.</text>
+</svg>

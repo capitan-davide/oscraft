@@ -1,0 +1,19 @@
+[package]
+name = "libsys"
+description = "FreeBSD's libsys for OsCraft: the system-call stubs, as OsCraft kernel calls and messages"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+name = "sys"
+crate-type = ["staticlib"]
+test = false
+
+[dependencies]
+logring = { path = "../logring" }
+proto = { path = "../proto" }
+qnxabi = { path = "../qnxabi" }
+
+[lints]
+workspace = true

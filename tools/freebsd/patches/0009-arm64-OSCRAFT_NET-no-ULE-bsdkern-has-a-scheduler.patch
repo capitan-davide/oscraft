@@ -1,0 +1,24 @@
+From 59598c46e35acc179e648c4ddf438e1e0aa3c342 Mon Sep 17 00:00:00 2001
+From: Davide Cunial <dcunial@proton.me>
+Date: Fri, 6 Nov 2026 18:29:24 +0100
+Subject: [PATCH 9/9] arm64: OSCRAFT_NET: no ULE, bsdkern has a scheduler
+
+---
+ sys/arm64/conf/OSCRAFT_NET | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/sys/arm64/conf/OSCRAFT_NET b/sys/arm64/conf/OSCRAFT_NET
+index 21f015457c7..fd2ee174973 100644
+--- a/sys/arm64/conf/OSCRAFT_NET
++++ b/sys/arm64/conf/OSCRAFT_NET
+@@ -11,7 +11,6 @@ makeoptions	CONF_CFLAGS="-DOSCRAFT_BSDKERN -DMUTEX_NOINLINE -DRWLOCK_NOINLINE -D
+ makeoptions	WITHOUT_MODULES=1
+ 
+ options 	INET
+-options 	SCHED_ULE
+ options 	SMP
+ options 	MAXCPU=8
+ options 	MAXMEMDOM=1
+-- 
+2.56.0
+

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="380" viewBox="0 0 800 380" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="380" fill="#ffffff"/>
+  <rect class="y" x="20" y="20" width="170" height="66" rx="4"/>
+  <text x="105.0" y="39" class="b c">OSCRAFT_NET</text>
+  <text x="105.0" y="56" class="s c">a kernel configuration:</text>
+  <text x="105.0" y="70" class="s c">device ether, options INET ...</text>
+  <rect class="g" x="230" y="20" width="150" height="66" rx="4"/>
+  <text x="305.0" y="39" class="b c">config(8)</text>
+  <text x="305.0" y="56" class="s c">FreeBSD's own tool</text>
+  <rect class="y" x="420" y="20" width="170" height="66" rx="4"/>
+  <text x="505.0" y="39" class="b c">Makefile, opt_*.h</text>
+  <text x="505.0" y="56" class="s c">every source such a</text>
+  <text x="505.0" y="70" class="s c">kernel would have</text>
+  <rect class="w" x="630" y="20" width="150" height="66" rx="4"/>
+  <text x="705.0" y="39" class="b c">choose</text>
+  <text x="705.0" y="56" class="s c">the subsystem's files,</text>
+  <text x="705.0" y="70" class="s c">and those in kern/keep</text>
+  <path class="ln" d="M190,53 L228,53" marker-end="url(#a)"/>
+  <path class="ln" d="M380,53 L418,53" marker-end="url(#a)"/>
+  <path class="ln" d="M590,53 L628,53" marker-end="url(#a)"/>
+  <rect class="g" x="420" y="130" width="360" height="66" rx="4"/>
+  <text x="600.0" y="149" class="b c">compile them as kernel code</text>
+  <text x="600.0" y="166" class="s c">with the kernel's flags and headers,</text>
+  <text x="600.0" y="180" class="s c">by the Makefile that config(8) wrote</text>
+  <rect class="k" x="20" y="130" width="360" height="66" rx="4"/>
+  <text x="200.0" y="149" class="b c">bsdkern's C part, and the server's glue</text>
+  <text x="200.0" y="166" class="s c">user/bsdkern/kern/*.c, compiled with the same flags:</text>
+  <text x="200.0" y="180" class="s c">it reads and writes FreeBSD's structures</text>
+  <path class="ln" d="M705,86 L705,128" marker-end="url(#a)"/>
+  <rect class="w" x="230" y="240" width="340" height="52" rx="4"/>
+  <text x="400.0" y="259" class="b c">rename</text>
+  <text x="400.0" y="276" class="s c">every name libc, libm, libthr or libsys also defines: bsd_&lt;name&gt;</text>
+  <path class="ln" d="M600,196 L480,238" marker-end="url(#a)"/>
+  <path class="ln" d="M200,196 L320,238" marker-end="url(#a)"/>
+  <rect class="g" x="20" y="318" width="220" height="48" rx="4"/>
+  <text x="130.0" y="337" class="b c">libbsdnet.a</text>
+  <text x="130.0" y="354" class="s c">linked whole into the server</text>
+  <rect class="y" x="290" y="318" width="220" height="48" rx="4"/>
+  <text x="400.0" y="337" class="b c">the flags and the renames</text>
+  <text x="400.0" y="354" class="s c">saved beside the library</text>
+  <rect class="g" x="560" y="318" width="220" height="48" rx="4"/>
+  <text x="670.0" y="337" class="b c">modules (.ko)</text>
+  <text x="670.0" y="354" class="s c">built later, the same way, -fPIC</text>
+  <path class="ln" d="M320,292 L150,316" marker-end="url(#a)"/>
+  <path class="ln" d="M400,292 L400,316" marker-end="url(#a)"/>
+  <path class="ln" d="M510,342 L558,342" marker-end="url(#a)"/>
+</svg>

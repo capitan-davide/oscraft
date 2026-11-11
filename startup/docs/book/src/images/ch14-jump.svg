@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="330" viewBox="0 0 860 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+
+  <rect x="0" y="0" width="860" height="330" fill="#ffffff"/>
+  <rect class="k" x="47.5" y="20" width="150" height="44" rx="4"/>
+  <text x="122.5" y="39.0" class="b c">boot CPU</text>
+  <text x="122.5" y="53.0" class="s c">startup</text>
+  <polyline class="life" points="122.5,64 122.5,316"/>
+  <rect class="y" x="252.5" y="20" width="150" height="44" rx="4"/>
+  <text x="327.5" y="39.0" class="b c">memory</text>
+  <text x="327.5" y="53.0" class="s c">system page, tables</text>
+  <polyline class="life" points="327.5,64 327.5,316"/>
+  <rect class="n" x="457.5" y="20" width="150" height="44" rx="4"/>
+  <text x="532.5" y="39.0" class="b c">CPUs 1-3</text>
+  <text x="532.5" y="53.0" class="s c">waiting</text>
+  <polyline class="life" points="532.5,64 532.5,316"/>
+  <rect class="u" x="662.5" y="20" width="150" height="44" rx="4"/>
+  <text x="737.5" y="39.0" class="b c">kernel</text>
+  <text x="737.5" y="53.0" class="s c">OsCraft or procnto</text>
+  <polyline class="life" points="737.5,64 737.5,316"/>
+  <polyline class="ln" points="122.5,120 324.5,120" marker-end="url(#a)"/>
+  <text x="225.0" y="115" class="s c">lay out and copy the system page (0x4000_9000)</text>
+  <polyline class="ln" points="122.5,154 324.5,154" marker-end="url(#a)"/>
+  <text x="225.0" y="149" class="s c">copy and patch the callouts</text>
+  <polyline class="ln dash" points="122.5,188 529.5,188" marker-end="url(#a)"/>
+  <text x="327.5" y="183" class="s c">transfer: MMU on, into smp_spin</text>
+  <rect class="g" x="71.1" y="206" width="102.8" height="22" rx="3"/>
+  <text x="122.5" y="221" class="s c">vstart: MMU on</text>
+  <polyline class="ln" points="122.5,256 734.5,256" marker-end="url(#a)"/>
+  <text x="430.0" y="251" class="s c">jump to 0xffff_ff80_6010_0010, x0 = 0xffff_ff80_4020_5000</text>
+  <polyline class="ln" points="737.5,290 535.5,290" marker-end="url(#a)"/>
+  <text x="635.0" y="285" class="s c">smp.start_addr: one at a time</text>
+</svg>

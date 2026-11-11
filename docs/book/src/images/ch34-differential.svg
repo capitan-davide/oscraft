@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="300" fill="#ffffff"/>
+  <rect class="u" x="20" y="110" width="150" height="70" rx="4"/>
+  <text x="95" y="138" class="b c">one test program</text>
+  <text x="95" y="156" class="s c">prints what it observes</text>
+  <rect class="r" x="250" y="40" width="230" height="80" rx="4"/>
+  <text x="365" y="66" class="b c">the reference implementation</text>
+  <text x="365" y="86" class="s c">defines the right answer</text>
+  <text x="365" y="102" class="s c">by what it does</text>
+  <rect class="k" x="250" y="170" width="230" height="80" rx="4"/>
+  <text x="365" y="196" class="b c">the implementation under test</text>
+  <text x="365" y="216" class="s c">must give the same answer</text>
+  <path class="ln" d="M170,130 L248,86" marker-end="url(#a)"/>
+  <path class="ln" d="M170,160 L248,204" marker-end="url(#a)"/>
+  <text x="205" y="96" class="s c">same binary</text>
+  <text x="205" y="200" class="s c">same binary</text>
+  <rect class="y" x="540" y="46" width="110" height="68" rx="2"/>
+  <text x="595" y="76" class="m c">output A</text>
+  <text x="595" y="94" class="s c">the oracle</text>
+  <rect class="y" x="540" y="176" width="110" height="68" rx="2"/>
+  <text x="595" y="214" class="m c">output B</text>
+  <path class="ln" d="M480,80 L538,80" marker-end="url(#a)"/>
+  <path class="ln" d="M480,210 L538,210" marker-end="url(#a)"/>
+  <rect class="w" x="690" y="110" width="90" height="70" rx="4"/>
+  <text x="735" y="142" class="b c">compare</text>
+  <text x="735" y="160" class="s c">line by line</text>
+  <path class="ln" d="M650,90 L700,108" marker-end="url(#a)"/>
+  <path class="ln" d="M650,200 L700,182" marker-end="url(#a)"/>
+  <text x="400" y="284" class="s c">A difference is a defect in the implementation under test, or a fact about the reference nobody had written down.</text>
+</svg>

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="440" viewBox="0 0 800 440" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="440" fill="#ffffff"/>
+  <rect class="u" x="250" y="14" width="300" height="32" rx="4"/>
+  <text x="400" y="35" class="b c">MsgSendv() on a connection</text>
+  <path class="ln" d="M400,46 L400,62" marker-end="url(#a)"/>
+  <rect class="k" x="240" y="64" width="320" height="34" rx="4"/>
+  <text x="400" y="85" class="c">Is the sender a QNX process?</text>
+  <text x="408" y="111" class="s">yes</text>
+  <path class="lng" d="M560,81 L640,81" marker-end="url(#ag)"/>
+  <text x="600" y="75" class="s c green">no</text>
+  <path class="ln" d="M400,98 L400,114" marker-end="url(#a)"/>
+  <rect class="k" x="240" y="116" width="320" height="34" rx="4"/>
+  <text x="400" y="137" class="c">Is the server process 1?</text>
+  <text x="408" y="163" class="s">no</text>
+  <path class="lng" d="M560,133 L640,133" marker-end="url(#ag)"/>
+  <text x="600" y="127" class="s c green">yes</text>
+  <path class="ln" d="M400,150 L400,166" marker-end="url(#a)"/>
+  <rect class="k" x="240" y="168" width="320" height="34" rx="4"/>
+  <text x="400" y="189" class="c">Is the server a native process?</text>
+  <text x="408" y="215" class="s">yes</text>
+  <path class="lng" d="M560,185 L640,185" marker-end="url(#ag)"/>
+  <text x="600" y="179" class="s c green">no</text>
+  <path class="ln" d="M400,202 L400,218" marker-end="url(#a)"/>
+  <rect class="k" x="240" y="220" width="320" height="34" rx="4"/>
+  <text x="400" y="241" class="c">Is the server qnxd itself?</text>
+  <text x="408" y="267" class="s">no</text>
+  <path class="lng" d="M560,237 L640,237" marker-end="url(#ag)"/>
+  <text x="600" y="231" class="s c green">yes</text>
+  <path class="ln" d="M400,254 L400,270" marker-end="url(#a)"/>
+  <rect class="k" x="240" y="272" width="320" height="34" rx="4"/>
+  <text x="400" y="293" class="c">A plain read or write, or a notify request?</text>
+  <text x="408" y="319" class="s">no</text>
+  <path class="lng" d="M560,289 L640,289" marker-end="url(#ag)"/>
+  <text x="600" y="283" class="s c green">yes</text>
+  <path class="ln" d="M400,306 L400,322" marker-end="url(#a)"/>
+  <rect class="k" x="240" y="324" width="320" height="34" rx="4"/>
+  <text x="400" y="345" class="c">Is qnxd registered and alive?</text>
+  <text x="408" y="371" class="s">yes</text>
+  <path class="lnr" d="M240,341 L160,341" marker-end="url(#ar)"/>
+  <text x="200" y="335" class="s c red">no</text>
+  <rect class="r" x="20" y="316" width="140" height="50" rx="4"/>
+  <text x="90" y="337" class="s c">the send fails:</text>
+  <text x="90" y="353" class="m c">ENOSYS</text>
+  <rect class="g" x="640" y="64" width="140" height="242" rx="4"/>
+  <text x="710" y="172" class="c">straight to</text>
+  <text x="710" y="190" class="b c">the server</text>
+  <text x="710" y="212" class="s c">nothing to</text>
+  <text x="710" y="226" class="s c">translate</text>
+  <path class="ln" d="M400,358 L400,374" marker-end="url(#a)"/>
+  <rect class="y" x="250" y="376" width="300" height="40" rx="4"/>
+  <text x="400" y="393" class="b c">queued on qnxd's channel</text>
+  <text x="400" y="409" class="s c">the connection is remembered for the forward</text>
+</svg>

@@ -1,0 +1,220 @@
+# OsCraft System Architecture
+
+A book about how OsCraft works: its microkernel, process 1, its FreeBSD
+userland and servers, explained idea first and then from the source. It describes the
+implementation as it is, and changes with it.
+
+Read it as a website: `make serve` opens it, built with
+[mdBook](https://rust-lang.github.io/mdBook/) 0.5 or later. To get a PDF,
+print the website with the browser ("Print this book" in the top bar).
+
+## Building and checking
+
+Run the commands in `docs/book/`.
+
+| Command | What it does |
+|---|---|
+| `make check` | checks every code reference against the source tree (see below) |
+| `make html` | builds the website into `build/html/` (not tracked by git) |
+| `make serve` | builds, opens and live-reloads the website |
+
+The GitHub workflow `.github/workflows/book.yml` runs `make check` and
+`make html` on every push that touches the book or the code, and
+publishes the website on GitHub Pages.
+
+## How the book stays true to the code
+
+The book never contains copied code. Every listing is pulled from the
+source file when the book is built, with mdBook's include directive and a
+named *anchor* in the source:
+
+````markdown
+*Listing 4.1: The kernel's entry point, `kmain()` (`kernel/src/main.rs`).*
+
+```rust
+{{#include ../../../kernel/src/main.rs:kmain}}
+```
+````
+
+```rust
+// ANCHOR: kmain
+pub unsafe extern "C" fn kmain(syspage: *mut SyspageEntry, cpu: u32) -> ! {
+    ...
+}
+// ANCHOR_END: kmain
+```
+
+So a listing always shows the code as it is now. mdBook drops the anchor
+lines themselves from the listing. What can still go wrong is a code
+change that removes or renames an anchor: mdBook then silently includes
+nothing. `make check` (`check.py`) turns that into an error:
+
+- every include names an existing file and an anchor that is defined in
+  it, with its `ANCHOR_END`, and is not empty;
+- no include uses line numbers (they would drift with every edit);
+- a Rust listing's braces balance, and it doesn't end on the doc comment
+  or attribute of the item after it, the usual result of an edit that
+  moved code past a marker;
+- every anchor in the source tree is used by a chapter (an unused one is
+  left over from a removed listing); this test and the next one ask git
+  for the tree's files, so they do nothing outside a git repository;
+- every repository path in a code span (`kernel/src/sched.rs`) exists;
+- every source file of the kernel has a row in the
+  source map (`src/appendix-c-source-map.md`): a new file fails the check
+  until it is placed in the book, and a removed one leaves a stale path.
+
+The prose around a listing can still go stale when the code inside an
+anchor changes meaning. The anchors are the warning: a commit that edits
+code between `ANCHOR` and `ANCHOR_END` changes a listing of the book, and
+should check the text that explains it (`git grep` the anchor's name in
+`docs/book/src`).
+
+### Anchor rules
+
+- Markers are line comments: `// ANCHOR: name` and `// ANCHOR_END: name`
+  in Rust, assembly and C; `/* ANCHOR: name */` where only block comments
+  exist (the linker script).
+- Names are lowercase with underscores (`kmain`, `trap_frame`), unique
+  within their file, and say what the listing shows, not which chapter
+  uses it.
+- An anchor covers whole items or a meaningful block. Anchors may nest or
+  overlap: a function can have an anchor for all of it and another for
+  its central loop.
+- Moving code: move its markers with it. Deleting code: delete its
+  markers and the listing, then `make check`.
+
+## Layout
+
+| Path | Contents |
+|---|---|
+| `book.toml` | mdBook configuration |
+| `check.py` | the reference checker (`make check`) |
+| `src/SUMMARY.md` | the table of contents |
+| `src/NN-*.md`, `src/appendix-*.md` | one file per chapter |
+| `src/images/` | figures, as SVG |
+
+## Writing conventions
+
+- **Scope.** The book describes OsCraft's implementation: its data
+  structures, its code paths and why they are shaped as they are. It
+  stands on its own, with no references to other documents in the
+  repository or to outside
+  documentation. Where OsCraft implements an interface defined elsewhere
+  (QNX's binary interface, the Arm architecture), the book says what the
+  interface is, as a fact about the code.
+- **One file per chapter**, starting with a single `#` heading. Sections
+  use `##` and `###`.
+- **Listings** have an italic caption line before the code block, with
+  the symbol and the file:
+  `*Listing 4.2: Starting the other CPUs, `start_secondaries()` (`kernel/src/smp.rs`).*`
+  The text explains what to look for in the listing before or after it.
+- **Figures** are SVG files in `src/images/`, named `chNN-*.svg`, with a
+  white background, plain text and a small fixed palette (blue: OsCraft's
+  code; tan: user processes; green: FreeBSD's code, or running; yellow:
+  waiting, shared data; red: errors, and the optional QNX side; grey:
+  hardware). They are generated by the scripts in `fig/` (see below). The image is alone in a paragraph, followed by an
+  italic caption line: `*Figure 1.1: ...*`. A figure that shows code
+  structure (a function's steps, a structure's fields) must be updated
+  with the code, like the prose.
+- **Tables** have an italic caption line before them: `*Table 1.2: ...*`.
+- **Numbering** of listings, figures and tables is per chapter and
+  written by hand.
+- **Notes** use the alert syntax: `> [!NOTE]`, `> [!TIP]`, `> [!WARNING]`.
+  Warnings point out things that are easy to get wrong when changing the
+  code.
+- **Links** between chapters are relative (`09-message-passing.md#pulses`).
+  Source files are named in code spans, never linked.
+- **Style**: short sentences, present tense, the reader as "you".
+
+## How the chapters are written
+
+The chapters follow three rules.
+
+1. **What OsCraft is.** A real-time microkernel whose native interface is
+   FreeBSD's: FreeBSD's ABI (structures, error numbers, signals), FreeBSD's
+   C library and userland, and FreeBSD kernel subsystems running in
+   servers. The kernel's calls and message passing follow QNX's model, and
+   the kernel can also run QNX programs, but that is an optional feature,
+   by translation, and nothing depends on it. So outside Part VI the book
+   describes the native system: FreeBSD's types and numbers, FreeBSD's
+   tools (`ps`, `sh`, `ifconfig`), never QNX's (`pidin`, `ksh`), and no
+   "as procnto does" asides. A kernel call keeps its name (`MsgSendv()`),
+   which is OsCraft's own too. What concerns only QNX programs goes to
+   Part VI.
+2. **The machine is QEMU's `virt`.** Every example uses it: four
+   Cortex-A72 cores, GICv2, the generic timer, a PL011 UART at 0x9000000,
+   PCIe with a virtio network device, OsCraft's own startup
+   (`startup/boards/qemu-virt`). No Raspberry Pi.
+3. **The idea first, then the implementation.** A chapter opens with a
+   short introduction, then explains its subject as a general
+   operating-system topic, with no OsCraft in it: the problem, the design
+   choices, the standard terms. Then a section named after OsCraft
+   ("Scheduling in OsCraft") explains the implementation. Figures carry
+   the explanation: draw the mechanism (a sequence, a state machine, a
+   layout in memory, a timeline) and let the text say what to look for.
+   Code is shown only where the code is the clearest statement of a rule;
+   two or three listings in a chapter is typical, none is fine. Never
+   paste a function just because it exists. A chapter ends with a
+   summary of five to eight bullets.
+
+Style: plain, direct English in full sentences; define a term when it
+first appears; no marketing words. A chapter is 2500 to 4500 words.
+Captions are numbered by chapter: `*Figure 8.2: ...*`, `*Listing 8.1:
+...*`, `*Table 8.1: ...*`, each on the line after its figure or before
+its listing. Chapters 2 and 10 are the models.
+
+Facts come from the code, read at the time of writing, not from memory
+and not from the earlier text alone: the earlier chapters were written
+when the kernel ran QNX's userland on a Raspberry Pi 4. QNX's
+documentation is a good guide to the concepts of the kernel calls
+(the same model), and FreeBSD's source to FreeBSD's side; the text is
+written in the book's own words, with nothing copied from either.
+
+### Figures
+
+A figure is an SVG in `src/images/`, named `chNN-topic.svg` after its
+chapter, generated by a script of the same name in `fig/` with the
+helper `fig/svg.py` (its header explains the shapes and classes). After
+generating a figure, render it and look at it (`rsvg-convert -w 1000`):
+overlapping labels and arrows through boxes are the usual faults.
+
+### The chapters and their numbers
+
+| # | File | Chapter |
+|---|---|---|
+| 1 | `01-introduction.md` | Introduction |
+| 2 | `02-architecture.md` | The Architecture at a Glance |
+| 3 | `03-build-run-test.md` | Building, Running and Testing |
+| 4 | `04-kernel-shape.md` | The Shape of the Kernel |
+| 5 | `05-boot.md` | Boot and the System Page |
+| 6 | `06-aarch64.md` | The AArch64 Layer |
+| 7 | `07-kernel-calls.md` | Kernel Calls |
+| 8 | `08-threads-scheduling.md` | Threads and Scheduling |
+| 9 | `09-synchronization.md` | Synchronization Objects |
+| 10 | `10-message-passing.md` | Message Passing |
+| 11 | `11-events.md` | Pulses and Events |
+| 12 | `12-mqueue-kpipe.md` | Message Queues and Kernel Pipes |
+| 13 | `13-clocks-timers.md` | Clocks, Timers and Timeouts |
+| 14 | `14-signals.md` | Signals |
+| 15 | `15-interrupts.md` | Interrupts |
+| 16 | `16-memory.md` | Memory |
+| 17 | `17-processes.md` | Processes and Abilities |
+| 18 | `18-process-manager.md` | The Process Manager |
+| 19 | `19-spawn-loader.md` | Spawning and Loading Programs |
+| 20 | `20-memory-manager.md` | The Memory Manager |
+| 21 | `21-pathname-manager.md` | The Pathname Manager |
+| 22 | `22-builtin-resmgrs.md` | Built-in Resource Managers |
+| 23 | `23-native-abi.md` | The FreeBSD ABI in the Kernel |
+| 24 | `24-libsys.md` | libsys: System Calls as Messages |
+| 25 | `25-native-servers.md` | Resource Managers and the Native Servers |
+| 26 | `26-userland-sdk.md` | The Userland and the SDK |
+| 27 | `27-bsdkern.md` | bsdkern: a Kernel Inside a Process |
+| 28 | `28-network.md` | The Network Stack |
+| 29 | `29-pci.md` | PCI |
+| 30 | `30-usb.md` | USB |
+| 31 | `31-disks.md` | Disks and File Systems |
+| 32 | `32-qnx-personality.md` | The QNX Personality |
+| 33 | `33-qnxd-overlay.md` | qnxd and the Overlay |
+| 34 | `34-measuring-procnto.md` | Measuring Against procnto |
+| 35 | `35-tracing.md` | Tracing |
+| 36 | `36-debugging.md` | Debugging and Crash Dumps |

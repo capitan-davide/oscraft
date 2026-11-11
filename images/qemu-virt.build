@@ -255,7 +255,9 @@ sshd:x:6:
 # console, /dev/text (the debug UART startup chose). The QNX tests' image
 # leaves this part out for QNX's shell on QNX's serial driver
 # (tests/qnx/image.build; the Makefile drops what is between the markers).
+# CONSOLE-BEGIN
 [+script] .script = {
     reopen /dev/text
     [+session] /bin/sh &
 }
+# CONSOLE-END

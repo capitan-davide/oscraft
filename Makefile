@@ -342,12 +342,12 @@ startup:
 # (build/oscraft-test.ifs): tests/native/image.build, and with QNX=1
 # tests/qnx/image.build, the QNX test programs with QNX's shell on its
 # serial driver as the console, in place of the system's (the part of
-# images/qemu-virt.build between its console markers is left out).
+# images/qemu-virt.build between its CONSOLE-BEGIN and CONSOLE-END lines is left out).
 QNX ?= 0
 ifeq ($(QNX),1)
 IMAGE_PARTS := images/qemu-virt.build images/qnx.build
 TEST_PARTS := images/qemu-virt.build tests/native/image.build images/qnx.build tests/qnx/image.build
-TEST_CONSOLE_SED := -e '/^\# ANCHOR: console$$/,/^\# ANCHOR_END: console$$/d'
+TEST_CONSOLE_SED := -e '/^\# CONSOLE-BEGIN$$/,/^\# CONSOLE-END$$/d'
 IMAGE_QNX_DEPS := qnx-tests
 TEST_FLAGS := --qnx
 else

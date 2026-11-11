@@ -1,0 +1,12 @@
+[package]
+name = "qnxabi"
+description = "The conversions between QNX's and FreeBSD's ABIs"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+proto = { path = "../proto" }
+
+[lints]
+workspace = true

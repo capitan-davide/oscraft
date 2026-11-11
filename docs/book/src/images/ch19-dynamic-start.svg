@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="440" viewBox="0 0 800 440" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="440" fill="#ffffff"/>
+  <rect class="k" x="40" y="34" width="160" height="30" rx="4"/>
+  <text x="120" y="54" class="c">process 1</text>
+  <path class="life" d="M120,64 L120,400"/>
+  <rect class="g" x="330" y="34" width="160" height="30" rx="4"/>
+  <text x="410" y="54" class="c">ld-elf.so.1</text>
+  <path class="life" d="M410,64 L410,400"/>
+  <rect class="u" x="600" y="34" width="160" height="30" rx="4"/>
+  <text x="680" y="54" class="c">the program</text>
+  <path class="life" d="M680,64 L680,400"/>
+  <path class="ln" d="M330,24 L760,24"/>
+  <text x="545.0" y="18" class="s c">code running in the new process</text>
+  <rect class="k" x="10.0" y="80" width="220" height="76" rx="3"/>
+  <circle cx="25.0" cy="118.0" r="9" fill="#2c5d9b"/>
+  <text x="25.0" y="122.0" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="42.0" y="101.0" class="s">maps the program at 4 GiB</text>
+  <text x="42.0" y="115.0" class="s">and ld-elf.so.1 at 16 GiB;</text>
+  <text x="42.0" y="129.0" class="s">writes the initial stack;</text>
+  <text x="42.0" y="143.0" class="s">starts the first thread</text>
+  <path class="lnk" d="M230,140 L283,162" marker-end="url(#ak)"/>
+  <rect class="g" x="285.0" y="150" width="250" height="62" rx="3"/>
+  <circle cx="300.0" cy="181.0" r="9" fill="#3e7b34"/>
+  <text x="300.0" y="185.0" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <text x="317.0" y="171.0" class="s">starts at its own entry point:</text>
+  <text x="317.0" y="185.0" class="s">relocates itself, reads AT_BASE,</text>
+  <text x="317.0" y="199.0" class="s">AT_PHDR and AT_ENTRY from the stack</text>
+  <rect class="g" x="285.0" y="222" width="250" height="62" rx="3"/>
+  <circle cx="300.0" cy="253.0" r="9" fill="#3e7b34"/>
+  <text x="300.0" y="257.0" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="317.0" y="243.0" class="s">open() and mmap() of libc.so.7,</text>
+  <text x="317.0" y="257.0" class="s">libsys.so.7 and the other libraries</text>
+  <text x="317.0" y="271.0" class="s">the program needs</text>
+  <path class="ln" d="M285,244 L232,244" marker-end="url(#a)"/>
+  <path class="lng" d="M230,264 L283,264" marker-end="url(#ag)"/>
+  <rect class="k" x="10" y="226" width="220" height="54" rx="3"/>
+  <text x="120" y="242" class="s c">answers them like any other</text>
+  <text x="120" y="256" class="s c">open() and mmap():</text>
+  <text x="120" y="270" class="s c">path manager, memory manager</text>
+  <rect class="g" x="285.0" y="294" width="250" height="48" rx="3"/>
+  <circle cx="300.0" cy="318.0" r="9" fill="#3e7b34"/>
+  <text x="300.0" y="322.0" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <text x="317.0" y="315.0" class="s">resolves symbols, applies relocations,</text>
+  <text x="317.0" y="329.0" class="s">then jumps to AT_ENTRY</text>
+  <path class="lng" d="M535,326 L568,340" marker-end="url(#ag)"/>
+  <rect class="u" x="570.0" y="318" width="220" height="48" rx="3"/>
+  <circle cx="585.0" cy="342.0" r="9" fill="#9a6b2f"/>
+  <text x="585.0" y="346.0" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <text x="602.0" y="339.0" class="s">_start: the C library</text>
+  <text x="602.0" y="353.0" class="s">initialises itself</text>
+  <rect class="u" x="570.0" y="376" width="220" height="30" rx="3"/>
+  <circle cx="585.0" cy="391.0" r="9" fill="#9a6b2f"/>
+  <text x="585.0" y="395.0" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">6</text>
+  <text x="602.0" y="395.0" class="s">main(argc, argv, envp)</text>
+  <text x="265" y="404" class="s c">Time runs downwards. Process 1 never looks inside a shared library.</text>
+</svg>

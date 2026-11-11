@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="250" viewBox="0 0 860 250" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+
+  <rect x="0" y="0" width="860" height="250" fill="#ffffff"/>
+  <text x="30" y="28" class="h">the image file system, compressed by mkifs (+compress): blocks of at most 64 KB</text>
+  <rect class="k" x="30" y="44" width="70" height="40" rx="4"/>
+  <text x="65.0" y="68.0" class="b c">length</text>
+  <rect class="y" x="100" y="44" width="200" height="40" rx="4"/>
+  <text x="200.0" y="68.0" class="b c">NRV2B stream</text>
+  <rect class="k" x="300" y="44" width="70" height="40" rx="4"/>
+  <text x="335.0" y="68.0" class="b c">length</text>
+  <rect class="y" x="370" y="44" width="160" height="40" rx="4"/>
+  <text x="450.0" y="68.0" class="b c">NRV2B stream</text>
+  <rect class="k" x="530" y="44" width="70" height="40" rx="4"/>
+  <text x="565.0" y="68.0" class="b c">length</text>
+  <rect class="w" x="600" y="44" width="130" height="40" rx="4"/>
+  <text x="665.0" y="68.0" class="b c">...</text>
+  <rect class="k" x="730" y="44" width="70" height="40" rx="4"/>
+  <text x="765.0" y="68.0" class="b c">0</text>
+  <text x="30" y="110" class="s">length: 16 bits, big-endian; 0 ends the image</text>
+  <text x="30" y="140" class="s">a stream: control bits (literal or match) interleaved with the data bytes;</text>
+  <text x="30" y="158" class="s">a match copies len bytes from off back, both written as gamma codes</text>
+  <rect class="y" x="30" y="180" width="380" height="40" rx="4"/>
+  <text x="220.0" y="204.0" class="b c">compressed bytes, copied out of the way</text>
+  <rect class="g" x="450" y="180" width="380" height="40" rx="4"/>
+  <text x="640.0" y="204.0" class="b c">decompressed in place, right after startup</text>
+  <polyline class="lng" points="410,200 448,200" marker-end="url(#ag)"/>
+</svg>

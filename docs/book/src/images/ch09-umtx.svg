@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="520" fill="#ffffff"/>
+  <rect class="u" x="20" y="16" width="220" height="30" rx="4"/>
+  <text x="130" y="36" class="c">thread A (holds the mutex)</text>
+  <rect class="y" x="320" y="16" width="160" height="30" rx="4"/>
+  <text x="400" y="36" class="s c">m_owner, in user memory</text>
+  <rect class="u" x="560" y="16" width="220" height="30" rx="4"/>
+  <text x="670" y="36" class="c">thread B (wants it)</text>
+  <path class="life" d="M130,46 L130,470"/>
+  <path class="life" d="M400,46 L400,470"/>
+  <path class="life" d="M670,46 L670,470"/>
+  <rect class="w" x="338" y="58" width="124" height="22" rx="3"/>
+  <text x="400" y="73" class="ms c">A</text>
+  <rect class="wu" x="560" y="58" width="220" height="38" rx="3"/>
+  <circle cx="574" cy="72" r="9" fill="#9a6b2f"/>
+  <text x="574" y="76" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="588" y="76" class="s">libthr: swap 0 → B fails;</text>
+  <text x="588" y="90" class="s">calls _umtx_op(MUTEX_WAIT)</text>
+  <rect class="g" x="560" y="104" width="220" height="38" rx="3"/>
+  <circle cx="574" cy="118" r="9" fill="#3e7b34"/>
+  <text x="574" y="122" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <text x="588" y="122" class="s">libsys: swap A → A | C</text>
+  <text x="588" y="136" class="s">(C: the contested bit)</text>
+  <path class="lng" d="M560,123 L464,123" marker-end="url(#ag)"/>
+  <rect class="w" x="338" y="112" width="124" height="22" rx="3"/>
+  <text x="400" y="127" class="ms c">A | C</text>
+  <rect class="k" x="560" y="150" width="220" height="66" rx="3"/>
+  <circle cx="574" cy="164" r="9" fill="#2c5d9b"/>
+  <text x="574" y="168" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="588" y="168" class="s">kernel, futex wait(word, A | C):</text>
+  <text x="588" y="182" class="s">the word still holds A | C, so</text>
+  <text x="588" y="196" class="s">B is queued under the word's</text>
+  <text x="588" y="210" class="s">physical address, and blocks</text>
+  <rect class="wu" x="20" y="226" width="220" height="38" rx="3"/>
+  <circle cx="34" cy="240" r="9" fill="#9a6b2f"/>
+  <text x="34" y="244" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <text x="48" y="244" class="s">libthr unlock: stores 0; C was</text>
+  <text x="48" y="258" class="s">set: _umtx_op(MUTEX_WAKE2)</text>
+  <path class="ln" d="M240,245 L336,245" marker-end="url(#a)"/>
+  <rect class="w" x="338" y="234" width="124" height="22" rx="3"/>
+  <text x="400" y="249" class="ms c">0</text>
+  <rect class="g" x="20" y="272" width="220" height="38" rx="3"/>
+  <circle cx="34" cy="286" r="9" fill="#3e7b34"/>
+  <text x="34" y="290" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <text x="48" y="290" class="s">libsys: sets C first, so that</text>
+  <text x="48" y="304" class="s">the next unlock wakes too</text>
+  <path class="lng" d="M240,291 L336,291" marker-end="url(#ag)"/>
+  <rect class="w" x="338" y="280" width="124" height="22" rx="3"/>
+  <text x="400" y="295" class="ms c">C</text>
+  <rect class="k" x="20" y="318" width="220" height="52" rx="3"/>
+  <circle cx="34" cy="332" r="9" fill="#2c5d9b"/>
+  <text x="34" y="336" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">6</text>
+  <text x="48" y="336" class="s">kernel, futex wake(word, 1):</text>
+  <text x="48" y="350" class="s">takes B off the queue,</text>
+  <text x="48" y="364" class="s">makes it ready</text>
+  <path class="lnk" d="M240,344 L558,344" marker-end="url(#ak)"/>
+  <text x="400" y="337" class="s"></text>
+  <rect class="y" x="560" y="222" width="220" height="112" rx="3"/>
+  <text x="670" y="274" class="s c">blocked in the kernel</text>
+  <text x="670" y="290" class="s c">(state Sem)</text>
+  <rect class="g" x="560" y="340" width="220" height="38" rx="3"/>
+  <circle cx="574" cy="354" r="9" fill="#3e7b34"/>
+  <text x="574" y="358" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">7</text>
+  <text x="588" y="358" class="s">libsys: the word is unowned:</text>
+  <text x="588" y="372" class="s">returns 0 to libthr</text>
+  <rect class="wu" x="560" y="386" width="220" height="38" rx="3"/>
+  <circle cx="574" cy="400" r="9" fill="#9a6b2f"/>
+  <text x="574" y="404" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">8</text>
+  <text x="588" y="404" class="s">libthr: swap C → B | C</text>
+  <text x="588" y="418" class="s">succeeds: B holds the mutex</text>
+  <path class="ln" d="M560,405 L464,405" marker-end="url(#a)"/>
+  <rect class="w" x="338" y="394" width="124" height="22" rx="3"/>
+  <text x="400" y="409" class="ms c">B | C</text>
+  <text x="400" y="494" class="s c">Colours: tan, FreeBSD's libthr; green, libsys; blue, the kernel. The lock word never leaves user memory;</text>
+  <text x="400" y="510" class="s c">the kernel reads it once, to compare it, and keeps only the queue of waiters.</text>
+</svg>

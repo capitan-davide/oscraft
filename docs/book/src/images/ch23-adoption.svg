@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="380" viewBox="0 0 800 380" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="380" fill="#ffffff"/>
+  <text x="140" y="24" class="h c">A. In the kernel</text>
+  <text x="140" y="40" class="s c">a second system-call table</text>
+  <rect class="u" x="40" y="52" width="200" height="34" rx="4"/>
+  <text x="140" y="73" class="c">the foreign program</text>
+  <rect class="u" x="40" y="96" width="200" height="50" rx="4"/>
+  <text x="140" y="116" class="c">its own C library,</text>
+  <text x="140" y="132" class="s c">whole and unchanged</text>
+  <path class="ln" d="M140,86 L140,95" marker-end="url(#a)"/>
+  <path class="ln" d="M140,146 L140,196" marker-end="url(#a)"/>
+  <text x="148" y="168" class="s">trap, with the foreign</text>
+  <text x="148" y="182" class="s">system's call numbers</text>
+  <rect class="k" x="40" y="198" width="200" height="160" rx="4"/>
+  <text x="140" y="216" class="b c">the kernel</text>
+  <rect class="y" x="54" y="226" width="172" height="56" rx="3"/>
+  <text x="140" y="246" class="s c">emulation: foreign numbers</text>
+  <text x="140" y="260" class="s c">and layouts, converted</text>
+  <text x="140" y="274" class="s c">call by call</text>
+  <rect class="wk" x="54" y="300" width="172" height="44" rx="3"/>
+  <text x="140" y="319" class="s c">the kernel's own</text>
+  <text x="140" y="333" class="s c">implementation</text>
+  <path class="ln" d="M140,282 L140,298" marker-end="url(#a)"/>
+  <text x="400" y="24" class="h c">B. In the library</text>
+  <text x="400" y="40" class="s c">a new bottom layer</text>
+  <rect class="u" x="300" y="52" width="200" height="34" rx="4"/>
+  <text x="400" y="73" class="c">the foreign program</text>
+  <rect class="u" x="300" y="96" width="200" height="100" rx="4"/>
+  <text x="400" y="116" class="c">its own C library</text>
+  <path class="ln" d="M400,86 L400,95" marker-end="url(#a)"/>
+  <rect class="y" x="314" y="130" width="172" height="56" rx="3"/>
+  <text x="400" y="150" class="s c">system-call layer, rewritten:</text>
+  <text x="400" y="164" class="s c">the same functions, made of</text>
+  <text x="400" y="178" class="s c">the host kernel's calls</text>
+  <path class="ln" d="M400,196 L400,246" marker-end="url(#a)"/>
+  <text x="408" y="218" class="s">the host kernel's</text>
+  <text x="408" y="232" class="s">own calls</text>
+  <rect class="k" x="300" y="248" width="200" height="110" rx="4"/>
+  <text x="400" y="268" class="b c">the kernel</text>
+  <text x="400" y="290" class="s c">no second table;</text>
+  <text x="400" y="306" class="s c">but what it writes into the</text>
+  <text x="400" y="322" class="s c">program's memory must have</text>
+  <text x="400" y="338" class="s c">the foreign layouts</text>
+  <text x="660" y="24" class="h c">C. In a process</text>
+  <text x="660" y="40" class="s c">a translator between programs</text>
+  <rect class="u" x="560" y="52" width="200" height="34" rx="4"/>
+  <text x="660" y="73" class="c">the foreign program</text>
+  <rect class="u" x="560" y="96" width="200" height="50" rx="4"/>
+  <text x="660" y="116" class="c">its own C library,</text>
+  <text x="660" y="132" class="s c">whole and unchanged</text>
+  <path class="ln" d="M660,86 L660,95" marker-end="url(#a)"/>
+  <path class="ln" d="M660,146 L660,176" marker-end="url(#a)"/>
+  <rect class="k" x="560" y="178" width="200" height="40" rx="4"/>
+  <text x="660" y="196" class="b c">the kernel</text>
+  <text x="660" y="211" class="s c">only carries the requests</text>
+  <path class="ln" d="M660,218 L660,240" marker-end="url(#a)"/>
+  <rect class="y" x="560" y="242" width="200" height="50" rx="3"/>
+  <text x="660" y="262" class="s c">a translation process:</text>
+  <text x="660" y="278" class="s c">converts each request and reply</text>
+  <path class="ln" d="M660,292 L660,312" marker-end="url(#a)"/>
+  <rect class="wk" x="560" y="314" width="200" height="44" rx="3"/>
+  <text x="660" y="333" class="s c">the system's own services,</text>
+  <text x="660" y="347" class="s c">in their own layouts</text>
+</svg>

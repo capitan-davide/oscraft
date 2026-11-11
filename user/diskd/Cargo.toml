@@ -1,0 +1,29 @@
+[package]
+name = "diskd"
+description = "A disk's server: its file system, over bufcache, as a resource manager"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
+test = false
+
+[[bin]]
+name = "diskd-md"
+path = "src/bin/diskd-md.rs"
+test = false
+
+[dependencies]
+bufcache = { path = "../bufcache" }
+md = { path = "../md" }
+fsd = { path = "../fsd" }
+msdosfs = { path = "../msdosfs" }
+proto = { path = "../proto" }
+
+[target.'cfg(target_os = "freebsd")'.dependencies]
+kercall = { path = "../kercall" }
+resmgr = { path = "../resmgr" }
+
+[lints]
+workspace = true

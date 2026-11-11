@@ -1,0 +1,23 @@
+from svg import Fig
+f = Fig(800, 470)
+# diskd-md
+f.box("u", 20, 16, 500, 438); f.text(270, 36, "diskd-md, one process", "h c")
+f.box("k", 36, 50, 220, 60, 3); f.text(146, 70, "the device: /dev/md0", "b c"); f.lines(146, 86, ["raw blocks, sizes, the mount request", "user/diskd"], "s c", 13)
+f.box("k", 284, 50, 220, 60, 3); f.text(394, 70, "fsd: the mount point, /md0", "b c"); f.lines(394, 86, ["open files, permissions, directories", "user/fsd"], "s c", 13)
+f.box("wk", 284, 136, 220, 40, 3); f.text(394, 153, "Fat: the FileSystem trait for FAT", "c"); f.text(394, 168, "user/diskd", "s c")
+f.box("k", 284, 202, 220, 52, 3); f.text(394, 222, "msdosfs: Volume", "b c"); f.text(394, 239, "FAT12, 16, 32; long names", "s c")
+f.box("y", 36, 290, 468, 52, 3); f.text(270, 310, "bufcache: Cache", "b c"); f.text(270, 327, "up to 2048 blocks; owned by the device while raw, by the Volume while mounted", "s c")
+f.box("wk", 36, 372, 468, 26, 3); f.text(270, 390, "the BlockDevice trait", "c")
+f.box("k", 36, 404, 224, 38, 3); f.text(148, 420, "md: Memory", "b c"); f.text(148, 434, "a vector of bytes", "s c")
+f.box("k", 280, 404, 224, 38, 3); f.text(392, 420, "md: Image", "b c"); f.text(392, 434, "a file, opened for reading and writing", "s c")
+f.arrow([(394, 110), (394, 134)]); f.arrow([(394, 176), (394, 200)]); f.arrow([(394, 254), (394, 288)])
+f.arrow([(146, 110), (146, 288)], "ln", "a", True); f.text(154, 200, "only while", "s"); f.text(154, 214, "not mounted", "s")
+f.arrow([(270, 342), (270, 370)])
+# tmpfs
+f.box("u", 560, 16, 220, 250); f.text(670, 36, "tmpfs, another process", "h c")
+f.box("k", 576, 50, 188, 60, 3); f.text(670, 70, "fsd: /tmp and /var", "b c"); f.lines(670, 86, ["the same serving layer", "user/fsd"], "s c", 13)
+f.box("k", 576, 136, 188, 52, 3); f.text(670, 156, "Tmpfs: FileSystem", "b c"); f.text(670, 173, "files in the process's memory", "s c")
+f.arrow([(670, 110), (670, 134)])
+f.text(670, 214, "no cache and no device:", "s c"); f.text(670, 228, "there is no disk (Chapter 25)", "s c")
+f.lines(670, 320, ["Blue: Rust libraries of OsCraft.", "Each layer knows only", "the one below it."], "s c", 15)
+f.save("ch31-diskd.svg")

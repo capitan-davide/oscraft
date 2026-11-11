@@ -1,0 +1,30 @@
+from svg import Fig
+f = Fig(800, 500)
+px, kx, sx = 120, 400, 680
+f.box("u", px - 100, 14, 200, 40); f.text(px, 31, "a program in poll()", "c"); f.text(px, 46, "libsys, in the caller's thread", "s c")
+f.box("k", kx - 80, 14, 160, 40); f.text(kx, 39, "kernel", "c")
+f.box("g", sx - 100, 14, 200, 40); f.text(sx, 31, "netd", "c"); f.text(sx, 46, "owns the socket", "s c")
+for x in (px, kx, sx): f.line([(x, 54), (x, 470)], "life")
+def step(n, y, x0, x1, text, cls="lnk", m="ak", dash=False, col="#2c5d9b"):
+    f.arrow([(x0, y), (x1 + (2 if x1 < x0 else -2), y)], cls, m, dash)
+    if x0 < x1:
+        f.num(x0 + 18, y - 13, n, col); f.text(x0 + 34, y - 8, text, "s")
+    else:
+        f.num(x0 - 18, y - 13, n, col); f.text(x0 - 34, y - 8, text, "s e")
+step(1, 90, px, kx, "register: a signal to this thread")
+f.text(kx - 8, 106, "returns a handle", "s e green")
+step(2, 140, px, sx, "_IO_NOTIFY on the descriptor: \"is it readable? if not, arm this handle\"")
+f.box("g", sx - 55, 146, 110, 34, 3); f.text(sx, 160, "not readable:", "s c"); f.text(sx, 173, "keeps the handle", "s c")
+f.arrow([(sx, 190), (px + 2, 190)], "lng", "ag"); f.text(sx - 60, 204, "reply: nothing ready", "s e green")
+step(3, 238, px, kx, "wait for the signal, with poll()'s timeout")
+f.box("y", px - 50, 244, 100, 108, 3); f.text(px, 290, "blocked in", "s c"); f.text(px, 303, "the kernel", "s c")
+f.arrow([(795, 290), (sx + 64, 290)], "ln", "a"); f.text(795, 262, "a packet", "s e")
+f.box("g", sx - 62, 268, 124, 44, 3); f.text(sx, 286, "the stack wakes", "s c"); f.text(sx, 299, "the socket's waiters", "s c")
+step(4, 338, sx, kx, "MsgDeliverEvent(client, handle)")
+f.arrow([(kx, 366), (px + 52, 366)], "lnk", "ak", True); f.num(kx - 18, 353, 5, "#2c5d9b"); f.text(kx - 34, 358, "the registered signal", "s e")
+f.box("g", px - 50, 356, 100, 24, 3); f.text(px, 372, "wakes", "s c")
+step(6, 410, px, sx, "_IO_NOTIFY again: \"what is ready?\" (and disarm)")
+f.arrow([(sx, 440), (px + 2, 440)], "lng", "ag"); f.text(sx - 8, 454, "reply: readable", "s e green")
+f.text(px + 8, 466, "unregisters the handle; poll() returns POLLIN", "s")
+f.text(400, 490, "Steps 1 and 2 are repeated for every descriptor in the set, each with its own server; one wait covers them all.", "s c")
+f.save("ch11-poll.svg")

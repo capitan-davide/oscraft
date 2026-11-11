@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="390" viewBox="0 0 800 390" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="390" fill="#ffffff"/>
+  <rect class="k" x="20" y="20" width="210" height="46" rx="4"/>
+  <text x="125" y="40" class="b c">name manager</text>
+  <text x="125" y="56" class="s c">/dev/random belongs to this server</text>
+  <rect class="u" x="20" y="170" width="150" height="86" rx="4"/>
+  <text x="95" y="192" class="b c">client</text>
+  <text x="95" y="210" class="s c">blocked from its</text>
+  <text x="95" y="224" class="s c">request to the reply</text>
+  <rect class="u" x="290" y="20" width="490" height="350" rx="4"/>
+  <text x="535" y="42" class="b c">server process</text>
+  <rect class="wu" x="310" y="160" width="120" height="48" rx="3"/>
+  <text x="370" y="181" class="b c">receive</text>
+  <text x="370" y="197" class="s c">wait for a message</text>
+  <rect class="wu" x="470" y="160" width="120" height="48" rx="3"/>
+  <text x="530" y="181" class="b c">dispatch</text>
+  <text x="530" y="197" class="s c">by message type</text>
+  <text x="695" y="76" class="s c">handlers</text>
+  <rect class="w" x="640" y="84" width="110" height="28" rx="0"/>
+  <text x="695" y="102" class="m c">open</text>
+  <rect class="g" x="640" y="112" width="110" height="28" rx="0"/>
+  <text x="695" y="130" class="m c">read</text>
+  <rect class="w" x="640" y="140" width="110" height="28" rx="0"/>
+  <text x="695" y="158" class="m c">write</text>
+  <rect class="w" x="640" y="168" width="110" height="28" rx="0"/>
+  <text x="695" y="186" class="m c">close</text>
+  <rect class="w" x="640" y="196" width="110" height="28" rx="0"/>
+  <text x="695" y="214" class="m c">...</text>
+  <rect class="y" x="470" y="292" width="280" height="52" rx="3"/>
+  <text x="610" y="313" class="b c">state of each open file</text>
+  <text x="610" y="330" class="s c">which client, which file, its position</text>
+  <rect class="wu" x="310" y="292" width="120" height="52" rx="3"/>
+  <text x="370" y="314" class="b c">reply</text>
+  <text x="370" y="331" class="s c">status and data</text>
+  <path class="lnk" d="M290,43 L232,43" marker-end="url(#ak)"/>
+  <circle cx="262" cy="28" r="9" fill="#2c5d9b"/>
+  <text x="262" y="32" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="282" y="84" class="s e">claims a name</text>
+  <path class="lnk" d="M170,184 L308,184" marker-end="url(#ak)"/>
+  <circle cx="206" cy="170" r="9" fill="#2c5d9b"/>
+  <text x="206" y="174" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <text x="222" y="174" class="s">request</text>
+  <path class="ln" d="M430,184 L468,184" marker-end="url(#a)"/>
+  <circle cx="449" cy="168" r="9" fill="#333333"/>
+  <text x="449" y="172" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <path class="ln" d="M590,184 L615,184 L615,126 L638,126" marker-end="url(#a)"/>
+  <circle cx="615" cy="150" r="9" fill="#333333"/>
+  <text x="615" y="154" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <path class="ln" d="M695,224 L695,290" marker-end="url(#a)" marker-start="url(#a)"/>
+  <circle cx="712" cy="258" r="9" fill="#333333"/>
+  <text x="712" y="262" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <path class="ln" d="M468,318 L432,318" marker-end="url(#a)"/>
+  <path class="lng" d="M310,318 L240,318 L240,236 L172,236" marker-end="url(#ag)"/>
+  <circle cx="240" cy="276" r="9" fill="#3e7b34"/>
+  <text x="240" y="280" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">6</text>
+  <text x="206" y="252" class="s c">reply</text>
+  <path class="ln dash" d="M370,292 L370,210" marker-end="url(#a)"/>
+  <text x="378" y="256" class="s">and again</text>
+</svg>

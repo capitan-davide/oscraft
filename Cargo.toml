@@ -1,0 +1,42 @@
+[workspace]
+resolver = "3"
+members = [
+    "kernel", "tools/mkifs",
+    # The FreeBSD personality's user side: the message layouts, and
+    # FreeBSD's libsys over OsCraft (built into FreeBSD's libc and loader).
+    "user/proto", "user/qnxabi", "user/logring", "user/bsdkern", "user/netd", "user/bufcache", "user/msdosfs", "user/md", "user/fsd", "user/tmpfs", "user/usbd",
+    "user/pcid", "user/libsys",
+    # Native servers' foundations: the kernel calls and the resource-manager framework.
+    "user/kercall", "user/resmgr",
+    # Native servers (FreeBSD-personality programs, built by `make native`).
+    "user/random", "user/pipe", "user/pty", "user/qnxd", "user/syslogd", "user/diskd",
+    # The tests' own programs (Rust): the minimal program of each personality
+    # without a libc, a native server for priochaintest, bsdkern's checks.
+    "tests/native/hello", "tests/qnx/qnxhello", "tests/native/priochain", "tests/native/bsdkern",
+]
+# The startup library has a workspace of its own (startup/).
+exclude = ["startup"]
+default-members = ["tools/mkifs"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+
+# Unsafe code stays in small, documented places: each unsafe
+# block holds one unsafe operation and says why it is sound, and an unsafe
+# fn states its preconditions and still marks its own unsafe operations.
+[workspace.lints.rust]
+unsafe_op_in_unsafe_fn = "deny"
+
+[workspace.lints.clippy]
+undocumented_unsafe_blocks = "warn"
+multiple_unsafe_ops_per_block = "warn"
+missing_safety_doc = "warn"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+debug = true

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="410" viewBox="0 0 800 410" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="410" fill="#ffffff"/>
+  <text x="20" y="30" class="h">Without inheritance: priority inversion</text>
+  <text x="170" y="72" class="e">client H, priority 30</text>
+  <path class="life" d="M180,80 L770,80"/>
+  <text x="170" y="106" class="e">thread M, priority 20</text>
+  <path class="life" d="M180,114 L770,114"/>
+  <text x="170" y="140" class="e">server S, priority 10</text>
+  <path class="life" d="M180,148 L770,148"/>
+  <rect class="g" x="180" y="126" width="80" height="22" rx="2"/>
+  <text x="220.0" y="141" class="s c">runs</text>
+  <rect class="g" x="260" y="58" width="40" height="22" rx="2"/>
+  <text x="280.0" y="73" class="s c">sends</text>
+  <rect class="r" x="300" y="58" width="470" height="22" rx="2"/>
+  <text x="535.0" y="73" class="s c">waits for S, which cannot run: as long as M likes</text>
+  <rect class="g" x="300" y="126" width="50" height="22" rx="2"/>
+  <text x="325.0" y="141" class="s c">runs</text>
+  <rect class="g" x="350" y="92" width="420" height="22" rx="2"/>
+  <text x="560.0" y="107" class="s c">M is ready, and 20 beats 10: M runs</text>
+  <rect class="n" x="350" y="126" width="420" height="22" rx="2"/>
+  <text x="560.0" y="141" class="s c">S is preempted, holding H's request</text>
+  <path class="ln" d="M180,162 L770,162" marker-end="url(#a)"/>
+  <text x="770" y="177" class="s e">time</text>
+  <text x="20" y="240" class="h">With inheritance: the server runs at its client's priority</text>
+  <text x="170" y="282" class="e">client H, priority 30</text>
+  <path class="life" d="M180,290 L770,290"/>
+  <text x="170" y="316" class="e">thread M, priority 20</text>
+  <path class="life" d="M180,324 L770,324"/>
+  <text x="170" y="350" class="e">server S, priority 10</text>
+  <path class="life" d="M180,358 L770,358"/>
+  <rect class="g" x="180" y="336" width="80" height="22" rx="2"/>
+  <text x="220.0" y="351" class="s c">runs</text>
+  <rect class="g" x="260" y="268" width="40" height="22" rx="2"/>
+  <text x="280.0" y="283" class="s c">sends</text>
+  <rect class="y" x="300" y="268" width="170" height="22" rx="2"/>
+  <text x="385.0" y="283" class="s c">waits for S</text>
+  <rect class="k" x="300" y="336" width="170" height="22" rx="2"/>
+  <text x="385.0" y="351" class="s c">runs at 30: H's request</text>
+  <rect class="n" x="350" y="302" width="270" height="22" rx="2"/>
+  <text x="485.0" y="317" class="s c">M is ready, waits its turn</text>
+  <rect class="g" x="470" y="268" width="150" height="22" rx="2"/>
+  <text x="545.0" y="283" class="s c">has its reply, runs</text>
+  <rect class="g" x="620" y="302" width="150" height="22" rx="2"/>
+  <text x="695.0" y="317" class="s c">M runs</text>
+  <rect class="n" x="470" y="336" width="300" height="22" rx="2"/>
+  <text x="620.0" y="351" class="s c">replied; waits to receive the next message</text>
+  <path class="ln" d="M180,372 L770,372" marker-end="url(#a)"/>
+  <text x="770" y="387" class="s e">time</text>
+</svg>

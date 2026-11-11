@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="400" viewBox="0 0 820 400" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="820" height="400" fill="#ffffff"/>
+  <rect class="n" x="20" y="150" width="120" height="70" rx="4"/>
+  <text x="80" y="180" class="b c">the UART</text>
+  <text x="80" y="198" class="s c">PL011</text>
+  <rect class="k" x="190" y="16" width="420" height="368" rx="4"/>
+  <text x="206" y="36" class="b">process 1: the console, /dev/text</text>
+  <rect class="wk" x="210" y="56" width="170" height="62" rx="3"/>
+  <text x="295" y="76" class="b c">poller thread</text>
+  <text x="295" y="93" class="s c">asks the UART every 10 ms,</text>
+  <text x="295" y="108" class="s c">only while input is wanted</text>
+  <rect class="y" x="420" y="62" width="170" height="50" rx="3"/>
+  <text x="505" y="82" class="s c">input queue</text>
+  <text x="505" y="98" class="s c">at most 2048 bytes</text>
+  <rect class="wk" x="210" y="150" width="380" height="150" rx="3"/>
+  <text x="226" y="170" class="b">server thread, on channel 2</text>
+  <rect class="y" x="226" y="182" width="348" height="66" rx="3"/>
+  <text x="400" y="200" class="s c">line discipline, set by termios</text>
+  <text x="400" y="217" class="s c">canonical: edit a line, echo, hand over whole lines</text>
+  <text x="400" y="234" class="s c">Ctrl-C, Ctrl-\, Ctrl-Z: a signal to the foreground group</text>
+  <rect class="y" x="226" y="258" width="348" height="30" rx="3"/>
+  <text x="400" y="277" class="s c">held reads: requests not yet answered</text>
+  <rect class="wk" x="210" y="326" width="380" height="40" rx="3"/>
+  <text x="400" y="343" class="s c">output: written through the startup's</text>
+  <text x="400" y="358" class="s c">print-a-character routine</text>
+  <rect class="u" x="660" y="150" width="140" height="60" rx="4"/>
+  <text x="730" y="174" class="b c">sh</text>
+  <text x="730" y="192" class="ms c">read(0, ...)</text>
+  <rect class="u" x="660" y="316" width="140" height="60" rx="4"/>
+  <text x="730" y="340" class="b c">any program</text>
+  <text x="730" y="358" class="ms c">write(1, ...)</text>
+  <path class="ln" d="M140,170 L165,170 L165,87 L208,87" marker-end="url(#a)"/>
+  <circle cx="165" cy="128" r="9" fill="#333333"/>
+  <text x="165" y="132" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <path class="ln" d="M380,87 L418,87" marker-end="url(#a)"/>
+  <circle cx="399" cy="70" r="9" fill="#333333"/>
+  <text x="399" y="74" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <path class="lnk dash" d="M505,112 L505,148" marker-end="url(#ak)"/>
+  <circle cx="524" cy="131" r="9" fill="#2c5d9b"/>
+  <text x="524" y="135" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="540" y="135" class="s">pulse</text>
+  <path class="lnk" d="M658,172 L592,172" marker-end="url(#ak)"/>
+  <text x="625" y="164" class="s c">read</text>
+  <path class="lng" d="M592,273 L630,273 L630,196 L658,196" marker-end="url(#ag)"/>
+  <circle cx="630" cy="236" r="9" fill="#3e7b34"/>
+  <text x="630" y="240" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <path class="lnk" d="M658,346 L592,346" marker-end="url(#ak)"/>
+  <text x="625" y="338" class="s c">write</text>
+  <path class="ln" d="M208,346 L80,346 L80,222" marker-end="url(#a)"/>
+</svg>

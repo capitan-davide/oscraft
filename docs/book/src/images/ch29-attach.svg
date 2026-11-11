@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="400" fill="#ffffff"/>
+  <rect class="u" x="20" y="20" width="300" height="250" rx="4"/>
+  <text x="170" y="42" class="h c">netd</text>
+  <rect class="g" x="36" y="56" width="268" height="40" rx="3"/>
+  <text x="170" y="73" class="c">virtio_pci: FreeBSD's driver</text>
+  <text x="170" y="88" class="ms c">bus_alloc_resource(), bus_setup_intr()</text>
+  <rect class="k" x="36" y="110" width="268" height="40" rx="3"/>
+  <text x="170" y="127" class="c">the PCI client bus</text>
+  <text x="170" y="142" class="s c">asks pcid, then passes the request up</text>
+  <rect class="k" x="36" y="164" width="268" height="92" rx="3"/>
+  <text x="170" y="181" class="c">the nexus</text>
+  <rect class="wk" x="46" y="190" width="120" height="56" rx="3"/>
+  <text x="106" y="208" class="s c">map the window</text>
+  <text x="106" y="224" class="ms c">(_MEM_MAP,</text>
+  <text x="106" y="238" class="ms c">uncached)</text>
+  <rect class="wk" x="174" y="190" width="120" height="56" rx="3"/>
+  <text x="234" y="208" class="s c">interrupt thread</text>
+  <text x="234" y="224" class="ms c">InterruptAttach-</text>
+  <text x="234" y="238" class="ms c">Thread(vector)</text>
+  <path class="ln" d="M170,96 L170,108" marker-end="url(#a)"/>
+  <path class="ln" d="M170,150 L170,162" marker-end="url(#a)"/>
+  <rect class="u" x="480" y="20" width="300" height="150" rx="4"/>
+  <text x="630" y="42" class="h c">pcid</text>
+  <rect class="g" x="496" y="56" width="268" height="40" rx="3"/>
+  <text x="630" y="73" class="c">FreeBSD's PCI bus</text>
+  <text x="630" y="88" class="s c">the function's resource list</text>
+  <rect class="g" x="496" y="110" width="268" height="46" rx="3"/>
+  <text x="630" y="128" class="c">the host bridge</text>
+  <text x="630" y="144" class="s c">translates addresses, routed INTx</text>
+  <path class="lnk" d="M320,70 L478,70" marker-end="url(#ak)"/>
+  <text x="408" y="64" class="ms c">PCIOCGETCONF</text>
+  <circle cx="334" cy="56" r="9" fill="#2c5d9b"/>
+  <text x="334" y="60" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <path class="lnk" d="M320,106 L478,106" marker-end="url(#ak)"/>
+  <text x="408" y="100" class="ms c">PCIOCREAD, PCIOCWRITE</text>
+  <circle cx="334" cy="92" r="9" fill="#2c5d9b"/>
+  <text x="334" y="96" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <path class="lnk" d="M320,142 L478,142" marker-end="url(#ak)"/>
+  <text x="408" y="136" class="ms c">PCIOCROUTE</text>
+  <circle cx="334" cy="128" r="9" fill="#2c5d9b"/>
+  <text x="334" y="132" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <path class="lng dash" d="M478,160 L320,160" marker-end="url(#ag)"/>
+  <text x="400" y="176" class="ms c">base, len, irq</text>
+  <rect class="k" x="20" y="300" width="300" height="40" rx="4"/>
+  <text x="170" y="318" class="c">process 1 and the microkernel</text>
+  <text x="170" y="333" class="s c">mappings and interrupts</text>
+  <path class="ln" d="M106,246 L106,298" marker-end="url(#a)"/>
+  <circle cx="92" cy="282" r="9" fill="#333333"/>
+  <text x="92" y="286" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <path class="ln" d="M234,246 L234,298" marker-end="url(#a)"/>
+  <circle cx="248" cy="282" r="9" fill="#333333"/>
+  <text x="248" y="286" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <rect class="n" x="480" y="220" width="300" height="120" rx="4"/>
+  <text x="630" y="242" class="h c">the virtio network device</text>
+  <rect class="w" x="496" y="256" width="268" height="30" rx="3"/>
+  <text x="630" y="275" class="s c">registers, at the BAR's CPU address</text>
+  <rect class="w" x="496" y="296" width="268" height="30" rx="3"/>
+  <text x="630" y="315" class="s c">its INTx interrupt</text>
+  <path class="lng" d="M166,212 L400,212 L400,271 L494,271" marker-end="url(#ag)" marker-start="url(#ag)"/>
+  <path class="lnr" d="M494,311 L360,311 L322,320" marker-end="url(#ar)"/>
+  <text x="408" y="204" class="s c">loads and stores</text>
+  <text x="400" y="372" class="s c">Steps 1 to 3 are messages to pcid, at set-up. After step 5 the driver reads its registers and takes its interrupts</text>
+  <text x="400" y="388" class="s c">without pcid: no data and no interrupt ever passes through it.</text>
+</svg>

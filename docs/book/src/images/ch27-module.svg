@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="430" viewBox="0 0 800 430" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="430" fill="#ffffff"/>
+  <rect class="u" x="20" y="14" width="200" height="76" rx="4"/>
+  <text x="120" y="34" class="b c">kldload(8)</text>
+  <text x="120" y="52" class="s c">FreeBSD's program, as it is</text>
+  <text x="120" y="72" class="ms c">kldload /boot/modules/pci.ko</text>
+  <rect class="frame" x="250" y="8" width="530" height="410" rx="4"/>
+  <text x="770" y="26" class="s e">netd</text>
+  <rect class="k" x="270" y="34" width="230" height="46" rx="4"/>
+  <text x="385" y="53" class="b c">/dev/netd</text>
+  <text x="385" y="69" class="s c">the call's number and arguments</text>
+  <path class="lnk" d="M220,57 L268,57" marker-end="url(#ak)"/>
+  <circle cx="244" cy="43" r="9" fill="#2c5d9b"/>
+  <text x="244" y="47" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <rect class="g" x="270" y="100" width="230" height="46" rx="4"/>
+  <text x="385" y="119" class="b c">sys_kldload(), kern_linker.c</text>
+  <text x="385" y="135" class="s c">FreeBSD's linker, not edited</text>
+  <path class="ln" d="M385,80 L385,98" marker-end="url(#a)"/>
+  <rect class="k" x="270" y="166" width="230" height="150" rx="4"/>
+  <text x="385" y="185" class="b c">the linker class "dl" (bsdkern)</text>
+  <rect class="wk" x="282" y="196" width="206" height="23" rx="3"/>
+  <text x="385" y="212" class="ms c">dlopen() the file</text>
+  <rect class="wk" x="282" y="225" width="206" height="23" rx="3"/>
+  <text x="385" y="241" class="ms c">check bsdkern_module_abi</text>
+  <rect class="wk" x="282" y="254" width="206" height="23" rx="3"/>
+  <text x="385" y="270" class="ms c">room for its per-CPU variables</text>
+  <rect class="wk" x="282" y="283" width="206" height="23" rx="3"/>
+  <text x="385" y="299" class="ms c">sets: dlsym("__start_set_x")</text>
+  <path class="ln" d="M385,146 L385,164" marker-end="url(#a)"/>
+  <circle cx="400" cy="155" r="9" fill="#333333"/>
+  <text x="400" y="159" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <rect class="y" x="540" y="166" width="220" height="150" rx="4"/>
+  <text x="650" y="185" class="b c">pci.ko: a shared object</text>
+  <text x="650" y="206" class="s c">FreeBSD kernel C, compiled with</text>
+  <text x="650" y="222" class="s c">the library's flags and renames</text>
+  <text x="650" y="238" class="s c"></text>
+  <text x="650" y="254" class="s c">set_modmetadata_set</text>
+  <text x="650" y="270" class="s c">set_sysinit_set, set_sysctl_set</text>
+  <text x="650" y="286" class="s c">set_pcpu</text>
+  <path class="ln dash" d="M500,207 L538,207" marker-end="url(#a)"/>
+  <text x="519" y="199" class="s c">rtld</text>
+  <path class="ln dash" d="M538,294 L502,294" marker-end="url(#a)"/>
+  <rect class="g" x="270" y="336" width="490" height="66" rx="4"/>
+  <text x="515" y="355" class="b c">back in kern_linker.c, as in a kernel</text>
+  <text x="515" y="373" class="s c">register the module's modules, sysctls and drivers; run its SYSINITs;</text>
+  <text x="515" y="389" class="s c">newbus then probes the new drivers against the devices already found</text>
+  <path class="ln" d="M385,316 L385,334" marker-end="url(#a)"/>
+  <circle cx="400" cy="325" r="9" fill="#333333"/>
+  <text x="400" y="329" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="20" y="130" class="s">The module's undefined</text>
+  <text x="20" y="146" class="s">symbols (malloc(9),</text>
+  <text x="20" y="162" class="s">device_get_softc() ...)</text>
+  <text x="20" y="178" class="s">bind to the server itself:</text>
+  <text x="20" y="194" class="s">it is linked at a fixed</text>
+  <text x="20" y="210" class="s">address and exports</text>
+  <text x="20" y="226" class="s">all its symbols.</text>
+  <text x="20" y="270" class="s">kldunload reverses it:</text>
+  <text x="20" y="286" class="s">MOD_QUIESCE,</text>
+  <text x="20" y="302" class="s">MOD_UNLOAD,</text>
+  <text x="20" y="318" class="s">SYSUNINITs, dlclose().</text>
+</svg>

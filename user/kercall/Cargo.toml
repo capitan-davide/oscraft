@@ -1,0 +1,15 @@
+[package]
+name = "kercall"
+description = "OsCraft's kernel calls for native programs: QNX's <sys/neutrino.h> as C and Rust functions, paths and the I/O messages"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+test = false
+
+[dependencies]
+proto = { path = "../proto" }
+
+[lints]
+workspace = true

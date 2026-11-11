@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="330" viewBox="0 0 820 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="13">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker></defs>
+  <style>
+    .k { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .y { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .ln { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .t { text-anchor: middle; }
+    .b { font-weight: bold; }
+    .s { font-size: 11px; fill: #444444; }
+  </style>
+  <rect width="820" height="330" fill="#ffffff"/>
+  <!-- the chain -->
+  <rect class="n" x="20" y="40" width="140" height="70" rx="6"/>
+  <text class="t b" x="90" y="68">Firmware,</text>
+  <text class="t b" x="90" y="86">boot loader</text>
+  <text class="t s" x="90" y="102">loads the image</text>
+  <rect class="k" x="220" y="40" width="160" height="70" rx="6"/>
+  <text class="t b" x="300" y="68">Startup</text>
+  <text class="t s" x="300" y="86">this library +</text>
+  <text class="t s" x="300" y="100">a board crate</text>
+  <rect class="u" x="440" y="40" width="160" height="70" rx="6"/>
+  <text class="t b" x="520" y="68">procnto</text>
+  <text class="t s" x="520" y="86">QNX kernel and</text>
+  <text class="t s" x="520" y="100">process manager</text>
+  <rect class="u" x="660" y="40" width="140" height="70" rx="6"/>
+  <text class="t b" x="730" y="68">Boot script</text>
+  <text class="t s" x="730" y="86">drivers, shell,</text>
+  <text class="t s" x="730" y="100">applications</text>
+  <path class="ln" d="M160,75 L218,75" marker-end="url(#a)"/>
+  <path class="ln" d="M380,75 L438,75" marker-end="url(#a)"/>
+  <path class="ln" d="M600,75 L658,75" marker-end="url(#a)"/>
+  <text class="t s" x="190" y="66">jump</text>
+  <text class="t s" x="410" y="66">jump</text>
+  <text class="t s" x="630" y="66">spawn</text>
+  <!-- what startup hands over -->
+  <rect class="y" x="220" y="170" width="380" height="140" rx="6"/>
+  <text class="t b" x="410" y="194">What startup leaves for the kernel</text>
+  <text x="240" y="220">the system page: RAM, CPUs, caches, interrupt</text>
+  <text x="240" y="238">controllers, timer, devices, strings</text>
+  <text x="240" y="262">callouts: board code the kernel calls</text>
+  <text x="240" y="286">page tables, MMU on; every CPU waiting in smp_spin</text>
+  <path class="ln dash" d="M300,110 L300,168" marker-end="url(#a)"/>
+  <path class="ln dash" d="M520,168 L520,112" marker-end="url(#a)"/>
+  <text class="s" x="306" y="126">builds</text>
+  <text class="s" x="526" y="126">reads, calls</text>
+  <text class="t s" x="410" y="146">startup runs once: on the boot CPU,</text>
+  <text class="t s" x="410" y="160">then briefly on each other CPU</text>
+</svg>

@@ -1,0 +1,31 @@
+from svg import Fig
+f = Fig(800, 400)
+f.box("u", 20, 40, 150, 200); f.text(95, 62, "debugger", "b c")
+f.lines(95, 86, ["knows the program's", "source and symbols;", "shows variables,", "the stack, the", "current line"], "s c")
+f.box("k", 360, 40, 150, 200); f.text(435, 62, "operating system", "b c"); f.text(435, 78, "debug interface", "s c")
+f.box("u", 630, 40, 150, 200); f.text(705, 62, "debugged process", "b c")
+f.box("wu", 645, 80, 120, 40); f.text(705, 97, "memory", "c"); f.text(705, 111, "code, data, stacks", "s c")
+f.box("wu", 645, 130, 120, 40); f.text(705, 147, "threads", "c"); f.text(705, 161, "registers of each", "s c")
+ops = ["stop it, let it run", "read and write memory", "read and write registers", "set a breakpoint", "run one instruction"]
+for i, t in enumerate(ops):
+    y = 90 + i * 26
+    f.num(186, y, i + 1, "#2c5d9b")
+    f.text(200, y + 4, t, "s")
+    f.arrow([(170, y + 9), (358, y + 9)], "lnk", "ak")
+f.arrow([(510, 100), (643, 100)], "lnk", "ak", start=True); f.text(577, 93, "copies bytes", "s c")
+f.arrow([(510, 150), (643, 150)], "lnk", "ak", start=True); f.text(577, 143, "saved state", "s c")
+f.arrow([(358, 228), (172, 228)], "ln", "a", True); f.text(265, 222, "\"it has stopped, and why\"", "s c")
+f.arrow([(630, 205), (512, 205)], "lnr", "ar"); f.text(571, 198, "trap, fault, signal", "s c red")
+# Remote debugging.
+f.line([(20, 262), (780, 262)], "life")
+f.text(400, 284, "Remote debugging: the same, split in two", "h c")
+f.box("frame", 20, 298, 230, 76); f.text(30, 314, "development machine", "s")
+f.box("u", 40, 322, 190, 40); f.text(135, 339, "debugger", "c"); f.text(135, 353, "source, symbols, user interface", "s c")
+f.arrow([(250, 342), (398, 342)], "ln", "a", start=True); f.text(324, 334, "serial line or network", "s c"); f.text(324, 358, "a small protocol", "s c")
+f.box("frame", 400, 298, 380, 76); f.text(410, 314, "target", "s")
+f.box("u", 420, 322, 110, 40); f.text(475, 339, "agent", "c"); f.text(475, 353, "does 1 to 5 locally", "s c")
+f.arrow([(530, 342), (558, 342)], "lnk", "ak")
+f.box("k", 560, 322, 80, 40); f.text(600, 346, "system", "c")
+f.arrow([(640, 342), (668, 342)], "lnk", "ak")
+f.box("u", 670, 322, 95, 40); f.text(717, 346, "process", "c")
+f.save("ch36-debugger.svg")

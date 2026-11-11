@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="300" viewBox="0 0 860 300" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+
+  <rect x="0" y="0" width="860" height="300" fill="#ffffff"/>
+  <rect class="k" x="30" y="40" width="240" height="70" rx="4"/>
+  <text x="150.0" y="72.0" class="b c">system counter</text>
+  <text x="150.0" y="86.0" class="s c">CNTFRQ = 62.5 MHz: 16 ns</text>
+  <rect class="k" x="320" y="40" width="240" height="70" rx="4"/>
+  <text x="440.0" y="72.0" class="b c">virtual timer (per CPU)</text>
+  <text x="440.0" y="86.0" class="s c">compare value, 64 bits</text>
+  <rect class="g" x="610" y="40" width="220" height="70" rx="4"/>
+  <text x="720.0" y="72.0" class="b c">GIC: PPI 27</text>
+  <text x="720.0" y="86.0" class="s c">the kernel&#x27;s tick, 1 ms</text>
+  <polyline class="ln" points="272,75 318,75" marker-end="url(#a)"/>
+  <polyline class="ln" points="562,75 608,75" marker-end="url(#a)"/>
+  <rect class="y" x="30" y="160" width="530" height="90" rx="4"/>
+  <text x="46" y="182" class="b">qtime, as startup fills it</text>
+  <text x="46" y="202" class="ms">timer_rate = 16, timer_scale = -9   (16 x 10^-9 s per count)</text>
+  <text x="46" y="220" class="ms">intr = 27, timer_load_max = 0x7fff_ffff_ffff_ffff</text>
+  <text x="46" y="238" class="ms">cycles_per_sec = 62 500 000</text>
+  <rect class="y" x="610" y="160" width="220" height="90" rx="4"/>
+  <text x="620" y="182" class="b">cpuinfo: 4 entries</text>
+  <text x="620" y="202" class="s">Cortex-A72 (0x410fd083)</text>
+  <text x="620" y="220" class="s">speed 0 MHz: unknown</text>
+  <text x="620" y="238" class="s">flags: FPU, caches, MMU</text>
+</svg>

@@ -1,0 +1,16 @@
+from svg import Fig
+f = Fig(820, 330)
+f.text(110, 24, "file descriptors", "h c"); f.text(110, 40, "per process", "s c")
+f.text(410, 24, "open file descriptions", "h c"); f.text(410, 40, "per open(): state in the server", "s c")
+f.text(700, 24, "files", "h c"); f.text(700, 40, "per file: state in the server", "s c")
+def proc(y, name, fd):
+    f.box("u", 20, y, 180, 66); f.text(110, y + 18, name, "s c")
+    f.box("wu", 40, y + 26, 140, 28, 3); f.text(110, y + 45, fd, "m c")
+proc(56, "parent", "fd 1"); proc(136, "child, after fork()", "fd 1"); proc(216, "another process", "fd 3")
+f.box("y", 310, 86, 200, 62); f.text(410, 108, "description A", "b c"); f.text(410, 126, "position 120, append mode", "s c")
+f.box("y", 310, 226, 200, 50); f.text(410, 248, "description B", "b c"); f.text(410, 265, "position 0", "s c")
+f.box("y", 610, 150, 190, 66); f.text(705, 172, "/tmp/log", "m c"); f.text(705, 190, "size, owner, mode, times", "s c"); f.text(705, 205, "and the data", "s c")
+f.arrow([(180, 96), (308, 110)], "lnk", "ak"); f.arrow([(180, 176), (308, 126)], "lnk", "ak"); f.arrow([(180, 256), (308, 252)], "lnk", "ak")
+f.arrow([(510, 118), (608, 172)]); f.arrow([(510, 250), (608, 196)])
+f.text(20, 314, "A write through either of the first two descriptors moves the position the other sees. The third has a position of its own.", "s")
+f.save("ch22-fd-levels.svg")

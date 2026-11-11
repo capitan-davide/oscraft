@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="300" fill="#ffffff"/>
+  <path class="life" d="M400,14 L400,286"/>
+  <text x="200" y="28" class="h c">INTx: four shared wires</text>
+  <text x="600" y="28" class="h c">MSI: a write to memory</text>
+  <rect class="w" x="30" y="48" width="150" height="40" rx="4"/>
+  <text x="105" y="65" class="s c">function 00:01.0</text>
+  <text x="105" y="80" class="ms c">pin INTA</text>
+  <rect class="w" x="30" y="100" width="150" height="40" rx="4"/>
+  <text x="105" y="117" class="s c">function 00:02.0</text>
+  <text x="105" y="132" class="ms c">pin INTA</text>
+  <rect class="k" x="220" y="60" width="150" height="68" rx="4"/>
+  <text x="295" y="80" class="c">the bridge's</text>
+  <text x="295" y="96" class="c">interrupt map</text>
+  <text x="295" y="114" class="ms c">(device, pin) -&gt; line</text>
+  <path class="ln" d="M180,68 L218,84" marker-end="url(#a)"/>
+  <path class="ln" d="M180,120 L218,104" marker-end="url(#a)"/>
+  <rect class="n" x="220" y="164" width="150" height="46" rx="4"/>
+  <text x="295" y="183" class="c">interrupt controller</text>
+  <text x="295" y="199" class="s c">one of four inputs</text>
+  <path class="ln" d="M295,128 L295,162" marker-end="url(#a)"/>
+  <rect class="g" x="220" y="240" width="150" height="40" rx="4"/>
+  <text x="295" y="258" class="s c">every driver on that line</text>
+  <text x="295" y="272" class="s c">asks its device: was it you?</text>
+  <path class="ln" d="M295,210 L295,238" marker-end="url(#a)"/>
+  <text x="30" y="170" class="s">level-triggered: the line</text>
+  <text x="30" y="185" class="s">stays active until the</text>
+  <text x="30" y="200" class="s">device is satisfied;</text>
+  <text x="30" y="215" class="s">several functions may</text>
+  <text x="30" y="230" class="s">share one line</text>
+  <rect class="w" x="430" y="48" width="150" height="60" rx="4"/>
+  <text x="505" y="66" class="s c">function 00:01.0</text>
+  <text x="505" y="82" class="s c">MSI capability:</text>
+  <text x="505" y="98" class="ms c">address, data</text>
+  <rect class="n" x="620" y="48" width="150" height="60" rx="4"/>
+  <text x="695" y="68" class="c">MSI controller</text>
+  <text x="695" y="84" class="s c">a register at</text>
+  <text x="695" y="99" class="s c">that address</text>
+  <path class="ln" d="M580,78 L618,78" marker-end="url(#a)"/>
+  <text x="599" y="126" class="s c">an ordinary bus write of data</text>
+  <rect class="n" x="620" y="164" width="150" height="46" rx="4"/>
+  <text x="695" y="183" class="c">interrupt controller</text>
+  <text x="695" y="199" class="s c">a vector per message</text>
+  <path class="ln" d="M695,108 L695,162" marker-end="url(#a)"/>
+  <rect class="g" x="620" y="240" width="150" height="40" rx="4"/>
+  <text x="695" y="258" class="s c">one driver, and it knows</text>
+  <text x="695" y="272" class="s c">which queue or event</text>
+  <path class="ln" d="M695,210 L695,238" marker-end="url(#a)"/>
+  <text x="430" y="170" class="s">no wire and no sharing;</text>
+  <text x="430" y="185" class="s">MSI-X: up to 2048 vectors,</text>
+  <text x="430" y="200" class="s">their table in a BAR;</text>
+  <text x="430" y="215" class="s">the operating system must</text>
+  <text x="430" y="230" class="s">hand out address and data</text>
+</svg>

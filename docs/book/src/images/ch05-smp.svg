@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="584" viewBox="0 0 800 584" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="584" fill="#ffffff"/>
+  <rect class="k" x="30.0" y="12" width="240" height="40" rx="4"/>
+  <text x="150" y="29" class="b c">CPU 0</text>
+  <text x="150" y="44" class="s c">startup, then the kernel</text>
+  <path class="life" d="M150,52 L150,572"/>
+  <rect class="n" x="325.0" y="12" width="150" height="40" rx="4"/>
+  <text x="400" y="29" class="b c">QEMU</text>
+  <text x="400" y="44" class="s c">answers PSCI calls</text>
+  <path class="life" d="M400,52 L400,572"/>
+  <rect class="k" x="530.0" y="12" width="240" height="40" rx="4"/>
+  <text x="650" y="29" class="b c">CPU n</text>
+  <text x="650" y="44" class="s c">powered off at first</text>
+  <path class="life" d="M650,52 L650,572"/>
+  <text x="400" y="72" class="s c green">in startup</text>
+  <path class="life" d="M20,76 L780,76"/>
+  <rect class="wk" x="40.0" y="86" width="220" height="21" rx="3"/>
+  <text x="150" y="101" class="s c">hvc: CPU_ON(n, entry)</text>
+  <path class="ln" d="M260,97 L398,97" marker-end="url(#a)"/>
+  <path class="ln" d="M402,110 L538,110" marker-end="url(#a)"/>
+  <text x="505.0" y="104" class="s c">starts it at entry</text>
+  <rect class="wk" x="540.0" y="118" width="220" height="47" rx="3"/>
+  <text x="650" y="133" class="s c">EL1, MMU off: describes itself in the</text>
+  <text x="650" y="146" class="s c">system page (its ID, its GIC interface,</text>
+  <text x="650" y="159" class="s c">its timer); says it is done; waits</text>
+  <path class="lng dash" d="M540,174 L152,174" marker-end="url(#ag)"/>
+  <text x="470" y="168" class="s c">done</text>
+  <rect class="wk" x="40.0" y="184" width="220" height="34" rx="3"/>
+  <text x="150" y="199" class="s c">next CPU, the same way; then the</text>
+  <text x="150" y="212" class="s c">system page is written to its place</text>
+  <path class="ln" d="M260,224 L648,224" marker-end="url(#a)"/>
+  <text x="340" y="218" class="s c">go on</text>
+  <rect class="wk" x="540.0" y="232" width="220" height="47" rx="3"/>
+  <text x="650" y="247" class="s c">turns its MMU on, with its own</text>
+  <text x="650" y="260" class="s c">top-level table; jumps to smp_spin,</text>
+  <text x="650" y="273" class="s c">a callout in the system page</text>
+  <rect class="y" x="643" y="286" width="14" height="136" rx="2"/>
+  <text x="664" y="346" class="s">spins on</text>
+  <text x="664" y="359" class="ms">smp.start_addr</text>
+  <path class="lng dash" d="M641,298 L152,298" marker-end="url(#ag)"/>
+  <text x="470" y="292" class="s c">there</text>
+  <rect class="wk" x="40.0" y="308" width="220" height="21" rx="3"/>
+  <text x="150" y="323" class="s c">all CPUs wait: jump into the kernel</text>
+  <text x="424" y="350" class="s c green">in the kernel</text>
+  <path class="life" d="M20,354 L638,354"/>
+  <rect class="wk" x="40.0" y="364" width="220" height="47" rx="3"/>
+  <text x="150" y="379" class="s c">kmain() ... start_secondaries():</text>
+  <text x="150" y="392" class="s c">map a stack for one CPU;</text>
+  <text x="150" y="405" class="s c">start_addr = ap_start; wake them</text>
+  <path class="lnk" d="M260,416 L641,416" marker-end="url(#ak)"/>
+  <text x="400" y="410" class="s c">one CPU swaps the word back to 0, and goes</text>
+  <rect class="wk" x="540.0" y="426" width="220" height="47" rx="3"/>
+  <text x="650" y="441" class="s c">ap_start: takes the stack</text>
+  <text x="650" y="454" class="s c">kmain_ap(): its per-CPU data, vectors,</text>
+  <text x="650" y="467" class="s c">MMU settings, scheduler, clock, IPIs</text>
+  <rect class="g" x="540.0" y="484" width="220" height="21" rx="3"/>
+  <text x="650" y="499" class="s c">online = true; becomes its idle thread</text>
+  <path class="lng dash" d="M540,496 L152,496" marker-end="url(#ag)"/>
+  <text x="400" y="490" class="s c">the count of online CPUs grows</text>
+  <rect class="wk" x="40.0" y="506" width="220" height="34" rx="3"/>
+  <text x="150" y="521" class="s c">next CPU, until all are online</text>
+  <text x="150" y="534" class="s c">(gives up after one second)</text>
+</svg>

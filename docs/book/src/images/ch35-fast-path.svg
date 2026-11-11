@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="300" fill="#ffffff"/>
+  <rect class="k" x="20" y="60" width="120" height="50" rx="4"/>
+  <text x="80" y="81" class="c">a point in</text>
+  <text x="80" y="97" class="c">the kernel</text>
+  <path class="ln" d="M140,85 L178,85" marker-end="url(#a)"/>
+  <rect class="w" x="180" y="60" width="120" height="50" rx="4"/>
+  <text x="240" y="81" class="c">tracing</text>
+  <text x="240" y="97" class="c">running?</text>
+  <path class="ln" d="M300,85 L338,85" marker-end="url(#a)"/>
+  <text x="319" y="78" class="s c">yes</text>
+  <rect class="w" x="340" y="60" width="120" height="50" rx="4"/>
+  <text x="400" y="81" class="c">this event's</text>
+  <text x="400" y="97" class="c">bit set?</text>
+  <path class="ln" d="M460,85 L498,85" marker-end="url(#a)"/>
+  <text x="479" y="78" class="s c">yes</text>
+  <rect class="y" x="500" y="34" width="280" height="196" rx="4"/>
+  <text x="640" y="54" class="b c">the slow path: emit()</text>
+  <rect class="wk" x="520" y="66" width="240" height="24" rx="4"/>
+  <text x="640" y="82" class="s c">mask interrupts on this CPU</text>
+  <rect class="wk" x="520" y="98" width="240" height="24" rx="4"/>
+  <text x="640" y="114" class="s c">take this CPU's trace lock</text>
+  <path class="lnk" d="M640,90 L640,97" marker-end="url(#ak)"/>
+  <rect class="wk" x="520" y="130" width="240" height="24" rx="4"/>
+  <text x="640" y="146" class="s c">start a buffer if there is none</text>
+  <path class="lnk" d="M640,122 L640,129" marker-end="url(#ak)"/>
+  <rect class="wk" x="520" y="162" width="240" height="24" rx="4"/>
+  <text x="640" y="178" class="s c">write the event's 16-byte slots</text>
+  <path class="lnk" d="M640,154 L640,161" marker-end="url(#ak)"/>
+  <rect class="wk" x="520" y="194" width="240" height="24" rx="4"/>
+  <text x="640" y="210" class="s c">unlock, restore interrupts</text>
+  <path class="lnk" d="M640,186 L640,193" marker-end="url(#ak)"/>
+  <path class="lng" d="M240,110 L240,168" marker-end="url(#ag)"/>
+  <text x="248" y="142" class="s green">no</text>
+  <path class="lng" d="M400,110 L400,168" marker-end="url(#ag)"/>
+  <text x="408" y="142" class="s green">no</text>
+  <rect class="g" x="180" y="170" width="280" height="44" rx="4"/>
+  <text x="320" y="189" class="b c">return at once</text>
+  <text x="320" y="205" class="s c">cost: one or two loads and a test</text>
+  <text x="400" y="262" class="s c">A call site whose arguments are costly to gather makes the same test first. What the slow path never does:</text>
+  <text x="400" y="278" class="s c">wait for a buffer, or wake a thread. With no free buffer the event is dropped.</text>
+</svg>

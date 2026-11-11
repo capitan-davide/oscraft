@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="360" fill="#ffffff"/>
+  <text x="20" y="26" class="h">READY: one IrqSpinLock&lt;ReadyQueue&gt; for all CPUs</text>
+  <text x="20" y="66" class="m">bitmap</text>
+  <rect class="w" x="80" y="44" width="146" height="40" rx="0"/>
+  <text x="153" y="60.5" class="c">word 3: 255–192</text>
+  <text x="153" y="75.5" class="s c">empty</text>
+  <rect class="w" x="230" y="44" width="146" height="40" rx="0"/>
+  <text x="303" y="60.5" class="c">word 2: 191–128</text>
+  <text x="303" y="75.5" class="s c">empty</text>
+  <rect class="w" x="380" y="44" width="146" height="40" rx="0"/>
+  <text x="453" y="60.5" class="c">word 1: 127–64</text>
+  <text x="453" y="75.5" class="s c">empty</text>
+  <rect class="g" x="530" y="44" width="146" height="40" rx="0"/>
+  <text x="603" y="60.5" class="c">word 0: 63–0</text>
+  <text x="603" y="75.5" class="s c">bits 63, 23, 15 set</text>
+  <text x="380" y="100" class="s c">one bit per priority, set while that priority's queue is not empty</text>
+  <text x="110" y="140" class="m e">queues[63]</text>
+  <rect class="g" x="130" y="120" width="60" height="30" rx="4"/>
+  <text x="160" y="139" class="c">T7</text>
+  <rect class="g" x="200" y="120" width="60" height="30" rx="4"/>
+  <text x="230" y="139" class="c">T9</text>
+  <polyline class="ln" points="190,135 200,135"/>
+  <text x="110" y="186" class="m e">queues[23]</text>
+  <rect class="g" x="130" y="166" width="60" height="30" rx="4"/>
+  <text x="160" y="185" class="c">T3</text>
+  <text x="110" y="232" class="m e">queues[15]</text>
+  <rect class="g" x="130" y="212" width="60" height="30" rx="4"/>
+  <text x="160" y="231" class="c">T1</text>
+  <rect class="g" x="200" y="212" width="60" height="30" rx="4"/>
+  <text x="230" y="231" class="c">T4</text>
+  <polyline class="ln" points="190,227 200,227"/>
+  <rect class="g" x="270" y="212" width="60" height="30" rx="4"/>
+  <text x="300" y="231" class="c">T5</text>
+  <polyline class="ln" points="260,227 270,227"/>
+  <text x="130" y="266" class="s">head (runs next) → tail</text>
+  <text x="130" y="280" class="s">preempted: back to the head; yield or timeslice end: the tail</text>
+  <rect class="k" x="500" y="120" width="280" height="132" rx="4"/>
+  <text x="640" y="150" class="c">CPU n calls schedule()</text>
+  <text x="640" y="166" class="s c">highest_for(n): scan the bitmap from the</text>
+  <text x="640" y="182" class="s c">top; in that queue take the first thread</text>
+  <text x="640" y="198" class="s c">whose runmask allows CPU n</text>
+  <text x="640" y="214" class="s c">(and only SCHED_OFFLINING threads</text>
+  <text x="640" y="230" class="s c">on an offline CPU)</text>
+  <text x="20" y="330" class="s">Idle threads are never queued: a CPU with nothing in the queue switches to its own idle thread.</text>
+</svg>

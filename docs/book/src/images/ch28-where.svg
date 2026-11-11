@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="380" viewBox="0 0 800 380" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="380" fill="#ffffff"/>
+  <text x="140" y="24" class="h c">in the kernel</text>
+  <rect class="u" x="40" y="40" width="200" height="40" rx="4"/>
+  <text x="140" y="64" class="c">a program</text>
+  <rect class="w" x="30" y="120" width="220" height="170" rx="4"/>
+  <text x="44" y="138" class="b">the kernel</text>
+  <rect class="g" x="46" y="150" width="188" height="34" rx="3"/>
+  <text x="140" y="171" class="c">sockets</text>
+  <rect class="g" x="46" y="190" width="188" height="34" rx="3"/>
+  <text x="140" y="211" class="c">TCP/IP</text>
+  <rect class="g" x="46" y="230" width="188" height="34" rx="3"/>
+  <text x="140" y="251" class="c">driver</text>
+  <path class="ln" d="M140,80 L140,148" marker-end="url(#a)"/>
+  <text x="148" y="104" class="s">a system call</text>
+  <rect class="n" x="60" y="310" width="160" height="28" rx="4"/>
+  <text x="140" y="328" class="c">network device</text>
+  <path class="ln" d="M140,264 L140,308" marker-end="url(#a)" marker-start="url(#a)"/>
+  <text x="140" y="360" class="s c">fast; a fault stops the system</text>
+  <text x="400" y="24" class="h c">in a library</text>
+  <rect class="u" x="290" y="40" width="220" height="250" rx="4"/>
+  <text x="400" y="58" class="b c">a program</text>
+  <rect class="wu" x="306" y="70" width="188" height="34" rx="3"/>
+  <text x="400" y="91" class="c">the application</text>
+  <rect class="g" x="306" y="124" width="188" height="34" rx="3"/>
+  <text x="400" y="145" class="c">sockets</text>
+  <rect class="g" x="306" y="164" width="188" height="34" rx="3"/>
+  <text x="400" y="185" class="c">TCP/IP</text>
+  <rect class="g" x="306" y="204" width="188" height="34" rx="3"/>
+  <text x="400" y="225" class="c">driver</text>
+  <path class="ln" d="M400,104 L400,122" marker-end="url(#a)"/>
+  <text x="408" y="117" class="s">a function call</text>
+  <text x="400" y="262" class="s c">the device belongs</text>
+  <text x="400" y="276" class="s c">to this one program</text>
+  <rect class="n" x="320" y="310" width="160" height="28" rx="4"/>
+  <text x="400" y="328" class="c">network device</text>
+  <path class="ln" d="M400,238 L400,248"/>
+  <path class="ln" d="M400,290 L400,308" marker-end="url(#a)" marker-start="url(#a)"/>
+  <text x="400" y="360" class="s c">fastest; no sharing between programs</text>
+  <text x="660" y="24" class="h c">in a server</text>
+  <rect class="u" x="550" y="40" width="100" height="40" rx="4"/>
+  <text x="600" y="64" class="c">a program</text>
+  <rect class="u" x="664" y="40" width="106" height="40" rx="4"/>
+  <text x="717" y="64" class="c">another</text>
+  <rect class="w" x="550" y="120" width="220" height="130" rx="4"/>
+  <text x="660" y="138" class="b c">the network server</text>
+  <rect class="g" x="566" y="148" width="188" height="28" rx="3"/>
+  <text x="660" y="166" class="c">sockets</text>
+  <rect class="g" x="566" y="180" width="188" height="28" rx="3"/>
+  <text x="660" y="198" class="c">TCP/IP</text>
+  <rect class="g" x="566" y="212" width="188" height="28" rx="3"/>
+  <text x="660" y="230" class="c">driver</text>
+  <path class="lnk" d="M600,80 L600,118" marker-end="url(#ak)"/>
+  <path class="lnk" d="M717,80 L717,118" marker-end="url(#ak)"/>
+  <text x="660" y="104" class="s c blue">messages</text>
+  <rect class="k" x="544" y="300" width="122" height="38" rx="4"/>
+  <text x="605" y="316" class="s c">a microkernel:</text>
+  <text x="605" y="330" class="s c">messages, interrupts</text>
+  <rect class="n" x="672" y="305" width="98" height="28" rx="4"/>
+  <text x="721" y="323" class="s c">network device</text>
+  <path class="ln" d="M721,250 L721,303" marker-end="url(#a)" marker-start="url(#a)"/>
+  <text x="605" y="274" class="s c">the server maps the</text>
+  <text x="605" y="288" class="s c">device's registers</text>
+  <text x="660" y="360" class="s c">isolated, replaceable; a message per call</text>
+</svg>

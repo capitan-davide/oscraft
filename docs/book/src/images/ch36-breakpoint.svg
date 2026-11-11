@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="380" viewBox="0 0 800 380" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="380" fill="#ffffff"/>
+  <text x="150" y="59" class="e b">the program</text>
+  <rect class="w" x="170" y="40" width="130" height="30" rx="0"/>
+  <text x="235" y="59" class="m c">add x0, x0, x1</text>
+  <rect class="w" x="300" y="40" width="130" height="30" rx="0"/>
+  <text x="365" y="59" class="m c">bl compute</text>
+  <rect class="w" x="430" y="40" width="130" height="30" rx="0"/>
+  <text x="495" y="59" class="m c">mov x2, x0</text>
+  <rect class="w" x="560" y="40" width="130" height="30" rx="0"/>
+  <text x="625" y="59" class="m c">ret</text>
+  <text x="700" y="59" class="s"></text>
+  <text x="150" y="129" class="e b">breakpoint set</text>
+  <rect class="w" x="170" y="110" width="130" height="30" rx="0"/>
+  <text x="235" y="129" class="m c">add x0, x0, x1</text>
+  <rect class="r" x="300" y="110" width="130" height="30" rx="0"/>
+  <text x="365" y="129" class="m c">trap</text>
+  <rect class="w" x="430" y="110" width="130" height="30" rx="0"/>
+  <text x="495" y="129" class="m c">mov x2, x0</text>
+  <rect class="w" x="560" y="110" width="130" height="30" rx="0"/>
+  <text x="625" y="129" class="m c">ret</text>
+  <text x="700" y="129" class="s"></text>
+  <circle cx="345" cy="90" r="9" fill="#2c5d9b"/>
+  <text x="345" y="94" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="380" y="94" class="s">the debugger asks; the system saves the instruction and writes a trap</text>
+  <path class="lnk" d="M365,72 L365,108" marker-end="url(#ak)"/>
+  <circle cx="345" cy="166" r="9" fill="#aa2222"/>
+  <text x="345" y="170" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <text x="380" y="170" class="s">a thread gets there: the trap enters the kernel</text>
+  <path class="lnr" d="M365,142 L365,188" marker-end="url(#ar)"/>
+  <rect class="k" x="170" y="190" width="250" height="50" rx="4"/>
+  <text x="295" y="211" class="c">kernel: stops every thread of</text>
+  <text x="295" y="227" class="c">the process, records why and who</text>
+  <path class="ln dash" d="M420,215 L478,215" marker-end="url(#a)"/>
+  <circle cx="449" cy="200" r="9" fill="#333333"/>
+  <text x="449" y="204" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <rect class="u" x="480" y="190" width="290" height="50" rx="4"/>
+  <text x="625" y="211" class="c">debugger: is told, reads registers</text>
+  <text x="625" y="227" class="c">and memory, shows the source line</text>
+  <text x="150" y="289" class="e b">to go on</text>
+  <rect class="u" x="170" y="266" width="136" height="44" rx="4"/>
+  <text x="238" y="284" class="s c">put the instruction</text>
+  <text x="238" y="298" class="s c">back</text>
+  <rect class="u" x="322" y="266" width="136" height="44" rx="4"/>
+  <text x="390" y="284" class="s c">run that one</text>
+  <text x="390" y="298" class="s c">instruction (step)</text>
+  <path class="ln" d="M306,288 L321,288" marker-end="url(#a)"/>
+  <rect class="u" x="474" y="266" width="136" height="44" rx="4"/>
+  <text x="542" y="284" class="s c">write the trap</text>
+  <text x="542" y="298" class="s c">again</text>
+  <path class="ln" d="M458,288 L473,288" marker-end="url(#a)"/>
+  <rect class="u" x="626" y="266" width="136" height="44" rx="4"/>
+  <text x="694" y="284" class="s c">let the process</text>
+  <text x="694" y="298" class="s c">run</text>
+  <path class="ln" d="M610,288 L625,288" marker-end="url(#a)"/>
+  <circle cx="80" cy="285" r="9" fill="#333333"/>
+  <text x="80" y="289" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <text x="400" y="346" class="s c">While the trap is in place, a debugger that reads the program's code is shown the saved instruction,</text>
+  <text x="400" y="362" class="s c">so that it never mistakes its own breakpoint for part of the program.</text>
+</svg>

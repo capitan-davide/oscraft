@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="350" viewBox="0 0 800 350" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="350" fill="#ffffff"/>
+  <text x="200" y="24" class="h c">A monolithic kernel: the kernel routes</text>
+  <rect class="u" x="40" y="40" width="320" height="40" rx="4"/>
+  <text x="200" y="58" class="s c">C library: one stub per call,</text>
+  <text x="200" y="72" class="s c">all alike but for the number</text>
+  <path class="ln" d="M200,80 L200,112" marker-end="url(#a)"/>
+  <text x="208" y="100" class="s">trap, number N</text>
+  <rect class="n" x="40" y="114" width="320" height="216" rx="4"/>
+  <text x="113" y="134" class="b c">the kernel</text>
+  <rect class="w" x="56" y="146" width="44" height="24" rx="0"/>
+  <text x="78" y="162" class="ms c">2</text>
+  <rect class="w" x="100" y="146" width="70" height="24" rx="0"/>
+  <text x="135" y="162" class="ms c">fork</text>
+  <rect class="w" x="56" y="170" width="44" height="24" rx="0"/>
+  <text x="78" y="186" class="ms c">3</text>
+  <rect class="w" x="100" y="170" width="70" height="24" rx="0"/>
+  <text x="135" y="186" class="ms c">read</text>
+  <rect class="w" x="56" y="194" width="44" height="24" rx="0"/>
+  <text x="78" y="210" class="ms c">5</text>
+  <rect class="w" x="100" y="194" width="70" height="24" rx="0"/>
+  <text x="135" y="210" class="ms c">open</text>
+  <rect class="w" x="56" y="218" width="44" height="24" rx="0"/>
+  <text x="78" y="234" class="ms c">37</text>
+  <rect class="w" x="100" y="218" width="70" height="24" rx="0"/>
+  <text x="135" y="234" class="ms c">kill</text>
+  <rect class="w" x="56" y="242" width="44" height="24" rx="0"/>
+  <text x="78" y="258" class="ms c">97</text>
+  <rect class="w" x="100" y="242" width="70" height="24" rx="0"/>
+  <text x="135" y="258" class="ms c">socket</text>
+  <rect class="w" x="56" y="266" width="44" height="24" rx="0"/>
+  <text x="78" y="282" class="ms c">477</text>
+  <rect class="w" x="100" y="266" width="70" height="24" rx="0"/>
+  <text x="135" y="282" class="ms c">mmap</text>
+  <text x="113" y="308" class="s c">... about 600 numbers</text>
+  <rect class="w" x="220" y="134" width="126" height="34" rx="3"/>
+  <text x="283" y="155" class="s c">processes</text>
+  <rect class="w" x="220" y="182" width="126" height="34" rx="3"/>
+  <text x="283" y="203" class="s c">file systems</text>
+  <rect class="w" x="220" y="230" width="126" height="34" rx="3"/>
+  <text x="283" y="251" class="s c">signals</text>
+  <rect class="w" x="220" y="278" width="126" height="34" rx="3"/>
+  <text x="283" y="299" class="s c">network, memory</text>
+  <path class="ln" d="M170,158 L218,150" marker-end="url(#a)"/>
+  <path class="ln" d="M170,182 L218,194" marker-end="url(#a)"/>
+  <path class="ln" d="M170,206 L218,200" marker-end="url(#a)"/>
+  <path class="ln" d="M170,230 L218,244" marker-end="url(#a)"/>
+  <path class="ln" d="M170,254 L218,290" marker-end="url(#a)"/>
+  <path class="ln" d="M170,278 L218,298" marker-end="url(#a)"/>
+  <text x="600" y="24" class="h c">A microkernel: the library routes</text>
+  <rect class="u" x="440" y="40" width="320" height="112" rx="4"/>
+  <text x="600" y="58" class="s c">C library: each call written out</text>
+  <rect class="y" x="454" y="68" width="292" height="74" rx="3"/>
+  <text x="466" y="86" class="ms">read</text>
+  <text x="510" y="86" class="ms">a message on the descriptor</text>
+  <text x="466" y="102" class="ms">open</text>
+  <text x="510" y="102" class="ms">find the server, then a message</text>
+  <text x="466" y="118" class="ms">fork</text>
+  <text x="510" y="118" class="ms">a message to the process manager</text>
+  <text x="466" y="134" class="ms">kill</text>
+  <text x="510" y="134" class="ms">a kernel call</text>
+  <rect class="k" x="440" y="196" width="320" height="44" rx="4"/>
+  <text x="600" y="214" class="b c">the kernel: a few dozen calls</text>
+  <text x="600" y="230" class="s c">threads, messages, signals, timers, locks</text>
+  <path class="ln" d="M520,152 L520,194" marker-end="url(#a)"/>
+  <text x="528" y="178" class="s">a call for the kernel itself</text>
+  <rect class="u" x="440" y="286" width="150" height="44" rx="4"/>
+  <text x="515" y="304" class="s c">process manager</text>
+  <text x="515" y="320" class="s c">memory, path names</text>
+  <rect class="u" x="610" y="286" width="150" height="44" rx="4"/>
+  <text x="685" y="304" class="s c">file systems,</text>
+  <text x="685" y="320" class="s c">network, drivers</text>
+  <path class="lnk" d="M515,240 L515,284" marker-end="url(#ak)"/>
+  <path class="lnk" d="M685,240 L685,284" marker-end="url(#ak)"/>
+  <text x="600" y="266" class="s c">messages</text>
+</svg>

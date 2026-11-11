@@ -1,0 +1,5 @@
+#!/bin/sh
+# OsCraft's C++ compiler: the host's clang++ with the SDK's configuration
+# (libc++ is not in the SDK yet: C++ programs link what they bring).
+sdk=$(cd "$(dirname "$0")/.." && pwd)
+exec "${OSCRAFT_CLANGXX:-clang++}" --config "$sdk/clang.cfg" "$@"

@@ -1,0 +1,16 @@
+[package]
+name = "startup-qemu-virt"
+description = "Startup for QEMU's virt machine, compatible with QNX OS 8.0: OsCraft's reference board"
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+
+# A static library: the Makefile partially links it (ld -r) into the
+# relocatable object mkifs expects, and mkifs links that at the image's
+# address.
+[lib]
+crate-type = ["staticlib"]
+test = false
+
+[dependencies]
+oscraft-startup = { path = "../.." }

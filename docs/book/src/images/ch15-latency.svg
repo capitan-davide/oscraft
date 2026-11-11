@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="300" fill="#ffffff"/>
+  <path class="ln" d="M30,190 L780,190" marker-end="url(#a)"/>
+  <text x="775" y="208" class="s e">time</text>
+  <text x="30" y="102" class="s b">What the CPU is doing</text>
+  <rect class="u" x="30" y="110" width="250" height="40" rx="3"/>
+  <text x="155" y="127" class="s c">another thread, or kernel code</text>
+  <text x="155" y="141" class="s c">that has interrupts masked</text>
+  <rect class="k" x="280" y="110" width="110" height="40" rx="3"/>
+  <text x="335" y="127" class="s c">interrupt</text>
+  <text x="335" y="141" class="s c">handler</text>
+  <rect class="u" x="390" y="110" width="130" height="40" rx="3"/>
+  <text x="455" y="127" class="s c">a thread of</text>
+  <text x="455" y="141" class="s c">higher priority</text>
+  <rect class="g" x="520" y="110" width="200" height="40" rx="3"/>
+  <text x="620" y="127" class="s c">the driver's thread</text>
+  <text x="620" y="141" class="s c">serves the device</text>
+  <path class="life" d="M130,46 L130,196"/>
+  <text x="130" y="26" class="s c">the device</text>
+  <text x="130" y="39" class="s c">raises its line</text>
+  <path class="life" d="M280,46 L280,196"/>
+  <text x="280" y="26" class="s c">the handler</text>
+  <text x="280" y="39" class="s c">starts</text>
+  <path class="life" d="M520,46 L520,196"/>
+  <text x="520" y="26" class="s c">the driver's</text>
+  <text x="520" y="39" class="s c">thread runs</text>
+  <path class="lnr" d="M132,174 L278,174" marker-end="url(#ar)" marker-start="url(#ar)"/>
+  <text x="205.0" y="168" class="s c b">interrupt latency</text>
+  <path class="lnr" d="M282,174 L518,174" marker-end="url(#ar)" marker-start="url(#ar)"/>
+  <text x="400.0" y="168" class="s c b">scheduling latency</text>
+  <text x="205" y="222" class="s c">as long as the longest stretch</text>
+  <text x="205" y="235" class="s c">with interrupts masked</text>
+  <text x="400" y="222" class="s c">the handler itself, then every thread</text>
+  <text x="400" y="235" class="s c">of higher priority than the driver's</text>
+  <text x="30" y="280" class="s">A real-time system must bound both intervals. Keeping the handler short bounds the first; priorities decide the second.</text>
+</svg>

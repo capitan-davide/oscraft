@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="506" viewBox="0 0 820 506" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="820" height="506" fill="#ffffff"/>
+  <text x="30" y="26" class="b">name</text>
+  <text x="690" y="26" class="b">attached by</text>
+  <path class="ln" d="M20,36 L800,36"/>
+  <text x="30" y="62" class="m">/</text>
+  <text x="680" y="62" class="s e">the boot image's files: /bin, /lib, /etc ...</text>
+  <rect class="k" x="690" y="47" width="110" height="20" rx="3"/>
+  <text x="745" y="61" class="s c">process 1</text>
+  <text x="56" y="88" class="m">proc/</text>
+  <text x="680" y="88" class="s e">processes as files</text>
+  <rect class="k" x="690" y="73" width="110" height="20" rx="3"/>
+  <text x="745" y="87" class="s c">process 1</text>
+  <path class="life" d="M40,66 L40,84 L51,84"/>
+  <text x="56" y="114" class="m">dev/</text>
+  <text x="680" y="114" class="s e">attached by nobody: it exists because names go on below it</text>
+  <path class="life" d="M40,92 L40,110 L51,110"/>
+  <text x="82" y="140" class="m">text, console</text>
+  <text x="680" y="140" class="s e">the console</text>
+  <rect class="k" x="690" y="125" width="110" height="20" rx="3"/>
+  <text x="745" y="139" class="s c">process 1</text>
+  <path class="life" d="M66,118 L66,136 L77,136"/>
+  <text x="82" y="166" class="m">null, zero, klog, tty</text>
+  <rect class="k" x="690" y="151" width="110" height="20" rx="3"/>
+  <text x="745" y="165" class="s c">process 1</text>
+  <path class="life" d="M66,144 L66,162 L77,162"/>
+  <text x="82" y="192" class="m">shmem/, sem/</text>
+  <text x="680" y="192" class="s e">shared memory objects, named semaphores</text>
+  <rect class="k" x="690" y="177" width="110" height="20" rx="3"/>
+  <text x="745" y="191" class="s c">process 1</text>
+  <path class="life" d="M66,170 L66,188 L77,188"/>
+  <text x="82" y="218" class="m">pipe</text>
+  <rect class="u" x="690" y="203" width="110" height="20" rx="3"/>
+  <text x="745" y="217" class="s c">pipe</text>
+  <path class="life" d="M66,196 L66,214 L77,214"/>
+  <text x="82" y="244" class="m">random, urandom</text>
+  <rect class="u" x="690" y="229" width="110" height="20" rx="3"/>
+  <text x="745" y="243" class="s c">random</text>
+  <path class="life" d="M66,222 L66,240 L77,240"/>
+  <text x="82" y="270" class="m">ptyp0 ... ptyp7, ttyp0 ... ttyp7</text>
+  <rect class="u" x="690" y="255" width="110" height="20" rx="3"/>
+  <text x="745" y="269" class="s c">pty</text>
+  <path class="life" d="M66,248 L66,266 L77,266"/>
+  <text x="82" y="296" class="m">socket/2, /28, /1, /17, /38</text>
+  <text x="680" y="296" class="s e">one name per socket domain</text>
+  <rect class="g" x="690" y="281" width="110" height="20" rx="3"/>
+  <text x="745" y="295" class="s c">netd</text>
+  <path class="life" d="M66,274 L66,292 L77,292"/>
+  <text x="82" y="322" class="m">netd</text>
+  <text x="680" y="322" class="s e">loading modules into the network server</text>
+  <rect class="g" x="690" y="307" width="110" height="20" rx="3"/>
+  <text x="745" y="321" class="s c">netd</text>
+  <path class="life" d="M66,300 L66,318 L77,318"/>
+  <text x="82" y="348" class="m">pci</text>
+  <rect class="g" x="690" y="333" width="110" height="20" rx="3"/>
+  <text x="745" y="347" class="s c">pcid</text>
+  <path class="life" d="M66,326 L66,344 L77,344"/>
+  <text x="56" y="374" class="m">tmp/</text>
+  <text x="680" y="374" class="s e">a file system in memory</text>
+  <rect class="u" x="690" y="359" width="110" height="20" rx="3"/>
+  <text x="745" y="373" class="s c">tmpfs</text>
+  <path class="life" d="M40,352 L40,370 L51,370"/>
+  <text x="56" y="400" class="m">var/</text>
+  <text x="680" y="400" class="s e">another</text>
+  <rect class="u" x="690" y="385" width="110" height="20" rx="3"/>
+  <text x="745" y="399" class="s c">tmpfs</text>
+  <path class="life" d="M40,378 L40,396 L51,396"/>
+  <text x="82" y="426" class="m">run/log</text>
+  <text x="680" y="426" class="s e">the logger's name, inside tmpfs's /var</text>
+  <rect class="u" x="690" y="411" width="110" height="20" rx="3"/>
+  <text x="745" y="425" class="s c">syslogd</text>
+  <path class="life" d="M66,404 L66,422 L77,422"/>
+  <path class="ln" d="M20,444 L800,444"/>
+  <text x="30" y="464" class="b">by file type, at any path</text>
+  <text x="260" y="464" class="s">a pipe() goes to pipe; shm_open() and sem_open() go to process 1</text>
+  <rect class="k" x="30" y="476" width="14" height="12" rx="2"/>
+  <text x="50" y="487" class="s">process 1</text>
+  <rect class="u" x="130" y="476" width="14" height="12" rx="2"/>
+  <text x="150" y="487" class="s">a native server</text>
+  <rect class="g" x="260" y="476" width="14" height="12" rx="2"/>
+  <text x="280" y="487" class="s">a server running FreeBSD kernel code</text>
+</svg>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="330" viewBox="0 0 800 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="330" fill="#ffffff"/>
+  <rect class="r" x="20" y="60" width="190" height="110" rx="4"/>
+  <text x="115" y="82" class="b c">QNX client</text>
+  <text x="115" y="102" class="s c">process 31, thread 1</text>
+  <text x="115" y="118" class="s c">priority 40</text>
+  <text x="115" y="142" class="s c">REPLY-blocked on qnxd</text>
+  <rect class="y" x="300" y="60" width="200" height="110" rx="4"/>
+  <text x="400" y="82" class="b c">qnxd's thread</text>
+  <text x="400" y="102" class="s c">took priority 40 when it received</text>
+  <text x="400" y="118" class="s c">acting for: the client</text>
+  <text x="400" y="142" class="s c">REPLY-blocked on the server</text>
+  <rect class="g" x="590" y="60" width="190" height="110" rx="4"/>
+  <text x="685" y="82" class="b c">native server</text>
+  <text x="685" y="102" class="s c">takes priority 40</text>
+  <text x="685" y="118" class="s c">from the message</text>
+  <path class="lnr" d="M210,100 L298,100" marker-end="url(#ar)"/>
+  <text x="254" y="92" class="s c">send</text>
+  <path class="lnk" d="M500,100 L588,100" marker-end="url(#ak)"/>
+  <text x="544" y="92" class="s c">forward</text>
+  <path class="lng" d="M588,140 L502,140" marker-end="url(#ag)"/>
+  <text x="545" y="156" class="s c green">reply</text>
+  <path class="lng" d="M298,140 L212,140" marker-end="url(#ag)"/>
+  <text x="255" y="156" class="s c green">reply</text>
+  <text x="400" y="206" class="h c">What the server is told about the message</text>
+  <rect class="r" x="40" y="220" width="118" height="48" rx="2"/>
+  <text x="99" y="240" class="s c">sender's process</text>
+  <text x="99" y="258" class="ms c">31</text>
+  <rect class="r" x="160" y="220" width="118" height="48" rx="2"/>
+  <text x="219" y="240" class="s c">sender's thread</text>
+  <text x="219" y="258" class="ms c">1</text>
+  <rect class="r" x="280" y="220" width="118" height="48" rx="2"/>
+  <text x="339" y="240" class="s c">priority</text>
+  <text x="339" y="258" class="ms c">40</text>
+  <rect class="r" x="400" y="220" width="118" height="48" rx="2"/>
+  <text x="459" y="240" class="s c">connection IDs</text>
+  <text x="459" y="258" class="ms c">the client's</text>
+  <rect class="r" x="520" y="220" width="118" height="48" rx="2"/>
+  <text x="579" y="240" class="s c">personality flag</text>
+  <text x="579" y="258" class="ms c">a QNX client</text>
+  <rect class="y" x="640" y="220" width="118" height="48" rx="2"/>
+  <text x="699" y="240" class="s c">receive ID</text>
+  <text x="699" y="258" class="ms c">qnxd's thread</text>
+  <text x="400" y="292" class="s c">Everything that identifies the client is the client's. Only the receive ID, which names where the reply goes, is qnxd's.</text>
+  <text x="400" y="308" class="s c">An event the server delivers later through that receive ID still goes to the client.</text>
+</svg>

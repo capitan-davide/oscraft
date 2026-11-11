@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="500" fill="#ffffff"/>
+  <rect class="g" x="15" y="14" width="120" height="36" rx="4"/>
+  <text x="75" y="30" class="b c">if_cdce</text>
+  <text x="75" y="43" class="s c">netd: class driver</text>
+  <path class="life" d="M75,50 L75,470"/>
+  <rect class="k" x="145" y="14" width="120" height="36" rx="4"/>
+  <text x="205" y="30" class="b c">usbcl</text>
+  <text x="205" y="43" class="s c">netd: pipe start</text>
+  <path class="life" d="M205,50 L205,470"/>
+  <rect class="k" x="275" y="14" width="120" height="36" rx="4"/>
+  <text x="335" y="30" class="b c">endpoint thread</text>
+  <text x="335" y="43" class="s c">netd: usbcl</text>
+  <path class="life" d="M335,50 L335,470"/>
+  <rect class="k" x="415" y="14" width="120" height="36" rx="4"/>
+  <text x="475" y="30" class="b c">/dev/usbd</text>
+  <text x="475" y="43" class="s c">usbd: serving thread</text>
+  <path class="life" d="M475,50 L475,470"/>
+  <rect class="g" x="550" y="14" width="120" height="36" rx="4"/>
+  <text x="610" y="30" class="b c">USB core, xhci</text>
+  <text x="610" y="43" class="s c">usbd: the kept pipe</text>
+  <path class="life" d="M610,50 L610,470"/>
+  <rect class="n" x="675" y="14" width="120" height="36" rx="4"/>
+  <text x="735" y="30" class="b c">adapter</text>
+  <text x="735" y="43" class="s c">the device</text>
+  <path class="life" d="M735,50 L735,470"/>
+  <path class="frame" d="M405,8 L405,480"/>
+  <text x="398" y="66" class="s e">netd</text>
+  <text x="412" y="66" class="s">usbd</text>
+  <path class="lnk" d="M75,96 L205,96" marker-end="url(#ak)"/>
+  <circle cx="89" cy="84" r="9" fill="#2c5d9b"/>
+  <text x="89" y="88" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="103" y="88" class="s">start the transfer</text>
+  <path class="lnk" d="M205,132 L335,132" marker-end="url(#ak)"/>
+  <circle cx="219" cy="120" r="9" fill="#2c5d9b"/>
+  <text x="219" y="124" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <text x="233" y="124" class="s">queue it, signal</text>
+  <path class="ln dash" d="M205,160 L75,160" marker-end="url(#a)"/>
+  <circle cx="89" cy="148" r="9" fill="#333333"/>
+  <text x="89" y="152" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="103" y="152" class="s">returns at once</text>
+  <path class="lnk" d="M335,204 L475,204" marker-end="url(#ak)"/>
+  <circle cx="349" cy="192" r="9" fill="#2c5d9b"/>
+  <text x="349" y="196" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <text x="363" y="196" class="s">USBDIOCXFER: one frame</text>
+  <rect class="y" x="293" y="212" width="84" height="150" rx="3"/>
+  <text x="335" y="282" class="s c">REPLY-</text>
+  <text x="335" y="295" class="s c">blocked</text>
+  <path class="lnk" d="M475,240 L610,240" marker-end="url(#ak)"/>
+  <circle cx="489" cy="228" r="9" fill="#2c5d9b"/>
+  <text x="489" y="232" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <text x="503" y="232" class="s">start the pipe's transfer</text>
+  <rect class="y" x="433" y="248" width="84" height="78" rx="3"/>
+  <text x="475" y="284" class="s c">waits for</text>
+  <text x="475" y="297" class="s c">the callback</text>
+  <path class="lnk" d="M610,272 L735,272" marker-end="url(#ak)"/>
+  <circle cx="624" cy="260" r="9" fill="#2c5d9b"/>
+  <text x="624" y="264" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">6</text>
+  <text x="638" y="264" class="s">IN</text>
+  <path class="lng dash" d="M735,300 L610,300" marker-end="url(#ag)"/>
+  <circle cx="624" cy="288" r="9" fill="#3e7b34"/>
+  <text x="624" y="292" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">7</text>
+  <text x="638" y="292" class="s">a packet</text>
+  <path class="lng dash" d="M610,334 L475,334" marker-end="url(#ag)"/>
+  <circle cx="525" cy="322" r="9" fill="#3e7b34"/>
+  <text x="525" y="326" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">8</text>
+  <text x="539" y="326" class="s">callback: transferred</text>
+  <path class="lng" d="M475,370 L335,370" marker-end="url(#ag)"/>
+  <circle cx="385" cy="358" r="9" fill="#3e7b34"/>
+  <text x="385" y="362" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">9</text>
+  <text x="399" y="362" class="s">reply: the data, its length</text>
+  <path class="lng" d="M335,416 L75,416" marker-end="url(#ag)"/>
+  <circle cx="89" cy="404" r="9" fill="#3e7b34"/>
+  <text x="89" y="408" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">10</text>
+  <text x="103" y="408" class="s">usbd_transfer_done(): the driver's callback runs, as after a controller's interrupt</text>
+  <text x="400" y="494" class="s c">Steps 1 to 3 never block the class driver. Steps 4 to 9 are one synchronous message between the two servers.</text>
+</svg>

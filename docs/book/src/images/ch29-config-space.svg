@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="400" fill="#ffffff"/>
+  <text x="20" y="24" class="h">a function's configuration space: the first 64 bytes</text>
+  <text x="62" y="59" class="ms e">0x00</text>
+  <rect class="y" x="70" y="40" width="170" height="28" rx="0"/>
+  <text x="155.0" y="58" class="s c">device ID</text>
+  <rect class="y" x="240" y="40" width="170" height="28" rx="0"/>
+  <text x="325.0" y="58" class="s c">vendor ID</text>
+  <text x="62" y="89" class="ms e">0x04</text>
+  <rect class="w" x="70" y="70" width="170" height="28" rx="0"/>
+  <text x="155.0" y="88" class="s c">status</text>
+  <rect class="k" x="240" y="70" width="170" height="28" rx="0"/>
+  <text x="325.0" y="88" class="s c">command</text>
+  <text x="62" y="119" class="ms e">0x08</text>
+  <rect class="y" x="70" y="100" width="255" height="28" rx="0"/>
+  <text x="197.5" y="118" class="s c">class, subclass, interface</text>
+  <rect class="w" x="325" y="100" width="85" height="28" rx="0"/>
+  <text x="367.5" y="118" class="s c">revision</text>
+  <text x="62" y="149" class="ms e">0x0c</text>
+  <rect class="w" x="70" y="130" width="85" height="28" rx="0"/>
+  <text x="112.5" y="148" class="s c"></text>
+  <rect class="w" x="155" y="130" width="85" height="28" rx="0"/>
+  <text x="197.5" y="148" class="s c">header type</text>
+  <rect class="w" x="240" y="130" width="170" height="28" rx="0"/>
+  <text x="325.0" y="148" class="s c"></text>
+  <text x="62" y="179" class="ms e">0x10</text>
+  <rect class="g" x="70" y="160" width="340" height="28" rx="0"/>
+  <text x="240.0" y="178" class="s c">BAR 0</text>
+  <text x="62" y="209" class="ms e">0x14</text>
+  <rect class="g" x="70" y="190" width="340" height="28" rx="0"/>
+  <text x="240.0" y="208" class="s c">BAR 1</text>
+  <text x="62" y="239" class="ms e">...</text>
+  <rect class="g" x="70" y="220" width="340" height="28" rx="0"/>
+  <text x="240.0" y="238" class="s c">BAR 2 to BAR 5</text>
+  <text x="62" y="269" class="ms e">0x2c</text>
+  <rect class="w" x="70" y="250" width="170" height="28" rx="0"/>
+  <text x="155.0" y="268" class="s c">subsystem ID</text>
+  <rect class="w" x="240" y="250" width="170" height="28" rx="0"/>
+  <text x="325.0" y="268" class="s c">subsystem vendor</text>
+  <text x="62" y="299" class="ms e">0x34</text>
+  <rect class="w" x="70" y="280" width="255" height="28" rx="0"/>
+  <text x="197.5" y="298" class="s c"></text>
+  <rect class="r" x="325" y="280" width="85" height="28" rx="0"/>
+  <text x="367.5" y="298" class="s c">capabilities</text>
+  <text x="62" y="329" class="ms e">0x3c</text>
+  <rect class="w" x="70" y="310" width="170" height="28" rx="0"/>
+  <text x="155.0" y="328" class="s c"></text>
+  <rect class="k" x="240" y="310" width="85" height="28" rx="0"/>
+  <text x="282.5" y="328" class="s c">interrupt pin</text>
+  <rect class="w" x="325" y="310" width="85" height="28" rx="0"/>
+  <text x="367.5" y="328" class="s c">line</text>
+  <text x="70" y="356" class="s">byte 3</text>
+  <text x="410" y="356" class="s e">byte 0</text>
+  <rect class="y" x="430" y="44" width="12" height="12" rx="2"/>
+  <text x="450" y="54" class="s">who the function is: a driver matches on these</text>
+  <rect class="k" x="430" y="74" width="12" height="12" rx="2"/>
+  <text x="450" y="84" class="s">command: decode memory, act as bus master</text>
+  <rect class="g" x="430" y="166" width="12" height="12" rx="2"/>
+  <text x="450" y="176" class="s">BARs: where the function's registers are on the bus</text>
+  <rect class="k" x="430" y="316" width="12" height="12" rx="2"/>
+  <text x="450" y="326" class="s">which INTx pin it uses, A to D</text>
+  <text x="430" y="216" class="s">Sizing a BAR: write all ones, read back.</text>
+  <text x="430" y="231" class="s">The bits that stay 0 give the size.</text>
+  <path class="lnr" d="M410,294 L470,294 L470,262" marker-end="url(#ar)"/>
+  <rect class="r" x="440" y="240" width="96" height="22" rx="3"/>
+  <text x="488" y="255" class="ms c">MSI  0x05</text>
+  <path class="lnr" d="M536,251 L558,251" marker-end="url(#ar)"/>
+  <rect class="r" x="558" y="240" width="96" height="22" rx="3"/>
+  <text x="606" y="255" class="ms c">vendor  0x09</text>
+  <path class="lnr" d="M654,251 L676,251" marker-end="url(#ar)"/>
+  <rect class="r" x="676" y="240" width="96" height="22" rx="3"/>
+  <text x="724" y="255" class="ms c">MSI-X  0x11</text>
+  <text x="780" y="280" class="s e">the capability list: each entry has an ID and</text>
+  <text x="780" y="295" class="s e">the offset of the next; 0 ends the list</text>
+  <text x="20" y="384" class="s">PCI Express extends each function's space from 256 to 4096 bytes.</text>
+</svg>

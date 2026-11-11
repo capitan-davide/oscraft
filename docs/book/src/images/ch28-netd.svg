@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="470" viewBox="0 0 800 470" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="470" fill="#ffffff"/>
+  <rect class="u" x="20" y="20" width="170" height="50" rx="4"/>
+  <text x="105" y="40" class="b c">a program</text>
+  <text x="105" y="57" class="s c">libc, libsys: socket(), recv()</text>
+  <rect class="u" x="210" y="20" width="170" height="50" rx="4"/>
+  <text x="295" y="40" class="b c">ifconfig, route, netstat</text>
+  <text x="295" y="57" class="s c">ioctl(), sysctl(), routing sockets</text>
+  <rect class="u" x="400" y="20" width="170" height="50" rx="4"/>
+  <text x="485" y="40" class="b c">kldload, kldstat</text>
+  <text x="485" y="57" class="s c">kldload(2) and its family</text>
+  <rect class="k" x="20" y="110" width="560" height="340" rx="4"/>
+  <text x="34" y="130" class="h">netd, one process</text>
+  <rect class="wk" x="36" y="142" width="528" height="74" rx="3"/>
+  <text x="300" y="160" class="b c">the front end (Rust, user/netd/src)</text>
+  <text x="48" y="180" class="m">/dev/socket/2   /28   /1   /17   /38</text>
+  <text x="48" y="196" class="s">one name per domain: inet, inet6, unix, route, netlink</text>
+  <text x="468" y="180" class="m">/dev/netd</text>
+  <text x="468" y="196" class="s">(modules)</text>
+  <text x="300" y="210" class="s c">a pool of threads, each serving one message at a time</text>
+  <rect class="wk" x="400" y="228" width="164" height="44" rx="3"/>
+  <text x="482" y="246" class="b c">AF_UNIX</text>
+  <text x="482" y="262" class="s c">netd's own (unix.rs)</text>
+  <rect class="g" x="36" y="228" width="350" height="44" rx="3"/>
+  <text x="211" y="246" class="c">sock.c: one function per socket operation</text>
+  <text x="211" y="262" class="ms c">bsdnet_socket(), bsdnet_recv(), bsdnet_sysctl() ...</text>
+  <rect class="g" x="36" y="284" width="350" height="78" rx="3"/>
+  <text x="211" y="302" class="b c">libbsdnet.a: FreeBSD's network stack</text>
+  <text x="211" y="320" class="s c">sockets, mbufs, TCP, UDP, IPv4, IPv6, routing,</text>
+  <text x="211" y="334" class="s c">Ethernet, the loopback interface lo0,</text>
+  <text x="211" y="348" class="s c">the bus framework and the module linker</text>
+  <rect class="g" x="400" y="284" width="164" height="78" rx="3"/>
+  <text x="482" y="302" class="b c">modules (.ko)</text>
+  <text x="482" y="320" class="s c">pci, virtio, virtio_pci,</text>
+  <text x="482" y="334" class="s c">if_vtnet: the driver</text>
+  <text x="482" y="348" class="s c">ipfw: a packet filter</text>
+  <rect class="wk" x="36" y="374" width="528" height="62" rx="3"/>
+  <text x="300" y="392" class="b c">bsdkern (Chapter 27): what FreeBSD's kernel code expects of its kernel</text>
+  <text x="300" y="410" class="s c">threads and sleeping, locks, memory, timers, interrupt threads, busdma, dlopen() for modules</text>
+  <text x="300" y="426" class="s c">over FreeBSD's libc and libthr, and libsys</text>
+  <path class="lnk" d="M105,70 L105,140" marker-end="url(#ak)"/>
+  <path class="lnk" d="M295,70 L295,140" marker-end="url(#ak)"/>
+  <path class="lnk" d="M485,70 L485,140" marker-end="url(#ak)"/>
+  <text x="200" y="95" class="s c blue">messages</text>
+  <path class="ln" d="M211,216 L211,226" marker-end="url(#a)"/>
+  <path class="ln" d="M482,216 L482,226" marker-end="url(#a)"/>
+  <path class="ln" d="M211,272 L211,282" marker-end="url(#a)"/>
+  <path class="ln" d="M386,323 L398,323" marker-end="url(#a)" marker-start="url(#a)"/>
+  <rect class="u" x="620" y="130" width="160" height="56" rx="4"/>
+  <text x="700" y="150" class="b c">pcid</text>
+  <text x="700" y="166" class="s c">where the device is:</text>
+  <text x="700" y="180" class="s c">its registers, its interrupt</text>
+  <rect class="k" x="620" y="220" width="160" height="70" rx="4"/>
+  <text x="700" y="240" class="b c">process 1</text>
+  <text x="700" y="256" class="s c">maps the registers;</text>
+  <text x="700" y="270" class="s c">tells physical addresses</text>
+  <text x="700" y="284" class="s c">of netd's memory</text>
+  <rect class="k" x="620" y="324" width="160" height="56" rx="4"/>
+  <text x="700" y="344" class="b c">the microkernel</text>
+  <text x="700" y="360" class="s c">the device's interrupt</text>
+  <text x="700" y="374" class="s c">wakes a thread of netd</text>
+  <rect class="n" x="620" y="410" width="160" height="40" rx="4"/>
+  <text x="700" y="428" class="c">virtio network device</text>
+  <text x="700" y="442" class="s c">queues in netd's memory</text>
+  <path class="lnk" d="M580,158 L618,158" marker-end="url(#ak)"/>
+  <path class="lnk" d="M580,255 L618,255" marker-end="url(#ak)"/>
+  <path class="lng" d="M618,352 L582,352" marker-end="url(#ag)"/>
+  <path class="ln" d="M582,430 L618,430" marker-end="url(#a)" marker-start="url(#a)"/>
+</svg>

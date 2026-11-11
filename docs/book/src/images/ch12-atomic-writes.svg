@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="250" fill="#ffffff"/>
+  <rect class="u" x="20" y="20" width="190" height="46" rx="4"/>
+  <text x="115" y="40" class="c">writer A</text>
+  <text x="115" y="56" class="s c">lines of 80 bytes: small</text>
+  <rect class="u" x="20" y="84" width="190" height="46" rx="4"/>
+  <text x="115" y="104" class="c">writer B</text>
+  <text x="115" y="120" class="s c">one write of 8000 bytes: large</text>
+  <path class="ln" d="M210,43 L258,70" marker-end="url(#a)"/>
+  <path class="ln" d="M210,107 L258,80" marker-end="url(#a)"/>
+  <text x="520" y="34" class="s c b">what the reader reads, in order</text>
+  <rect class="k" x="262" y="52" width="70" height="44" rx="0"/>
+  <text x="297.0" y="79" class="s c">A: 80</text>
+  <rect class="y" x="332" y="52" width="150" height="44" rx="0"/>
+  <text x="407.0" y="79" class="s c">B: part 1</text>
+  <rect class="k" x="482" y="52" width="70" height="44" rx="0"/>
+  <text x="517.0" y="79" class="s c">A: 80</text>
+  <rect class="y" x="552" y="52" width="130" height="44" rx="0"/>
+  <text x="617.0" y="79" class="s c">B: part 2</text>
+  <rect class="k" x="682" y="52" width="70" height="44" rx="0"/>
+  <text x="717.0" y="79" class="s c">A: 80</text>
+  <text x="760" y="79" class="s">...</text>
+  <text x="262" y="126" class="s">A small write (at most the pipe's atomic size, PIPE_BUF) goes into the buffer in one</text>
+  <text x="262" y="141" class="s">piece. If there is no room for all of it, the writer waits: A's lines always arrive whole.</text>
+  <text x="262" y="156" class="s"></text>
+  <text x="262" y="171" class="s">A large write goes in as room is freed, a piece at a time. Other writers' data can land</text>
+  <text x="262" y="186" class="s">between the pieces, and the reader cannot tell where B's write was cut.</text>
+  <text x="400" y="232" class="s c">The guarantee is what lets several programs write records or log lines to one pipe without a lock.</text>
+</svg>

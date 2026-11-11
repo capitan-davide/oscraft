@@ -1,0 +1,263 @@
+###############################################################################
+# OsCraft for QEMU's virt machine, the image `make run` boots: OsCraft's
+# startup and kernel, its native servers and FreeBSD's userland, with
+# FreeBSD's sh on the console. The image is QEMU's
+# -kernel, a raw image loaded 512 KB into RAM (0x40000000), entered with
+# the device tree's address in x0 (-u reg); startup-qemu-virt
+# (startup/boards/qemu-virt) takes RAM and the CPUs from the tree, starts
+# the CPUs with PSCI, and builds the system page.
+#
+# Other files add to this one, appended by the Makefile: images/qnx.build
+# with QNX=1 (the QNX compatibility personality's overlay, from the user's
+# SDP), and for `make test` the test programs (tests/native/image.build,
+# tests/qnx/image.build).
+#
+# OSCRAFT_KERNEL is the kernel ELF, set by the Makefile, as are the other
+# OSCRAFT_* variables.
+###############################################################################
+
+[image=0x40080000]
+# ANCHOR: boot
+[virtual=aarch64le,raw] .boot = {
+    startup-qemu-virt -v -u reg
+    PATH=/proc/boot:/bin:/sbin:/usr/bin:/usr/sbin
+    # What getty sets on FreeBSD: programs size the console by it.
+    TERM=xterm
+    ${OSCRAFT_KERNEL} -v
+}
+# ANCHOR_END: boot
+
+# Run by the kernel after boot (a priority-10 thread). Commands are looked
+# up along PATH in the image filesystem. The console's script, and those of
+# the files appended to this one, follow: mkifs appends each [+script].
+[+script] .script = {
+    display_msg "kernel: running the boot script"
+    # ANCHOR: script_servers
+    # OsCraft's native servers (user/pipe, user/random): the pipe manager
+    # over the kernel's pipes, and /dev/random, /dev/urandom.
+    pipe &
+    random &
+    pty &
+    waitfor /dev/pipe 10
+    # /tmp and /var in memory, as FreeBSD's tmpfs (user/tmpfs): /dev/shmem
+    # holds shared memory objects only.
+    tmpfs -m 1777 /tmp -m 755 /var &
+    waitfor /var 10
+    /bin/mkdir -p /var/run /var/log /var/db /var/tmp
+    /bin/chmod 1777 /var/tmp
+    # The system logger, early: messages before it are lost, by contract.
+    syslogd &
+    waitfor /var/run/log 10
+    waitfor /dev/urandom 10
+    waitfor /dev/ptyp0 10
+    # ANCHOR_END: script_servers
+    # ANCHOR: script_network
+    # The network: FreeBSD's stack in a server (user/netd), loopback only
+    # until a driver is loaded.
+    netd &
+    # Its last name, after the sockets' (/dev/socket/<domain>: there is no
+    # /dev/socket to wait for).
+    waitfor /dev/netd 30
+    # The PCI bus (user/pcid): the host bridge of the board's device tree.
+    pcid &
+    waitfor /dev/pci 30
+    # netd's driver for QEMU's virtio network device (tools/qemu/run.sh),
+    # as modules: bsdkern's PCI client bus over pcid, then FreeBSD's virtio,
+    # its PCI transport and vtnet. The address, gateway and name server
+    # (/etc/resolv.conf) are those of QEMU's user-mode network.
+    /sbin/kldload /boot/modules/pci.ko
+    /sbin/kldload /boot/modules/virtio.ko
+    /sbin/kldload /boot/modules/virtio_pci.ko
+    /sbin/kldload /boot/modules/if_vtnet.ko
+    /sbin/ifconfig vtnet0 inet 10.0.2.15/24 up
+    /sbin/route -q add default 10.0.2.2
+    # ANCHOR_END: script_network
+}
+
+# OsCraft's native servers (Rust, make native), which the boot script
+# starts: the pipe manager, the random device, the pseudo-terminals, the
+# logger, tmpfs, the network stack and the PCI server; the disk and USB
+# servers are in the image and started by hand.
+/proc/boot/pipe=${OSCRAFT_NATIVE}/pipe
+/proc/boot/random=${OSCRAFT_NATIVE}/random
+/proc/boot/pty=${OSCRAFT_NATIVE}/pty
+/proc/boot/syslogd=${OSCRAFT_NATIVE}/syslogd
+/proc/boot/diskd-md=${OSCRAFT_NATIVE}/diskd-md
+/proc/boot/tmpfs=${OSCRAFT_NATIVE}/tmpfs
+/proc/boot/usbd=${OSCRAFT_NATIVE}/usbd
+/proc/boot/pcid=${OSCRAFT_NATIVE}/pcid
+/proc/boot/netd=${OSCRAFT_NATIVE}/netd
+/etc/protocols=${OSCRAFT_FREEBSD_SRC}/lib/libc/net/protocols
+/etc/resolv.conf = {
+nameserver 10.0.2.3
+}
+/etc/syslog.conf={
+# A small log, in RAM until a root file system.
+*.notice;kern.debug;authpriv.none	/var/log/messages
+*.err			/dev/console
+}
+# The terminfo entries (make freebsd-terminfo), where FreeBSD's ncurses
+# looks: libedit's line editing in sh, with TERM set.
+/usr/share/terminfo/x/xterm=${OSCRAFT_FREEBSD_TERMINFO}/x/xterm
+/usr/share/terminfo/x/xterm-256color=${OSCRAFT_FREEBSD_TERMINFO}/x/xterm-256color
+/usr/share/terminfo/v/vt100=${OSCRAFT_FREEBSD_TERMINFO}/v/vt100
+/usr/share/terminfo/v/vt102=${OSCRAFT_FREEBSD_TERMINFO}/v/vt102
+/usr/share/terminfo/a/ansi=${OSCRAFT_FREEBSD_TERMINFO}/a/ansi
+/usr/share/terminfo/d/dumb=${OSCRAFT_FREEBSD_TERMINFO}/d/dumb
+/usr/share/terminfo/s/screen=${OSCRAFT_FREEBSD_TERMINFO}/s/screen
+/usr/share/terminfo/l/linux=${OSCRAFT_FREEBSD_TERMINFO}/l/linux
+# FreeBSD's utilities (dynamic, from the sysroot's oscraft/bin, where the
+# build puts them) at /bin and /usr/bin, and the shared libraries they and
+# sh need at /lib and /usr/lib; generated from the sysroot, see
+# FREEBSD_PROGS in the Makefile. QNX's own tools and libraries are under
+# /compat/qnx (the compatibility personality).
+/lib/libxo.so.0=${OSCRAFT_FREEBSD_SYSROOT}/lib/libxo.so.0
+/usr/lib/libregex.so.1=${OSCRAFT_FREEBSD_SYSROOT}/usr/lib/libregex.so.1
+/lib/libedit.so.8=${OSCRAFT_FREEBSD_SYSROOT}/lib/libedit.so.8
+/lib/libm.so.5=${OSCRAFT_FREEBSD_SYSROOT}/lib/libm.so.5
+/lib/libmd.so.7=${OSCRAFT_FREEBSD_SYSROOT}/lib/libmd.so.7
+/lib/librt.so.1=${OSCRAFT_FREEBSD_SYSROOT}/lib/librt.so.1
+/lib/libtinfow.so.9=${OSCRAFT_FREEBSD_SYSROOT}/lib/libtinfow.so.9
+/lib/libutil.so.10=${OSCRAFT_FREEBSD_SYSROOT}/lib/libutil.so.10
+/lib/libkvm.so.7=${OSCRAFT_FREEBSD_SYSROOT}/lib/libkvm.so.7
+/lib/libnv.so.1=${OSCRAFT_FREEBSD_SYSROOT}/lib/libnv.so.1
+/lib/libipsec.so.4=${OSCRAFT_FREEBSD_SYSROOT}/lib/libipsec.so.4
+/usr/lib/libmemstat.so.3=${OSCRAFT_FREEBSD_SYSROOT}/usr/lib/libmemstat.so.3
+/lib/libdevstat.so.7=${OSCRAFT_FREEBSD_SYSROOT}/lib/libdevstat.so.7
+/lib/libelf.so.2=${OSCRAFT_FREEBSD_SYSROOT}/lib/libelf.so.2
+/bin/[=${OSCRAFT_FREEBSD_BIN}/[
+/usr/bin/basename=${OSCRAFT_FREEBSD_BIN}/basename
+/bin/cat=${OSCRAFT_FREEBSD_BIN}/cat
+/bin/chmod=${OSCRAFT_FREEBSD_BIN}/chmod
+/bin/cp=${OSCRAFT_FREEBSD_BIN}/cp
+/usr/bin/cut=${OSCRAFT_FREEBSD_BIN}/cut
+/bin/date=${OSCRAFT_FREEBSD_BIN}/date
+/usr/bin/dirname=${OSCRAFT_FREEBSD_BIN}/dirname
+/bin/echo=${OSCRAFT_FREEBSD_BIN}/echo
+/bin/egrep=${OSCRAFT_FREEBSD_BIN}/egrep
+/usr/bin/env=${OSCRAFT_FREEBSD_BIN}/env
+/usr/bin/false=${OSCRAFT_FREEBSD_BIN}/false
+/bin/fgrep=${OSCRAFT_FREEBSD_BIN}/fgrep
+/usr/bin/grep=${OSCRAFT_FREEBSD_BIN}/grep
+/bin/groups=${OSCRAFT_FREEBSD_BIN}/groups
+/usr/bin/head=${OSCRAFT_FREEBSD_BIN}/head
+/usr/bin/id=${OSCRAFT_FREEBSD_BIN}/id
+/bin/kill=${OSCRAFT_FREEBSD_BIN}/kill
+/bin/link=${OSCRAFT_FREEBSD_BIN}/link
+/bin/ln=${OSCRAFT_FREEBSD_BIN}/ln
+/bin/ls=${OSCRAFT_FREEBSD_BIN}/ls
+/bin/mkdir=${OSCRAFT_FREEBSD_BIN}/mkdir
+/bin/mv=${OSCRAFT_FREEBSD_BIN}/mv
+/usr/bin/printf=${OSCRAFT_FREEBSD_BIN}/printf
+/bin/pwd=${OSCRAFT_FREEBSD_BIN}/pwd
+/bin/rgrep=${OSCRAFT_FREEBSD_BIN}/rgrep
+/bin/rm=${OSCRAFT_FREEBSD_BIN}/rm
+/bin/rmdir=${OSCRAFT_FREEBSD_BIN}/rmdir
+/usr/bin/seq=${OSCRAFT_FREEBSD_BIN}/seq
+/bin/sleep=${OSCRAFT_FREEBSD_BIN}/sleep
+/usr/bin/sort=${OSCRAFT_FREEBSD_BIN}/sort
+/usr/bin/tail=${OSCRAFT_FREEBSD_BIN}/tail
+/usr/bin/logger=${OSCRAFT_FREEBSD_BIN}/logger
+/sbin/dmesg=${OSCRAFT_FREEBSD_BIN}/dmesg
+/bin/ps=${OSCRAFT_FREEBSD_BIN}/ps
+/sbin/ifconfig=${OSCRAFT_FREEBSD_BIN}/ifconfig
+/sbin/ping=${OSCRAFT_FREEBSD_BIN}/ping
+# netd's modules (kldload(2)): FreeBSD's tools.
+/sbin/kldload=${OSCRAFT_FREEBSD_BIN}/kldload
+/sbin/kldunload=${OSCRAFT_FREEBSD_BIN}/kldunload
+/sbin/kldstat=${OSCRAFT_FREEBSD_BIN}/kldstat
+/usr/sbin/pciconf=${OSCRAFT_FREEBSD_BIN}/pciconf
+/sbin/sysctl=${OSCRAFT_FREEBSD_BIN}/sysctl
+# FreeBSD's ipfw, as a module, and its tool.
+/boot/modules/ipfw.ko=${OSCRAFT_FREEBSD_DIR}/mods/ipfw.ko
+# netd's USB: the core with the client controller over usbd, and USB Ethernet.
+/boot/modules/usb.ko=${OSCRAFT_FREEBSD_DIR}/mods/usb.ko
+/boot/modules/miibus.ko=${OSCRAFT_FREEBSD_DIR}/mods/miibus.ko
+/boot/modules/uether.ko=${OSCRAFT_FREEBSD_DIR}/mods/uether.ko
+/boot/modules/if_cdce.ko=${OSCRAFT_FREEBSD_DIR}/mods/if_cdce.ko
+/boot/modules/if_urndis.ko=${OSCRAFT_FREEBSD_DIR}/mods/if_urndis.ko
+/boot/modules/if_axe.ko=${OSCRAFT_FREEBSD_DIR}/mods/if_axe.ko
+/boot/modules/if_axge.ko=${OSCRAFT_FREEBSD_DIR}/mods/if_axge.ko
+/boot/modules/if_ure.ko=${OSCRAFT_FREEBSD_DIR}/mods/if_ure.ko
+/boot/modules/if_smsc.ko=${OSCRAFT_FREEBSD_DIR}/mods/if_smsc.ko
+/boot/modules/if_muge.ko=${OSCRAFT_FREEBSD_DIR}/mods/if_muge.ko
+# netd's PCI: the client bus over pcid, and QEMU's virtio network device.
+/boot/modules/pci.ko=${OSCRAFT_FREEBSD_DIR}/mods/pci.ko
+/boot/modules/virtio.ko=${OSCRAFT_FREEBSD_DIR}/mods/virtio.ko
+/boot/modules/virtio_pci.ko=${OSCRAFT_FREEBSD_DIR}/mods/virtio_pci.ko
+/boot/modules/if_vtnet.ko=${OSCRAFT_FREEBSD_DIR}/mods/if_vtnet.ko
+/sbin/ipfw=${OSCRAFT_FREEBSD_BIN}/ipfw
+/sbin/route=${OSCRAFT_FREEBSD_BIN}/route
+/usr/bin/netstat=${OSCRAFT_FREEBSD_BIN}/netstat
+/usr/bin/top=${OSCRAFT_FREEBSD_BIN}/top
+/lib/libsbuf.so.6=${OSCRAFT_FREEBSD_SYSROOT}/lib/libsbuf.so.6
+/lib/libjail.so.1=${OSCRAFT_FREEBSD_SYSROOT}/lib/libjail.so.1
+/sbin/mount=${OSCRAFT_FREEBSD_BIN}/mount
+/sbin/mount_msdosfs=${OSCRAFT_FREEBSD_BIN}/mount_msdosfs
+/sbin/umount=${OSCRAFT_FREEBSD_BIN}/umount
+/sbin/newfs_msdos=${OSCRAFT_FREEBSD_BIN}/newfs_msdos
+/usr/bin/which=${OSCRAFT_FREEBSD_BIN}/which
+/bin/df=${OSCRAFT_FREEBSD_BIN}/df
+/lib/libkiconv.so.4=${OSCRAFT_FREEBSD_SYSROOT}/lib/libkiconv.so.4
+/usr/bin/tee=${OSCRAFT_FREEBSD_BIN}/tee
+/bin/test=${OSCRAFT_FREEBSD_BIN}/test
+/usr/bin/touch=${OSCRAFT_FREEBSD_BIN}/touch
+/usr/bin/tr=${OSCRAFT_FREEBSD_BIN}/tr
+/usr/bin/true=${OSCRAFT_FREEBSD_BIN}/true
+/usr/bin/uname=${OSCRAFT_FREEBSD_BIN}/uname
+/usr/bin/uniq=${OSCRAFT_FREEBSD_BIN}/uniq
+/bin/unlink=${OSCRAFT_FREEBSD_BIN}/unlink
+/usr/bin/wc=${OSCRAFT_FREEBSD_BIN}/wc
+/bin/whoami=${OSCRAFT_FREEBSD_BIN}/whoami
+/usr/bin/xargs=${OSCRAFT_FREEBSD_BIN}/xargs
+/usr/bin/yes=${OSCRAFT_FREEBSD_BIN}/yes
+/usr/bin/hexdump=${OSCRAFT_FREEBSD_BIN}/hexdump
+[type=link] /usr/bin/od=/usr/bin/hexdump
+[type=link] /usr/tmp=/tmp
+/usr/bin/getconf=${OSCRAFT_FREEBSD_BIN}/getconf
+# FreeBSD's dynamic loader and shared libraries, from FreeBSD's build
+# (its temporary tree, the sysroot), where FreeBSD programs expect them.
+/libexec/ld-elf.so.1=${OSCRAFT_FREEBSD_SYSROOT}/libexec/ld-elf.so.1
+/lib/libc.so.7=${OSCRAFT_FREEBSD_SYSROOT}/lib/libc.so.7
+/lib/libsys.so.7=${OSCRAFT_FREEBSD_SYSROOT}/lib/libsys.so.7
+/lib/libthr.so.3=${OSCRAFT_FREEBSD_SYSROOT}/lib/libthr.so.3
+# netd is dynamic (its modules resolve against it); Rust's unwinder needs this.
+/lib/libgcc_s.so.1=${OSCRAFT_FREEBSD_SYSROOT}/lib/libgcc_s.so.1
+
+
+# FreeBSD's sh, static: the console shell, and what popen() and system()
+# run (QNX's ksh, with the overlay, is /compat/qnx/bin/ksh).
+/bin/sh=${OSCRAFT_FREEBSD_BIN}/sh
+
+# Users and groups: root (no password) and sshd's unprivileged user.
+/etc/passwd = {
+root:x:0:0:Superuser:/root:/bin/sh
+sshd:x:15:6:sshd:/var/chroot/sshd:/bin/false
+}
+/etc/shadow = {
+root::1468494669:0:0
+sshd:*:1231323780:0:0
+}
+# What FreeBSD's getpwuid() reads (make pwd-db, from images/master.passwd).
+/etc/pwd.db=${OSCRAFT_PWD_DB}/pwd.db
+[perms=0600] /etc/spwd.db=${OSCRAFT_PWD_DB}/spwd.db
+/etc/group = {
+root:x:0:root
+sshd:x:6:
+}
+[type=dir dperms=0700] /root
+# Mount points: the image's directories under tmpfs, so mkdir() of them
+# is EEXIST (procnto's pathmgr_domknod()).
+[type=dir dperms=01777] /tmp
+[type=dir dperms=0755] /var
+
+# The console, last in the boot script: FreeBSD's sh on the kernel's own
+# console, /dev/text (the debug UART startup chose). The QNX tests' image
+# leaves this part out for QNX's shell on QNX's serial driver
+# (tests/qnx/image.build; the Makefile drops what is between the markers).
+# CONSOLE-BEGIN
+[+script] .script = {
+    reopen /dev/text
+    [+session] /bin/sh &
+}
+# CONSOLE-END

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="500" fill="#ffffff"/>
+  <rect class="k" x="60" y="16" width="180" height="34" rx="4"/>
+  <text x="150" y="31" class="b c">host</text>
+  <text x="150" y="44" class="s c">USB core and hub driver</text>
+  <rect class="y" x="340" y="16" width="120" height="34" rx="4"/>
+  <text x="400" y="31" class="b c">hub</text>
+  <text x="400" y="44" class="s c">the port</text>
+  <rect class="u" x="540" y="16" width="120" height="34" rx="4"/>
+  <text x="600" y="31" class="b c">new device</text>
+  <text x="600" y="44" class="s c">just plugged in</text>
+  <path class="life" d="M150,50 L150,480"/>
+  <path class="life" d="M400,50 L400,480"/>
+  <path class="life" d="M600,50 L600,480"/>
+  <path class="ln" d="M600,90 L400,90" marker-end="url(#a)"/>
+  <circle cx="416" cy="78" r="9" fill="#333333"/>
+  <text x="416" y="82" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="432" y="82" class="s">the port senses a device</text>
+  <path class="ln" d="M400,126 L150,126" marker-end="url(#a)"/>
+  <circle cx="166" cy="114" r="9" fill="#333333"/>
+  <text x="166" y="118" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <text x="182" y="118" class="s">status change, on the hub's interrupt endpoint</text>
+  <path class="lnk" d="M150,166 L400,166" marker-end="url(#ak)"/>
+  <circle cx="166" cy="154" r="9" fill="#2c5d9b"/>
+  <text x="166" y="158" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="182" y="158" class="s">reset the port</text>
+  <path class="lnk" d="M150,206 L600,206" marker-end="url(#ak)"/>
+  <circle cx="166" cy="194" r="9" fill="#2c5d9b"/>
+  <text x="166" y="198" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <text x="182" y="198" class="s">GET_DESCRIPTOR(device), to address 0</text>
+  <path class="lng dash" d="M600,240 L150,240" marker-end="url(#ag)"/>
+  <circle cx="166" cy="228" r="9" fill="#3e7b34"/>
+  <text x="166" y="232" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <text x="182" y="232" class="s">18 bytes: IDs, class, packet size of endpoint 0</text>
+  <path class="lnk" d="M150,280 L600,280" marker-end="url(#ak)"/>
+  <circle cx="166" cy="268" r="9" fill="#2c5d9b"/>
+  <text x="166" y="272" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">6</text>
+  <text x="182" y="272" class="s">SET_ADDRESS(3)</text>
+  <path class="lnk" d="M150,320 L600,320" marker-end="url(#ak)"/>
+  <circle cx="166" cy="308" r="9" fill="#2c5d9b"/>
+  <text x="166" y="312" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">7</text>
+  <text x="182" y="312" class="s">GET_DESCRIPTOR(configuration), to address 3</text>
+  <path class="lng dash" d="M600,354 L150,354" marker-end="url(#ag)"/>
+  <circle cx="166" cy="342" r="9" fill="#3e7b34"/>
+  <text x="166" y="346" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">8</text>
+  <text x="182" y="346" class="s">the configuration, its interfaces and endpoints</text>
+  <path class="lnk" d="M150,394 L600,394" marker-end="url(#ak)"/>
+  <circle cx="166" cy="382" r="9" fill="#2c5d9b"/>
+  <text x="166" y="386" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">9</text>
+  <text x="182" y="386" class="s">SET_CONFIGURATION(1)</text>
+  <rect class="g" x="40" y="420" width="220" height="44" rx="3"/>
+  <text x="150" y="438" class="c">match drivers to interfaces</text>
+  <text x="150" y="453" class="s c">by class, or by vendor and product</text>
+  <text x="735" y="78" class="s c">device state</text>
+  <rect class="n" x="690" y="84" width="90" height="68" rx="3"/>
+  <text x="735" y="122.0" class="s c">Powered</text>
+  <rect class="y" x="690" y="166" width="90" height="100" rx="3"/>
+  <text x="735" y="220.0" class="s c">Default</text>
+  <rect class="y" x="690" y="280" width="90" height="100" rx="3"/>
+  <text x="735" y="334.0" class="s c">Address</text>
+  <rect class="g" x="690" y="394" width="90" height="64" rx="3"/>
+  <text x="735" y="430.0" class="s c">Configured</text>
+</svg>

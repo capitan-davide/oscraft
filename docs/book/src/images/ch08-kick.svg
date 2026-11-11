@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="390" viewBox="0 0 800 390" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="390" fill="#ffffff"/>
+  <rect class="k" x="40" y="40" width="150" height="46" rx="4"/>
+  <text x="115" y="60" class="b c">CPU 0</text>
+  <text x="115" y="77" class="s c">runs priority 60</text>
+  <path class="life" d="M115,86 L115,330"/>
+  <rect class="n" x="230" y="40" width="150" height="46" rx="4"/>
+  <text x="305" y="60" class="b c">CPU 1</text>
+  <text x="305" y="77" class="s c">runs priority 40</text>
+  <path class="life" d="M305,86 L305,330"/>
+  <rect class="g" x="420" y="40" width="150" height="46" rx="4"/>
+  <text x="495" y="60" class="b c">CPU 2</text>
+  <text x="495" y="77" class="s c">runs priority 10</text>
+  <path class="life" d="M495,86 L495,330"/>
+  <rect class="n" x="610" y="40" width="150" height="46" rx="4"/>
+  <text x="685" y="60" class="b c">CPU 3</text>
+  <text x="685" y="77" class="s c">runs priority 30</text>
+  <path class="life" d="M685,86 L685,330"/>
+  <text x="115" y="28" class="s c">the waker</text>
+  <text x="495" y="28" class="s c green">the lowest priority below 50</text>
+  <rect class="wk" x="40" y="104" width="150" height="50" rx="3"/>
+  <circle cx="52" cy="118" r="9" fill="#2c5d9b"/>
+  <text x="52" y="122" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="66" y="122" class="s">wake(T): T, priority</text>
+  <text x="66" y="136" class="s">50, goes on the</text>
+  <text x="66" y="149" class="s">ready queue</text>
+  <rect class="wk" x="40" y="166" width="150" height="64" rx="3"/>
+  <circle cx="52" cy="180" r="9" fill="#2c5d9b"/>
+  <text x="52" y="184" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <text x="66" y="184" class="s">kick_for(T): reads</text>
+  <text x="66" y="198" class="s">each CPU's</text>
+  <text x="66" y="212" class="s">running_prio,</text>
+  <text x="66" y="225" class="s">chooses CPU 2</text>
+  <rect class="wk" x="40" y="242" width="150" height="50" rx="3"/>
+  <circle cx="52" cy="256" r="9" fill="#2c5d9b"/>
+  <text x="52" y="260" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="66" y="260" class="s">ipi::send(2, RESCHED)</text>
+  <text x="66" y="274" class="s">through startup's</text>
+  <text x="66" y="287" class="s">send_ipi callout</text>
+  <path class="lnk" d="M190,267 L418,267" marker-end="url(#ak)"/>
+  <text x="305" y="259" class="s c blue">interprocessor interrupt</text>
+  <rect class="g" x="420" y="244" width="150" height="46" rx="3"/>
+  <circle cx="432" cy="258" r="9" fill="#3e7b34"/>
+  <text x="432" y="262" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <text x="446" y="262" class="s">IPI handler: sets</text>
+  <text x="446" y="276" class="s">need_resched</text>
+  <rect class="g" x="420" y="298" width="150" height="60" rx="3"/>
+  <circle cx="432" cy="312" r="9" fill="#3e7b34"/>
+  <text x="432" y="316" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <text x="446" y="316" class="s">leaving the interrupt:</text>
+  <text x="446" y="330" class="s">preempt(), schedule()</text>
+  <text x="446" y="344" class="s b">switches to T</text>
+  <text x="495" y="120" class="s c">its thread (priority 10)</text>
+  <text x="495" y="134" class="s c">runs on until the</text>
+  <text x="495" y="148" class="s c">interrupt arrives</text>
+  <text x="305" y="120" class="s c">not asked:</text>
+  <text x="305" y="134" class="s c">40 is not the lowest</text>
+  <text x="685" y="120" class="s c">not asked:</text>
+  <text x="685" y="134" class="s c">30 is not the lowest</text>
+  <text x="400" y="380" class="s c">An idle CPU is chosen before any busy one. If the waker itself runs below T and no CPU is idle, it switches by itself and sends nothing.</text>
+</svg>

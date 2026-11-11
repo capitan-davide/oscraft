@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="330" viewBox="0 0 800 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="330" fill="#ffffff"/>
+  <rect class="y" x="20" y="20" width="220" height="70" rx="4"/>
+  <text x="130" y="42" class="b c">tests/target.tests</text>
+  <text x="130" y="60" class="s c">name, commands to run,</text>
+  <text x="130" y="75" class="s c">patterns to expect or reject</text>
+  <rect class="k" x="20" y="130" width="220" height="90" rx="4"/>
+  <text x="130" y="152" class="b c">run-tests.py</text>
+  <text x="130" y="170" class="s c">types each command,</text>
+  <text x="130" y="185" class="s c">reads the output,</text>
+  <text x="130" y="200" class="s c">matches the patterns</text>
+  <path class="ln" d="M130,90 L130,128" marker-end="url(#a)"/>
+  <rect class="n" x="330" y="20" width="450" height="290" rx="4"/>
+  <text x="555" y="42" class="b c">QEMU's virt machine</text>
+  <rect class="k" x="350" y="60" width="410" height="40" rx="4"/>
+  <text x="555" y="78" class="c">OsCraft, booted from build/oscraft-test.ifs</text>
+  <text x="555" y="93" class="s c">the system plus the test programs</text>
+  <rect class="g" x="350" y="120" width="410" height="44" rx="4"/>
+  <text x="555" y="139" class="c">the shell on the console</text>
+  <text x="555" y="155" class="s c">FreeBSD's sh, on the PL011 serial port</text>
+  <rect class="w" x="350" y="184" width="195" height="106" rx="3"/>
+  <text x="447" y="204" class="b c">test programs</text>
+  <text x="447" y="222" class="ms c">tests/native/*.c</text>
+  <text x="447" y="238" class="s c">print one line per check</text>
+  <text x="447" y="254" class="s c">and "passed" or "FAILED"</text>
+  <text x="447" y="276" class="ms c">/proc/boot/net-test, ...</text>
+  <rect class="w" x="565" y="184" width="195" height="106" rx="3"/>
+  <text x="662" y="204" class="b c">the system's own tools</text>
+  <text x="662" y="222" class="ms c">ifconfig, ping, ps, kldload</text>
+  <text x="662" y="238" class="s c">used as a user would</text>
+  <path class="lnk" d="M240,150 L348,142" marker-end="url(#ak)"/>
+  <text x="294" y="134" class="s c blue">commands</text>
+  <path class="lng" d="M348,158 L240,190" marker-end="url(#ag)"/>
+  <text x="294" y="196" class="s c green">output</text>
+  <text x="294" y="240" class="s c">the serial port,</text>
+  <text x="294" y="254" class="s c">as a TCP socket</text>
+  <path class="ln" d="M447,164 L447,182" marker-end="url(#a)"/>
+  <path class="ln" d="M662,164 L662,182" marker-end="url(#a)"/>
+  <rect class="w" x="20" y="250" width="220" height="60" rx="4"/>
+  <text x="130" y="272" class="ms c">ok   netd-vtnet</text>
+  <text x="130" y="288" class="ms c">FAIL ...</text>
+  <text x="130" y="303" class="ms c">40/40 passed</text>
+  <path class="ln" d="M130,220 L130,248" marker-end="url(#a)"/>
+</svg>

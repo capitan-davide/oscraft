@@ -1,0 +1,25 @@
+#
+# OSCRAFT_PCI: FreeBSD's PCI bus for OsCraft's pcid, a user process. Not a
+# kernel: config(8) picks the sources and writes the opt_*.h headers, from
+# which libbsdpci.a is built; bsdkern supplies what the rest of the kernel
+# would. The board is described by its own device tree, which startup
+# leaves in the system page ("fdt"): FreeBSD's FDT layer reads it, and the
+# host bridges attach under simplebus as in the kernel.
+#
+
+cpu		ARM64
+ident		OSCRAFT_PCI
+makeoptions	CONF_CFLAGS="-DOSCRAFT_BSDKERN -DMUTEX_NOINLINE -DRWLOCK_NOINLINE -DSX_NOINLINE"
+makeoptions	WITHOUT_MODULES=1
+makeoptions	DEBUG=-g
+
+options 	SMP
+options 	MAXCPU=8
+options 	MAXMEMDOM=1
+options 	FDT
+options 	INTRNG
+
+device		pci
+# QEMU's virt has the generic ECAM host bridge (pci_host_generic_fdt.c),
+# built in. A board with a bridge of its own brings it as a module of
+# pcid, from its BSP (pcid -m).

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="300" fill="#ffffff"/>
+  <text x="400" y="24" class="h c">Physical addresses on QEMU's virt, and the pools the startup names</text>
+  <path class="ln" d="M60,150 L770,150"/>
+  <path class="ln" d="M60,146 L60,154"/>
+  <text x="60" y="170" class="s c">0 GiB</text>
+  <path class="ln" d="M230,146 L230,154"/>
+  <text x="230" y="170" class="s c">1 GiB</text>
+  <path class="ln" d="M400,146 L400,154"/>
+  <text x="400" y="170" class="s c">2 GiB</text>
+  <path class="ln" d="M570,146 L570,154"/>
+  <text x="570" y="170" class="s c">3 GiB</text>
+  <path class="ln" d="M740,146 L740,154"/>
+  <text x="740" y="170" class="s c">4 GiB</text>
+  <rect class="n" x="60" y="110" width="170" height="36" rx="2"/>
+  <text x="145.0" y="132" class="s c">devices, no RAM</text>
+  <rect class="g" x="230" y="110" width="340" height="36" rx="2"/>
+  <text x="400" y="132" class="c">RAM: 2 GiB</text>
+  <rect class="y" x="230" y="60" width="340" height="30" rx="2"/>
+  <text x="400" y="80" class="m c">/memory</text>
+  <path class="lnk" d="M60,200 L740,200"/>
+  <path class="lnk" d="M60,194 L60,206"/>
+  <path class="lnk" d="M740,194 L740,206"/>
+  <text x="400" y="220" class="s c">below4G: every address under 4 GiB. All the RAM is in it, so /below4G is the same memory as /memory.</text>
+  <path class="lnr" d="M60,244 L218,244"/>
+  <path class="lnr" d="M60,238 L60,250"/>
+  <path class="lnr" d="M218,238 L218,250"/>
+  <text x="234" y="248" class="s red">below1G: no RAM is in it, so the startup makes no such pool, and opening /below1G fails with ENOENT.</text>
+  <text x="400" y="284" class="s c">The same program on a machine with RAM under 1 GiB finds a /below1G pool, smaller than /memory.</text>
+</svg>

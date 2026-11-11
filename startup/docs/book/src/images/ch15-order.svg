@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="490" viewBox="0 0 860 490" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+
+  <rect x="0" y="0" width="860" height="490" fill="#ffffff"/>
+  <rect class="k" x="40" y="20" width="330" height="30" rx="4"/>
+  <text x="52" y="40" class="m">init_debug(&amp;DEBUG_DRIVERS)</text>
+  <text x="390" y="40" class="s">the PL011 at 0x0900_0000: output from here on</text>
+  <rect class="k" x="40" y="60" width="330" height="30" rx="4"/>
+  <text x="52" y="80" class="m">options(&quot;&quot;), handle_common_option()</text>
+  <text x="390" y="80" class="s">-v, -u reg: the device tree from x0</text>
+  <polyline class="ln" points="205,50 205,59" marker-end="url(#a)"/>
+  <rect class="y" x="40" y="100" width="330" height="30" rx="4"/>
+  <text x="52" y="120" class="m">from_fdt()</text>
+  <text x="390" y="120" class="s">4 CPUs, 2048 MB, from QEMU&#x27;s tree</text>
+  <polyline class="ln" points="205,90 205,99" marker-end="url(#a)"/>
+  <rect class="k" x="40" y="140" width="330" height="30" rx="4"/>
+  <text x="52" y="160" class="m">init_smp(4, psci::release_cpu)</text>
+  <text x="390" y="160" class="s">before init_mmu(): one page table per CPU</text>
+  <polyline class="ln" points="205,130 205,139" marker-end="url(#a)"/>
+  <rect class="k" x="40" y="180" width="330" height="30" rx="4"/>
+  <text x="52" y="200" class="m">add_ram(0x4000_0000, 2 GB)</text>
+  <text x="390" y="200" class="s">before the first allocation</text>
+  <polyline class="ln" points="205,170 205,179" marker-end="url(#a)"/>
+  <rect class="k" x="40" y="220" width="330" height="30" rx="4"/>
+  <text x="52" y="240" class="m">init_mmu()</text>
+  <text x="390" y="240" class="s">the first allocation: the page tables</text>
+  <polyline class="ln" points="205,210 205,219" marker-end="url(#a)"/>
+  <rect class="k" x="40" y="260" width="330" height="30" rx="4"/>
+  <text x="52" y="280" class="m">gic_v2::init(GICD, GICC)</text>
+  <text x="390" y="280" class="s">needs the page tables to map the GIC</text>
+  <polyline class="ln" points="205,250 205,259" marker-end="url(#a)"/>
+  <rect class="k" x="40" y="300" width="330" height="30" rx="4"/>
+  <text x="52" y="320" class="m">init_qtime(27)</text>
+  <text x="390" y="320" class="s">the virtual timer&#x27;s PPI: the tick</text>
+  <polyline class="ln" points="205,290 205,299" marker-end="url(#a)"/>
+  <rect class="k" x="40" y="340" width="330" height="30" rx="4"/>
+  <text x="52" y="360" class="m">init_boot_cpu(0)</text>
+  <text x="390" y="360" class="s">after the controller: runs its per-CPU setup</text>
+  <polyline class="ln" points="205,330 205,339" marker-end="url(#a)"/>
+  <rect class="y" x="40" y="380" width="330" height="30" rx="4"/>
+  <text x="52" y="400" class="m">callout.reboot = PSCI SYSTEM_RESET</text>
+  <text x="390" y="400" class="s">the board&#x27;s own callout</text>
+  <polyline class="ln" points="205,370 205,379" marker-end="url(#a)"/>
+  <rect class="k" x="40" y="420" width="330" height="30" rx="4"/>
+  <text x="52" y="440" class="m">boot()</text>
+  <text x="390" y="440" class="s">never returns: CPUs, system page, kernel</text>
+  <polyline class="ln" points="205,410 205,419" marker-end="url(#a)"/>
+  <text x="40" y="480" class="s">blue: the library&#x27;s calls; yellow: the board&#x27;s own code</text>
+</svg>

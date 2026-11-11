@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="500" fill="#ffffff"/>
+  <rect class="k" x="20" y="20" width="330" height="460" rx="4"/>
+  <text x="185" y="42" class="h c">libsys: FreeBSD's system calls</text>
+  <rect class="wk" x="34" y="54" width="302" height="50" rx="3"/>
+  <text x="44" y="70" class="b">threads, locks, signals, clocks</text>
+  <text x="44" y="85" class="ms">thr_new, _umtx_op, sigaction, kill,</text>
+  <text x="44" y="98" class="ms">clock_gettime, nanosleep, ktimer_*</text>
+  <rect class="wk" x="34" y="108" width="302" height="50" rx="3"/>
+  <text x="44" y="124" class="b">waiting for several descriptors</text>
+  <text x="44" y="139" class="ms">poll, select, kevent</text>
+  <text x="44" y="152" class="ms"></text>
+  <rect class="wk" x="34" y="162" width="302" height="50" rx="3"/>
+  <text x="44" y="178" class="b">an open descriptor</text>
+  <text x="44" y="193" class="ms">read, write, lseek, fstat, ioctl,</text>
+  <text x="44" y="206" class="ms">fcntl, getdirentries, close</text>
+  <rect class="wk" x="34" y="216" width="302" height="50" rx="3"/>
+  <text x="44" y="232" class="b">sockets</text>
+  <text x="44" y="247" class="ms">socket, bind, connect, accept,</text>
+  <text x="44" y="260" class="ms">sendmsg, recvmsg, setsockopt</text>
+  <rect class="wk" x="34" y="270" width="302" height="50" rx="3"/>
+  <text x="44" y="286" class="b">path names</text>
+  <text x="44" y="301" class="ms">open, stat, unlink, mkdir,</text>
+  <text x="44" y="314" class="ms">rename, chdir, readlink</text>
+  <rect class="wk" x="34" y="324" width="302" height="50" rx="3"/>
+  <text x="44" y="340" class="b">memory</text>
+  <text x="44" y="355" class="ms">mmap, munmap, mprotect</text>
+  <text x="44" y="368" class="ms"></text>
+  <rect class="wk" x="34" y="378" width="302" height="50" rx="3"/>
+  <text x="44" y="394" class="b">processes and identity</text>
+  <text x="44" y="409" class="ms">fork, execve, wait4, getuid,</text>
+  <text x="44" y="422" class="ms">setsid, setpgid, umask</text>
+  <rect class="w" x="34" y="432" width="302" height="40" rx="3"/>
+  <text x="44" y="448" class="b">answered in libsys, or nothing to do</text>
+  <text x="44" y="463" class="ms">getpid, hw.ncpu, mlock, msync</text>
+  <rect class="k" x="520" y="30" width="260" height="92" rx="4"/>
+  <text x="650" y="52" class="h c">the kernel</text>
+  <text x="650" y="72" class="s c">kernel calls: ThreadDestroy(),</text>
+  <text x="650" y="87" class="s c">SignalAction(), ClockTime(),</text>
+  <text x="650" y="102" class="s c">TimerTimeout(), thr_new, futex</text>
+  <rect class="u" x="520" y="152" width="260" height="122" rx="4"/>
+  <text x="650" y="174" class="h c">servers</text>
+  <text x="650" y="194" class="s c">tmpfs, pipe, pty, random, diskd,</text>
+  <text x="650" y="209" class="s c">netd (sockets), pcid, usbd,</text>
+  <text x="650" y="224" class="s c">process 1's own devices and files</text>
+  <text x="650" y="248" class="s c">a message on the descriptor</text>
+  <text x="650" y="263" class="ms c">MsgSendv(fd, ...)</text>
+  <rect class="k" x="520" y="304" width="260" height="122" rx="4"/>
+  <text x="650" y="326" class="h c">process 1</text>
+  <text x="650" y="346" class="s c">the pathname manager,</text>
+  <text x="650" y="361" class="s c">the process manager,</text>
+  <text x="650" y="376" class="s c">the memory manager</text>
+  <text x="650" y="400" class="s c">a message on the connection</text>
+  <text x="650" y="415" class="s c">every process is born with</text>
+  <path class="lnk" d="M336,79 L518,66" marker-end="url(#ak)"/>
+  <path class="lnk" d="M336,133 L518,96" marker-end="url(#ak)"/>
+  <path class="ln" d="M336,133 L518,176" marker-end="url(#a)"/>
+  <path class="ln" d="M336,187 L518,200" marker-end="url(#a)"/>
+  <path class="ln" d="M336,241 L518,224" marker-end="url(#a)"/>
+  <path class="ln" d="M336,295 L518,250" marker-end="url(#a)"/>
+  <path class="lnk" d="M336,295 L518,330" marker-end="url(#ak)"/>
+  <path class="lnk" d="M336,349 L518,360" marker-end="url(#ak)"/>
+  <path class="lnk" d="M336,403 L518,390" marker-end="url(#ak)"/>
+  <text x="650" y="452" class="s c">blue arrows: kernel calls and process 1</text>
+  <text x="650" y="467" class="s c">black arrows: other servers</text>
+</svg>

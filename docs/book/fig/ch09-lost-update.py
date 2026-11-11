@@ -1,0 +1,21 @@
+from svg import Fig
+f = Fig(800, 330)
+def lane(y, name):
+    f.text(70, y + 18, name, "b e"); f.line([(80, y + 28), (770, y + 28)], "life")
+def step(x, y, w, t, cls):
+    f.box(cls, x, y, w, 26, 3); f.text(x + w / 2, y + 17, t, "s c")
+f.text(80, 24, "Without a lock", "h")
+lane(36, "thread 1"); lane(76, "thread 2")
+step(90, 38, 90, "reads 5", "k"); step(290, 38, 90, "adds 1", "k"); step(490, 38, 90, "writes 6", "k")
+step(190, 78, 90, "reads 5", "u"); step(390, 78, 90, "adds 1", "u"); step(590, 78, 90, "writes 6", "r")
+f.text(700, 60, "counter = 6:", "s red"); f.text(700, 74, "one update lost", "s red")
+f.text(80, 164, "With a mutex", "h")
+lane(176, "thread 1"); lane(216, "thread 2")
+step(90, 178, 60, "lock", "g"); step(152, 178, 70, "reads 5", "k"); step(224, 178, 70, "writes 6", "k"); step(296, 178, 64, "unlock", "g")
+step(190, 218, 60, "lock", "y"); f.box("y", 252, 218, 108, 26, 3); f.text(306, 235, "waits", "s c")
+step(362, 218, 70, "reads 6", "u"); step(434, 218, 70, "writes 7", "u"); step(506, 218, 64, "unlock", "g")
+f.arrow([(360, 204), (360, 216)], "lng", "ag")
+f.text(700, 200, "counter = 7", "s green")
+f.text(400, 290, "Time runs to the right. Reading, adding and writing are three steps, and another thread can run between any two of them.", "s c")
+f.text(400, 306, "The mutex makes the three steps a critical section that one thread at a time is in.", "s c")
+f.save("ch09-lost-update.svg")

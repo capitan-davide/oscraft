@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="330" viewBox="0 0 860 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+
+  <rect x="0" y="0" width="860" height="330" fill="#ffffff"/>
+  <rect class="n" x="40" y="40" width="330" height="54" rx="4"/>
+  <text x="205.0" y="64.0" class="b c">EL3</text>
+  <text x="205.0" y="78.0" class="s c">secure monitor (firmware)</text>
+  <rect class="n" x="40" y="110" width="330" height="54" rx="4"/>
+  <text x="205.0" y="134.0" class="b c">EL2</text>
+  <text x="205.0" y="148.0" class="s c">hypervisor</text>
+  <rect class="k" x="40" y="180" width="330" height="54" rx="4"/>
+  <text x="205.0" y="204.0" class="b c">EL1</text>
+  <text x="205.0" y="218.0" class="s c">kernel: procnto, OsCraft</text>
+  <rect class="u" x="40" y="250" width="330" height="54" rx="4"/>
+  <text x="205.0" y="274.0" class="b c">EL0</text>
+  <text x="205.0" y="288.0" class="s c">processes</text>
+  <polyline class="ln" points="560,67 372,67" marker-end="url(#a)"/>
+  <text x="570" y="71" class="s">QEMU, secure=on, no firmware</text>
+  <polyline class="ln" points="560,137 372,137" marker-end="url(#a)"/>
+  <text x="570" y="141" class="s">U-Boot; most firmware</text>
+  <polyline class="ln" points="560,207 372,207" marker-end="url(#a)"/>
+  <text x="570" y="211" class="s">QEMU virt as OsCraft runs it</text>
+  <polyline class="lnk dash" points="390,67 390,207" marker-end="url(#ak)"/>
+  <text x="400" y="102" class="m">__oscraft_to_el1</text>
+  <text x="400" y="118" class="s">drops to EL1, nothing trapping</text>
+  <text x="40" y="320" class="s">startup always continues at EL1, with the MMU off; on virt it is entered there already</text>
+</svg>

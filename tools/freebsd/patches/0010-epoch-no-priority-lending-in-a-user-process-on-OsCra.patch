@@ -1,0 +1,46 @@
+From 8114df822cd7676f41449b8d28f352b302d8b622 Mon Sep 17 00:00:00 2001
+From: Davide Cunial <dcunial@proton.me>
+Date: Fri, 6 Nov 2026 19:54:11 +0100
+Subject: [PATCH 10/10] epoch: no priority lending in a user process on OsCraft
+
+The kernel schedules and inherits priority through its mutexes, and
+turnstiles don't exist under bsdkern.
+---
+ sys/kern/subr_epoch.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/sys/kern/subr_epoch.c b/sys/kern/subr_epoch.c
+index e81b91295d4..cc4a9229b09 100644
+--- a/sys/kern/subr_epoch.c
++++ b/sys/kern/subr_epoch.c
+@@ -564,6 +564,19 @@ epoch_exit(epoch_t epoch)
+  * epoch_block_handler_preempt() is a callback from the CK code when another
+  * thread is currently in an epoch section.
+  */
++#ifdef OSCRAFT_BSDKERN
++/*
++ * A user process on OsCraft: the kernel schedules, and priorities are
++ * inherited through its mutexes, so there is nothing to lend here.
++ */
++static void
++epoch_block_handler_preempt(struct ck_epoch *global __unused,
++    ck_epoch_record_t *cr, void *arg __unused)
++{
++
++	sched_relinquish(curthread);
++}
++#else
+ static void
+ epoch_block_handler_preempt(struct ck_epoch *global __unused,
+     ck_epoch_record_t *cr, void *arg __unused)
+@@ -701,6 +714,7 @@ epoch_block_handler_preempt(struct ck_epoch *global __unused,
+ 	 */
+ 	thread_lock(td);
+ }
++#endif
+ 
+ void
+ epoch_wait_preempt(epoch_t epoch)
+-- 
+2.56.0
+

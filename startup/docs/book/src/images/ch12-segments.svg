@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="430" viewBox="0 0 820 430" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker></defs>
+  <style>
+    .k { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .y { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .n { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .w { fill: #ffffff; stroke: #666666; stroke-width: 1; stroke-dasharray: 4 3; }
+    .ln { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .t { text-anchor: middle; }
+    .b { font-weight: bold; }
+    .s { font-size: 10px; fill: #444444; }
+    .m { font-family: DejaVu Sans Mono, monospace; font-size: 11px; }
+  </style>
+  <rect width="820" height="430" fill="#ffffff"/>
+  <!-- headers -->
+  <text class="b" x="20" y="24">The ELF file</text>
+  <text class="s" x="20" y="38">offsets in the file</text>
+  <text class="b" x="300" y="24">The image in RAM</text>
+  <text class="s" x="300" y="38">physical addresses</text>
+  <text class="b" x="580" y="24">The kernel's address space</text>
+  <text class="s" x="580" y="38">virtual addresses</text>
+  <!-- file -->
+  <rect class="n" x="20" y="50" width="220" height="44"/>
+  <text class="m" x="30" y="68">0x000000</text>
+  <text class="s" x="30" y="84">ELF header, program headers</text>
+  <rect class="k" x="20" y="94" width="220" height="130"/>
+  <text class="m" x="30" y="112">0x001000</text>
+  <text class="t b" x="130" y="154">code, read-only data</text>
+  <text class="t m" x="130" y="174">0xa25f8 bytes</text>
+  <rect class="y" x="20" y="244" width="220" height="90"/>
+  <text class="m" x="30" y="262">0x0a4000</text>
+  <text class="t b" x="130" y="286">writable data</text>
+  <text class="t m" x="130" y="306">0x380f8 bytes</text>
+  <!-- image -->
+  <rect class="n" x="300" y="50" width="220" height="44"/>
+  <text class="m" x="310" y="68">0x098000</text>
+  <text class="s" x="310" y="84">the file starts here; not mapped</text>
+  <rect class="k" x="300" y="94" width="220" height="130"/>
+  <text class="m" x="310" y="112">0x099000</text>
+  <text class="s" x="310" y="128">PhysAddr of the first segment</text>
+  <text class="t b" x="410" y="162">code, read-only data</text>
+  <rect class="y" x="300" y="244" width="220" height="90"/>
+  <text class="m" x="310" y="262">0x13c000</text>
+  <text class="s" x="310" y="278">PhysAddr of the second segment</text>
+  <text class="t b" x="410" y="306">writable data</text>
+  <rect class="w" x="300" y="334" width="220" height="34"/>
+  <text class="t s" x="410" y="355">the next file in the image</text>
+  <!-- virtual -->
+  <rect class="k" x="580" y="94" width="220" height="130"/>
+  <text class="m" x="590" y="112">0xffffff80_60019000</text>
+  <text class="s" x="590" y="128">VirtAddr, R E</text>
+  <text class="t b" x="690" y="162">code, read-only data</text>
+  <text class="t s" x="690" y="182">0xa3000: whole pages</text>
+  <rect class="y" x="580" y="244" width="220" height="90"/>
+  <text class="m" x="590" y="262">0xffffff80_600c0000</text>
+  <text class="s" x="590" y="278">VirtAddr, RW</text>
+  <text class="t b" x="690" y="306">writable data</text>
+  <text class="t s" x="690" y="324">0x39000: whole pages</text>
+  <!-- arrows -->
+  <path class="ln" d="M240,160 L298,160" marker-end="url(#a)"/>
+  <text class="t s" x="270" y="152">+ 0x98000</text>
+  <path class="ln" d="M240,290 L298,290" marker-end="url(#a)"/>
+  <text class="t s" x="270" y="282">+ 0x98000</text>
+  <path class="ln" d="M520,160 L578,160" marker-end="url(#a)"/>
+  <text class="t s" x="550" y="152">mapped</text>
+  <path class="ln" d="M520,290 L578,290" marker-end="url(#a)"/>
+  <text class="t s" x="550" y="282">mapped</text>
+  <!-- notes -->
+  <text class="s" x="20" y="396">Left to middle: mkifs placed the file at 0x98000, so a segment's PhysAddr is its Offset + 0x98000; the segment needs no copy.</text>
+  <text class="s" x="20" y="412">Middle to right: page table entries, no copy either. The kernel runs from the image, and writes its data in the image too.</text>
+</svg>

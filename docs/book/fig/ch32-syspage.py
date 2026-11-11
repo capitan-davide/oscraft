@@ -1,0 +1,30 @@
+from svg import Fig
+f = Fig(800, 380)
+f.text(250, 24, "The top of every process's address space", "h c")
+X, W = 130, 240
+def reg(y, h, cls, t1, t2=None):
+    f.box(cls, X, y, W, h, 2)
+    f.text(X + W / 2, y + h / 2 + (-3 if t2 else 4), t1, "c")
+    if t2: f.text(X + W / 2, y + h / 2 + 12, t2, "s c")
+def addr(y, t): f.text(X - 8, y + 4, t, "ms e"); f.line([(X - 4, y), (X, y)])
+reg(40, 34, "n", "nothing mapped above", "the kernel's half")
+addr(74, "0x80_0000_0000")
+reg(74, 96, "y", "the system page", "three pages, read-only, shared")
+addr(170, "0x7f_ffff_d000")
+reg(170, 32, "w", "one page not mapped")
+addr(202, "0x7f_ffff_c000")
+reg(202, 110, "u", "the main thread's stack", "512 KB by default, grows down")
+reg(312, 30, "r", "guard page")
+f.text(X - 8, 78 + 60, "four pages", "s e"); f.text(X - 8, 78 + 74, "reserved", "s e")
+# right side: who finds it and how
+RX = 440
+f.box("k", RX, 60, 340, 70); f.text(RX + 170, 80, "the kernel, once at boot", "b c")
+f.text(RX + 170, 98, "chooses the address and writes it into the page:", "s c"); f.text(RX + 170, 114, "system_private.user_syspageptr", "ms c")
+f.arrow([(RX, 95), (X + W + 2, 122)], "lnk", "ak")
+f.box("k", RX, 150, 340, 54); f.text(RX + 170, 170, "the loader, for each new process", "b c"); f.text(RX + 170, 188, "maps the page's memory there", "s c")
+f.arrow([(RX, 177), (X + W + 2, 140)], "lnk", "ak")
+f.box("r", RX, 224, 340, 70); f.text(RX + 170, 244, "QNX's C library, as the program starts", "b c")
+f.text(RX + 170, 262, "asks the kernel where the page is", "s c"); f.text(RX + 170, 278, "and keeps the answer in _syspage_ptr", "s c")
+f.arrow([(RX, 259), (X + W + 2, 158)], "lnr", "ar")
+f.text(RX + 170, 322, "The addresses are those of QEMU's virt", "s c"); f.text(RX + 170, 337, "with OsCraft's startup.", "s c")
+f.save("ch32-syspage.svg")

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="420" fill="#ffffff"/>
+  <rect class="frame" x="20" y="14" width="590" height="330" rx="4"/>
+  <text x="32" y="32" class="s">one process: netd, pcid or usbd</text>
+  <rect class="k" x="40" y="44" width="550" height="48" rx="4"/>
+  <text x="315" y="64" class="b c">the server's own code</text>
+  <text x="315" y="81" class="s c">its messages: sockets in netd, PCIOCROUTE in pcid, /dev/usbd in usbd</text>
+  <rect class="g" x="40" y="102" width="550" height="48" rx="4"/>
+  <text x="315" y="122" class="b c">FreeBSD's kernel code, not edited</text>
+  <text x="315" y="139" class="s c">a subsystem as a library (libbsdnet.a, libbsdpci.a, libbsdusb.a) and modules (.ko)</text>
+  <rect class="k" x="40" y="160" width="550" height="48" rx="4"/>
+  <text x="315" y="180" class="b c">bsdkern</text>
+  <text x="315" y="197" class="s c">C in kern/ (compiled as kernel code) and Rust in src/</text>
+  <rect class="g" x="40" y="218" width="550" height="48" rx="4"/>
+  <text x="315" y="238" class="b c">FreeBSD's libc and libthr</text>
+  <text x="315" y="255" class="s c">pthread mutexes and threads, mmap(), dlopen(), open(), ioctl()</text>
+  <rect class="k" x="40" y="276" width="550" height="48" rx="4"/>
+  <text x="315" y="296" class="b c">libsys</text>
+  <text x="315" y="313" class="s c">each system call a kernel call or a message</text>
+  <rect class="k" x="20" y="360" width="590" height="44" rx="4"/>
+  <text x="315" y="379" class="b c">the microkernel and process 1</text>
+  <text x="315" y="395" class="s c">threads, messages, interrupts, memory mappings</text>
+  <path class="ln" d="M315,92 L315,102" marker-end="url(#a)"/>
+  <path class="ln" d="M315,150 L315,160" marker-end="url(#a)"/>
+  <path class="ln" d="M315,208 L315,218" marker-end="url(#a)"/>
+  <path class="ln" d="M315,266 L315,276" marker-end="url(#a)"/>
+  <path class="ln" d="M315,324 L315,358" marker-end="url(#a)"/>
+  <path class="life" d="M596,155 L626,155"/>
+  <text x="632" y="138" class="s">FreeBSD's kernel interfaces:</text>
+  <text x="632" y="153" class="s">mtx_lock(), malloc(9),</text>
+  <text x="632" y="168" class="s">msleep(), callout_reset(),</text>
+  <text x="632" y="183" class="s">bus_alloc_resource() ...</text>
+  <path class="life" d="M596,213 L626,213"/>
+  <text x="632" y="210" class="s">POSIX: what any</text>
+  <text x="632" y="225" class="s">FreeBSD program uses</text>
+  <path class="life" d="M596,342 L626,342"/>
+  <text x="632" y="339" class="s">kernel calls: MsgSendv(),</text>
+  <text x="632" y="354" class="s">InterruptWait() ...</text>
+</svg>

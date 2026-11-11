@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="330" viewBox="0 0 800 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="330" fill="#ffffff"/>
+  <text x="200" y="24" class="h c">One queue per CPU</text>
+  <text x="70" y="54" class="s c">CPU 0</text>
+  <rect class="g" x="30" y="60" width="80" height="40" rx="4"/>
+  <text x="70" y="77" class="s c">runs</text>
+  <text x="70" y="92" class="b c">30</text>
+  <path class="life" d="M70,100 L70,116"/>
+  <rect class="r" x="40" y="118" width="60" height="24" rx="3"/>
+  <text x="70" y="134" class="c">25</text>
+  <rect class="y" x="40" y="148" width="60" height="24" rx="3"/>
+  <text x="70" y="164" class="c">20</text>
+  <text x="160" y="54" class="s c">CPU 1</text>
+  <rect class="g" x="120" y="60" width="80" height="40" rx="4"/>
+  <text x="160" y="77" class="s c">runs</text>
+  <text x="160" y="92" class="b c">12</text>
+  <path class="life" d="M160,100 L160,116"/>
+  <text x="160" y="134" class="s c">(empty)</text>
+  <text x="250" y="54" class="s c">CPU 2</text>
+  <rect class="g" x="210" y="60" width="80" height="40" rx="4"/>
+  <text x="250" y="77" class="s c">runs</text>
+  <text x="250" y="92" class="b c">10</text>
+  <path class="life" d="M250,100 L250,116"/>
+  <rect class="y" x="220" y="118" width="60" height="24" rx="3"/>
+  <text x="250" y="134" class="c">8</text>
+  <text x="340" y="54" class="s c">CPU 3</text>
+  <rect class="r" x="300" y="60" width="80" height="40" rx="4"/>
+  <text x="340" y="77" class="s c">runs</text>
+  <text x="340" y="92" class="b c">5</text>
+  <path class="life" d="M340,100 L340,116"/>
+  <text x="340" y="134" class="s c">(empty)</text>
+  <text x="200" y="206" class="s c">Each CPU takes the best thread of its own queue.</text>
+  <text x="200" y="222" class="s c">No shared lock, but CPU 3 runs priority 5 while</text>
+  <text x="200" y="238" class="s c">a thread of priority 25 waits on CPU 0:</text>
+  <text x="200" y="254" class="s c">the queues must be balanced, and until they</text>
+  <text x="200" y="270" class="s c">are, priorities hold only within one CPU.</text>
+  <path class="life" d="M400,16 L400,290"/>
+  <text x="600" y="24" class="h c">One queue for all CPUs</text>
+  <text x="470" y="54" class="s c">CPU 0</text>
+  <rect class="g" x="430" y="60" width="80" height="40" rx="4"/>
+  <text x="470" y="77" class="s c">runs</text>
+  <text x="470" y="92" class="b c">30</text>
+  <text x="560" y="54" class="s c">CPU 1</text>
+  <rect class="g" x="520" y="60" width="80" height="40" rx="4"/>
+  <text x="560" y="77" class="s c">runs</text>
+  <text x="560" y="92" class="b c">25</text>
+  <text x="650" y="54" class="s c">CPU 2</text>
+  <rect class="g" x="610" y="60" width="80" height="40" rx="4"/>
+  <text x="650" y="77" class="s c">runs</text>
+  <text x="650" y="92" class="b c">20</text>
+  <text x="740" y="54" class="s c">CPU 3</text>
+  <rect class="g" x="700" y="60" width="80" height="40" rx="4"/>
+  <text x="740" y="77" class="s c">runs</text>
+  <text x="740" y="92" class="b c">12</text>
+  <rect class="frame" x="470" y="118" width="260" height="44" rx="4"/>
+  <text x="462" y="144" class="s e">ready</text>
+  <rect class="y" x="490" y="128" width="60" height="24" rx="3"/>
+  <text x="520" y="144" class="c">10</text>
+  <rect class="y" x="570" y="128" width="60" height="24" rx="3"/>
+  <text x="600" y="144" class="c">8</text>
+  <rect class="y" x="650" y="128" width="60" height="24" rx="3"/>
+  <text x="680" y="144" class="c">5</text>
+  <text x="600" y="206" class="s c">Every CPU takes the best thread of the one queue.</text>
+  <text x="600" y="222" class="s c">The CPUs always run the highest-priority ready</text>
+  <text x="600" y="238" class="s c">threads of the whole system, at the price of a</text>
+  <text x="600" y="254" class="s c">lock that all CPUs share and of threads that</text>
+  <text x="600" y="270" class="s c">move between CPUs (unless an affinity mask pins them).</text>
+  <text x="400" y="314" class="s c">Numbers are priorities. Yellow: ready, waiting for a CPU. Red: the pair that breaks the priority rule.</text>
+</svg>

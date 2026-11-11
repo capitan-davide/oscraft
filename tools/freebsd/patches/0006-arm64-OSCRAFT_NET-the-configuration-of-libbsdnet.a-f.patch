@@ -1,0 +1,39 @@
+From 42cd590e5829d223560b9a382e7af97c8bc18df1 Mon Sep 17 00:00:00 2001
+From: Davide Cunial <dcunial@proton.me>
+Date: Fri, 6 Nov 2026 16:12:40 +0100
+Subject: [PATCH 6/7] arm64: OSCRAFT_NET, the configuration of libbsdnet.a
+ for OsCraft's netd
+
+---
+ sys/arm64/conf/OSCRAFT_NET | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+ create mode 100644 sys/arm64/conf/OSCRAFT_NET
+
+diff --git a/sys/arm64/conf/OSCRAFT_NET b/sys/arm64/conf/OSCRAFT_NET
+new file mode 100644
+index 00000000000..a3cb164d42e
+--- /dev/null
++++ b/sys/arm64/conf/OSCRAFT_NET
+@@ -0,0 +1,19 @@
++#
++# OSCRAFT_NET: FreeBSD's network stack for OsCraft's netd, a user process.
++# Not a kernel: config(8) picks the sources and writes the opt_*.h headers,
++# from which libbsdnet.a is built. bsdkern supplies what the rest of the
++# kernel would.
++#
++
++cpu		ARM64
++ident		OSCRAFT_NET
++makeoptions	WITHOUT_MODULES=1
++
++options 	INET
++options 	SCHED_ULE
++options 	SMP
++options 	MAXCPU=8
++options 	MAXMEMDOM=1
++
++device		loop
++device		ether
+-- 
+2.56.0
+

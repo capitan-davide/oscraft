@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="380" viewBox="0 0 800 380" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="380" fill="#ffffff"/>
+  <text x="200" y="24" class="h c">fork(), then exec()</text>
+  <rect class="u" x="30" y="40" width="120" height="30" rx="4"/>
+  <text x="90" y="60" class="c">parent</text>
+  <path class="life" d="M90,70 L90,340"/>
+  <path class="lnk" d="M90,100 L238,100" marker-end="url(#ak)"/>
+  <circle cx="190" cy="86" r="9" fill="#2c5d9b"/>
+  <text x="190" y="90" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="204" y="90" class="s">fork()</text>
+  <rect class="u" x="240" y="86" width="120" height="30" rx="4"/>
+  <text x="300" y="106" class="c">child</text>
+  <rect class="wu" x="225" y="126" width="150" height="44" rx="3"/>
+  <text x="300" y="144" class="s c">a copy of the parent:</text>
+  <text x="300" y="158" class="s c">same program, same files</text>
+  <circle cx="210" cy="200" r="9" fill="#333333"/>
+  <text x="210" y="204" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <rect class="y" x="225" y="180" width="150" height="44" rx="3"/>
+  <text x="300" y="198" class="s c">the parent's own code</text>
+  <text x="300" y="212" class="s c">rearranges descriptors ...</text>
+  <circle cx="210" cy="254" r="9" fill="#3e7b34"/>
+  <text x="210" y="258" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <rect class="g" x="225" y="234" width="150" height="44" rx="3"/>
+  <text x="300" y="252" class="s c">exec(): same process,</text>
+  <text x="300" y="266" class="s c">new program</text>
+  <rect class="g" x="40" y="290" width="100" height="34" rx="3"/>
+  <text x="90" y="311" class="s c">runs on</text>
+  <rect class="g" x="225" y="290" width="150" height="34" rx="3"/>
+  <text x="300" y="311" class="s c">the new program runs</text>
+  <path class="life" d="M400,16 L400,350"/>
+  <text x="600" y="24" class="h c">spawn()</text>
+  <rect class="u" x="430" y="40" width="120" height="30" rx="4"/>
+  <text x="490" y="60" class="c">parent</text>
+  <path class="life" d="M490,70 L490,340"/>
+  <path class="lnk" d="M490,150 L623,150" marker-end="url(#ak)"/>
+  <circle cx="560" cy="136" r="9" fill="#2c5d9b"/>
+  <text x="560" y="140" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="576" y="106" class="s">spawn(program,</text>
+  <text x="576" y="119" class="s">descriptors, attributes)</text>
+  <rect class="wu" x="428" y="84" width="124" height="44" rx="3"/>
+  <text x="490" y="102" class="s c">describes the child</text>
+  <text x="490" y="116" class="s c">as data</text>
+  <rect class="g" x="625" y="134" width="150" height="60" rx="3"/>
+  <text x="700" y="154" class="s c">a new process,</text>
+  <text x="700" y="168" class="s c">made by the system</text>
+  <text x="700" y="182" class="s c">with the new program</text>
+  <rect class="g" x="440" y="290" width="100" height="34" rx="3"/>
+  <text x="490" y="311" class="s c">runs on</text>
+  <rect class="g" x="625" y="290" width="150" height="34" rx="3"/>
+  <text x="700" y="311" class="s c">the new program runs</text>
+  <path class="life" d="M700,194 L700,290"/>
+  <text x="200" y="364" class="s c">Two steps: the copy is made only to be replaced.</text>
+  <text x="600" y="364" class="s c">One step: nothing is copied.</text>
+</svg>

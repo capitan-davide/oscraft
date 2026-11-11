@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="440" viewBox="0 0 800 440" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="440" fill="#ffffff"/>
+  <rect class="u" x="5" y="14" width="170" height="42" rx="4"/>
+  <text x="90" y="32" class="b c">the sender</text>
+  <text x="90" y="48" class="s c">has fd 5, an open file</text>
+  <path class="life" d="M90,56 L90,430"/>
+  <rect class="k" x="215" y="14" width="170" height="42" rx="4"/>
+  <text x="300" y="32" class="b c">the kernel</text>
+  <text x="300" y="48" class="s c"></text>
+  <path class="life" d="M300,56 L300,430"/>
+  <rect class="k" x="425" y="14" width="170" height="42" rx="4"/>
+  <text x="510" y="32" class="b c">netd</text>
+  <text x="510" y="48" class="s c">the AF_UNIX socket pair</text>
+  <path class="life" d="M510,56 L510,430"/>
+  <rect class="u" x="625" y="14" width="170" height="42" rx="4"/>
+  <text x="710" y="32" class="b c">the receiver</text>
+  <text x="710" y="48" class="s c"></text>
+  <path class="life" d="M710,56 L710,430"/>
+  <path class="lnk" d="M90,92 L298,92" marker-end="url(#ak)"/>
+  <circle cx="110" cy="79" r="9" fill="#2c5d9b"/>
+  <text x="110" y="83" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="126" y="83" class="s">register fd 5 for netd</text>
+  <text x="308" y="96" class="s">returns a handle</text>
+  <path class="lnk" d="M90,138 L508,138" marker-end="url(#ak)"/>
+  <circle cx="110" cy="125" r="9" fill="#2c5d9b"/>
+  <text x="110" y="129" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <text x="126" y="129" class="s">sendmsg(): the data, and the handle in place of fd 5</text>
+  <path class="lnk" d="M510,168 L302,168" marker-end="url(#ak)"/>
+  <circle cx="322" cy="155" r="9" fill="#2c5d9b"/>
+  <text x="322" y="159" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="338" y="159" class="s">look the handle up</text>
+  <rect class="wk" x="425" y="178" width="170" height="58" rx="3"/>
+  <text x="510" y="196" class="s c">connects to the file's server:</text>
+  <text x="510" y="211" class="s c">netd now holds its own copy,</text>
+  <text x="510" y="226" class="s c">queued with the data</text>
+  <path class="lnk" d="M710,262 L512,262" marker-end="url(#ak)"/>
+  <circle cx="532" cy="249" r="9" fill="#2c5d9b"/>
+  <text x="532" y="253" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <text x="548" y="253" class="s">recvmsg()</text>
+  <path class="lnk" d="M510,296 L302,296" marker-end="url(#ak)"/>
+  <circle cx="322" cy="283" r="9" fill="#2c5d9b"/>
+  <text x="322" y="287" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <text x="338" y="287" class="s">register the copy for the receiver</text>
+  <path class="lng" d="M510,330 L708,330" marker-end="url(#ag)"/>
+  <circle cx="530" cy="317" r="9" fill="#3e7b34"/>
+  <text x="530" y="321" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">6</text>
+  <text x="546" y="321" class="s">the data, and the new handle</text>
+  <path class="lnk" d="M710,392 L302,392" marker-end="url(#ak)"/>
+  <circle cx="322" cy="379" r="9" fill="#2c5d9b"/>
+  <text x="322" y="383" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">7</text>
+  <text x="338" y="383" class="s">look it up; connect to the file's server</text>
+  <rect class="g" x="625" y="402" width="170" height="24" rx="3"/>
+  <text x="710" y="418" class="s c">a new descriptor, say fd 7</text>
+  <rect class="wk" x="425" y="340" width="170" height="22" rx="3"/>
+  <text x="510" y="355" class="s c">closes its copy</text>
+</svg>

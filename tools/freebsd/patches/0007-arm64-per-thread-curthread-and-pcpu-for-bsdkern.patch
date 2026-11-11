@@ -1,0 +1,90 @@
+From a22cf20cd1cb32b5e0d3ad25bf5143aa56fea67c Mon Sep 17 00:00:00 2001
+From: Davide Cunial <dcunial@proton.me>
+Date: Fri, 6 Nov 2026 16:34:20 +0100
+Subject: [PATCH 7/7] arm64: per-thread curthread and pcpu, for bsdkern
+
+In a user process on OsCraft x18 is an ordinary register and critical
+sections cannot stop preemption: with OSCRAFT_BSDKERN both pointers are
+thread-local and critical_enter() is bsdkern's function.
+---
+ sys/arm64/conf/OSCRAFT_NET |  1 +
+ sys/arm64/include/pcpu.h   | 24 ++++++++++++++++++++++++
+ sys/sys/systm.h            |  8 ++++++++
+ 3 files changed, 33 insertions(+)
+
+diff --git a/sys/arm64/conf/OSCRAFT_NET b/sys/arm64/conf/OSCRAFT_NET
+index a3cb164d42e..e5efc11d20f 100644
+--- a/sys/arm64/conf/OSCRAFT_NET
++++ b/sys/arm64/conf/OSCRAFT_NET
+@@ -7,6 +7,7 @@
+ 
+ cpu		ARM64
+ ident		OSCRAFT_NET
++makeoptions	CONF_CFLAGS=-DOSCRAFT_BSDKERN
+ makeoptions	WITHOUT_MODULES=1
+ 
+ options 	INET
+diff --git a/sys/arm64/include/pcpu.h b/sys/arm64/include/pcpu.h
+index 45205a7b928..448d8d48eac 100644
+--- a/sys/arm64/include/pcpu.h
++++ b/sys/arm64/include/pcpu.h
+@@ -56,6 +56,29 @@ struct debug_monitor_state;
+ 
+ struct pcpu;
+ 
++#ifdef OSCRAFT_BSDKERN
++/*
++ * In a user process on OsCraft (bsdkern) x18 is an ordinary register and a
++ * thread is not tied to a CPU: both pointers are per thread. The pcpu is
++ * the slot critical_enter() took, so only use it inside a critical section.
++ */
++extern __thread struct thread *bsdkern_curthread;
++extern __thread struct pcpu *bsdkern_curpcpu;
++
++static inline struct pcpu *
++get_pcpu(void)
++{
++
++	return (bsdkern_curpcpu);
++}
++
++static inline struct thread *
++get_curthread(void)
++{
++
++	return (bsdkern_curthread);
++}
++#else
+ static inline struct pcpu *
+ get_pcpu(void)
+ {
+@@ -73,6 +96,7 @@ get_curthread(void)
+ 	__asm __volatile("ldr	%0, [x18]" : "=&r"(td));
+ 	return (td);
+ }
++#endif
+ 
+ #define	curthread get_curthread()
+ 
+diff --git a/sys/sys/systm.h b/sys/sys/systm.h
+index 8056bf94c7b..49ac9b39c2b 100644
+--- a/sys/sys/systm.h
++++ b/sys/sys/systm.h
+@@ -206,6 +206,14 @@ critical_exit(void)
+ }
+ #endif
+ 
++#ifdef OSCRAFT_BSDKERN
++/* A user process cannot stop preemption: bsdkern takes a per-CPU slot. */
++#undef critical_enter
++#undef critical_exit
++#define critical_enter() critical_enter_KBI()
++#define critical_exit() critical_exit_KBI()
++#endif
++
+ #ifdef  EARLY_PRINTF
+ typedef void early_putc_t(int ch);
+ extern early_putc_t *early_putc;
+-- 
+2.56.0
+

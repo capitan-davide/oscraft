@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="400" fill="#ffffff"/>
+  <text x="200" y="24" class="h c">One buffer for all CPUs</text>
+  <rect class="k" x="30" y="44" width="70" height="24" rx="4"/>
+  <text x="65" y="60" class="c">CPU 0</text>
+  <path class="lnk" d="M100,56 L176,107" marker-end="url(#ak)"/>
+  <rect class="k" x="30" y="78" width="70" height="24" rx="4"/>
+  <text x="65" y="94" class="c">CPU 1</text>
+  <path class="lnk" d="M100,90 L176,107" marker-end="url(#ak)"/>
+  <rect class="k" x="30" y="112" width="70" height="24" rx="4"/>
+  <text x="65" y="128" class="c">CPU 2</text>
+  <path class="lnk" d="M100,124 L176,107" marker-end="url(#ak)"/>
+  <rect class="k" x="30" y="146" width="70" height="24" rx="4"/>
+  <text x="65" y="162" class="c">CPU 3</text>
+  <path class="lnk" d="M100,158 L176,107" marker-end="url(#ak)"/>
+  <rect class="r" x="178" y="92" width="34" height="30" rx="4"/>
+  <text x="195" y="111" class="s c">lock</text>
+  <rect class="y" x="212" y="92" width="160" height="30" rx="4"/>
+  <text x="292" y="111" class="s c">events of all CPUs</text>
+  <text x="200" y="196" class="s c">Every event takes the same lock: tracing</text>
+  <text x="200" y="210" class="s c">makes the CPUs wait for each other, and</text>
+  <text x="200" y="224" class="s c">changes the timing it is meant to show.</text>
+  <path class="life" d="M400,14 L400,236"/>
+  <text x="600" y="24" class="h c">A buffer per CPU</text>
+  <rect class="k" x="430" y="44" width="70" height="24" rx="4"/>
+  <text x="465" y="60" class="c">CPU 0</text>
+  <path class="lnk" d="M500,56 L538,56" marker-end="url(#ak)"/>
+  <rect class="y" x="540" y="44" width="120" height="24" rx="4"/>
+  <text x="600" y="60" class="s c">its own events</text>
+  <path class="ln dash" d="M660,56 L698,95" marker-end="url(#a)"/>
+  <rect class="k" x="430" y="78" width="70" height="24" rx="4"/>
+  <text x="465" y="94" class="c">CPU 1</text>
+  <path class="lnk" d="M500,90 L538,90" marker-end="url(#ak)"/>
+  <rect class="y" x="540" y="78" width="120" height="24" rx="4"/>
+  <text x="600" y="94" class="s c">its own events</text>
+  <path class="ln dash" d="M660,90 L698,103" marker-end="url(#a)"/>
+  <rect class="k" x="430" y="112" width="70" height="24" rx="4"/>
+  <text x="465" y="128" class="c">CPU 2</text>
+  <path class="lnk" d="M500,124 L538,124" marker-end="url(#ak)"/>
+  <rect class="y" x="540" y="112" width="120" height="24" rx="4"/>
+  <text x="600" y="128" class="s c">its own events</text>
+  <path class="ln dash" d="M660,124 L698,111" marker-end="url(#a)"/>
+  <rect class="k" x="430" y="146" width="70" height="24" rx="4"/>
+  <text x="465" y="162" class="c">CPU 3</text>
+  <path class="lnk" d="M500,158 L538,158" marker-end="url(#ak)"/>
+  <rect class="y" x="540" y="146" width="120" height="24" rx="4"/>
+  <text x="600" y="162" class="s c">its own events</text>
+  <path class="ln dash" d="M660,158 L698,119" marker-end="url(#a)"/>
+  <rect class="u" x="700" y="80" width="90" height="54" rx="4"/>
+  <text x="745" y="97" class="s c">reader:</text>
+  <text x="745" y="111" class="s c">merges</text>
+  <text x="745" y="125" class="s c">by time</text>
+  <text x="600" y="196" class="s c">A CPU writes only its own buffer and never</text>
+  <text x="600" y="210" class="s c">waits for another. Each record carries a time,</text>
+  <text x="600" y="224" class="s c">so the reader can put them back in one order.</text>
+  <path class="life" d="M20,246 L780,246"/>
+  <text x="400" y="268" class="h c">When the buffers are full</text>
+  <text x="200" y="292" class="b c">keep the beginning: stop writing</text>
+  <rect class="y" x="30" y="302" width="54" height="26" rx="0"/>
+  <text x="57" y="319" class="s c">1</text>
+  <rect class="y" x="84" y="302" width="54" height="26" rx="0"/>
+  <text x="111" y="319" class="s c">2</text>
+  <rect class="y" x="138" y="302" width="54" height="26" rx="0"/>
+  <text x="165" y="319" class="s c">3</text>
+  <rect class="y" x="192" y="302" width="54" height="26" rx="0"/>
+  <text x="219" y="319" class="s c">4</text>
+  <rect class="y" x="246" y="302" width="54" height="26" rx="0"/>
+  <text x="273" y="319" class="s c">5</text>
+  <text x="308" y="319" class="s red">6, 7, 8: dropped</text>
+  <text x="200" y="358" class="s c">Right when a reader empties buffers as fast as they fill.</text>
+  <text x="600" y="292" class="b c">keep the end: overwrite the oldest</text>
+  <rect class="g" x="465" y="302" width="54" height="26" rx="0"/>
+  <text x="492" y="319" class="s c">6</text>
+  <rect class="g" x="519" y="302" width="54" height="26" rx="0"/>
+  <text x="546" y="319" class="s c">7</text>
+  <rect class="g" x="573" y="302" width="54" height="26" rx="0"/>
+  <text x="600" y="319" class="s c">8</text>
+  <rect class="y" x="627" y="302" width="54" height="26" rx="0"/>
+  <text x="654" y="319" class="s c">4</text>
+  <rect class="y" x="681" y="302" width="54" height="26" rx="0"/>
+  <text x="708" y="319" class="s c">5</text>
+  <path class="lng" d="M654,346 L654,330" marker-end="url(#ag)"/>
+  <text x="654" y="358" class="s c green">next write</text>
+  <text x="600" y="384" class="s c">A flight recorder: the last moments before a stop.</text>
+</svg>

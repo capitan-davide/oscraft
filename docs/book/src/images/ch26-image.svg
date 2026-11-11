@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="420" fill="#ffffff"/>
+  <text x="170" y="24" class="h c">where it is built, on the host</text>
+  <text x="590" y="24" class="h c">where it is, in the boot image</text>
+  <rect class="k" x="20" y="40" width="300" height="50" rx="3"/>
+  <text x="170" y="61" class="ms c">target/aarch64-unknown-freebsd/release/</text>
+  <text x="170" y="78" class="s c">Rust, static: make native</text>
+  <rect class="w" x="400" y="40" width="380" height="50" rx="3"/>
+  <text x="590" y="61" class="ms c">/proc/boot/pipe  random  pty  tmpfs</text>
+  <text x="590" y="78" class="ms c">syslogd  netd  pcid  usbd  diskd-md</text>
+  <path class="ln" d="M320,65 L398,65" marker-end="url(#a)"/>
+  <rect class="g" x="20" y="100" width="300" height="50" rx="3"/>
+  <text x="170" y="121" class="ms c">&lt;sysroot&gt;/oscraft/bin/</text>
+  <text x="170" y="138" class="s c">make freebsd-progs</text>
+  <rect class="w" x="400" y="100" width="380" height="50" rx="3"/>
+  <text x="590" y="121" class="ms c">/bin/sh  /bin/ls  /bin/ps  /sbin/ifconfig</text>
+  <text x="590" y="138" class="ms c">/usr/bin/grep  /usr/bin/top ...</text>
+  <path class="ln" d="M320,125 L398,125" marker-end="url(#a)"/>
+  <rect class="g" x="20" y="160" width="300" height="50" rx="3"/>
+  <text x="170" y="181" class="ms c">&lt;sysroot&gt;/lib/  and  usr/lib/</text>
+  <text x="170" y="198" class="s c">make freebsd-libs, freebsd-progs</text>
+  <rect class="w" x="400" y="160" width="380" height="50" rx="3"/>
+  <text x="590" y="181" class="ms c">/lib/libc.so.7  libsys.so.7  libthr.so.3</text>
+  <text x="590" y="198" class="ms c">libedit.so.8  libtinfow.so.9  libxo.so.0 ...</text>
+  <path class="ln" d="M320,185 L398,185" marker-end="url(#a)"/>
+  <rect class="g" x="20" y="220" width="300" height="50" rx="3"/>
+  <text x="170" y="241" class="ms c">&lt;sysroot&gt;/libexec/ld-elf.so.1</text>
+  <text x="170" y="258" class="s c">make freebsd-libs</text>
+  <rect class="w" x="400" y="220" width="380" height="50" rx="3"/>
+  <text x="590" y="241" class="ms c">/libexec/ld-elf.so.1</text>
+  <text x="590" y="258" class="s c">the path every dynamic program names</text>
+  <path class="ln" d="M320,245 L398,245" marker-end="url(#a)"/>
+  <rect class="y" x="20" y="280" width="300" height="50" rx="3"/>
+  <text x="170" y="301" class="ms c">build/freebsd/terminfo/</text>
+  <text x="170" y="318" class="s c">make freebsd-terminfo (the host's tic)</text>
+  <rect class="w" x="400" y="280" width="380" height="50" rx="3"/>
+  <text x="590" y="301" class="ms c">/usr/share/terminfo/x/xterm</text>
+  <text x="590" y="318" class="s c">and seven more terminal types</text>
+  <path class="ln" d="M320,305 L398,305" marker-end="url(#a)"/>
+  <rect class="y" x="20" y="340" width="300" height="50" rx="3"/>
+  <text x="170" y="361" class="ms c">build/pwd/</text>
+  <text x="170" y="378" class="s c">make pwd-db, from images/master.passwd</text>
+  <rect class="w" x="400" y="340" width="380" height="50" rx="3"/>
+  <text x="590" y="361" class="ms c">/etc/pwd.db  /etc/spwd.db</text>
+  <text x="590" y="378" class="s c">next to /etc/passwd and /etc/group</text>
+  <path class="ln" d="M320,365 L398,365" marker-end="url(#a)"/>
+  <text x="360" y="30" class="s c">mkifs</text>
+  <text x="400" y="410" class="s c">images/qemu-virt.build names each file once: its path in the image, and the host file it is copied from.</text>
+</svg>

@@ -1,0 +1,26 @@
+from svg import Fig
+f = Fig(800, 300)
+# left: references keep an object alive
+f.text(200, 22, "References: counted, they keep the object", "h c")
+f.box("k", 130, 120, 140, 70); f.text(200, 143, "thread 12", "b c"); f.text(200, 160, "its state, its stacks", "s c"); f.text(200, 177, "references: 3", "m c")
+holders = [(20, 50, "the table of all threads"), (20, 220, "an interrupt it is attached to"), (240, 50, "a channel's queue of senders")]
+f.box("wk", 20, 44, 150, 32, 3); f.text(95, 64, "the table of all threads", "s c")
+f.box("wk", 230, 44, 160, 32, 3); f.text(310, 64, "a channel's queue of senders", "s c")
+f.box("wk", 120, 232, 160, 32, 3); f.text(200, 252, "an interrupt it is attached to", "s c")
+f.arrow([(95, 76), (160, 118)], "lnk", "ak")
+f.arrow([(310, 76), (240, 118)], "lnk", "ak")
+f.arrow([(200, 232), (200, 192)], "lnk", "ak")
+f.text(200, 284, "Freed when the last of the three lets go, whichever that is.", "s c")
+f.line([(410, 20), (410, 280)], "life")
+# right: IDs do not
+f.text(610, 22, "IDs: looked up when used, they keep nothing", "h c")
+f.box("k", 440, 60, 150, 60); f.text(515, 83, "channel", "b c"); f.text(515, 102, "owner: pid 4102", "m c")
+f.box("y", 640, 44, 140, 92); f.text(710, 62, "the process table", "b c")
+f.box("w", 650, 72, 120, 22, 2); f.text(710, 87, "4102", "m c")
+f.box("w", 650, 100, 120, 22, 2); f.text(710, 115, "8199", "m c")
+f.arrow([(590, 84), (648, 84)], "ln", "a", True); f.text(619, 76, "look up", "s c")
+f.box("k", 640, 170, 140, 50); f.text(710, 191, "process 4102", "b c"); f.text(710, 208, "its memory, its tables", "s c")
+f.arrow([(760, 94), (760, 168)], "lnk", "ak")
+f.text(515, 150, "The channel holds a number,", "s c"); f.text(515, 164, "not the process. When the", "s c"); f.text(515, 178, "process ends, its row goes,", "s c"); f.text(515, 192, "and the lookup fails.", "s c")
+f.text(610, 284, "A process's channels never keep the process alive.", "s c")
+f.save("ch04-references.svg")

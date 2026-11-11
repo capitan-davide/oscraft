@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="420" fill="#ffffff"/>
+  <text x="110" y="22" class="h c">Who delivers</text>
+  <rect class="w" x="20" y="36" width="180" height="46" rx="4"/>
+  <text x="110" y="56" class="c">a timer expires</text>
+  <text x="110" y="72" class="s c">Chapter 13</text>
+  <rect class="w" x="20" y="98" width="180" height="46" rx="4"/>
+  <text x="110" y="118" class="c">an interrupt arrives</text>
+  <text x="110" y="134" class="s c">Chapter 15</text>
+  <rect class="w" x="20" y="160" width="180" height="46" rx="4"/>
+  <text x="110" y="180" class="c">a server calls</text>
+  <text x="110" y="196" class="s c">MsgDeliverEvent()</text>
+  <rect class="w" x="20" y="222" width="180" height="46" rx="4"/>
+  <text x="110" y="242" class="c">a kernel pipe becomes</text>
+  <text x="110" y="258" class="s c">readable or writable</text>
+  <rect class="w" x="20" y="284" width="180" height="46" rx="4"/>
+  <text x="110" y="304" class="c">process 1 has news</text>
+  <text x="110" y="320" class="s c">a process ended, ...</text>
+  <rect class="k" x="270" y="150" width="170" height="80" rx="4"/>
+  <text x="355" y="178" class="m c">deliver_from()</text>
+  <text x="355" y="198" class="s c">reads the event's kind</text>
+  <text x="355" y="212" class="s c">and carries it out</text>
+  <path class="ln" d="M200,59 L268,170" marker-end="url(#a)"/>
+  <path class="ln" d="M200,121 L268,180" marker-end="url(#a)"/>
+  <path class="ln" d="M200,183 L268,190" marker-end="url(#a)"/>
+  <path class="ln" d="M200,245 L268,200" marker-end="url(#a)"/>
+  <path class="ln" d="M200,307 L268,210" marker-end="url(#a)"/>
+  <text x="640" y="22" class="h c">What the event asked for</text>
+  <rect class="y" x="510" y="36" width="270" height="40" rx="4"/>
+  <text x="645" y="53" class="c">a pulse</text>
+  <text x="645" y="68" class="s c">queued on a channel, or handed to a receiver</text>
+  <rect class="y" x="510" y="86" width="270" height="40" rx="4"/>
+  <text x="645" y="103" class="c">a signal</text>
+  <text x="645" y="118" class="s c">to the process, or to one of its threads</text>
+  <rect class="y" x="510" y="136" width="270" height="40" rx="4"/>
+  <text x="645" y="153" class="c">an interrupt wake-up</text>
+  <text x="645" y="168" class="s c">InterruptWait() returns in the event's thread</text>
+  <rect class="y" x="510" y="186" width="270" height="40" rx="4"/>
+  <text x="645" y="203" class="c">a post</text>
+  <text x="645" y="218" class="s c">to a named semaphore</text>
+  <rect class="y" x="510" y="236" width="270" height="40" rx="4"/>
+  <text x="645" y="253" class="c">a memory operation</text>
+  <text x="645" y="268" class="s c">set, add or flip bits in one word, atomically</text>
+  <rect class="y" x="510" y="286" width="270" height="40" rx="4"/>
+  <text x="645" y="303" class="c">a new thread</text>
+  <text x="645" y="318" class="s c">that runs the event's function</text>
+  <path class="lnk" d="M440,160 L508,56" marker-end="url(#ak)"/>
+  <path class="lnk" d="M440,174 L508,106" marker-end="url(#ak)"/>
+  <path class="lnk" d="M440,188 L508,156" marker-end="url(#ak)"/>
+  <path class="lnk" d="M440,202 L508,206" marker-end="url(#ak)"/>
+  <rect class="k" x="300" y="300" width="170" height="60" rx="4"/>
+  <text x="385" y="322" class="c">a kernel thread</text>
+  <text x="385" y="338" class="s c">takes requests from</text>
+  <text x="385" y="351" class="s c">a queue; it may block</text>
+  <path class="lnk dash" d="M370,230 L370,298" marker-end="url(#ak)"/>
+  <text x="362" y="262" class="s e">queued:</text>
+  <text x="362" y="275" class="s e">never done in</text>
+  <text x="362" y="288" class="s e">the deliverer</text>
+  <path class="lnk" d="M470,330 L490,330 L490,306 L508,306" marker-end="url(#ak)"/>
+  <path class="lnk" d="M490,306 L490,264 L508,264" marker-end="url(#ak)"/>
+  <path class="lnk" d="M440,216 L508,248" marker-end="url(#ak)"/>
+  <text x="498" y="352" class="s">always, for a new thread;</text>
+  <text x="498" y="366" class="s">for memory, when the deliverer</text>
+  <text x="498" y="380" class="s">is an interrupt handler</text>
+  <text x="400" y="408" class="s c">Everything above the kernel thread only queues something or wakes a thread, so it is safe inside an interrupt handler.</text>
+</svg>

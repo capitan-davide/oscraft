@@ -1,0 +1,4 @@
+#!/bin/sh
+# OsCraft's C compiler: the host's clang with the SDK's configuration.
+sdk=$(cd "$(dirname "$0")/.." && pwd)
+exec "${OSCRAFT_CLANG:-clang}" --config "$sdk/clang.cfg" "$@"

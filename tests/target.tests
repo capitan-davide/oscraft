@@ -1,0 +1,1863 @@
+# Target tests: run by `make test` (tools/test/run-tests.py) against the
+# image booted in QEMU. Each block runs shell commands (or a gdb script)
+# and checks the output. See tools/test/run-tests.py for the format.
+
+name: qnx-libc
+needs: qnx
+run: qnx-hello one two
+run: qnx-hello-dyn x
+expect: ^hello from QNX libc, argc=3 argv\[0\]=qnx-hello$
+expect: ^hello from QNX libc, argc=2 argv\[0\]=qnx-hello-dyn$
+
+
+# A program marked ELFOSABI_FREEBSD starts as a FreeBSD process: its
+# stack, auxv and ps_strings are FreeBSD's, x0 is the stack pointer, and
+# the thread pointer is left for its libc (tests/native/hello).
+name: hello
+run: hello one two
+expect: hello: argc=3 x0==sp:true sp%16=0 tpidr_el0=0x0$
+expect: hello: argv: hello one two$
+expect: hello: AT_EXECPATH /proc/boot/hello$
+expect: hello: AT_ARGV ok:true$
+expect: hello: AT_ENVV ok:true$
+expect: hello: AT_PAGESIZES \[4096\]$
+expect: hello: ps_strings argv ok:true nargv=3 envp ok:true nenv=[0-9]+$
+
+# A FreeBSD program (clang for aarch64-unknown-freebsd, FreeBSD's crt1
+# from source, no libc) over libsys: write() as I/O messages, errno in
+# FreeBSD's numbering, _exit() with a status.
+name: hello-nolibc
+run: hello-test one two; echo rc=$?
+expect: ^hello-test: a FreeBSD program on OsCraft, argc=3$
+expect: ^hello-test: argv: hello-test$
+expect: ^hello-test: argv: two$
+expect: ^hello-test: envc=[0-9]+$
+expect: ^hello-test: write\(99\) -> EBADF$
+expect: ^hello-test: getpid=[0-9]+$
+expect: ^rc=7$
+
+# A program with FreeBSD's libc (static, built from FreeBSD's tree with
+# OsCraft's libsys inside): stdio, malloc, the environment, errno.
+name: libc
+run: libc-test one two; echo rc=$?
+expect: ^libc-test: hello from FreeBSD's libc on OsCraft, argc=3$
+expect: ^libc-test: argv\[2\]=two$
+expect: ^libc-test: a string in malloc'ed memory \(28 bytes\)$
+expect: ^libc-test: PATH=/proc/boot
+expect: ^libc-test: getpid=[0-9]+ getpagesize=4096$
+expect: ^libc-test: write\(99\): Bad file descriptor$
+expect: ^libc-test: read: line two$
+expect: ^libc-test: stat: size=18 mode=666$
+expect: ^libc-test: access\(/proc/boot, R_OK\)=0 access\(/nonexistent, F_OK\)=-1 errno=No such file or directory$
+expect: ^libc-test: uid=0 gid=0 ppid>0:1$
+expect: ^libc-test: monotonic>0:1$
+expect: ^libc-test: ncpu=4$
+expect: ^libc-test: rename ok, old gone: No such file or directory$
+expect: ^libc-test: SIGUSR1 handler: signo=30 code=SI_USER:1 pid ok:1 context ok:1 old handler dfl:1$
+expect: ^libc-test: SIGUSR1 blocked:1 SIGINT blocked:0 kill\(self,0\)=0$
+expect: ^rc=7$
+
+# The same program dynamically linked: ld-elf.so.1 (FreeBSD's loader,
+# with OsCraft's libsys inside) maps libc.so.7 and libsys.so.7.
+name: dyn
+run: dyn-test one two; echo rc=$?
+expect: ^libc-test: hello from FreeBSD's libc on OsCraft, argc=3$
+expect: ^libc-test: read: line two$
+expect: ^libc-test: ncpu=4$
+expect: ^libc-test: SIGUSR1 handler: signo=30 code=SI_USER:1 pid ok:1 context ok:1 old handler dfl:1$
+expect: ^libc-test: SIGUSR1 blocked:1 SIGINT blocked:0 kill\(self,0\)=0$
+expect: ^rc=7$
+
+# FreeBSD's libthr on OsCraft: threads over the kernel's thr_new, a
+# mutex and a condition variable over its futex (_umtx_op in libsys).
+name: thr
+run: thr-test xrw; echo rc=$?
+run: thr-test; echo rc=$?
+run: thr-dyn-test; echo rc=$?
+expect: ^thr-test: joined thread 3, returned 4$
+expect: ^thr-test: counter=80000 \(expected 80000\)$
+expect: ^thr-test: consumer saw 3 handshakes, returned 7$
+expect: ^thr-test: rwlock: shared=4000 \(expected 4000\) readers at once>1:[01]$
+expect: ^rc=0$
+expect: ^thr-test: consumer saw 3 handshakes, returned 7\n(.*\n)*.*rc=0\n(.*\n)*.*thr-test: consumer saw 3 handshakes, returned 7$
+
+# A priority-inheriting mutex (FUTEX_WAIT_PI): the holder, at 10, runs at
+# the SCHED_FIFO waiter's 16 (rtprio_thread over SchedSet) until it
+# unlocks; a SIGCHLD pending while system() blocks it ends no wait.
+name: thr-test-pi
+needs: qnx
+run: thr-test p; echo rc=$?
+expect: ^ +\d+ +1 proc/boot/thr-test +16r REPLY .*\n +\d+ +2 proc/boot/thr-test +16f SEM
+expect: ^thr-test: waiter getschedparam=0 policy=1 priority=5$
+expect: ^thr-test: holder policy=2 priority=0$
+expect: ^thr-test: high: lock=0 unlock=0$
+expect: ^ +\d+ +1 proc/boot/thr-test +10r REPLY .*\n.*rc=0$
+
+# FreeBSD's own utilities, dynamic, at /bin and /usr/bin, run by FreeBSD's
+# sh: files on /dev/shmem, pipes between them, the usual text tools.
+name: utils
+timeout: 30
+run: /bin/ls /bin | /usr/bin/head -2 | /usr/bin/wc -l
+expect: ^ *2$
+run: sh -c 'export PATH=/bin:/usr/bin; cd /tmp && echo hello world > uf && cat uf && ls uf && wc -w < uf && seq 5 | sort -rn | head -2 | tr "\n" " " && echo && printf "%s-%s\n" a b && cp uf uf2 && mv uf2 uf3 && test -e uf3 && rm uf uf3 && test ! -e uf3 && echo gone; id -u; uname -s; mkdir d1 && rmdir d1 && echo dirs; date +%Y | grep -c "^[0-9]"; echo abc | cut -c2 | tr b B'
+expect: ^hello world$
+expect: ^uf$
+expect: ^ *2$
+expect: ^5 4 $
+expect: ^a-b$
+expect: ^gone$
+expect: ^0$
+expect: ^OsCraft$
+expect: ^dirs$
+expect: ^1$
+expect: ^B$
+
+# libsys's misc calls: the time of day, sched_yield, getrusage, the alarm
+# (setitimer, alarm), POSIX timers (librt over ktimer_*: a signal with
+# its value and SI_TIMER, overruns), truncate, fchown, futimens and
+# utimensat (UTIME_NOW, UTIME_OMIT), fpathconf, flock, the memory
+# no-ops, statfs (shmem's statvfs), nice values, the POSIX sched calls,
+# sigaltstack, shm_open, getlogin, groups and the set-id calls (which
+# drop root last). /dev/shmem
+# refuses links and FIFO nodes (ENOSYS, 78), and none of procnto's files
+# answers pathconf (EINVAL, 22, measured: the proctest).
+
+# The native random server (user/random, on the resource-manager
+# framework user/resmgr), /dev/random and /dev/urandom:
+# reads of any size, two reads differ, a write is taken (mixed into the
+# key); and pipelines inside command substitutions, which share a server
+# connection ID across two pipes (the pipe manager's copies).
+# A SIGCHLD during ksh's close() of a pipe's end, through qnxd: the close
+# must finish, or cat inherits the writer and waits for itself.
+name: qnxd-signal
+needs: qnx
+timeout: 60
+run: i=0; while [ $i -lt 40 ]; do a=$(echo x | cat); i=$((i+1)); done; echo rounds=$i
+expect: ^rounds=40$
+
+# syslog(3) through the ring to the Rust syslogd and its file.
+name: native-syslog
+timeout: 30
+run: syslog-test
+run: /usr/bin/logger -p user.notice -t lgtest hello from a shell; /bin/sleep 1; /bin/cat /var/log/messages
+expect: ^syslog-test: passed$
+expect: lgtest\[\d+\]: hello from a shell$
+reject: syslog-test: FAIL
+
+# FAT, served by diskd-md on an image mkfs.fat and mcopy made: from a
+# FreeBSD program, then, through qnxd, from QNX's tools.
+name: native-fat
+timeout: 40
+run: fs-test
+expect: ^fs-test: passed$
+reject: fs-test: FAIL
+
+name: qnx-on-native-fat
+needs: qnx
+timeout: 20
+run: cat /md0/HELLO.TXT
+run: ls /md0
+run: echo through ksh > /md0/qnx.txt; cat /md0/qnx.txt
+run: mkdir /md0/q; ls -d /md0/q; rmdir /md0/q; ls -l /md0/big
+run: slay -f diskd-md
+expect: ^hello, DISK$
+expect: a\\ long\\ name\.text
+expect: ^through ksh$
+expect: /md0/q
+expect: 200000
+reject: cannot|No such|not found
+
+# FreeBSD's tools on a memory disk: newfs_msdos, mount, df, umount.
+name: native-mount
+timeout: 30
+run: /proc/boot/diskd-md -s 8 -u 1 &
+run: i=0; while [ ! -e /dev/md1 ] && [ $i -lt 50 ]; do /bin/sleep 0.1; i=$((i+1)); done; /sbin/newfs_msdos /dev/md1; echo newfs=$?
+run: /bin/mkdir /tmp/mnt; /sbin/mount -t msdosfs /dev/md1 /tmp/mnt; echo mount=$?
+run: echo on the new disk > /tmp/mnt/note.txt; /bin/cat /tmp/mnt/note.txt
+run: /sbin/mount | /usr/bin/grep md1; /bin/df /tmp/mnt | /usr/bin/tail -1
+run: /sbin/umount /tmp/mnt; echo umount=$?; /bin/ls /tmp/mnt; echo rest=$?
+run: /sbin/mount -t msdosfs /dev/md1 /tmp/mnt; /bin/cat /tmp/mnt/note.txt; /sbin/umount /tmp/mnt
+expect: newfs=0
+expect: mount=0
+expect: umount=0
+expect: /dev/md1 on /tmp/mnt \(msdosfs
+expect: ^/dev/md1 +
+reject: Operation not|not implemented
+
+# FreeBSD's ps, through libkvm and sysctl(KERN_PROC).
+name: native-ps
+timeout: 15
+run: /bin/sh -c '/bin/ps ax; echo rc=$?'
+run: /bin/sh -c '/bin/ps -o pid,ppid,uid,stat,rss,command -p $$'
+run: /bin/sh -c '/bin/ps -H -o pid,lwp,cpu,time -p 1; echo threads=$?'
+expect: rc=0
+expect: \d+ +\S+ +Ss?\+? +\d+:\d+\.\d+ .*syslogd
+expect: 1 +- +RL|1 +- +SL
+expect: sh
+expect: threads=0
+expect: ^ *1 +2 +\d+ +\d+:\d+\.\d+
+reject: not implemented
+
+# The base console's sh is a session with a terminal: ps with no flags
+# finds it, and /dev/tty opens.
+name: base-console
+run: /bin/ps; echo rc=$?
+run: echo through tty > /dev/tty; echo tty=$?
+expect: rc=0
+expect: ^through tty$
+expect: tty=0
+expect: \d+ +\S+ +\S+ +\d+:\d+\.\d+ .*sh
+
+# FreeBSD's top, one display in batch mode.
+name: native-top
+timeout: 20
+run: /proc/boot/exec-test /bin/sh -c 'TERM=dumb /usr/bin/top -b -d 1; echo rc=$?'
+run: /proc/boot/exec-test /bin/sh -c '/bin/ps; echo rc2=$?'
+run: /proc/boot/exec-test /bin/sh -c 'TERM=xterm /usr/bin/top -d 1; echo rc3=$?'
+expect: rc=0
+expect: rc2=0
+expect: rc3=0
+expect: \d+ +\S+ +\S+ +\d+:\d+\.\d+ .*ps
+expect: processes:
+expect: CPU:
+expect: Mem:
+expect: syslogd
+reject: not implemented|failed
+
+# syslog.conf's blocks, include and |program, on another configuration.
+name: native-syslog-conf
+timeout: 30
+run: syslog-test spawn
+run: syslog-test conf
+expect: ^spawned$
+expect: ^syslog-test: passed$
+reject: syslog-test: FAIL
+
+# The kernel's messages: dmesg, and through /dev/klog to the log.
+name: native-klog
+timeout: 20
+run: /sbin/dmesg | /usr/bin/grep -c 'bootscript: started'
+run: /bin/sleep 2; /bin/cat /var/log/messages* | /usr/bin/grep -c 'kernel: bootscript'
+reject: ^0$
+
+# @host: real datagrams, through the socket server.
+name: native-syslog-forward
+timeout: 20
+run: syslog-test forward
+expect: ^syslog-test: passed$
+reject: syslog-test: FAIL
+
+name: native-random
+timeout: 30
+run: for i in 1 2 3; do a=$(echo x | cat); echo a=$a; done
+run: a=$(head -c 12 /dev/random | od -An -tx1 | tr -d ' \n'); b=$(head -c 12 /dev/urandom | od -An -tx1 | tr -d ' \n'); echo len=$(head -c 1000 /dev/random | wc -c | tr -d ' ') differ=$([ "$a" != "$b" ] && echo yes)
+run: echo seed > /dev/random && echo written
+expect: ^a=x$
+expect: ^len=1000 differ=yes$
+expect: ^written$
+
+# OsCraft's pseudo-terminals (user/pty): posix_openpt(), ptsname(), echo
+# and canonical input, raw mode, the signal keys, poll(), window size,
+# the ends' closes.
+name: native-pty
+timeout: 30
+run: pty-test
+expect: ^pty-test: passed$
+reject: pty-test: FAIL
+
+# The same manager to a QNX program: every line as on QNX's devc-pty.
+name: qnx-pty
+needs: qnx
+timeout: 30
+run: ptytest
+expect: ^worker first nonblock 1 errno 0$
+expect: ^second 0 errno 16$
+expect: ^grantpt 0 unlockpt 0 ptsname /dev/ttyp0$
+expect: ^worker 1 isatty 1$
+expect: ^mode 620$
+expect: ^flags 2d02 5 4b0 8a1b cc 3 127 21 4 1$
+expect: ^worker read 3$
+expect: ^echo 4$
+expect: ^out 3$
+expect: ^after worker close: read 0 errno 0$
+expect: ^after controller close: read 0 errno 0$
+expect: ^write -1 errno 5$
+
+# OsCraft's pipe manager (user/pipe, over the kernel's pipes), the
+# system's: pipe-test is kpipetest's checks as a FreeBSD program, and a
+# shell pipeline is a client of it too.
+name: native-pipe
+timeout: 60
+run: pipe-test
+run: echo a b | cat
+expect: ^pipe-test: passed$
+reject: pipe-test: FAIL
+expect: ^a b$
+
+name: misc
+timeout: 30
+run: misc-test; echo rc=$?
+expect: ^misc: readdir ends:1 rewinddir same:1$
+expect: ^misc: rt signal queued:1 values:7,8$
+expect: ^misc: SA_RESTART handler ran:1 read:1$
+expect: ^misc: gettimeofday within 1s of clock_gettime:1$
+expect: ^misc: sched_yield=0$
+expect: ^misc: getrusage=0 utime>=0:1$
+expect: ^misc: setitimer=0 getitimer left>0:1 alarms=1 alarm\(1\) pending:1$
+expect: ^misc: timer_create=0 settime=0 gettime left<=30ms:1 interval=30ms:1 signal=1 value=7 code=SI_TIMER:1 overrun>0:1 delete=0$
+expect: ^misc: truncate=0 size=4 fchown\(0,0\)=0 futimens=0 mtime=1000000:1 utimensat\(now,omit\)=0 mtime kept:1 fpathconf\(NAME_MAX\)=-1 \(errno 22\) pathconf\(/proc/boot, NAME_MAX\)=-1 \(errno 22\) flock=0 \(errno 0\) unlock=0$
+expect: ^misc: symlink=-1 \(errno 78\)$
+expect: ^misc: mkfifo=-1 \(errno 78\)$
+expect: ^misc: mincore=0 mlock=0 msync=0$
+expect: ^misc: statfs\(/dev/shmem\)=0 \(errno 0\) bsize>0:0 type=shmem getpriority=0 setpriority\(5\)=0 now=5 sched_getscheduler=2 \(OTHER=2\) setscheduler\(FIFO,3\)=2 now=1 prio=3$
+expect: ^misc: sigaltstack set=0 get size=8192 shm_open=1 mapped=shm shm_unlink=0 getlogin=root$
+expect: ^misc: getgroups=0 first=-1 setgroups=0 now 2: 5 6 setegid\(7\)=0 egid=7 setuid\(100\)=0 uid=100 euid=100 seteuid\(0\) as 100: -1$
+expect: ^rc=0$
+
+# The sigwait family over SignalWaitinfo (sigqueue over SignalKill): a
+# blocked, queued SIGUSR1 taken with its sender and value; a limit that
+# passes is EAGAIN; sigwait returns 0 with the signal.
+name: thr-test-sig
+run: thr-test s; echo rc=$?
+expect: ^thr-test: sigwaitinfo=30 \(SIGUSR1=30\) si_pid matches:1 si_value=42$
+expect: ^thr-test: sigtimedwait\(10ms, none\)=-1 errno=35 \(EAGAIN=35\)$
+expect: ^thr-test: sigwait=0 sig=31 \(SIGUSR2=31\)$
+expect: ^rc=0$
+
+# Thread names (thr_set_name, cut to FreeBSD's 19 bytes) and CPU affinity
+# (cpuset_setaffinity: the runmask; another thread's is ENOTSUP, as
+# procnto's ThreadCtlExt), shown by pidin.
+name: thr-test-names
+needs: qnx
+run: thr-test n; echo rc=$?
+expect: ^thr-test: setaffinity\(cpu 1\)=0$
+expect: ^thr-test: getaffinity=0 cpu1 \(1 set\)$
+expect: ^thr-test: setaffinity\(other thread\)=45$
+expect: ^ +1 main\s*\n\s*Runmask +: 0x00000002$
+expect: ^ +2 helper-thread-with-\s*\n\s*Runmask +: 0x0000000f$
+expect: ^rc=0$
+
+# FreeBSD's fork, execve and wait4 over the process manager: a child's
+# fork reply carries its pid (a FreeBSD process has no thread-local block
+# for the kernel to patch); exec is a spawn that replaces the caller.
+name: fork
+run: fork-test; echo rc=$?
+expect: ^fork-test: child pid>parent:1 getppid==parent:1$
+expect: ^fork-test: waited pid ok:1 exited:1 status=3$
+expect: ^fork-test: exec'ed child exited:1 status=7$
+expect: ^fork-test: killed child signaled:1 sig=SIGKILL:1$
+expect: ^rc=0$
+
+# FreeBSD's own sh (bin/sh, static) on OsCraft: a pipe to QNX's cat
+# (execve of a QNX program from a FreeBSD one), the working directory,
+# a loop, an exit status, a script on its standard input.
+name: sh
+run: sh -c 'echo hello from FreeBSD sh'
+run: sh -c 'echo a b | cat'
+run: sh -c 'cd /proc/boot && pwd'
+run: sh -c 'for i in 1 2 3; do echo n=$i; done; exit 5'; echo rc=$?
+run: echo 'echo from a script' | sh
+expect: ^hello from FreeBSD sh$
+expect: ^a b$
+expect: ^/proc/boot$
+expect: ^n=1$
+expect: ^n=3$
+expect: ^rc=5$
+expect: ^from a script$
+
+# The console from FreeBSD's libc: the terminal ioctls as QNX's device
+# commands on the SDP's serial driver, termios laid out again.
+name: tty
+run: tty-test; echo rc=$?
+expect: ^tty-test: isatty\(0\)=1$
+expect: ^tty-test: ICANON=1 ECHO=1 ISIG=1 ICRNL=1 OPOST=1 ONLCR=1 CS8=1$
+expect: ^tty-test: VERASE=[1-9][0-9]* VEOF=4 VINTR=3 ospeed=115200$
+expect: ^tty-test: raw set: ICANON=0 ECHO=0$
+expect: ^tty-test: restored: ICANON=1 ECHO=1$
+expect: ^tty-test: winsize ok:1 pgrp>0:1$
+expect: ^rc=0$
+
+# FreeBSD's sh as the interactive console shell: started with -i, it
+# takes the console over from ksh (libedit reads the terminal), runs the
+# lines typed, and gives it back on exit.
+name: sh-interactive
+run: TERM=xterm PS1='@@# ' sh -i
+run: echo interactive $0
+run: exit
+expect: ^interactive sh$
+reject: Cannot read termcap
+
+# FreeBSD's uname and getconf, by path.
+name: sysinfo
+run: /usr/bin/uname -sr
+run: /usr/bin/getconf PAGESIZE
+expect: ^OsCraft 0\.1-FREEBSD15$
+expect: ^4096$
+
+name: qnx-sysinfo
+needs: qnx
+run: uname -a
+run: getconf PAGESIZE
+expect: ^OsCraft localhost 8\.0\.0
+expect: ^4096$
+
+name: shell
+run: echo a b | cat
+run: id
+expect: ^a b$
+expect: uid=0\(root\)
+
+name: files
+run: ls /proc/boot | head -2
+run: echo hello > /tmp/t; echo more >> /tmp/t; cat /tmp/t; wc -c /tmp/t; rm /tmp/t; ls /tmp/t
+expect: ^hello$
+expect: ^more$
+expect: ^ *11 /tmp/t$
+expect: No such file
+
+name: pidin
+needs: qnx
+run: pidin -p pidin
+run: pidin -p devc-serpl011 mem
+run: pidin -p ksh fd
+run: pidin info
+expect: bin/pidin\s+10r REPLY
+expect: libc\.so\.6
+expect: /dev/ser1
+expect: FreeMem:\d+MB
+
+name: top
+needs: qnx
+run: top -i 1 -b -z 5
+expect: 4 online CPUs; \d+ processes
+expect: CPU  3:
+
+name: slay
+needs: qnx
+run: sleep 30 &
+run: slay -f sleep
+expect: Terminated\s+sleep 30
+
+name: on
+needs: qnx
+run: on -p 20 pidin -p pidin
+run: on -d sleep 1; echo back
+expect: bin/pidin\s+20r
+expect: ^back$
+
+name: kill-busy
+needs: qnx
+run: while :; do :; done &
+run: kill %1; sleep 1; jobs
+expect: Done \(143\)|Terminated
+
+name: crash
+needs: qnx
+run: dbgtest crash; echo status=$?
+expect: Memory fault
+expect: ^status=139$
+
+name: spawn
+needs: qnx
+run: spawntest
+expect: spawntest: passed
+reject: FAIL
+
+name: shmem
+needs: qnx
+run: shmtest
+expect: shmtest: passed
+reject: FAIL
+
+# A trailing '/' follows a symbolic link (/usr/tmp -> /tmp), as in QNX.
+name: trailing-slash
+needs: qnx
+run: echo x > /tmp/slash; ls -ld /usr/tmp/ | cut -c1; find /usr/tmp/ -name slash; rm /tmp/slash
+expect: ^d$
+expect: ^/usr/tmp/slash$
+
+name: threads
+needs: qnx
+run: jointest
+expect: jointest: passed
+reject: FAIL
+
+name: sync
+needs: qnx
+run: synctest
+expect: synctest: passed
+reject: FAIL
+
+name: cancel
+needs: qnx
+run: canceltest
+expect: canceltest: passed
+reject: FAIL
+
+name: priority-inheritance
+needs: qnx
+run: pitest
+expect: pitest: passed
+reject: FAIL
+
+# Memory given back: processes, threads, channels.
+name: leaks
+needs: qnx
+run: leaktest
+expect: leaktest: passed
+reject: FAIL
+timeout: 120
+
+# POSIX message queues, with QNX's mqueue server (it goes into the background).
+name: mqueue
+needs: qnx
+run: mqueue; waitfor /dev/mqueue 5
+run: mqtest
+expect: mqtest: passed
+reject: FAIL
+
+name: channels
+needs: qnx
+run: chantest
+expect: chantest: passed
+reject: FAIL
+
+name: chroot
+needs: qnx
+run: roottest
+expect: roottest: passed
+reject: FAIL
+
+name: credentials
+needs: qnx
+run: credtest
+expect: credtest: passed
+reject: FAIL
+
+name: special-signals
+needs: qnx
+run: sigtest
+expect: sigtest: passed
+reject: FAIL
+
+# Timers as in QNX 8: normal ones on ticks, high-resolution ones on time.
+name: timers
+needs: qnx
+run: hrtest
+expect: hrtest: passed
+reject: FAIL
+timeout: 20
+
+# A thread woken for another CPU runs there at once (an IPI), as in QNX.
+name: ipi
+needs: qnx
+run: ipitest
+expect: ipitest: passed
+reject: FAIL
+timeout: 30
+
+# QNX 8's superlocked memory: backed when mapped, fork() copies at once.
+name: superlock
+needs: qnx
+run: superlocktest
+expect: superlocktest: passed
+reject: FAIL
+
+name: qnx-fork
+needs: qnx
+run: forktest
+expect: forktest: passed
+reject: FAIL
+
+# Kernel tracing with QNX's tracelogger: two seconds of events (not a
+# number of buffers: idle CPUs stop ticking, so a quiet system fills them
+# slowly, as on QNX; the names of the processes and threads alone are a
+# few KB).
+name: tracing
+needs: qnx
+timeout: 20
+run: tracelogger -s 2 -f /tmp/t.kev; ls -l /tmp/t.kev; rm /tmp/t.kev
+expect: \s[1-9]\d{3,} .*/tmp/t\.kev$
+
+# QNX's slogger2 and slog2info: sshd's buffer, written when the overlay's
+# /etc/rc.net started it. (QNX's PL011 driver leaves no lines there,
+# unlike the Pi's mini-UART driver this test looked for.)
+name: slogger2
+needs: qnx
+run: slog2info
+expect: sshd\.\d+\S*\s+slog\*?\s+\d+\s+.*Server listening on
+
+name: gdb-break
+needs: qnx
+gdb: tests/gdb/break.gdb
+expect: Thread 2 hit Breakpoint 1, add \(a=0, b=0\) at tests/qnx/dbgtest\.c:12
+expect: \(JOIN\)
+expect: \(STOPPED\)
+expect: exited normally
+
+name: gdb-crash
+needs: qnx
+gdb: tests/gdb/crash.gdb
+expect: (Program|Thread 1) received signal SIGSEGV, Segmentation fault
+expect: dbgtest\.c:34
+
+# Another session after one that killed its stopped inferior: the kill
+# leaves no stale event behind (debugevtest).
+name: gdb-again
+needs: qnx
+gdb: tests/gdb/break.gdb
+expect: Thread 2 hit Breakpoint 1, add \(a=0, b=0\) at tests/qnx/dbgtest\.c:12
+expect: exited normally
+
+# QNX's block stack (io-blk, cam-disk) and filesystems on a RAM disk:
+# devb-ram, then fs-qnx6 and fs-dos, each mounted, written, unmounted and
+# mounted again.
+name: storage
+needs: qnx
+timeout: 15
+run: devb-ram ram capacity=8192 &
+run: sleep 2; mkqnx6fs -q /dev/hd0 && echo made qnx6
+run: mount -t qnx6 -o sync=ignore /dev/hd0 /q6; echo qnx6 data > /q6/f; mkdir /q6/d; umount /q6
+run: mount -t qnx6 -o sync=ignore /dev/hd0 /q6; cat /q6/f; ls -d /q6/d; umount /q6
+run: mkdosfs /dev/hd0
+run: mount -t dos /dev/hd0 /fat; echo fat data > /fat/Hello.txt; umount /fat
+run: mount -t dos /dev/hd0 /fat; cat /fat/Hello.txt; ls /fat; umount /fat; ls /dev/hd0
+expect: ^made qnx6$
+expect: ^qnx6 data$
+expect: ^/q6/d$
+expect: Format complete: FAT12
+expect: ^fat data$
+expect: ^Hello\.txt$
+expect: ^/dev/hd0$
+reject: No such file|Can't mount
+
+# Kernel calls for drivers: CacheControl(), MsgVerifyEvent(),
+# InterruptUnblock().
+name: drivercalls
+needs: qnx
+run: drvtest
+expect: drvtest: passed
+reject: FAIL
+
+# Robust mutexes: EOWNERDEAD after the owner thread or process ends,
+# pthread_mutex_consistent(), ENOTRECOVERABLE.
+name: robust
+needs: qnx
+timeout: 20
+run: robusttest
+expect: robusttest: passed
+reject: FAIL
+
+# Abilities (procmgr_ability()): denied, allowed, locked, subranges, the
+# non-root domain, inheritance by spawn() and fork(), priorities.
+name: abilities
+needs: qnx
+timeout: 20
+run: abiltest
+expect: abiltest: passed
+reject: FAIL
+
+# Signals and blocked message passing (EINTR, _NTO_CHF_UNBLOCK), faults
+# caught by handlers, alternate signal stacks.
+name: signals2
+needs: qnx
+timeout: 15
+run: sig2test
+expect: sig2test: passed
+reject: FAIL
+
+# SIGEV_THREAD events: a thread per timer expiry, its attributes, the
+# ability.
+name: sigev-thread
+needs: qnx
+timeout: 15
+run: evtest
+expect: evtest: passed
+reject: FAIL
+
+# Controlling terminals: tcsetsid() from a session leader, tcgetsid(),
+# /dev/tty (on a pseudo-terminal).
+name: sessions
+needs: qnx
+timeout: 15
+run: sessiontest
+expect: sessiontest: passed
+reject: FAIL
+
+# Programs and scripts outside the image filesystem: in /tmp (procnto's
+# /dev/shmem). One without an execute bit isn't run (EACCES).
+name: exec-tmp
+needs: qnx
+run: cp /proc/boot/qnx-hello-dyn /tmp/h; /tmp/h a b
+expect: argc=3 argv\[0\]=/tmp/h
+run: echo '#!/bin/sh' > /tmp/s.sh; echo 'echo script ran $1' >> /tmp/s.sh; chmod +x /tmp/s.sh; /tmp/s.sh arg
+expect: ^script ran arg$
+run: echo x > /tmp/nx; /tmp/nx; rm /tmp/h /tmp/s.sh /tmp/nx
+expect: Permission denied
+
+# Programs and scripts on another server's filesystem (fs-qnx6 on a RAM
+# disk), read by procnto as a client.
+name: exec-disk
+needs: qnx
+timeout: 20
+run: devb-ram ram capacity=8192 &
+run: sleep 2; mkqnx6fs -q /dev/hd0; mount -t qnx6 -o sync=ignore /dev/hd0 /q6
+run: cp /proc/boot/qnx-hello /q6/hs; cp /proc/boot/qnx-hello-dyn /q6/hd; /q6/hs one; /q6/hd two
+run: echo '#!/bin/sh' > /q6/s.sh; echo 'echo q6 script $1' >> /q6/s.sh; chmod +x /q6/s.sh; /q6/s.sh three
+run: umount /q6
+expect: argc=2 argv\[0\]=/q6/hs
+expect: argc=2 argv\[0\]=/q6/hd
+expect: ^q6 script three$
+
+# posix_spawn() attributes: credentials (SETCRED, RESETIDS), working
+# directory (SETCWD); open file actions on a file of /tmp and on a pty
+# (another server's), failing ones.
+name: spawn-attrs
+needs: qnx
+timeout: 15
+run: spawn2test
+expect: spawn2test: passed
+reject: FAIL
+
+# Events: SIGEV_MEMORY (each operation), SIGEV_SEM, pulses to a channel
+# of the receiver's (negative sigev_coid); TimerTimeout() takes only
+# SIGEV_UNBLOCK.
+name: events2
+needs: qnx
+timeout: 15
+run: ev2test
+expect: ev2test: passed
+reject: FAIL
+
+# Named semaphores: sem_open() and its flags, /dev/sem, sharing between
+# processes, sem_unlink(), SEM_ANON.
+name: named-semaphores
+needs: qnx
+timeout: 15
+run: semtest
+expect: semtest: passed
+reject: FAIL
+
+# pidin's views through procnto's introspection: timers, interrupts,
+# channels (DCMD_PROC_TIMERS, _IRQS, _CHANNELS), run masks
+# (DCMD_PROC_THREADCTL), registers (_PROC_DEBUG), thread stacks;
+# /proc/self in /proc; /proc as procnto lists it (no "." or "..",
+# /proc/config) and procnto's own exefile.
+name: pidin-views
+needs: qnx
+timeout: 30
+run: pidin timers | grep -m1 PULSE
+run: pidin irqs | grep -m1 =PULSE
+run: pidin channels | grep -m1 ReceiveQ
+run: pidin rmasks | grep -m1 Runmask
+run: pidin regs 2>&1 | grep -m1 -e failed -e X0:
+run: pidin -p slogger2 mem | grep -m1 RECEIVE
+run: ls /proc | grep -x self
+run: echo dots $(ls -a /proc /proc/1 | grep -c -F -x -e . -e ..) config $(ls /proc | grep -c -x config)
+run: cat /proc/1/exefile; echo
+run: echo qnx: $(cat /proc/self/personality) freebsd: $(/proc/boot/exec-test /bin/sh -c 'read p < /proc/self/personality; echo $p') kernel: $(cat /proc/1/personality)
+expect: \d+\s+0\s+0 (REAL|MONO) .* PULSE 0x
+expect: =PULSE 0x
+expect: ReceiveQ \d
+expect: Runmask\s+: 0x
+expect: X0:0
+expect: RECEIVE\s+\d+K\s+\d+K\s+\d+K/\d+K
+expect: ^self$
+expect: dots 0 config 1
+expect: ^/proc/boot/kernel
+expect: ^qnx: qnx freebsd: freebsd kernel: (freebsd|qnx)$
+reject: couldn't fill|failed:
+
+# Kernel calls with invalid arguments: the errors procnto gives.
+name: kernel-call-errors
+needs: qnx
+timeout: 15
+run: errtest
+expect: errtest: passed
+reject: errtest: FAIL
+
+# procnto's own files: the image filesystem's errors, directory reads,
+# lseek(), statvfs(); /dev/null, /proc, /dev/shmem; fcntl() flags.
+name: procnto-files
+needs: qnx
+timeout: 15
+run: fstest
+expect: fstest: passed
+reject: fstest: FAIL
+
+# Process manager calls: process groups, limits, waits, priorities,
+# sysconf()/confstr(), umask, IDs, pathconf(), as procnto answers.
+name: procmgr-calls
+needs: qnx
+timeout: 15
+run: proctest
+expect: proctest: passed
+reject: proctest: FAIL
+
+# Message passing details: _msg_info, MsgRead()/MsgWrite() bounds, and
+# the channel notification pulses (disconnect, thread death, coid death);
+# private channels.
+name: messages2
+needs: qnx
+timeout: 20
+run: msg2test
+expect: msg2test: passed
+reject: msg2test: FAIL
+
+# Signal delivery: SA_NODEFER, SA_RESETHAND, SA_SIGINFO queueing, SIGCHLD
+# on exit/stop and waitpid(WUNTRACED/WCONTINUED), waits not interrupted
+# by SIGCHLD, ignored SIGCHLD reaping, sigtimedwait(), alarm().
+name: signals3
+needs: qnx
+timeout: 20
+run: sig3test
+expect: sig3test: passed
+reject: sig3test: FAIL
+
+# Threads and synchronization objects: mutex types and errors, timed
+# locks, condvar clocks, rwlocks, barriers, spin locks, attributes, keys.
+name: sync2
+needs: qnx
+timeout: 15
+run: sync2test
+expect: sync2test: passed
+reject: sync2test: FAIL
+
+# Clocks and timers: CPU-time clocks set and timed, clock and sleep
+# errors, timer_gettime(), setitimer(), alarm().
+name: clocks
+needs: qnx
+timeout: 20
+run: clocktest
+expect: clocktest: passed
+reject: clocktest: FAIL
+
+# ThreadCtl(): threads held and continued, alignment faults, exit events.
+name: threadctl
+needs: qnx
+timeout: 20
+run: tctltest
+expect: tctltest: passed
+reject: tctltest: FAIL
+
+# Scheduling: SchedInfo(), round-robin turns, SCHED_OTHER, sporadic
+# scheduling, the policy of new threads.
+name: scheduling
+needs: qnx
+timeout: 20
+run: schedtest
+expect: schedtest: passed
+reject: schedtest: FAIL
+
+# SchedGet()/SchedSet() on another user's thread: EPERM without
+# PROCMGR_AID_SCHEDULE (review item SCHED-4); SchedSet() on procnto's
+# own threads: EPERM, even for root (SCHED-32).
+name: sched-permissions
+needs: qnx
+timeout: 20
+run: schedpermtest
+expect: schedpermtest: passed
+reject: schedpermtest: FAIL
+
+# Files that aren't whole programs: ENOEXEC (review item PROCMGR-4).
+name: bad-executables
+needs: qnx
+timeout: 30
+run: badexectest
+expect: badexectest: passed
+reject: badexectest: FAIL
+
+# exec() with another thread in a held waitpid(), fork() or spawn
+# (review items PROCMGR-2 and PROCMGR-26).
+name: exec-waiting-thread
+needs: qnx
+timeout: 40
+run: execwaittest
+expect: execwaittest: passed
+reject: execwaittest: FAIL
+
+# /proc/<pid>/as and ctl belong to the process's user (review item PROCMGR-6).
+name: proc-access
+needs: qnx
+timeout: 20
+run: procacctest
+expect: procacctest: passed
+reject: procacctest: FAIL
+
+# Two processes comparing credentials against each other from two CPUs
+# (review item IPC-5).
+name: cred-locks
+needs: qnx
+timeout: 30
+run: credlocktest
+expect: credlocktest: passed
+reject: credlocktest: FAIL
+
+# Memory calls with lengths and offsets near the top of the range (review
+# item PATHMEM-6): procnto's errnos, not an overflow in the kernel.
+name: big-lengths
+needs: qnx
+timeout: 20
+run: biglentest
+expect: biglentest: passed
+reject: biglentest: FAIL
+
+# Message buffers past the end of the address space, wrapping or in
+# unmapped memory: each side's errno as procnto gives it (review item IPC-4).
+name: iov-bounds
+needs: qnx
+timeout: 30
+run: iovtest
+expect: iovtest: passed
+reject: iovtest: FAIL
+
+# A message copy racing an munmap() of its buffer: no frame freed under
+# the copy is written after it (review item IPC-2).
+name: copy-unmap
+needs: qnx
+timeout: 30
+run: copyunmaptest
+expect: copyunmaptest: passed
+reject: copyunmaptest: FAIL
+
+# A 64 MiB message doesn't keep a higher-priority thread on the same CPU
+# waiting (review items IPC-10, CORE-6).
+name: message-latency
+needs: qnx
+timeout: 30
+run: msglatencytest
+expect: msglatencytest: passed
+reject: msglatencytest: FAIL
+
+# Process-manager events delivered as a named semaphore's post while the
+# path and memory managers work (review item PATHMEM-2: a hang).
+name: pev-sem
+needs: qnx
+timeout: 30
+run: pevsemtest
+expect: pevsemtest: passed
+reject: pevsemtest: FAIL
+
+# ConnectDetach() of a connection a thread is blocked on (review item IPC-6).
+name: connect-detach
+needs: qnx
+timeout: 30
+run: cdetachtest
+expect: cdetachtest: passed
+reject: cdetachtest: FAIL
+
+# The path space's own nodes keep their handles and inodes across
+# attaches and detaches (review item PATHMEM-7).
+name: path-inodes
+needs: qnx
+timeout: 30
+run: pathinotest
+expect: pathinotest: passed
+reject: pathinotest: FAIL
+
+# An exec or spawn of an image that can't be loaded fails the call with
+# procnto's errno and leaves the process as it was (review item PROCMGR-7).
+name: exec-fail
+needs: qnx
+timeout: 60
+run: execfailtest
+expect: execfailtest: passed
+reject: execfailtest: FAIL
+
+# Contiguous memory once memory has been used and freed (review item
+# TOOLS-25: io-sock's buffers, the cause of the qconn test's failures).
+name: contig-memory
+needs: qnx
+timeout: 120
+run: contigtest
+expect: contigtest: passed
+reject: contigtest: FAIL
+
+# The system page is at a user address, readable by servers too (review
+# item CORE-30).
+name: syspage-user
+needs: qnx
+timeout: 20
+run: syspagetest
+expect: syspagetest: passed
+reject: syspagetest: FAIL
+
+# A server replying from a bad buffer of its own: ESRVRFAULT for both
+# sides, the message over (review item IPC-8).
+name: reply-fault
+needs: qnx
+timeout: 20
+run: replyfaulttest
+expect: replyfaulttest: passed
+reject: replyfaulttest: FAIL
+
+# The auxiliary vector is procnto's (review item PROCMGR-13).
+name: auxv
+needs: qnx
+timeout: 20
+run: auxvtest
+expect: auxvtest: passed
+reject: auxvtest: FAIL
+
+# setpgid()'s rules: sessions, groups, and a child that has exec'ed
+# (review item PROCMGR-10).
+name: setpgid
+needs: qnx
+timeout: 30
+run: setpgidtest
+expect: setpgidtest: passed
+reject: setpgidtest: FAIL
+
+# Typed memory pools: what get_info reports by open mode, and pool paths
+# (review item PATHMEM-26).
+name: typed-memory
+needs: qnx
+timeout: 20
+run: tymemtest
+expect: tymemtest: passed
+reject: tymemtest: FAIL
+
+# A spawn whose stack can't be had loses no memory (review item PROCMGR-14).
+name: stack-leak
+needs: qnx
+timeout: 240
+run: stackleaktest
+expect: stackleaktest: passed
+reject: stackleaktest: FAIL
+
+# Close-on-exec descriptors of another server get _IO_CLOSE at exec, a
+# dup()ed pair only when the last of them goes (review item PROCMGR-8).
+name: exec-close
+needs: qnx
+timeout: 60
+run: execclosetest
+expect: execclosetest: passed
+reject: execclosetest: FAIL
+
+# At exec, _IO_CLOSE for a close-on-exec descriptor, none for a side
+# channel (review item PROCMGR-8).
+name: exec-side-channel
+needs: qnx
+timeout: 30
+run: execsidetest
+expect: execsidetest: passed
+reject: execsidetest: FAIL
+
+# A thread on a stack the process can't write: created, then SIGSEGV;
+# thread IDs reused (review item SCHED-12).
+name: thread-bad-stack
+needs: qnx
+timeout: 30
+run: tidtest
+expect: tidtest: passed
+reject: tidtest: FAIL
+
+# Priority-ceiling mutexes held together and unlocked in either order:
+# the highest ceiling still held (review item SCHED-9).
+name: ceilings
+needs: qnx
+timeout: 30
+run: ceiltest
+expect: ceiltest: passed
+reject: ceiltest: FAIL
+
+# A boot script program that fails to start leaves no process behind
+# (review item PROCMGR-9).
+name: boot-script-failure
+needs: qnx
+timeout: 30
+run: bootfailtest
+expect: bootfailtest: passed
+reject: bootfailtest: FAIL
+
+# A SIGEV_THREAD thread's kernel-made stack: MAP_STACK, with a guard page
+# below it (review item SCHED-7b).
+name: sigev-thread-stack
+needs: qnx
+timeout: 30
+run: sigevstacktest
+expect: sigevstacktest: passed
+reject: sigevstacktest: FAIL
+
+# Joining and detaching one thread at once: a blocked joiner gets EINVAL,
+# and of a racing join and detach exactly one wins (review item SCHED-11).
+name: join-detach
+needs: qnx
+timeout: 60
+run: detachtest
+expect: detachtest: passed
+reject: detachtest: FAIL
+
+# sigtimedwait() whose timeout expires as a signal arrives: each signal
+# received exactly once (review item SCHED-17).
+name: signal-timeout-race
+needs: qnx
+timeout: 60
+run: sigracetest
+expect: sigracetest: passed
+reject: sigracetest: FAIL
+
+# A pulse's priority, capped at the receiving process's highest: 253 for
+# root, 63 unprivileged (review item SCHED-22).
+name: pulse-priority
+needs: qnx
+timeout: 30
+run: pulseprioritytest
+expect: pulseprioritytest: passed
+reject: pulseprioritytest: FAIL
+
+# A TimerTimeout() for a call that a pending cancel turns into the cancel
+# stub goes with it (review item SCHED-16).
+name: cancel-timeout
+needs: qnx
+timeout: 30
+run: canceltimeouttest
+expect: canceltimeouttest: passed
+reject: canceltimeouttest: FAIL
+
+# A receive makes the client's priority the server's own (base), and a
+# mutex raise stays above it (review item SCHED-34).
+name: message-inheritance
+needs: qnx
+timeout: 30
+run: inherittest
+expect: inherittest: passed
+reject: inherittest: FAIL
+
+# A privileged client's priority, capped at 63 in an unprivileged server,
+# on a receive and a boost (review item IPC-11).
+name: message-priority-cap
+needs: qnx
+timeout: 30
+run: msgcaptest
+expect: msgcaptest: passed
+reject: msgcaptest: FAIL
+
+# A shared-memory object takes its memory when it is sized: ftruncate(),
+# shm_ctl(), ENOMEM beyond free memory (review item PATHMEM-23).
+name: shm-backing
+needs: qnx
+timeout: 60
+run: shmbacktest
+expect: shmbacktest: passed
+reject: shmbacktest: FAIL
+
+# An exec with POSIX_SPAWN_NOZOMBIE: the parent's wait returns at once
+# with status 0, a SIGCHLD, the program runs on (review item PROCMGR-21).
+name: nozombie-exec
+needs: qnx
+timeout: 30
+run: nozombietest
+expect: nozombietest: passed
+reject: nozombietest: FAIL
+
+# SIGTSTP, SIGTTIN, SIGTTOU stop a process by default; SIGCONT lets it go
+# on (review item SCHED-28).
+name: stop-signals
+needs: qnx
+timeout: 30
+run: stopsigtest
+expect: stopsigtest: passed
+reject: stopsigtest: FAIL
+
+# A CLOCK_REALTIME timer with the time of day near the top of its range:
+# no overflow, the expiry wraps (review item SCHED-26).
+name: tod-near-top
+needs: qnx
+timeout: 30
+run: todtoptest
+expect: todtoptest: passed
+reject: todtoptest: FAIL
+
+# 256 registered events per process; an ended thread's timer signal goes
+# to thread 1 (review items SCHED-25, SCHED-24).
+name: event-registrations
+needs: qnx
+timeout: 30
+run: eventregtest
+expect: eventregtest: passed
+reject: eventregtest: FAIL
+
+# mmap(): anonymous or physical memory asked with a descriptor is EINVAL;
+# msync()'s flag rules (review items PATHMEM-11, PATHMEM-12).
+name: mmap-flags
+needs: qnx
+timeout: 30
+run: mmapflagtest
+expect: mmapflagtest: passed
+reject: mmapflagtest: FAIL
+
+# A timer due at the end of time, its CPU idle with no other deadline
+# (issue #282).
+name: timer-end-of-time
+needs: qnx
+timeout: 30
+run: endtimetest
+expect: endtimetest: passed
+reject: endtimetest: FAIL
+
+# One read() copies the whole request from /dev/shmem, /dev/zero and
+# /proc/<pid>/as; /proc/<pid>/as up to its first hole.
+name: big-reads
+needs: qnx
+timeout: 30
+run: bigreadtest
+expect: bigreadtest: passed
+reject: bigreadtest: FAIL
+
+# A parent's wait answered while its child's last thread is still ending:
+# the child's address space goes only after it (review item IPC-12).
+name: exit-wait
+needs: qnx
+timeout: 120
+run: exitwaittest
+expect: exitwaittest: passed
+reject: exitwaittest: FAIL
+
+# Signals queued until memory is short: ENOMEM, without touching the
+# kernel's reserve; all of them delivered (review item SCHED-8).
+name: signal-queue-memory
+needs: qnx
+timeout: 300
+run: sigqueuetest
+expect: sigqueuetest: passed
+reject: sigqueuetest: FAIL
+
+# A 64 MiB MsgWrite() leaves its CPU to a higher-priority thread; a client
+# signalled mid-write isn't written after it left (issue #287).
+name: message-write
+needs: qnx
+timeout: 60
+run: msgwritetest
+expect: msgwritetest: passed
+reject: msgwritetest: FAIL
+
+# A write() whose buffer faults part-way: procnto receives 2088 bytes, so
+# a fault past them still sizes the file (issue #288).
+name: send-fault
+needs: qnx
+timeout: 30
+run: sendfaulttest
+expect: sendfaulttest: passed
+reject: sendfaulttest: FAIL
+
+# Process 1's long operations (a 256 MiB shm_ctl(), its close(), 2 MiB
+# writes) leave interrupts open: a 1 ms timer on every CPU stays on time.
+name: long-operations
+needs: qnx
+timeout: 60
+run: longoptest
+expect: longoptest: passed
+reject: longoptest: FAIL
+
+# One write() takes the whole request, however long, to /dev/shmem,
+# /proc/<pid>/as and /dev/null (issue #285).
+name: big-writes
+needs: qnx
+timeout: 60
+run: bigwritetest
+expect: bigwritetest: passed
+reject: bigwritetest: FAIL
+
+# shm_ctl() that can't have its memory: ENOMEM with nothing taken, the
+# object as it was (review item PATHMEM-15).
+name: shm-ctl-failure
+needs: qnx
+timeout: 60
+run: shmfailtest
+expect: shmfailtest: passed
+reject: shmfailtest: FAIL
+
+# A descriptor number detached without close() keeps its open-file
+# context: procnto's opens on it are EBUSY (review item PATHMEM-16).
+name: ocb-busy
+needs: qnx
+timeout: 30
+run: ocbbusytest
+expect: ocbbusytest: passed
+reject: ocbbusytest: FAIL
+
+# F_GETFL leaves out the open-only flags; F_SETFL changes nothing on
+# /dev/null, /dev/zero, /dev/text (issue #291).
+name: file-flags
+needs: qnx
+timeout: 30
+run: getfltest
+expect: getfltest: passed
+reject: getfltest: FAIL
+
+# _IO_DEVCTL answers: an unknown one ENOSYS, a shm object's short one
+# EBADMSG (review item PATHMEM-17).
+name: devctl-answers
+needs: qnx
+timeout: 30
+run: devctltest
+expect: devctltest: passed
+reject: devctltest: FAIL
+
+# name_attach() names: EEXIST, listing order, procnto's S_IFNAM node,
+# name_open() answered by procnto (no connect message to the server).
+name: names
+needs: qnx
+timeout: 15
+run: nametest
+expect: nametest: passed
+reject: nametest: FAIL
+
+# Pathname resolution among servers: one's own names (_RESMGR_FLAG_SELF),
+# BEFORE/AFTER, deepest prefix first, directory servers.
+name: path-resolution
+needs: qnx
+timeout: 15
+run: pathtest
+expect: pathtest: passed
+reject: pathtest: FAIL
+
+# shm_ctl(): anonymous, contiguous and physical memory for shared memory
+# objects; posix_mem_offset().
+name: shm-ctl
+needs: qnx
+timeout: 15
+run: shm2test
+expect: shm2test: passed
+reject: shm2test: FAIL
+
+# Process manager events: what each one carries, who triggers them.
+name: procmgr-events
+needs: qnx
+timeout: 30
+run: pevtest
+expect: pevtest: passed
+reject: pevtest: FAIL
+
+# Shared memory handles: made for one process, used once.
+name: shm-handles
+needs: qnx
+timeout: 20
+run: shm3test
+expect: shm3test: passed
+reject: shm3test: FAIL
+
+# Private mappings of large shared-memory objects (review item PATHMEM-5).
+name: shm-copies
+needs: qnx
+timeout: 240
+run: shmcopytest
+expect: shmcopytest: passed
+reject: shmcopytest: FAIL
+
+# Controlling terminals as sshd uses them: TIOCSCTTY, /dev/tty, a pty
+# freed for the next session, SIGHUP to the foreground group.
+name: controlling-tty
+needs: qnx
+timeout: 20
+run: ttytest
+expect: ttytest: passed
+reject: ttytest: FAIL
+
+# Requests to procnto aren't interrupted by signals while queued.
+name: procnto-eintr
+needs: qnx
+timeout: 60
+run: eintrtest
+expect: eintrtest: passed
+reject: eintrtest: FAILED
+
+# Signal queueing (SIGSELECT for poll()), zero-timeout signal waits.
+name: signal-queueing
+needs: qnx
+timeout: 20
+run: sigqtest
+expect: sigqtest: passed
+reject: sigqtest: FAIL
+
+# Guard pages under the main thread's and a pthread's stacks.
+name: stack-guards
+needs: qnx
+timeout: 20
+run: stacktest
+expect: stacktest: passed
+reject: stacktest: FAIL
+
+# Kernel page tables mapped from all CPUs at once (review item CORE-1).
+name: kernel-tables-smp
+needs: qnx
+timeout: 180
+run: mmustress
+expect: mmustress: passed
+reject: mmustress: FAIL
+
+# Two threads mapping into one process at once (review item CORE-3).
+name: map-race
+needs: qnx
+timeout: 60
+run: maprace
+expect: maprace: passed
+reject: maprace: FAIL
+
+# A fork() that runs out of memory: undone whole, the kernel keeps its
+# reserve (review items CORE-4, PROCMGR-5).
+name: fork-nomem
+needs: qnx
+timeout: 200
+run: forkfail
+expect: forkfail: passed
+reject: forkfail: FAIL
+
+# Kernel pipes (PipeOpen() & co.) through QNX's kpipe.
+name: kernel-pipes
+needs: qnx
+timeout: 60
+run: kpipetest
+expect: kpipetest: passed
+reject: kpipetest: FAIL
+
+# CPU offlining (SchedCtl(), TimerDelegate(), SCHED_OFFLINING) and the
+# clock held back by a thread at its priority.
+name: cpu-offlining
+needs: qnx
+timeout: 30
+run: offlinetest
+expect: offlinetest: passed
+reject: offlinetest: FAIL
+
+# The resource database (rsrcdbmgr_*()): what procnto seeds, create,
+# attach, detach, destroy, queries, sharing, abilities.
+name: resources
+needs: qnx
+timeout: 15
+run: rsrctest
+expect: rsrctest: passed
+reject: rsrctest: FAIL
+
+# Custom abilities (procmgr_ability_create(), _lookup(), _name()) and
+# servers' checks of their clients' abilities (ConnectClientInfoAble()).
+name: custom-abilities
+needs: qnx
+run: abil2test
+expect: abil2test: passed
+reject: abil2test: FAIL
+
+# procnto's messages at their edges: too short (EBADMSG), unknown
+# subtypes, pid 0, 64-bit pids, getpagesizes(), _PROC_GETSETID replies,
+# event IDs, child pids, _SYS_TRACE, shared memory handles, empty ranges.
+name: procnto-messages
+needs: qnx
+run: procmsgtest
+expect: procmsgtest: passed
+reject: procmsgtest: FAIL
+
+# A caught signal for a thread whose stack has no room for the handler's
+# frame: the process ends with SIGDOOM, as on procnto (review item
+# SCHED-30).
+name: signal-doom
+needs: qnx
+timeout: 20
+run: sigdoomtest
+expect: sigdoomtest: passed
+reject: sigdoomtest: FAIL
+
+# Job control notifications reach the parent's waitpid() whoever sends
+# the stop (review item IPC-15).
+name: job-pulse
+needs: qnx
+timeout: 30
+run: jobpulsetest
+expect: jobpulsetest: passed
+reject: jobpulsetest: FAIL
+
+# Message passing details of review #184 (IPC-9, 13, 14, 18, 22, 23), as
+# procnto answers them.
+name: ipc-review
+needs: qnx
+timeout: 30
+run: ipcreviewtest
+expect: ipcreviewtest: passed
+reject: ipcreviewtest: FAIL
+
+# A program's interpreter named through a link: found as open() finds
+# it, and the auxiliary vector names the file the link leads to (#326).
+name: interp-link
+needs: qnx
+timeout: 20
+run: interptest
+expect: interptest: passed
+reject: interptest: FAIL
+
+# Process manager details of review #185 (PROCMGR-17, 18, 22, 23), as
+# procnto answers them.
+name: procmgr-review
+needs: qnx
+timeout: 30
+run: pmreviewtest
+expect: pmreviewtest: passed
+reject: pmreviewtest: FAIL
+
+# A shared memory object over a device's registers: read() and mmap() reach
+# them (the PL031 clock of QEMU's virt); a write where no device answers is
+# ESRVRFAULT, not a kernel fault (review item CORE-23). QEMU only: a
+# board's bus may answer that write differently.
+# ANCHOR: test_device_shm
+name: device-shm
+needs: qnx
+run: devshmtest
+expect: devshmtest: passed
+reject: devshmtest: FAIL
+# ANCHOR_END: test_device_shm
+
+# Trace buffers allocated again or freed: no process keeps a view onto
+# the old ones (review IPC-20, #83).
+name: trace-views
+needs: qnx
+run: traceviewtest
+expect: traceviewtest: passed
+reject: traceviewtest: FAIL
+
+# Server monitors (_PROC_SERVMON): configuration, ignoring a server, the
+# event for a client a server doesn't let go.
+name: server-monitor
+needs: qnx
+timeout: 15
+run: servmontest
+expect: servmontest: passed
+reject: servmontest: FAIL
+
+# Pid numbering: slots and generations, as procnto.
+name: pids
+needs: qnx
+run: pidtest
+expect: pidtest: passed
+reject: pidtest: FAIL
+
+# The I/O messages of procnto's own resource managers: message checks,
+# stat() of the image and the devices, /dev/text's open flags.
+name: procnto-io
+needs: qnx
+run: iomsgtest
+expect: iomsgtest: passed
+reject: iomsgtest: FAIL
+
+# Server connection IDs: shared per client process and channel, numbered
+# per server, released after the disconnect pulse.
+name: scoids
+needs: qnx
+run: scoidtest
+expect: scoidtest: passed
+reject: scoidtest: FAIL
+
+# A debugger's view of a process's end: SIGKILL waits while the debugger
+# holds the process, and sends it no event; a process that ends by itself
+# parks until the debugger lets go.
+name: debug-events
+needs: qnx
+run: debugevtest
+expect: debugevtest: passed
+reject: debugevtest: FAIL
+
+# Kernel message queues as their manager sees them: IDs in the manager's
+# channel-ID space, one binding per server connection.
+name: mq-ids
+needs: qnx
+run: mqidtest
+expect: mqidtest: passed
+reject: mqidtest: FAIL
+
+# Robust mutexes in detail: __owner while inconsistent and not
+# recoverable, a shared one's owner process ending, trylock.
+name: robust2
+needs: qnx
+timeout: 30
+run: robust2test
+expect: robust2test: passed
+reject: robust2test: FAIL
+
+# resmgr_attach() flags in path resolution: an opaque server's ENOENT is
+# final for its paths; _FTYPEALL takes shm_open()'s connects (PATHMEM-10).
+name: path-flags
+needs: qnx
+run: pathflagtest
+expect: pathflagtest: passed
+reject: pathflagtest: FAIL
+
+# A driver's device and inode numbers: resmgr_devino() on the connection
+# that attached its name, as procnto answers it (PATHMEM-25).
+name: device-inodes
+needs: qnx
+run: devinotest
+expect: devinotest: passed
+reject: devinotest: FAIL
+
+# A new image's process local storage: none until its libc registers its
+# own, not the old image's, which its loader would follow (#324).
+name: exec-pls
+needs: qnx
+run: plsexectest
+expect: plsexectest: passed
+reject: plsexectest: FAIL
+
+# Kills qnxd and starts it again, so that the tests after it are served.
+name: qnxd-death
+needs: qnx
+timeout: 15
+run: qnxddeathtest
+expect: qnxddeathtest: passed
+reject: qnxddeathtest: FAIL
+
+# A QNX client's priority reaches a native server through qnxd.
+name: qnxd-priority
+needs: qnx
+timeout: 15
+run: priochain & priochaintest
+expect: priochaintest: passed
+reject: priochaintest: FAIL
+
+# A pipe seen from a QNX program, through qnxd: procnto's results.
+name: pipe-info
+needs: qnx
+run: pipeinfotest
+expect: pipeinfotest: passed
+reject: pipeinfotest: FAIL
+
+# Who may open a shared memory object: procnto's EACCES and fchown().
+name: shm-permissions
+needs: qnx
+run: shmpermtest
+expect: shmpermtest: passed
+reject: shmpermtest: FAIL
+
+# QNX programs find their own tools first; native programs never do.
+name: compat-overlay
+needs: qnx
+run: overlaytest
+run: /proc/boot/exec-test /bin/sh -c 'ls /bin/ksh; echo rc=$?'
+run: tail --version 2>&1 | head -1
+expect: overlaytest: passed
+expect: rc=1
+reject: overlaytest: FAIL
+
+# Process 1's arguments, as procnto's: its name, then the boot options.
+name: process1-cmdline
+needs: qnx
+run: cat /proc/1/cmdline | od -c | head -1
+expect: k\s+e\s+r\s+n\s+e\s+l\s+\\0\s+-\s+v\s+\\0
+
+# select() on the console with nothing typed times out, as top waits
+# between refreshes, in canonical and in raw mode.
+name: tty-select
+timeout: 15
+run: /proc/boot/ttyselect-test
+expect: ^ttyselect: canon n=0 set=0 ms=[23]\d\d$
+expect: ^ttyselect: raw n=0 set=0 ms=[23]\d\d$
+expect: ^ttyselect: done$
+
+# bsdkern's CPU slots: threads share per-slot data in critical sections.
+name: bsdkern-slots
+timeout: 30
+run: /proc/boot/bsdkern-slots
+expect: ^bsdkern-slots: 4 slots, total 800000$
+expect: ^bsdkern-slots: pinned stays true$
+expect: ^bsdkern-slots: passed$
+reject: FAIL
+
+# bsdkern's mtx, rw and sx, called as FreeBSD's code calls them.
+name: bsdkern-locks
+timeout: 40
+run: /proc/boot/bsdkern-locks
+expect: ^bsdkern-locks: mtx 300000$
+expect: ^bsdkern-locks: rw 300000$
+expect: ^bsdkern-locks: sx 300000$
+expect: ^bsdkern-locks: rw 1 1 1 0 0 1$
+expect: ^bsdkern-locks: passed$
+reject: FAIL
+
+# A large PROT_NONE mapping is a reservation, backed piece by piece.
+name: reserve
+needs: qnx
+timeout: 30
+run: reservetest
+expect: reservetest: passed
+reject: reservetest: FAIL
+
+# bsdkern's pages: a reserved range, backed on demand.
+name: bsdkern-mem
+timeout: 20
+run: /proc/boot/bsdkern-mem
+expect: ^bsdkern-mem: passed$
+reject: FAIL
+
+# netd: FreeBSD's network stack in a user process.
+name: netd
+timeout: 20
+run: /proc/boot/netd -t
+expect: ^netd: FreeBSD's kernel code is up
+expect: ^netd: udp got Ok\("hello"\)
+expect: ^netd: tcp got Ok\("hello world"\)
+expect: ^netd: traffic passed
+reject: not implemented|panic
+
+# The same program as net-test, served by netd instead of io-sock.
+name: netd-net
+timeout: 40
+run: /bin/sleep 2; /proc/boot/net-test; echo rc=$?
+run: /proc/boot/netintr-test
+run: /proc/boot/net6-test
+expect: ^net: bound to 127\.0\.0\.1 port>0:1 len=16$
+expect: ^net: connected udp: bind=0 connect=0 send=9 errno=0 recv=9 connected$
+expect: ^net: SO_TYPE=1 \(SOCK_STREAM=1\)$
+expect: ^net: socketpair=0 sendmsg\(rights\)=1 recvmsg=1 data=x fd received:1 differs:1 read via it=
+expect: ^net: unix bind on shmem=0 \(errno 0\)$
+expect: ^net: udp datagram \(8\) from port matches:1 len=16$
+expect: ^net: sysctlbyname\(net\.inet\.ip\.ttl\)=0 ttl=64$
+expect: ^net: ifaddr lo0 127\.0\.0\.1$
+expect: ^net: SIOCGIFFLAGS=0 loopback:1 up:1$
+expect: ^net: done$
+expect: ^netintr: accept=-1 errno=4$
+expect: ^netintr: recv=-1 errno=4$
+expect: ^netintr: unix=-1 errno=4$
+expect: ^netintr: done$
+expect: ^net6: udp got six \(3\)$
+expect: ^net6: tcp got over tcp \(8\)$
+expect: ^net6: unix node$
+expect: ^net6: unix in use$
+expect: ^net6: unix got named$
+expect: ^net6: done$
+expect: rc=0
+reject: not implemented|panic
+
+# FreeBSD's network tools against netd, which the base image starts.
+name: netd-tools
+timeout: 40
+run: /bin/sleep 2; /sbin/ifconfig lo0; echo ifc=$?
+run: /sbin/ifconfig lo0 alias 127.0.0.2/32; echo alias=$?; /sbin/ifconfig lo0 | /usr/bin/grep -c 127.0.0.2
+run: /sbin/ping -c 2 127.0.0.1; echo ping=$?
+run: /sbin/route -n get 127.0.0.1; echo route=$?
+run: /usr/bin/netstat -rn; echo rtab=$?
+run: /usr/bin/netstat -an; echo sock=$?
+run: /usr/bin/netstat -s -p tcp | /usr/bin/head -3; echo stat=$?
+expect: inet 127\.0\.0\.1 netmask 0xff000000
+expect: ifc=0
+expect: alias=0
+expect: ping=0
+expect: route=0
+expect: rtab=0
+expect: sock=0
+reject: not implemented|panic
+
+# A QNX program on netd, through QNX's libsocket and qnxd.
+name: netd-qnx
+needs: qnx
+timeout: 40
+run: netdtest
+expect: netdtest: passed
+reject: netdtest: FAIL
+
+# Load on netd: data checked byte by byte, connections, datagrams.
+name: netd-stress
+timeout: 200
+run: /bin/sleep 2; /proc/boot/netstress-test; echo rc=$?
+expect: ^netstress: passed$
+expect: ^rc=0$
+reject: not implemented|panic|FAILED
+
+# QNX's sshd, ssh and scp on netd, over the loopback.
+name: netd-ssh
+needs: qnx
+timeout: 45
+run: mkdir -p -m 700 /tmp/k /var/chroot/sshd; rm -f /tmp/k/id; /compat/qnx/usr/bin/ssh-keygen -q -t ed25519 -N '' -f /tmp/k/id; echo keygen=$?
+run: cp /tmp/k/id.pub /tmp/k/authorized_keys; chmod 600 /tmp/k/authorized_keys
+run: /compat/qnx/usr/sbin/sshd -p 2222 -o PermitRootLogin=yes -o StrictModes=no -o "AuthorizedKeysFile /tmp/k/authorized_keys" -o LogLevel=INFO -E /tmp/k/sshd.log; echo sshd=$?
+run: /bin/sh -c '/bin/sleep 1'; /compat/qnx/usr/bin/ssh -o ConnectTimeout=30 -p 2222 -i /tmp/k/id -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@127.0.0.1 'echo ssh-says-hello'; echo ssh=$?
+run: echo via-stdin | /compat/qnx/usr/bin/ssh -p 2222 -i /tmp/k/id -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null root@127.0.0.1 /compat/qnx/bin/cat; echo cat=$?
+run: echo payload > /tmp/k/in; /compat/qnx/usr/bin/scp -P 2222 -i /tmp/k/id -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null /tmp/k/in root@127.0.0.1:/tmp/k/out; echo scp=$?; cat /tmp/k/out
+run: tail -24 /tmp/k/sshd.log
+run: slay -f sshd; sleep 1
+expect: ^keygen=0
+expect: ^sshd=0
+expect: ^ssh-says-hello
+expect: ^ssh=0
+expect: ^via-stdin
+expect: ^cat=0
+expect: ^scp=0
+expect: ^payload
+
+# netd's modules: FreeBSD's kldload(2) through /dev/netd, a pfil(9) filter
+# (user/netd/mods/pfil_test.c) that drops ICMP echo requests, and unloaded
+# again, which io-sock can't do for its modules (modload_module_unload,
+# read with REA).
+name: netd-modules
+timeout: 30
+run: /bin/sleep 2; /sbin/ping -c 1 127.0.0.1 >/dev/null; echo before=$?
+run: /sbin/kldload /boot/modules/pfil_test.ko; echo load=$?; /sbin/kldstat | /usr/bin/grep -c pfil_test
+run: /sbin/ping -c 1 -t 2 127.0.0.1 >/dev/null; echo during=$?; echo dropped=$(/sbin/sysctl -n net.pfil_test.dropped)
+run: /sbin/kldunload pfil_test; echo unload=$?; /sbin/kldstat | /usr/bin/grep -c pfil_test
+run: /sbin/ping -c 1 127.0.0.1 >/dev/null; echo after=$?
+run: /sbin/kldload /boot/modules/pfil_test.ko; echo again=$?; /sbin/kldunload pfil_test; echo again-unload=$?
+expect: ^before=0$
+expect: ^load=0$
+expect: ^during=2$
+expect: ^dropped=1$
+expect: ^1$
+expect: ^unload=0$
+expect: ^0$
+expect: ^after=0$
+expect: ^again=0$
+expect: ^again-unload=0$
+reject: panic|not implemented
+
+# FreeBSD's ipfw as a netd module, driven by ipfw(8) through socket options:
+# its default rule denies, rules allow and deny, and it unloads again.
+name: netd-ipfw
+timeout: 40
+run: /bin/sleep 2; /sbin/kldload /boot/modules/ipfw.ko; echo load=$?
+run: /sbin/ping -c 1 -t 2 127.0.0.1 >/dev/null; echo default=$?
+run: /sbin/ipfw add 1000 allow ip from any to any; /sbin/ping -c 1 127.0.0.1 >/dev/null; echo allowed=$?
+run: /sbin/ipfw add 500 deny icmp from any to any icmptypes 8; /sbin/ping -c 1 -t 2 127.0.0.1 >/dev/null; echo denied=$?
+run: /sbin/ipfw show 500; /sbin/ipfw -q flush; /sbin/kldunload ipfw; echo unload=$?
+run: /sbin/ping -c 1 127.0.0.1 >/dev/null; echo after=$?; /sbin/kldstat | /usr/bin/grep -c ipfw
+expect: ^load=0$
+expect: ^default=2$
+expect: ^allowed=0$
+expect: ^denied=2$
+expect: ^00500 +[1-9]
+expect: ^unload=0$
+expect: ^after=0$
+reject: panic|not implemented
+
+# pcid on QEMU's virt, started by the boot script: the device tree's generic
+# ECAM host bridge (FreeBSD's pci_host_generic_fdt.c: no board module), and
+# on the bus the virtio network device and QEMU's xhci (tools/qemu/run.sh),
+# in FreeBSD's pciconf.
+name: pcid-virt
+timeout: 30
+run: /usr/sbin/pciconf -l; echo pciconf=$?
+expect: class=0x060000 .*vendor=0x1b36 device=0x0008
+expect: class=0x020000 .*vendor=0x1af4 device=0x1041
+expect: class=0x0c0330 .*vendor=0x1b36 device=0x000d
+expect: ^pciconf=0$
+reject: panic|not implemented
+
+# The network on QEMU's virt: vtnet0, FreeBSD's virtio network driver in
+# netd as modules (bsdkern's PCI client bus over pcid, virtio, its PCI
+# transport, if_vtnet), loaded and configured by the boot script for QEMU's
+# user-mode network. The gateway (10.0.2.2, QEMU itself) answers pings, also
+# fragmented ones, and TCP reaches the host through it (tests/native/vtnet.c).
+name: netd-vtnet
+timeout: 40
+run: /sbin/kldstat | /usr/bin/grep -c -E " (pci|virtio|virtio_pci|if_vtnet)\.ko$"
+run: /sbin/ifconfig vtnet0 | /usr/bin/grep -E "flags=|ether|inet "
+run: /sbin/route -n get 192.0.2.1 | /usr/bin/grep -E "gateway|interface"
+run: /sbin/ping -c 3 -t 10 10.0.2.2 > /dev/null; echo ping=$?
+run: /sbin/ping -c 2 -t 10 -s 4000 10.0.2.2 > /dev/null; echo big=$?
+run: /proc/boot/vtnet-test; echo rc=$?
+expect: ^4$
+expect: ^vtnet0: flags=.*<UP,BROADCAST,RUNNING,
+expect: ^\s+ether 52:54:00:12:34:56$
+expect: ^\s+inet 10\.0\.2\.15 netmask 0xffffff00 broadcast 10\.0\.2\.255$
+expect: ^\s+gateway: 10\.0\.2\.2$
+expect: ^\s+interface: vtnet0$
+expect: ^ping=0$
+expect: ^big=0$
+expect: ^vtnet: connect to the host's port 1: -1 errno 61 
+expect: ^vtnet: passed$
+expect: ^rc=0$
+reject: panic|not implemented|FAILED

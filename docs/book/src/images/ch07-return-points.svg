@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="360" fill="#ffffff"/>
+  <text x="60" y="26" class="h">the caller's code</text>
+  <rect class="wu" x="60" y="40" width="240" height="34" rx="3"/>
+  <text x="52" y="61" class="ms e">A</text>
+  <text x="74" y="61" class="m">mov   w8, #number</text>
+  <rect class="u" x="60" y="84" width="240" height="34" rx="3"/>
+  <text x="52" y="105" class="ms e">A+4</text>
+  <text x="74" y="105" class="m">svc   #0x51</text>
+  <rect class="g" x="60" y="128" width="240" height="34" rx="3"/>
+  <text x="52" y="149" class="ms e">A+8</text>
+  <text x="74" y="149" class="">success continues here</text>
+  <rect class="r" x="60" y="172" width="240" height="34" rx="3"/>
+  <text x="52" y="193" class="ms e">A+12</text>
+  <text x="74" y="193" class="">failure continues here</text>
+  <path class="lnr dash" d="M478,16 L478,222"/>
+  <text x="470" y="28" class="s red e">the caller</text>
+  <text x="486" y="28" class="s red">the kernel</text>
+  <rect class="k" x="500" y="62" width="270" height="150" rx="4"/>
+  <text x="635" y="86" class="c">ker::dispatch()</text>
+  <text x="635" y="106" class="s c">the handler returns a value or an error;</text>
+  <text x="635" y="122" class="s c">complete_kercall() writes the saved registers:</text>
+  <text x="545" y="150" class="m">Ok(v):   x0 = v</text>
+  <text x="545" y="170" class="m">Err(e):  x0 = e,  elr += 4</text>
+  <path class="ln" d="M300,101 L500,101" marker-end="url(#a)"/>
+  <text x="388" y="93" class="s c">svc: return address A+8</text>
+  <path class="lng" d="M500,145 L302,145" marker-end="url(#ag)"/>
+  <text x="388" y="138" class="s c green">return to elr</text>
+  <path class="lnr" d="M500,189 L302,189" marker-end="url(#ar)"/>
+  <text x="388" y="182" class="s c red">return to elr + 4</text>
+  <text x="60" y="252" class="h">what the three kinds of caller put at the two return points</text>
+  <rect class="w" x="60" y="264" width="228" height="84" rx="3"/>
+  <text x="72" y="282" class="b">process 1's threads</text>
+  <text x="72" y="302" class="ms">A+8</text>
+  <text x="112" y="302" class="m">ret</text>
+  <text x="72" y="320" class="ms">A+12</text>
+  <text x="112" y="320" class="m">neg  x0, x0</text>
+  <text x="72" y="338" class="s">an error becomes a negative result</text>
+  <rect class="w" x="300" y="264" width="228" height="84" rx="3"/>
+  <text x="312" y="282" class="b">native servers</text>
+  <text x="312" y="302" class="ms">A+8</text>
+  <text x="352" y="302" class="m">ret</text>
+  <text x="312" y="320" class="ms">A+12</text>
+  <text x="352" y="320" class="m">b    &lt;error routine&gt;</text>
+  <text x="312" y="338" class="s">which sets errno and returns -1</text>
+  <rect class="w" x="540" y="264" width="228" height="84" rx="3"/>
+  <text x="552" y="282" class="b">libsys</text>
+  <text x="552" y="302" class="ms">A+8</text>
+  <text x="592" y="302" class="m">b    1f</text>
+  <text x="552" y="320" class="ms">A+12</text>
+  <text x="592" y="320" class="m">mov  x9, #1</text>
+  <text x="552" y="338" class="s">a flag the Rust code tests</text>
+</svg>

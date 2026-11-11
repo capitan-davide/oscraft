@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="520" fill="#ffffff"/>
+  <text x="400.0" y="22" class="h c">The top of a new FreeBSD program's stack</text>
+  <rect class="y" x="250" y="40" width="300" height="40" rx="0"/>
+  <text x="400.0" y="58.0" class="c">struct ps_strings</text>
+  <text x="400.0" y="72.0" class="ms c">argv, argc, envp, envc</text>
+  <text x="240" y="44" class="ms e">0x7f_ffff_c000  the stack's top</text>
+  <path class="ln" d="M244,40 L250,40"/>
+  <rect class="w" x="250" y="80" width="300" height="26" rx="0"/>
+  <text x="400.0" y="97.0" class="c">the executable's path</text>
+  <rect class="w" x="250" y="106" width="300" height="26" rx="0"/>
+  <text x="400.0" y="123.0" class="c">64 bytes for the stack protector</text>
+  <rect class="w" x="250" y="132" width="300" height="26" rx="0"/>
+  <text x="400.0" y="149.0" class="c">the page sizes: [4096]</text>
+  <rect class="u" x="250" y="158" width="300" height="40" rx="0"/>
+  <text x="400.0" y="176.0" class="c">argument and environment strings</text>
+  <text x="400.0" y="190.0" class="ms c">"hello\0one\0two\0PATH=...\0"</text>
+  <rect class="n" x="250" y="198" width="300" height="18" rx="0"/>
+  <text x="400.0" y="211.0" class="s c">padding to 16 bytes</text>
+  <rect class="k" x="250" y="216" width="300" height="92" rx="0"/>
+  <rect class="u" x="250" y="308" width="300" height="24" rx="0"/>
+  <text x="400.0" y="324.0" class="c">NULL</text>
+  <rect class="u" x="250" y="332" width="300" height="24" rx="0"/>
+  <text x="400.0" y="348.0" class="c">envp[0] ... envp[envc-1]</text>
+  <rect class="u" x="250" y="356" width="300" height="24" rx="0"/>
+  <text x="400.0" y="372.0" class="c">NULL</text>
+  <rect class="u" x="250" y="380" width="300" height="24" rx="0"/>
+  <text x="400.0" y="396.0" class="c">argv[0] ... argv[argc-1]</text>
+  <rect class="g" x="250" y="404" width="300" height="28" rx="0"/>
+  <text x="400.0" y="422.0" class="c">argc</text>
+  <text x="400.0" y="234" class="c">the auxiliary vector</text>
+  <text x="400.0" y="252" class="ms c">(AT_PHDR, a) (AT_PHNUM, n) (AT_ENTRY, e)</text>
+  <text x="400.0" y="266" class="ms c">(AT_BASE, b) (AT_EXECPATH, p) ...</text>
+  <text x="400.0" y="280" class="ms c">(AT_PS_STRINGS, s) ... (AT_NULL, 0)</text>
+  <text x="400.0" y="298" class="s c">pairs of 64-bit words: a type and a value</text>
+  <path class="lng" d="M180,418 L248,418" marker-end="url(#ag)"/>
+  <text x="174" y="415" class="s e">sp at entry,</text>
+  <text x="174" y="428" class="s e">16-byte aligned;</text>
+  <text x="174" y="441" class="s e">x0 holds the same address</text>
+  <path class="life" d="M250,432 L250,458"/>
+  <path class="life" d="M550,432 L550,458"/>
+  <text x="400.0" y="452" class="s c">the rest of the stack: free, 512 KiB in all</text>
+  <path class="ln dash" d="M550,392 L578,392 L578,186 L552,186" marker-end="url(#a)"/>
+  <path class="ln dash" d="M550,344 L594,344 L594,172 L552,172" marker-end="url(#a)"/>
+  <text x="602" y="246" class="s">argv and envp</text>
+  <text x="602" y="260" class="s">point at the strings</text>
+  <path class="lnk dash" d="M550,276 L740,276 L740,60 L552,60" marker-end="url(#ak)"/>
+  <text x="734" y="96" class="ms e blue">AT_PS_STRINGS</text>
+  <path class="ln dash" d="M250,68 L220,68 L220,392 L248,392" marker-end="url(#a)"/>
+  <path class="ln dash" d="M220,344 L248,344" marker-end="url(#a)"/>
+  <text x="212" y="142" class="s e">ps_strings finds</text>
+  <text x="212" y="156" class="s e">argv and envp again,</text>
+  <text x="212" y="170" class="s e">at any later time</text>
+  <text x="400" y="508" class="s c">High addresses at the top. Process 1 writes all of this before the first thread runs.</text>
+</svg>

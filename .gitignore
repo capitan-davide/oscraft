@@ -1,0 +1,15 @@
+# Build outputs
+/build/
+/target/
+/startup/target/
+/startup/build/
+/docs/book/build/
+/startup/docs/book/build/
+
+# Local Claude Code settings
+/.claude/settings.local.json
+__pycache__/
+
+# The working notes: a scratch area for whoever works on the tree, never
+# committed. What is to last goes in the book (docs/book).
+/docs/notes/

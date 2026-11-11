@@ -1,0 +1,11 @@
+[package]
+name = "logring"
+description = "The per-process log rings between libsys and syslogd"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+
+[lints]
+workspace = true

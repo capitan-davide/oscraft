@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="300" fill="#ffffff"/>
+  <text x="20" y="26" class="h">Signal numbers, and one bit for each in a 128-bit set</text>
+  <rect class="g" x="30.0" y="70" width="192.28346456692913" height="50" rx="0"/>
+  <text x="126.14173228346456" y="92" class="b c">1 to 33</text>
+  <text x="126.14173228346456" y="109" class="s c">FreeBSD's signals</text>
+  <rect class="n" x="222.28346456692913" y="70" width="134.01574803149606" height="50" rx="0"/>
+  <text x="289.29133858267716" y="92" class="b c">34 to 56</text>
+  <text x="289.29133858267716" y="109" class="s c">unused by FreeBSD</text>
+  <rect class="k" x="356.2992125984252" y="70" width="46.61417322834649" height="50" rx="0"/>
+  <rect class="y" x="402.9133858267717" y="70" width="361.259842519685" height="50" rx="0"/>
+  <text x="583.5433070866142" y="92" class="b c">65 to 126</text>
+  <text x="583.5433070866142" y="109" class="s c">real-time signals</text>
+  <path class="ln" d="M30.0,120 L30.0,128"/>
+  <path class="ln" d="M222.28346456692913,120 L222.28346456692913,128"/>
+  <path class="ln" d="M356.2992125984252,120 L356.2992125984252,128"/>
+  <path class="ln" d="M402.9133858267717,120 L402.9133858267717,128"/>
+  <path class="ln" d="M764.1732283464567,120 L764.1732283464567,128"/>
+  <text x="30.0" y="142" class="s c">1</text>
+  <text x="222.28346456692913" y="142" class="s c">34</text>
+  <text x="356.2992125984252" y="142" class="s c">57</text>
+  <text x="402.9133858267717" y="142" class="s c">65</text>
+  <text x="760.1732283464567" y="142" class="s c">126</text>
+  <path class="lng" d="M123.22834645669292,190 L123.22834645669292,122" marker-end="url(#ag)"/>
+  <text x="30.0" y="206" class="s">SIGHUP 1 ... SIGKILL 9 ... SIGSEGV 11 ... SIGSTOP 17 ...</text>
+  <text x="30.0" y="221" class="s">SIGCHLD 20 ... SIGUSR2 31, SIGTHR 32, SIGLIBRT 33.</text>
+  <text x="30.0" y="236" class="s">One instance pending at a time.</text>
+  <path class="lnk" d="M379.6062992125984,44 L379.6062992125984,68" marker-end="url(#ak)"/>
+  <text x="379.6062992125984" y="38" class="s c blue">57 to 64: the system's own; always blocked, queued</text>
+  <path class="ln" d="M583.5433070866142,190 L583.5433070866142,122" marker-end="url(#a)"/>
+  <text x="432.0472440944882" y="206" class="s">SIGRTMIN 65 to SIGRTMAX 126.</text>
+  <text x="432.0472440944882" y="221" class="s">Every instance sent is queued, with its value.</text>
+  <text x="400" y="286" class="s c">SIGKILL and SIGSTOP can be neither blocked, caught nor ignored.</text>
+</svg>

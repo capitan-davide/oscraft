@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="230" viewBox="0 0 820 230" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="820" height="230" fill="#ffffff"/>
+  <polyline class="ln" points="60,120 752,120" marker-end="url(#a)"/>
+  <line x1="80" y1="90" x2="80" y2="128" stroke="#2c5d9b" stroke-width="2"/>
+  <text x="80" y="144" class="s c">tick 0</text>
+  <line x1="200" y1="90" x2="200" y2="128" stroke="#2c5d9b" stroke-width="2"/>
+  <text x="200" y="144" class="s c">tick 1</text>
+  <line x1="320" y1="90" x2="320" y2="128" stroke="#2c5d9b" stroke-width="2"/>
+  <text x="320" y="144" class="s c">tick 2</text>
+  <line x1="440" y1="90" x2="440" y2="128" stroke="#2c5d9b" stroke-width="2"/>
+  <text x="440" y="144" class="s c">tick 3</text>
+  <line x1="560" y1="90" x2="560" y2="128" stroke="#2c5d9b" stroke-width="2"/>
+  <text x="560" y="144" class="s c">tick 4</text>
+  <line x1="680" y1="90" x2="680" y2="128" stroke="#2c5d9b" stroke-width="2"/>
+  <text x="680" y="144" class="s c">tick 5</text>
+  <text x="758" y="124" class="s">1 ms ticks</text>
+  <line x1="116.0" y1="40" x2="116.0" y2="120" stroke="#333" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="116" y="34" class="s c">sleep(2.5 ms) called</text>
+  <line x1="416.0" y1="60" x2="416.0" y2="120" stroke="#aa2222" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="416" y="54" class="s c red">deadline</text>
+  <text x="440" y="160" class="s c green">woken here</text>
+  <polyline class="lng" points="116,76 440,76" marker-end="url(#ag)" marker-start="url(#ag)"/>
+  <text x="278" y="70" class="s c green">2.7 ms: rounded up to the tick</text>
+  <text x="60" y="190" class="s">A deadline is noticed at the first tick at or after it, so a wait is never shorter than asked</text>
+  <text x="60" y="206" class="s">and at most one tick longer.</text>
+</svg>

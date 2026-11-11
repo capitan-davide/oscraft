@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="430" viewBox="0 0 800 430" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="430" fill="#ffffff"/>
+  <text x="210" y="24" class="h c">lock</text>
+  <text x="590" y="24" class="h c">unlock</text>
+  <rect class="u" x="60" y="36" width="300" height="44" rx="4"/>
+  <text x="210" y="55" class="s c">compare-and-swap the lock word:</text>
+  <text x="210" y="70" class="m c">free → mine</text>
+  <rect class="u" x="440" y="36" width="300" height="44" rx="4"/>
+  <text x="590" y="55" class="s c">compare-and-swap the lock word:</text>
+  <text x="590" y="70" class="m c">mine → free</text>
+  <path class="lng" d="M130,80 L130,108" marker-end="url(#ag)"/>
+  <rect class="g" x="60" y="110" width="180" height="34" rx="3"/>
+  <text x="150" y="131" class="s c">it was free: locked, done</text>
+  <path class="lng" d="M510,80 L510,108" marker-end="url(#ag)"/>
+  <rect class="g" x="440" y="110" width="180" height="34" rx="3"/>
+  <text x="530" y="131" class="s c">nobody waits: free, done</text>
+  <text x="150" y="160" class="s c green">the fast path: no kernel call</text>
+  <text x="530" y="160" class="s c green">the fast path: no kernel call</text>
+  <path class="lnr" d="M310,80 L310,268" marker-end="url(#ar)"/>
+  <text x="318" y="180" class="s red">it is held:</text>
+  <text x="318" y="194" class="s red">mark the word</text>
+  <text x="318" y="208" class="s red">"someone waits",</text>
+  <text x="318" y="222" class="s red">then wait(word, value)</text>
+  <path class="lnr" d="M690,80 L690,268" marker-end="url(#ar)"/>
+  <text x="682" y="180" class="s e red">the word says</text>
+  <text x="682" y="194" class="s e red">"someone waits":</text>
+  <text x="682" y="208" class="s e red">wake(word)</text>
+  <path class="lnr dash" d="M20,244 L780,244"/>
+  <text x="24" y="238" class="s red">user space</text>
+  <text x="24" y="258" class="s red">kernel</text>
+  <rect class="k" x="60" y="270" width="320" height="86" rx="4"/>
+  <text x="220" y="290" class="b c">wait(word, value)</text>
+  <text x="220" y="308" class="s c">under the lock of the word's wait queue:</text>
+  <text x="220" y="322" class="s c">if the word still holds value, queue the</text>
+  <text x="220" y="336" class="s c">thread and block; if not, return at once</text>
+  <rect class="k" x="440" y="270" width="300" height="86" rx="4"/>
+  <text x="590" y="290" class="b c">wake(word)</text>
+  <text x="590" y="308" class="s c">under the same lock:</text>
+  <text x="590" y="322" class="s c">take a thread off the queue</text>
+  <text x="590" y="336" class="s c">and make it ready</text>
+  <path class="lnk" d="M438,313 L382,313" marker-end="url(#ak)"/>
+  <text x="410" y="305" class="s c blue">wakes</text>
+  <text x="400" y="388" class="s c">The kernel compares before it sleeps: an unlock between the failed swap and the wait changes the word,</text>
+  <text x="400" y="404" class="s c">so the wait returns at once instead of sleeping through its wakeup.</text>
+</svg>

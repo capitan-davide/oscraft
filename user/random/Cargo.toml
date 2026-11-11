@@ -1,0 +1,18 @@
+[package]
+name = "random"
+description = "OsCraft's /dev/random and /dev/urandom: a native resource manager with a ChaCha20 generator"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "random"
+path = "src/main.rs"
+test = false
+
+[dependencies]
+resmgr = { path = "../resmgr" }
+kercall = { path = "../kercall" }
+
+[lints]
+workspace = true

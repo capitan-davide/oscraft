@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="400" fill="#ffffff"/>
+  <path class="ln" d="M140,20 L140,98" marker-end="url(#a)"/>
+  <text x="150" y="40" class="s">created: spawn() for a kernel thread,</text>
+  <text x="150" y="54" class="s">spawn_user_frame_init() for a user thread</text>
+  <text x="150" y="68" class="s">(thr_new(), fork(), a new program)</text>
+  <rect class="n" x="60" y="100" width="160" height="52" rx="4"/>
+  <text x="140" y="122" class="b c">Ready</text>
+  <text x="140" y="139" class="s c">in the ready queue</text>
+  <rect class="g" x="330" y="100" width="160" height="52" rx="4"/>
+  <text x="410" y="122" class="b c">Running</text>
+  <text x="410" y="139" class="s c">on a CPU (on_cpu set)</text>
+  <rect class="r" x="600" y="100" width="160" height="52" rx="4"/>
+  <text x="680" y="122" class="b c">Dead</text>
+  <text x="680" y="139" class="s c">ended</text>
+  <path class="ln" d="M220,114 L328,114" marker-end="url(#a)"/>
+  <text x="274" y="106" class="s c">schedule() picks it</text>
+  <path class="ln" d="M330,138 L222,138" marker-end="url(#a)"/>
+  <text x="274" y="156" class="s c">preempted, yields,</text>
+  <text x="274" y="170" class="s c">timeslice ends</text>
+  <path class="ln" d="M490,126 L598,126" marker-end="url(#a)"/>
+  <text x="544" y="118" class="s c">exit()</text>
+  <rect class="y" x="310" y="250" width="200" height="92" rx="4"/>
+  <text x="410" y="272" class="b c">Blocked</text>
+  <text x="410" y="290" class="s c">Send, Receive, Reply, Mutex,</text>
+  <text x="410" y="304" class="s c">Condvar, Sem, Barrier, Nanosleep,</text>
+  <text x="410" y="318" class="s c">Join, Sigsuspend, Intr, Stopped, ...</text>
+  <path class="ln" d="M410,152 L410,248" marker-end="url(#a)"/>
+  <text x="420" y="196" class="s">prepare_block(state),</text>
+  <text x="420" y="210" class="s">then block()</text>
+  <path class="ln" d="M310,296 L140,296 L140,154" marker-end="url(#a)"/>
+  <text x="150" y="250" class="s">wake(): what it waited</text>
+  <text x="150" y="264" class="s">for happened</text>
+  <text x="150" y="316" class="s">unblock(): a timeout,</text>
+  <text x="150" y="330" class="s">a signal</text>
+  <path class="ln" d="M680,152 L680,248" marker-end="url(#a)"/>
+  <text x="690" y="196" class="s">reap(), once it is</text>
+  <text x="690" y="210" class="s">off its CPU</text>
+  <rect class="w" x="585" y="250" width="190" height="52" rx="4"/>
+  <text x="680" y="272" class="c">kernel stack freed</text>
+  <text x="680" y="289" class="s c">the rest with the last reference</text>
+  <text x="400" y="378" class="s c">A blocked state is named after what the thread waits for; the state is set under the lock of that object.</text>
+</svg>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="380" viewBox="0 0 820 380" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="820" height="380" fill="#ffffff"/>
+  <text x="140" y="24" class="b">without inheritance</text>
+  <text x="128" y="54" class="b e">H (high)</text>
+  <line x1="140" y1="64" x2="780" y2="64" stroke="#cccccc" stroke-width="1"/>
+  <rect class="r" x="204" y="40" width="32" height="24" rx="0"/>
+  <text x="220" y="56" class="s c"></text>
+  <rect class="g" x="588" y="40" width="96" height="24" rx="0"/>
+  <text x="636" y="56" class="s c">gets it, runs</text>
+  <text x="242.4" y="54" class="s red">blocks on the mutex</text>
+  <text x="128" y="84" class="b e">M (medium)</text>
+  <line x1="140" y1="94" x2="780" y2="94" stroke="#cccccc" stroke-width="1"/>
+  <rect class="u" x="268" y="70" width="256" height="24" rx="0"/>
+  <text x="396" y="86" class="s c">runs: preempts L</text>
+  <text x="128" y="114" class="b e">L (low)</text>
+  <line x1="140" y1="124" x2="780" y2="124" stroke="#cccccc" stroke-width="1"/>
+  <rect class="k" x="140" y="100" width="64" height="24" rx="0"/>
+  <text x="172" y="116" class="s c">holds</text>
+  <rect class="k" x="236" y="100" width="32" height="24" rx="0"/>
+  <text x="252" y="116" class="s c"></text>
+  <rect class="k" x="524" y="100" width="64" height="24" rx="0"/>
+  <text x="556" y="116" class="s c">unlocks</text>
+  <line x1="236" y1="36" x2="236" y2="130" stroke="#aa2222" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="588" y1="36" x2="588" y2="130" stroke="#aa2222" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="412" y="146" class="s c red">H waits for as long as M runs</text>
+  <text x="140" y="186" class="b">with inheritance</text>
+  <text x="128" y="216" class="b e">H (high)</text>
+  <line x1="140" y1="226" x2="780" y2="226" stroke="#cccccc" stroke-width="1"/>
+  <rect class="r" x="204" y="202" width="32" height="24" rx="0"/>
+  <text x="220" y="218" class="s c"></text>
+  <rect class="g" x="300" y="202" width="96" height="24" rx="0"/>
+  <text x="348" y="218" class="s c">gets it, runs</text>
+  <text x="128" y="246" class="b e">M (medium)</text>
+  <line x1="140" y1="256" x2="780" y2="256" stroke="#cccccc" stroke-width="1"/>
+  <rect class="u" x="396" y="232" width="256" height="24" rx="0"/>
+  <text x="524" y="248" class="s c">runs</text>
+  <text x="128" y="276" class="b e">L (low)</text>
+  <line x1="140" y1="286" x2="780" y2="286" stroke="#cccccc" stroke-width="1"/>
+  <rect class="k" x="140" y="262" width="64" height="24" rx="0"/>
+  <text x="172" y="278" class="s c">holds</text>
+  <rect class="y" x="236" y="262" width="64" height="24" rx="0"/>
+  <text x="268" y="278" class="s c">raised</text>
+  <line x1="236" y1="198" x2="236" y2="292" stroke="#3e7b34" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="300" y1="198" x2="300" y2="292" stroke="#3e7b34" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="268" y="308" class="s c green">bounded by L's critical section</text>
+  <text x="140" y="348" class="s">L holds a mutex H wants. M becomes ready just after H blocks, and needs no mutex at all.</text>
+  <text x="140" y="364" class="s">Each lane shows when that thread runs; one CPU.</text>
+</svg>

@@ -1,0 +1,26 @@
+From 2678c77c474d12319408bb96aaea74fb3c4a612d Mon Sep 17 00:00:00 2001
+From: Davide Cunial <dcunial@proton.me>
+Date: Fri, 6 Nov 2026 17:55:58 +0100
+Subject: [PATCH 8/8] arm64: OSCRAFT_NET: every lock operation a function, for
+ bsdkern
+
+---
+ sys/arm64/conf/OSCRAFT_NET | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sys/arm64/conf/OSCRAFT_NET b/sys/arm64/conf/OSCRAFT_NET
+index e5efc11d20f..21f015457c7 100644
+--- a/sys/arm64/conf/OSCRAFT_NET
++++ b/sys/arm64/conf/OSCRAFT_NET
+@@ -7,7 +7,7 @@
+ 
+ cpu		ARM64
+ ident		OSCRAFT_NET
+-makeoptions	CONF_CFLAGS=-DOSCRAFT_BSDKERN
++makeoptions	CONF_CFLAGS="-DOSCRAFT_BSDKERN -DMUTEX_NOINLINE -DRWLOCK_NOINLINE -DSX_NOINLINE"
+ makeoptions	WITHOUT_MODULES=1
+ 
+ options 	INET
+-- 
+2.56.0
+

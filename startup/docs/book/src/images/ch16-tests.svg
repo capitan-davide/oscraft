@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="300" viewBox="0 0 860 300" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+
+  <rect x="0" y="0" width="860" height="300" fill="#ffffff"/>
+  <rect class="k" x="30" y="50" width="190" height="140" rx="4"/>
+  <text x="125" y="80" class="b c">ABI layouts</text>
+  <text x="125" y="112" class="s c">the Rust types</text>
+  <text x="125" y="128" class="s c">against QNX&#x27;s headers</text>
+  <text x="125" y="168" class="s c">abi/layout.txt from the SDP</text>
+  <rect class="k" x="237" y="50" width="190" height="140" rx="4"/>
+  <text x="332" y="80" class="b c">unit tests</text>
+  <text x="332" y="112" class="s c">parsers, range sets</text>
+  <text x="332" y="128" class="s c">layouts, decoders</text>
+  <text x="332" y="168" class="s c">cargo test, on the host</text>
+  <rect class="k" x="444" y="50" width="190" height="140" rx="4"/>
+  <text x="539" y="80" class="b c">boot in QEMU</text>
+  <text x="539" y="112" class="s c">on virt</text>
+  <text x="539" y="128" class="s c">procnto and OsCraft</text>
+  <text x="539" y="168" class="s c">against QNX&#x27;s own startup</text>
+  <rect class="y" x="651" y="50" width="190" height="140" rx="4"/>
+  <text x="746" y="80" class="b c">the book</text>
+  <text x="746" y="112" class="s c">every listing</text>
+  <text x="746" y="128" class="s c">from a live anchor</text>
+  <text x="746" y="168" class="s c">docs/book/check.py</text>
+  <text x="30" y="240" class="s">from cheap and exact (left) to slow and complete (right); each catches what the others cannot</text>
+</svg>

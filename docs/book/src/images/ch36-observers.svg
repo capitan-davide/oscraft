@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="430" viewBox="0 0 800 430" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="430" fill="#ffffff"/>
+  <rect class="frame" x="15" y="30" width="770" height="250" rx="4"/>
+  <text x="25" y="24" class="s">OsCraft in QEMU's virt machine</text>
+  <rect class="k" x="30" y="50" width="200" height="215" rx="4"/>
+  <text x="130" y="70" class="b c">kernel file</text>
+  <rect class="wk" x="45" y="84" width="170" height="44" rx="4"/>
+  <text x="130" y="102" class="m c">kprintln!()</text>
+  <text x="130" y="118" class="s c">boot report, faults, panics</text>
+  <rect class="y" x="45" y="150" width="170" height="40" rx="4"/>
+  <text x="130" y="167" class="c">message buffer</text>
+  <text x="130" y="181" class="s c">a ring of 64 KiB</text>
+  <path class="lnk" d="M110,128 L110,148" marker-end="url(#ak)"/>
+  <rect class="wk" x="45" y="212" width="170" height="40" rx="4"/>
+  <text x="130" y="229" class="c">process 1: sysctl</text>
+  <text x="130" y="243" class="ms c">kern.proc, kern.msgbuf</text>
+  <path class="ln" d="M130,190 L130,210" marker-end="url(#a)"/>
+  <rect class="n" x="290" y="50" width="150" height="34" rx="4"/>
+  <text x="365" y="71" class="c">PL011 console</text>
+  <path class="lnk" d="M215,96 L252,96 L252,67 L288,67" marker-end="url(#ak)"/>
+  <rect class="g" x="290" y="104" width="150" height="34" rx="4"/>
+  <text x="365" y="125" class="m c">dmesg</text>
+  <path class="ln" d="M215,222 L262,222 L262,121 L288,121" marker-end="url(#a)"/>
+  <rect class="g" x="290" y="158" width="150" height="34" rx="4"/>
+  <text x="365" y="179" class="m c">ps, top</text>
+  <path class="ln" d="M262,175 L288,175" marker-end="url(#a)"/>
+  <rect class="k" x="290" y="222" width="150" height="34" rx="4"/>
+  <text x="365" y="243" class="m c">syslogd</text>
+  <path class="ln" d="M215,172 L240,172 L240,262 L276,262 L276,239 L288,239" marker-end="url(#a)"/>
+  <text x="206" y="276" class="ms">/dev/klog</text>
+  <rect class="y" x="480" y="222" width="150" height="34" rx="4"/>
+  <text x="555" y="243" class="ms c">/var/log/messages</text>
+  <path class="ln" d="M440,239 L478,239" marker-end="url(#a)"/>
+  <rect class="u" x="480" y="104" width="150" height="88" rx="4"/>
+  <text x="555" y="140" class="c">programs and servers</text>
+  <text x="555" y="160" class="ms c">syslog(3)</text>
+  <path class="ln" d="M555,192 L555,208 L420,208 L420,220" marker-end="url(#a)"/>
+  <rect class="n" x="660" y="50" width="110" height="206" rx="4"/>
+  <text x="715" y="140" class="c">QEMU's</text>
+  <text x="715" y="156" class="c">gdb server</text>
+  <text x="715" y="172" class="s c">port 1234</text>
+  <text x="715" y="196" class="s c">sees all CPUs</text>
+  <text x="715" y="210" class="s c">and all memory</text>
+  <rect class="frame" x="15" y="310" width="770" height="70" rx="4"/>
+  <text x="25" y="304" class="s">The development host</text>
+  <rect class="u" x="290" y="326" width="150" height="40" rx="4"/>
+  <text x="365" y="343" class="s c">terminal, or the</text>
+  <text x="365" y="357" class="s c">test harness</text>
+  <path class="ln" d="M452,67 L452,300"/>
+  <path class="ln" d="M440,67 L452,67"/>
+  <path class="ln" d="M452,300 L400,300 L400,324" marker-end="url(#a)"/>
+  <rect class="u" x="640" y="326" width="130" height="40" rx="4"/>
+  <text x="705" y="343" class="s c">gdb with the</text>
+  <text x="705" y="357" class="s c">kernel's ELF file</text>
+  <path class="ln" d="M715,324 L715,258" marker-end="url(#a)" marker-start="url(#a)"/>
+  <text x="707" y="296" class="ms e">make debug</text>
+  <text x="400" y="404" class="s c">Blue: OsCraft's code. Green: FreeBSD's programs, unchanged. Grey: the machine and the emulator.</text>
+  <text x="400" y="420" class="s c">Nothing in this figure needs the QNX SDP.</text>
+</svg>

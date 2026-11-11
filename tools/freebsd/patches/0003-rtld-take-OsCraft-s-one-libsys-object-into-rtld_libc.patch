@@ -1,0 +1,32 @@
+From e3da3eea1f38a2d07e9ad023387ab013293f8d9c Mon Sep 17 00:00:00 2001
+From: Davide Cunial <dcunial@proton.me>
+Date: Wed, 4 Nov 2026 15:20:10 +0100
+Subject: [PATCH 3/5] rtld: take OsCraft's one libsys object into rtld_libc.a
+ (OSCRAFT_LIBSYS_OBJ)
+
+---
+ libexec/rtld-elf/rtld-libc/Makefile.inc | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/libexec/rtld-elf/rtld-libc/Makefile.inc b/libexec/rtld-elf/rtld-libc/Makefile.inc
+index a10bd562a7c..d7e7cb74297 100644
+--- a/libexec/rtld-elf/rtld-libc/Makefile.inc
++++ b/libexec/rtld-elf/rtld-libc/Makefile.inc
+@@ -87,11 +87,17 @@ CLEANFILES+=${_obj}.nossppico
+ # LDFLAGS+=	-Wl,--trace-symbol=${_obj}
+ .endfor
+ _rtld_libsys_objs=
++.if defined(OSCRAFT_LIBSYS_OBJ)
++# OsCraft: the system calls are one object (lib/libsys/Makefile.sys).
++_rtld_libsys_objs+=oscraft_libsys.pico
++CLEANFILES+=oscraft_libsys.pico
++.else
+ .for _obj in ${_libsys_other_objects}
+ _rtld_libsys_objs+=${_obj}.pico
+ CLEANFILES+=${_obj}.pico
+ # LDFLAGS+=	-Wl,--trace-symbol=${_obj}
+ .endfor
++.endif
+ # LDFLAGS+=	-Wl,--trace
+ 
+ # We insert all the .o files from libc_nossp_pic.a into a new rtld_libc.a file

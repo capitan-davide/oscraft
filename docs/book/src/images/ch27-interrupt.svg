@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="400" fill="#ffffff"/>
+  <rect class="n" x="20" y="14" width="175" height="30" rx="4"/>
+  <text x="107" y="34" class="b c">the device</text>
+  <path class="life" d="M107,44 L107,384"/>
+  <rect class="k" x="215" y="14" width="175" height="30" rx="4"/>
+  <text x="302" y="34" class="b c">the microkernel</text>
+  <path class="life" d="M302,44 L302,384"/>
+  <rect class="k" x="410" y="14" width="175" height="30" rx="4"/>
+  <text x="497" y="34" class="b c">bsdkern's interrupt thread</text>
+  <path class="life" d="M497,44 L497,384"/>
+  <rect class="g" x="605" y="14" width="175" height="30" rx="4"/>
+  <text x="692" y="34" class="b c">the driver (FreeBSD's)</text>
+  <path class="life" d="M692,44 L692,384"/>
+  <rect class="w" x="609" y="56" width="167" height="38" rx="3"/>
+  <text x="692" y="72" class="ms c">bus_setup_intr()</text>
+  <text x="692" y="87" class="s c">filter, handler, argument</text>
+  <path class="ln" d="M609,75 L583,75" marker-end="url(#a)"/>
+  <circle cx="596" cy="60" r="9" fill="#333333"/>
+  <text x="596" y="64" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <rect class="w" x="414" y="56" width="167" height="38" rx="3"/>
+  <text x="497" y="72" class="ms c">kthread_add()</text>
+  <text x="497" y="87" class="s c">a thread for this handler</text>
+  <path class="ln" d="M497,94 L497,104" marker-end="url(#a)"/>
+  <rect class="w" x="414" y="106" width="167" height="38" rx="3"/>
+  <text x="497" y="122" class="ms c">InterruptAttachThread()</text>
+  <text x="497" y="137" class="s c">this thread owns the vector</text>
+  <path class="ln" d="M414,125 L388,125" marker-end="url(#a)"/>
+  <rect class="w" x="219" y="106" width="167" height="26" rx="3"/>
+  <text x="302" y="122" class="c">attach the thread</text>
+  <rect class="y" x="414" y="162" width="167" height="38" rx="3"/>
+  <text x="497" y="178" class="ms c">InterruptWait(UNMASK)</text>
+  <text x="497" y="193" class="s c">blocks</text>
+  <path class="ln" d="M414,181 L388,181" marker-end="url(#a)"/>
+  <circle cx="401" cy="166" r="9" fill="#333333"/>
+  <text x="401" y="170" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <rect class="w" x="219" y="162" width="167" height="38" rx="3"/>
+  <text x="302" y="178" class="c">unmask the line</text>
+  <text x="302" y="193" class="s c">the thread waits</text>
+  <rect class="r" x="24" y="218" width="167" height="26" rx="3"/>
+  <text x="107" y="234" class="c">raises its interrupt</text>
+  <path class="ln" d="M191,231 L217,231" marker-end="url(#a)"/>
+  <circle cx="204" cy="216" r="9" fill="#333333"/>
+  <text x="204" y="220" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <rect class="w" x="219" y="218" width="167" height="38" rx="3"/>
+  <text x="302" y="234" class="c">mask the line,</text>
+  <text x="302" y="249" class="s c">make the thread ready</text>
+  <path class="lng" d="M386,247 L412,247" marker-end="url(#ag)"/>
+  <rect class="g" x="414" y="228" width="167" height="26" rx="3"/>
+  <text x="497" y="244" class="ms c">InterruptWait() returns</text>
+  <path class="ln" d="M581,281 L607,281" marker-end="url(#a)"/>
+  <circle cx="594" cy="266" r="9" fill="#333333"/>
+  <text x="594" y="270" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <rect class="w" x="414" y="268" width="167" height="38" rx="3"/>
+  <text x="497" y="284" class="c">call the filter;</text>
+  <text x="497" y="299" class="s c">the handler if it asks, or alone</text>
+  <rect class="w" x="609" y="268" width="167" height="38" rx="3"/>
+  <text x="692" y="284" class="ms c">filter(arg), handler(arg)</text>
+  <text x="692" y="299" class="s c">read status, complete work</text>
+  <path class="ln" d="M497,254 L497,266" marker-end="url(#a)"/>
+  <path class="ln dash" d="M497,306 L497,340 L400,340 L400,181" marker-end="url(#a)"/>
+  <circle cx="450" cy="340" r="9" fill="#333333"/>
+  <text x="450" y="344" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <text x="600" y="336" class="s c">back to step 2: the wait unmasks the line again,</text>
+  <text x="600" y="351" class="s c">so the device stays quiet while its handler runs</text>
+</svg>

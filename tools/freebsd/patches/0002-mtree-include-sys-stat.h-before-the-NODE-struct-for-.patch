@@ -1,0 +1,25 @@
+From c65a3e2ad3f3eab692de25d890ebeb5b56ec340d Mon Sep 17 00:00:00 2001
+From: Davide Cunial <dcunial@proton.me>
+Date: Wed, 4 Nov 2026 14:55:22 +0100
+Subject: [PATCH 2/5] mtree: include <sys/stat.h> before the NODE struct, for
+ the Linux cross-build's st_mtimespec macro
+
+---
+ contrib/mtree/mtree.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/contrib/mtree/mtree.h b/contrib/mtree/mtree.h
+index 93d6cdfb0e7..fcb28e6e1da 100644
+--- a/contrib/mtree/mtree.h
++++ b/contrib/mtree/mtree.h
+@@ -34,6 +34,10 @@
+ #ifndef _MTREE_H_
+ #define	_MTREE_H_
+ 
++/* OsCraft: before the st_mtimespec member, so that the Linux cross-build
++   header's st_mtimespec macro renames the member and its uses alike. */
++#include <sys/stat.h>
++
+ #define	KEYDEFAULT	(F_GID | F_MODE | F_NLINK | F_SIZE | F_SLINK | \
+ 			F_TIME | F_TYPE | F_UID | F_FLAGS)
+ 

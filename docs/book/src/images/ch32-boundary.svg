@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="400" fill="#ffffff"/>
+  <rect class="r" x="20" y="34" width="230" height="330" rx="4"/>
+  <text x="135" y="54" class="h c">a QNX process</text>
+  <text x="135" y="70" class="s c">QNX's numbers and layouts</text>
+  <rect class="k" x="550" y="34" width="230" height="330" rx="4"/>
+  <text x="665" y="54" class="h c">the kernel and process 1</text>
+  <text x="665" y="70" class="s c">FreeBSD's numbers and layouts</text>
+  <rect class="y" x="320" y="34" width="160" height="330" rx="4"/>
+  <text x="400" y="54" class="h c">the boundary</text>
+  <text x="400" y="70" class="s c">conversions</text>
+  <rect class="w" x="30" y="92" width="210" height="32" rx="2"/>
+  <text x="38" y="105" class="s">a call fails</text>
+  <text x="38" y="119" class="ms">error 260</text>
+  <rect class="w" x="330" y="92" width="140" height="32" rx="2"/>
+  <text x="400" y="112" class="ms c">errno_out()</text>
+  <rect class="w" x="560" y="92" width="210" height="32" rx="2"/>
+  <text x="665" y="112" class="ms c">ETIMEDOUT, 60</text>
+  <path class="lnk" d="M558,108 L472,108" marker-end="url(#ak)"/>
+  <path class="lnr" d="M328,108 L242,108" marker-end="url(#ar)"/>
+  <rect class="w" x="30" y="130" width="210" height="32" rx="2"/>
+  <text x="38" y="143" class="s">MsgError(rcvid, 11)</text>
+  <text x="38" y="157" class="ms">error 11</text>
+  <rect class="w" x="330" y="130" width="140" height="32" rx="2"/>
+  <text x="400" y="150" class="ms c">errno_in()</text>
+  <rect class="w" x="560" y="130" width="210" height="32" rx="2"/>
+  <text x="665" y="150" class="ms c">EAGAIN, 35</text>
+  <path class="lnr" d="M240,146 L328,146" marker-end="url(#ar)"/>
+  <path class="lnk" d="M470,146 L558,146" marker-end="url(#ak)"/>
+  <rect class="w" x="30" y="168" width="210" height="32" rx="2"/>
+  <text x="38" y="181" class="s">kill(pid, SIGUSR1)</text>
+  <text x="38" y="195" class="ms">signal 16</text>
+  <rect class="w" x="330" y="168" width="140" height="32" rx="2"/>
+  <text x="400" y="188" class="ms c">signo_in()</text>
+  <rect class="w" x="560" y="168" width="210" height="32" rx="2"/>
+  <text x="665" y="188" class="ms c">signal 30</text>
+  <path class="lnr" d="M240,184 L328,184" marker-end="url(#ar)"/>
+  <path class="lnk" d="M470,184 L558,184" marker-end="url(#ak)"/>
+  <rect class="w" x="30" y="206" width="210" height="32" rx="2"/>
+  <text x="38" y="219" class="s">a handler runs</text>
+  <text x="38" y="233" class="ms">signal 18</text>
+  <rect class="w" x="330" y="206" width="140" height="32" rx="2"/>
+  <text x="400" y="226" class="ms c">signo_out()</text>
+  <rect class="w" x="560" y="206" width="210" height="32" rx="2"/>
+  <text x="665" y="226" class="ms c">SIGCHLD, 20</text>
+  <path class="lnk" d="M558,222 L472,222" marker-end="url(#ak)"/>
+  <path class="lnr" d="M328,222 L242,222" marker-end="url(#ar)"/>
+  <rect class="w" x="30" y="244" width="210" height="32" rx="2"/>
+  <text x="38" y="257" class="s">sigprocmask()</text>
+  <text x="38" y="271" class="ms">64-bit set</text>
+  <rect class="w" x="330" y="244" width="140" height="32" rx="2"/>
+  <text x="400" y="264" class="ms c">set_in(), set_out()</text>
+  <rect class="w" x="560" y="244" width="210" height="32" rx="2"/>
+  <text x="665" y="264" class="ms c">128-bit set</text>
+  <path class="ln" d="M242,260 L328,260" marker-end="url(#a)" marker-start="url(#a)"/>
+  <path class="ln" d="M472,260 L558,260" marker-end="url(#a)" marker-start="url(#a)"/>
+  <rect class="w" x="30" y="282" width="210" height="32" rx="2"/>
+  <text x="38" y="295" class="s">stat()</text>
+  <text x="38" y="309" class="ms">120 bytes</text>
+  <rect class="w" x="330" y="282" width="140" height="32" rx="2"/>
+  <text x="400" y="302" class="ms c">stat_out()</text>
+  <rect class="w" x="560" y="282" width="210" height="32" rx="2"/>
+  <text x="665" y="302" class="ms c">struct stat, 224 bytes</text>
+  <path class="lnk" d="M558,298 L472,298" marker-end="url(#ak)"/>
+  <path class="lnr" d="M328,298 L242,298" marker-end="url(#ar)"/>
+  <rect class="w" x="30" y="320" width="210" height="32" rx="2"/>
+  <text x="38" y="333" class="s">tcgetattr() on the console</text>
+  <text x="38" y="347" class="ms">76 bytes</text>
+  <rect class="w" x="330" y="320" width="140" height="32" rx="2"/>
+  <text x="400" y="340" class="ms c">termios_out()</text>
+  <rect class="w" x="560" y="320" width="210" height="32" rx="2"/>
+  <text x="665" y="340" class="ms c">struct termios, 44 bytes</text>
+  <path class="lnk" d="M558,336 L472,336" marker-end="url(#ak)"/>
+  <path class="lnr" d="M328,336 L242,336" marker-end="url(#ar)"/>
+  <text x="400" y="388" class="s c">A native process crosses the same boundary with nothing converted.</text>
+</svg>

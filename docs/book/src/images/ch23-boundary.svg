@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="330" viewBox="0 0 800 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="330" fill="#ffffff"/>
+  <rect class="k" x="250" y="20" width="300" height="290" rx="4"/>
+  <text x="400" y="42" class="h c">the kernel and process 1</text>
+  <rect class="wk" x="266" y="56" width="150" height="236" rx="3"/>
+  <text x="341" y="76" class="b c">inside: FreeBSD's</text>
+  <text x="341" y="116" class="s c">ETIMEDOUT = 60</text>
+  <text x="341" y="164" class="s c">SIGCHLD = 20</text>
+  <text x="341" y="212" class="s c">struct stat: 224 bytes</text>
+  <text x="341" y="260" class="s c">struct termios: 44 bytes</text>
+  <rect class="y" x="432" y="56" width="104" height="236" rx="3"/>
+  <text x="484" y="76" class="b c">conversion</text>
+  <text x="484" y="116" class="ms c">errno_out()</text>
+  <text x="484" y="164" class="ms c">signo_out()</text>
+  <text x="484" y="212" class="ms c">stat_out()</text>
+  <text x="484" y="260" class="ms c">termios_out()</text>
+  <rect class="g" x="20" y="56" width="170" height="236" rx="4"/>
+  <text x="105" y="78" class="h c">a native process</text>
+  <text x="105" y="95" class="s c">a FreeBSD program</text>
+  <rect class="r" x="610" y="56" width="170" height="236" rx="4"/>
+  <text x="695" y="78" class="h c">a QNX process</text>
+  <text x="695" y="95" class="s c">optional</text>
+  <path class="lng" d="M264,112 L192,112" marker-end="url(#ag)"/>
+  <path class="ln" d="M418,112 L430,112" marker-end="url(#a)"/>
+  <path class="lnr" d="M538,112 L608,112" marker-end="url(#ar)"/>
+  <path class="lng" d="M264,160 L192,160" marker-end="url(#ag)"/>
+  <path class="ln" d="M418,160 L430,160" marker-end="url(#a)"/>
+  <path class="lnr" d="M538,160 L608,160" marker-end="url(#ar)"/>
+  <path class="lng" d="M264,208 L192,208" marker-end="url(#ag)"/>
+  <path class="ln" d="M418,208 L430,208" marker-end="url(#a)"/>
+  <path class="lnr" d="M538,208 L608,208" marker-end="url(#ar)"/>
+  <path class="lng" d="M264,256 L192,256" marker-end="url(#ag)"/>
+  <path class="ln" d="M418,256 L430,256" marker-end="url(#a)"/>
+  <path class="lnr" d="M538,256 L608,256" marker-end="url(#ar)"/>
+  <text x="105" y="116" class="c">60</text>
+  <text x="105" y="164" class="c">20</text>
+  <text x="105" y="212" class="c">224 bytes</text>
+  <text x="105" y="260" class="c">44 bytes</text>
+  <text x="695" y="116" class="c">260</text>
+  <text x="695" y="164" class="c">18</text>
+  <text x="695" y="212" class="c">120 bytes</text>
+  <text x="695" y="260" class="c">76 bytes</text>
+  <text x="227" y="136" class="s c">as it is</text>
+  <text x="574" y="136" class="s c">converted</text>
+</svg>

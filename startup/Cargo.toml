@@ -1,0 +1,14 @@
+[package]
+name = "oscraft-startup"
+description = "A startup library compatible with QNX OS 8.0: builds the system page and starts the kernel"
+version = "0.1.0"
+edition = "2024"
+license = "Apache-2.0"
+repository = "https://github.com/capitan-davide/oscraft"
+
+# The library and the board in OsCraft's tree, QEMU's virt machine; boards
+# out of the tree depend on the library from their own repositories.
+[workspace]
+members = [".", "boards/qemu-virt"]
+
+[dependencies]

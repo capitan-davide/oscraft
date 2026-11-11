@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="420" fill="#ffffff"/>
+  <rect class="k" x="35" y="20" width="230" height="44" rx="4"/>
+  <text x="150" y="38.5" class="c">CPU A</text>
+  <text x="150" y="53.5" class="s c">switches from T1 to T2</text>
+  <rect class="y" x="310" y="20" width="180" height="44" rx="4"/>
+  <text x="400" y="38.5" class="c">T1.on_cpu</text>
+  <text x="400" y="53.5" class="s c">byte, 1 while T1 is in use</text>
+  <rect class="k" x="535" y="20" width="230" height="44" rx="4"/>
+  <text x="650" y="38.5" class="c">CPU B</text>
+  <text x="650" y="53.5" class="s c">switches from T3 to T1</text>
+  <polyline class="life" points="150,64 150,300"/>
+  <polyline class="life" points="400,64 400,300"/>
+  <polyline class="life" points="650,64 650,300"/>
+  <rect class="wk" x="535" y="80" width="230" height="40" rx="4"/>
+  <text x="650" y="97" class="c">picked T1 from the ready</text>
+  <text x="650" y="111" class="c">queue (T1 was preempted)</text>
+  <rect class="wk" x="35" y="96" width="230" height="40" rx="4"/>
+  <text x="150" y="112.5" class="c">save T1's registers</text>
+  <text x="150" y="127.5" class="s c">stp ... into T1.context</text>
+  <rect class="r" x="535" y="132" width="230" height="70" rx="4"/>
+  <text x="650" y="148.5" class="c">wait: ldarb T1.on_cpu</text>
+  <text x="650" y="163.5" class="s c">while it is 1: yield</text>
+  <text x="650" y="178.5" class="s c">(registers only: T3's old stack</text>
+  <text x="650" y="193.5" class="s c">may be another CPU's now)</text>
+  <polyline class="lnk" points="150,160 396,160" marker-end="url(#ak)"/>
+  <text x="275" y="153" class="s c">stlrb: T1.on_cpu = 0</text>
+  <polyline class="lng" points="404,216 650,216" marker-end="url(#ag)"/>
+  <text x="525" y="209" class="s c">sees 0</text>
+  <rect class="g" x="535" y="230" width="230" height="56" rx="4"/>
+  <text x="650" y="247" class="c">T1.on_cpu = 1</text>
+  <text x="650" y="262" class="s c">load T1.context, sp, lr</text>
+  <text x="650" y="277" class="s c">ret: T1 runs on CPU B</text>
+  <rect class="wk" x="35" y="190" width="230" height="56" rx="4"/>
+  <text x="150" y="207" class="c">wait for T2.on_cpu == 0,</text>
+  <text x="150" y="222" class="s c">set it, load T2.context</text>
+  <text x="150" y="237" class="s c">ret: T2 runs on CPU A</text>
+  <text x="30" y="330" class="s">A CPU gives up the old thread before it waits for the new one. Two CPUs that each</text>
+  <text x="30" y="345" class="s">switch to the thread the other is leaving therefore never wait for each other, and no</text>
+  <text x="30" y="360" class="s">CPU loads a thread's context, or runs on its stack, before the last CPU saved it.</text>
+</svg>

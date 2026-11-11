@@ -1,0 +1,18 @@
+from svg import Fig
+f = Fig(800, 330)
+def row(y, title, fill, wtxt, wcls, rtxt, rcls, note):
+    f.text(20, y + 26, title, "b")
+    f.box(wcls, 150, y, 130, 44); f.text(215, y + 19, "writer", "c"); f.text(215, y + 35, wtxt, "s c")
+    f.arrow([(280, y + 22), (318, y + 22)], "ln", "a")
+    f.box("w", 320, y + 6, 240, 32, 0)
+    if fill: f.box("y", 320, y + 6, fill, 32, 0)
+    f.arrow([(560, y + 22), (598, y + 22)], "ln", "a")
+    f.box(rcls, 600, y, 130, 44); f.text(665, y + 19, "reader", "c"); f.text(665, y + 35, rtxt, "s c")
+    f.text(440, y + 58, note, "s c")
+f.text(440, 22, "the buffer", "s c")
+row(34, "Some data,", 110, "write() returns", "g", "read() returns", "g", "Neither waits: the writer has left its data and gone on, the reader takes what is there.")
+f.text(20, 76, "some room", "b")
+row(128, "Full", 240, "write() waits", "y", "read() returns", "g", "The writer is held until the reader has made room: a fast producer runs at its consumer's pace.")
+row(222, "Empty", 0, "write() returns", "g", "read() waits", "y", "The reader is held until something is written, or until no writer is left.")
+f.text(400, 316, "A non-blocking end never waits: where it would have, the call fails at once with \"try again\".", "s c")
+f.save("ch12-flow-control.svg")

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="470" viewBox="0 0 800 470" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="470" fill="#ffffff"/>
+  <text x="20" y="24" class="h">fork() as it is by default: private pages are copied before fork() returns</text>
+  <text x="100" y="48" class="b c">parent</text>
+  <rect class="u" x="40" y="56" width="120" height="28" rx="3"/>
+  <text x="100" y="74" class="s c">private page</text>
+  <rect class="u" x="40" y="90" width="120" height="28" rx="3"/>
+  <text x="100" y="108" class="s c">private page</text>
+  <rect class="y" x="40" y="124" width="120" height="28" rx="3"/>
+  <text x="100" y="142" class="s c">shared object</text>
+  <rect class="g" x="40" y="158" width="120" height="28" rx="3"/>
+  <text x="100" y="176" class="s c">program code</text>
+  <text x="700" y="48" class="b c">child</text>
+  <rect class="u" x="640" y="56" width="120" height="28" rx="3"/>
+  <text x="700" y="74" class="s c">private page</text>
+  <rect class="u" x="640" y="90" width="120" height="28" rx="3"/>
+  <text x="700" y="108" class="s c">private page</text>
+  <rect class="y" x="640" y="124" width="120" height="28" rx="3"/>
+  <text x="700" y="142" class="s c">shared object</text>
+  <rect class="g" x="640" y="158" width="120" height="28" rx="3"/>
+  <text x="700" y="176" class="s c">program code</text>
+  <text x="400" y="48" class="b c">frames</text>
+  <rect class="u" x="280" y="56" width="110" height="28" rx="2"/>
+  <text x="335" y="74" class="s c">frame</text>
+  <rect class="u" x="280" y="90" width="110" height="28" rx="2"/>
+  <text x="335" y="108" class="s c">frame</text>
+  <rect class="u" x="420" y="56" width="110" height="28" rx="2"/>
+  <text x="475" y="74" class="s c">copy</text>
+  <rect class="u" x="420" y="90" width="110" height="28" rx="2"/>
+  <text x="475" y="108" class="s c">copy</text>
+  <rect class="y" x="345" y="124" width="110" height="28" rx="2"/>
+  <text x="400" y="142" class="s c">object's frame</text>
+  <rect class="g" x="345" y="158" width="110" height="28" rx="2"/>
+  <text x="400" y="176" class="s c">image's page</text>
+  <path class="ln" d="M160,70 L280,70" marker-end="url(#a)"/>
+  <path class="ln" d="M640,70 L530,70" marker-end="url(#a)"/>
+  <path class="lnk" d="M390,70 L420,70" marker-end="url(#ak)"/>
+  <path class="ln" d="M160,104 L280,104" marker-end="url(#a)"/>
+  <path class="ln" d="M640,104 L530,104" marker-end="url(#a)"/>
+  <path class="lnk" d="M390,104 L420,104" marker-end="url(#ak)"/>
+  <path class="ln" d="M160,138 L345,138" marker-end="url(#a)"/>
+  <path class="ln" d="M640,138 L455,138" marker-end="url(#a)"/>
+  <path class="ln" d="M160,172 L345,172" marker-end="url(#a)"/>
+  <path class="ln" d="M640,172 L455,172" marker-end="url(#a)"/>
+  <text x="400" y="210" class="s c">Afterwards neither process can fault on its memory. The cost is paid inside fork().</text>
+  <path class="life" d="M10,232 L790,232"/>
+  <text x="20" y="256" class="h">The opt-in alternative: copy-on-write</text>
+  <text x="100" y="282" class="b c">parent</text>
+  <rect class="u" x="40" y="290" width="120" height="28" rx="3"/>
+  <text x="100" y="308" class="s c">private page</text>
+  <rect class="u" x="40" y="324" width="120" height="28" rx="3"/>
+  <text x="100" y="342" class="s c">private page</text>
+  <text x="700" y="282" class="b c">child</text>
+  <rect class="u" x="640" y="290" width="120" height="28" rx="3"/>
+  <text x="700" y="308" class="s c">private page</text>
+  <rect class="u" x="640" y="324" width="120" height="28" rx="3"/>
+  <text x="700" y="342" class="s c">private page</text>
+  <text x="400" y="282" class="b c">frames</text>
+  <rect class="u" x="345" y="290" width="110" height="28" rx="2"/>
+  <text x="400" y="308" class="s c">frame, 2 users</text>
+  <rect class="u" x="345" y="324" width="110" height="28" rx="2"/>
+  <text x="400" y="342" class="s c">frame, 2 users</text>
+  <path class="ln dash" d="M160,304 L345,304" marker-end="url(#a)"/>
+  <path class="ln dash" d="M640,304 L455,304" marker-end="url(#a)"/>
+  <path class="ln dash" d="M160,338 L345,338" marker-end="url(#a)"/>
+  <path class="ln dash" d="M640,338 L455,338" marker-end="url(#a)"/>
+  <text x="252" y="296" class="s c">read-only</text>
+  <text x="548" y="296" class="s c">read-only</text>
+  <rect class="r" x="40" y="380" width="720" height="58" rx="3"/>
+  <text x="52" y="400" class="b">first write to a page, by either process</text>
+  <text x="52" y="416" class="s">The write faults. The kernel gives the writer its own copy of that page (or, if the other user has gone, makes the page writable)</text>
+  <text x="52" y="430" class="s">and the write is done again. fork() is fast; the cost comes later, one fault at a time, at moments nobody chose.</text>
+</svg>

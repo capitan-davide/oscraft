@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="460" viewBox="0 0 820 460" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="13">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker></defs>
+  <style>
+    .k { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .y { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .n { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .w { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .ln { fill: none; stroke: #333333; stroke-width: 1.2; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.2; }
+    .t { text-anchor: middle; }
+    .r { text-anchor: end; }
+    .b { font-weight: bold; }
+    .s { font-size: 11px; fill: #444444; }
+    .m { font-family: DejaVu Sans Mono, monospace; font-size: 11px; }
+  </style>
+  <rect width="820" height="460" fill="#ffffff"/>
+  <!-- the block -->
+  <rect class="y" x="250" y="30" width="240" height="44"/>
+  <text class="t b" x="370" y="50">syspage_entry</text>
+  <text class="t s" x="370" y="66">offset, size of each section</text>
+  <rect class="y" x="250" y="74" width="240" height="150"/>
+  <text class="t b" x="370" y="96">sections</text>
+  <text class="t s" x="370" y="116">gic_map, gicr_map, idreg_dump</text>
+  <text class="t s" x="370" y="132">callout, system_private, qtime</text>
+  <text class="t s" x="370" y="148">cpuinfo, cacheattr, intrinfo</text>
+  <text class="t s" x="370" y="164">smp, hypinfo</text>
+  <text class="t s" x="370" y="180">typed_strings, strings</text>
+  <text class="t s" x="370" y="196">hwinfo, asinfo, cluster</text>
+  <rect class="n" x="250" y="224" width="240" height="40"/>
+  <text class="t s" x="370" y="248">spare room (asinfo, sysram)</text>
+  <rect class="k" x="250" y="264" width="240" height="90"/>
+  <text class="t b" x="370" y="290">callout code</text>
+  <text class="t s" x="370" y="308">patched copies; read-only,</text>
+  <text class="t s" x="370" y="322">executable for the kernel</text>
+  <rect class="y" x="250" y="354" width="240" height="70"/>
+  <text class="t b" x="370" y="378">cpupage entries</text>
+  <text class="t s" x="370" y="396">one per CPU, cpupage_spacing</text>
+  <text class="t s" x="370" y="410">bytes apart</text>
+  <!-- left: alignment marks -->
+  <text class="r m" x="242" y="34">page</text>
+  <text class="r m" x="242" y="268">page</text>
+  <text class="r m" x="242" y="358">page</text>
+  <path class="ln" d="M160,30 L150,30 L150,224 L160,224"/>
+  <text class="r s" x="144" y="124">total_size</text>
+  <text class="r s" x="144" y="138">(at most 64 KB)</text>
+  <!-- right: the two mappings -->
+  <rect class="w" x="580" y="60" width="210" height="60" rx="6"/>
+  <text class="t" x="685" y="84">kern_syspageptr</text>
+  <text class="t s" x="685" y="102">read-write, for the kernel</text>
+  <rect class="w" x="580" y="140" width="210" height="60" rx="6"/>
+  <text class="t" x="685" y="164">user_syspageptr</text>
+  <text class="t s" x="685" y="182">read-only, for processes</text>
+  <path class="lnk" d="M578,90 L494,52" marker-end="url(#ak)"/>
+  <path class="lnk" d="M578,170 L494,60" marker-end="url(#ak)"/>
+  <rect class="w" x="580" y="300" width="210" height="60" rx="6"/>
+  <text class="t" x="685" y="324">kern_cpupageptr,</text>
+  <text class="t" x="685" y="342">user_cpupageptr</text>
+  <path class="lnk" d="M578,330 L494,370" marker-end="url(#ak)"/>
+  <text class="s" x="580" y="230">the same physical pages,</text>
+  <text class="s" x="580" y="244">mapped twice in the kernel's half</text>
+  <!-- intra references -->
+  <path class="ln" d="M250,140 C200,180 200,280 248,300" marker-end="url(#a)"/>
+  <text class="r s" x="196" y="236">callout</text>
+  <text class="r s" x="196" y="250">pointers</text>
+</svg>

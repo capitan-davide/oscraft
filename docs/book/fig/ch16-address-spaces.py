@@ -1,0 +1,23 @@
+from svg import Fig
+f = Fig(800, 520)
+AX, BX, BW = 200, 210, 300
+def band(y, h, cls, label, addr, note1, note2=None):
+    f.box(cls, BX, y, BW, h, 2); f.text(BX + BW / 2, y + h / 2 + 4, label, "c")
+    f.text(AX, y + h + 4, addr, "ms e")
+    f.text(BX + BW + 12, y + h / 2 + (0 if note2 else 4), note1, "s")
+    if note2: f.text(BX + BW + 12, y + h / 2 + 13, note2, "s")
+f.text(20, 24, "The upper half: the kernel, the same in every process", "h")
+band(40, 50, "n", "linear map of RAM", "0xffffffc000000000", "every frame of RAM at this address plus its", "physical one: virt's RAM is at 0xffffffc040000000")
+f.text(BX + BW / 2, 106, "⋮", "c")
+band(112, 44, "k", "kernel pages: heap, stacks, windows", "0xffffff8080000000", "handed out upwards as the kernel needs them")
+band(156, 44, "k", "the boot image's programs: the kernel", "0xffffff8060000000", "mapped by the startup; the kernel starts", "1 MiB above")
+band(200, 40, "y", "system page, callouts", "0xffffff8040200000", "written by the startup")
+band(240, 34, "w", "window on the level-2 tables", "0xffffff8040000000", "the kernel's own translation tables,")
+band(274, 34, "w", "window on the level-3 tables", "0xffffff8000000000", "visible as memory (Figure 16.6)")
+f.text(20, 348, "The lower half: one per process", "h")
+f.text(AX, 368, "0x0000008000000000", "ms e")
+band(364, 44, "u", "mmap() without an address", "0x0000001000000000", "512 GiB of addresses in all;", "new mappings are placed from 64 GiB up")
+f.text(BX + BW / 2, 424, "⋮", "c")
+band(430, 44, "u", "the program and its loader", "0x0000000000000000", "placed when the program is loaded", "(Chapter 19)")
+f.text(20, 494, "Addresses between the two halves are not valid. The upper half translates through one set of tables for the", "s"); f.text(20, 508, "whole system, the lower half through the tables of the process that is running.", "s")
+f.save("ch16-address-spaces.svg")

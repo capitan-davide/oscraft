@@ -1,0 +1,213 @@
+###############################################################################
+# The QNX compatibility personality, opt-in: an overlay on
+# images/qemu-virt.build (the Makefile appends this file to it with QNX=1).
+# QNX 8.0's own services, tools and libraries under /compat/qnx, where a
+# QNX program looks first. Everything QNX here comes from the user's
+# licensed SDP (QNX_TARGET); nothing of it is in the repository, and
+# without the overlay the system has no QNX code at all. The QNX test
+# programs, and QNX's shell as the console for them, are the tests'
+# (tests/qnx/image.build).
+###############################################################################
+
+# The rest of the boot script, after the base image's.
+[+script] .script = {
+    # The translation service: from here QNX's programs reach the native
+    # servers through it.
+    # It goes into the background once it is registered.
+    /compat/qnx/sbin/qnxd
+    # QNX's system logger (its buffers are shared memory objects), first:
+    # the QNX services log to it.
+    /compat/qnx/bin/slogger2
+    # sshd on the native network stack (/etc/rc.net), in the background.
+    /compat/qnx/bin/ksh /etc/rc.net &
+}
+
+# QNX's in-kernel pipe manager (kpipetest starts it).
+/compat/qnx/bin/kpipe=kpipe
+# POSIX message queues: QNX's server (started by the tests that use it).
+/compat/qnx/sbin/mqueue=mqueue
+
+
+# QNX's dynamic loader and the libraries every program needs, from the SDP
+# (QNX_TARGET).
+/compat/qnx/lib/ldqnx-64.so.2=ldqnx-64.so.2
+# QNX binaries name it as their interpreter at its QNX path.
+[type=link] /usr/lib/ldqnx-64.so.2=/compat/qnx/lib/ldqnx-64.so.2
+/compat/qnx/lib/libc.so.6=libc.so.6
+/compat/qnx/lib/libgcc_s.so.1=libgcc_s.so.1
+/compat/qnx/lib/libsecpol.so.1=libsecpol.so.1
+/compat/qnx/lib/libfsnotify.so.1=libfsnotify.so.1
+/compat/qnx/lib/libm.so.3=libm.so.3
+/compat/qnx/lib/libz.so.2=libz.so.2
+/compat/qnx/lib/libslog2.so.1=libslog2.so.1
+/compat/qnx/lib/libslog2parse.so.1=libslog2parse.so.1
+# Block devices and filesystems, loaded by QNX's drivers.
+/compat/qnx/lib/libcam.so.2=libcam.so.2
+/compat/qnx/lib/dll/io-blk.so=io-blk.so
+/compat/qnx/lib/dll/cam-disk.so=cam-disk.so
+/compat/qnx/lib/dll/fs-dos.so=fs-dos.so
+/compat/qnx/lib/dll/fs-qnx6.so=fs-qnx6.so
+# The network utilities' libraries: QNX's libsocket speaks to netd, the
+# native stack, through qnxd (the kernel routes its messages there).
+/compat/qnx/lib/libsocket.so.4=libsocket.so.4
+/compat/qnx/lib/libjail.so.1=libjail.so.1
+/compat/qnx/usr/lib/libexpat.so.2=libexpat.so.2
+/compat/qnx/usr/lib/libxo.so.0=libxo.so.0
+# The QNX Cryptography Library with its OpenSSL plugin (sshd's).
+/compat/qnx/usr/lib/libqcrypto.so.1.0=libqcrypto.so.1.0
+/compat/qnx/lib/libqh.so.1=libqh.so.1
+/compat/qnx/usr/lib/libcrypto.so.3=libcrypto.so.3
+/compat/qnx/lib/dll/qcrypto-openssl-3.so=qcrypto-openssl-3.so
+/etc/qcrypto.conf = {
+openssl-3     tags=*
+}
+
+# QNX's shell, and its pipe manager and random service (not started: the
+# native ones serve QNX's programs too), from the SDP, under /compat/qnx like the
+# rest of QNX's tools and libraries.
+/compat/qnx/bin/ksh=ksh
+# QNX's /bin/sh, for system() and popen() in its programs.
+[type=link] /compat/qnx/bin/sh=/compat/qnx/bin/ksh
+/compat/qnx/sbin/pipe=pipe
+/compat/qnx/sbin/qnxd=${OSCRAFT_NATIVE}/qnxd
+/compat/qnx/sbin/devc-serpl011=devc-serpl011
+/compat/qnx/sbin/devc-pty=devc-pty
+/compat/qnx/sbin/devb-ram=devb-ram
+/compat/qnx/sbin/devb-loopback=devb-loopback
+/compat/qnx/sbin/mkqnx6fs=mkqnx6fs
+/compat/qnx/sbin/mkdosfs=mkdosfs
+/compat/qnx/bin/mount=mount
+/compat/qnx/bin/umount=umount
+/compat/qnx/sbin/shutdown=shutdown
+/compat/qnx/usr/sbin/random=random
+/compat/qnx/sbin/ifconfig=ifconfig
+/compat/qnx/sbin/ping=ping
+/compat/qnx/usr/bin/netstat=netstat
+/compat/qnx/sbin/sysctl=sysctl
+# SSH: sshd and its helpers, scp and sftp for copying files. The host
+# key is made by the Makefile (OSCRAFT_SSH_KEY).
+/compat/qnx/usr/sbin/sshd=sshd
+/compat/qnx/usr/libexec/sshd-session=${QNX_TARGET}/aarch64le/usr/libexec/sshd-session
+/compat/qnx/usr/libexec/sshd-auth=${QNX_TARGET}/aarch64le/usr/libexec/sshd-auth
+/compat/qnx/usr/libexec/sftp-server=${QNX_TARGET}/aarch64le/usr/libexec/sftp-server
+/compat/qnx/usr/bin/scp=scp
+/compat/qnx/usr/bin/ssh=ssh
+/compat/qnx/usr/bin/ssh-keygen=ssh-keygen
+/compat/qnx/lib/libregex.so.1=libregex.so.1
+/compat/qnx/usr/lib/libpam.so.2=libpam.so.2
+/etc/ssh/sshd_config=${QNX_TARGET}/etc/ssh/sshd_config
+[perms=0600] /etc/ssh/ssh_host_ed25519_key=${OSCRAFT_SSH_KEY}
+# sshd on the native stack (netd, started by the system's boot script),
+# on the loopback and on vtnet0.
+/etc/rc.net = {
+waitfor /dev/socket 10
+mkdir -p -m 755 /var/chroot/sshd
+/compat/qnx/usr/sbin/sshd
+}
+# Kernel tracing: QNX's tracelogger (traces copied off with scp, read with
+# traceprinter on the host).
+/compat/qnx/usr/sbin/tracelogger=tracelogger
+/compat/qnx/lib/libtracelog.so.1=libtracelog.so.1
+# toybox provides the usual commands, with QNX's usual links.
+/compat/qnx/usr/bin/toybox=toybox
+[type=link] /compat/qnx/bin/cat=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/bin/chmod=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/bin/cp=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/bin/dd=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/bin/echo=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/bin/ln=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/bin/ls=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/bin/mkdir=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/bin/mv=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/bin/pwd=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/bin/rm=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/bin/sed=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/bin/uname=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/ascii=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/base64=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/basename=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/bc=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/bunzip2=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/bzcat=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/cal=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/chgrp=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/chown=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/cksum=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/clear=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/cmp=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/comm=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/cpio=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/crc32=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/cut=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/date=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/diff=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/dirname=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/dos2unix=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/du=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/egrep=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/env=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/expand=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/expr=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/false=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/fgrep=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/file=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/find=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/grep=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/groups=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/gunzip=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/gzip=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/head=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/id=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/install=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/link=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/logname=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/md5sum=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/mkfifo=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/mktemp=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/more=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/nl=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/nohup=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/od=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/paste=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/patch=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/printenv=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/printf=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/readlink=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/realpath=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/rmdir=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/seq=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/sha1sum=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/sleep=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/sort=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/split=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/stat=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/strings=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/tail=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/tar=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/tee=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/test=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/time=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/timeout=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/touch=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/true=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/truncate=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/tty=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/uniq=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/unix2dos=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/unlink=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/uudecode=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/uuencode=/compat/qnx/usr/bin/toybox
+[type=link] /compat/qnx/usr/bin/wc=/compat/qnx/usr/bin/toybox
+
+# QNX utilities, from the SDP.
+/compat/qnx/bin/pidin=pidin
+/compat/qnx/bin/stty=stty
+/compat/qnx/bin/kill=kill
+/compat/qnx/bin/slay=slay
+/compat/qnx/bin/hostname=hostname
+/compat/qnx/bin/on=on
+/compat/qnx/bin/waitfor=waitfor
+/compat/qnx/usr/bin/getconf=getconf
+/compat/qnx/usr/bin/top=top
+/compat/qnx/bin/slogger2=slogger2
+/compat/qnx/bin/slog2info=slog2info

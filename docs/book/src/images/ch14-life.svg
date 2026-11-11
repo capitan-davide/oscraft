@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="330" viewBox="0 0 800 330" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="330" fill="#ffffff"/>
+  <rect class="u" x="20" y="40" width="190" height="76" rx="4"/>
+  <text x="115" y="62" class="b c">generated</text>
+  <text x="115" y="80" class="s c">kill(), a fault, a timer,</text>
+  <text x="115" y="94" class="s c">a child ending, the terminal</text>
+  <rect class="y" x="290" y="40" width="200" height="76" rx="4"/>
+  <text x="390" y="62" class="b c">pending</text>
+  <text x="390" y="80" class="s c">recorded for the process</text>
+  <text x="390" y="94" class="s c">or for one thread</text>
+  <rect class="k" x="570" y="40" width="210" height="76" rx="4"/>
+  <text x="675" y="62" class="b c">delivered</text>
+  <text x="675" y="80" class="s c">to a thread that</text>
+  <text x="675" y="94" class="s c">does not block it</text>
+  <path class="ln" d="M210,78 L288,78" marker-end="url(#a)"/>
+  <path class="ln" d="M490,78 L568,78" marker-end="url(#a)"/>
+  <path class="ln dash" d="M430,116 L430,150 L350,150 L350,118" marker-end="url(#a)"/>
+  <text x="390" y="166" class="s c">blocked by every thread that</text>
+  <text x="390" y="180" class="s c">could take it: it waits here</text>
+  <text x="688" y="140" class="s">the action decides</text>
+  <path class="ln" d="M675,116 L675,150" marker-end="url(#a)"/>
+  <rect class="n" x="560" y="152" width="220" height="44" rx="4"/>
+  <text x="670" y="170" class="b c">ignore</text>
+  <text x="670" y="186" class="s c">the signal is discarded</text>
+  <rect class="r" x="560" y="208" width="220" height="44" rx="4"/>
+  <text x="670" y="226" class="b c">default</text>
+  <text x="670" y="242" class="s c">for most signals: the process ends</text>
+  <rect class="g" x="560" y="264" width="220" height="44" rx="4"/>
+  <text x="670" y="282" class="b c">handler</text>
+  <text x="670" y="298" class="s c">a function of the program runs</text>
+  <text x="20" y="250" class="s">A signal whose action is to ignore it is normally dropped when it is generated.</text>
+  <text x="20" y="266" class="s">A blocked signal is kept even then: the action may have changed by the time</text>
+  <text x="20" y="282" class="s">it is unblocked.</text>
+</svg>

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="420" fill="#ffffff"/>
+  <rect class="g" x="20" y="16" width="760" height="40" rx="4"/>
+  <text x="400" y="34" class="b c">programs</text>
+  <text x="400" y="49" class="s c">every open file or socket is a connection to one server</text>
+  <rect class="k" x="30" y="96" width="90" height="34" rx="4"/>
+  <text x="75.0" y="117" class="c">pipe</text>
+  <path class="ln" d="M75.0,56 L75.0,94" marker-end="url(#a)"/>
+  <rect class="k" x="130" y="96" width="90" height="34" rx="4"/>
+  <text x="175.0" y="117" class="c">pty</text>
+  <path class="ln" d="M175.0,56 L175.0,94" marker-end="url(#a)"/>
+  <rect class="k" x="230" y="96" width="90" height="34" rx="4"/>
+  <text x="275.0" y="117" class="c">tmpfs</text>
+  <path class="ln" d="M275.0,56 L275.0,94" marker-end="url(#a)"/>
+  <rect class="k" x="330" y="96" width="90" height="34" rx="4"/>
+  <text x="375.0" y="117" class="c">syslogd</text>
+  <path class="ln" d="M375.0,56 L375.0,94" marker-end="url(#a)"/>
+  <rect class="k" x="430" y="96" width="90" height="34" rx="4"/>
+  <text x="475.0" y="117" class="c">random</text>
+  <path class="ln" d="M475.0,56 L475.0,94" marker-end="url(#a)"/>
+  <rect class="k" x="530" y="96" width="100" height="34" rx="4"/>
+  <text x="580.0" y="111" class="c">diskd</text>
+  <text x="580.0" y="124" class="s c">file systems</text>
+  <path class="ln" d="M580.0,56 L580.0,94" marker-end="url(#a)"/>
+  <rect class="k" x="650" y="96" width="120" height="34" rx="4"/>
+  <text x="710.0" y="111" class="c">netd</text>
+  <text x="710.0" y="124" class="s c">sockets, drivers</text>
+  <path class="ln" d="M710.0,56 L710.0,94" marker-end="url(#a)"/>
+  <rect class="k" x="590" y="196" width="90" height="34" rx="4"/>
+  <text x="635" y="211" class="c">pcid</text>
+  <text x="635" y="224" class="s c">the PCI bus</text>
+  <rect class="k" x="700" y="196" width="80" height="34" rx="4"/>
+  <text x="740" y="211" class="c">usbd</text>
+  <text x="740" y="224" class="s c">USB</text>
+  <path class="lnk" d="M690,130 L648,194" marker-end="url(#ak)"/>
+  <path class="lnk" d="M730,130 L740,194" marker-end="url(#ak)"/>
+  <path class="lnk" d="M698,213 L682,213" marker-end="url(#ak)"/>
+  <rect class="k" x="20" y="300" width="760" height="46" rx="4"/>
+  <text x="400" y="319" class="b c">process 1: processes, memory, path names</text>
+  <text x="400" y="335" class="s c">every program and every server sends to it; it sends to nobody</text>
+  <rect class="k" x="20" y="366" width="760" height="36" rx="4"/>
+  <text x="400" y="388" class="c">microkernel: carries the messages, schedules the threads</text>
+  <path class="ln dash" d="M75.0,130 L75.0,298" marker-end="url(#a)"/>
+  <path class="ln dash" d="M175.0,130 L175.0,298" marker-end="url(#a)"/>
+  <path class="ln dash" d="M275.0,130 L275.0,298" marker-end="url(#a)"/>
+  <path class="ln dash" d="M375.0,130 L375.0,298" marker-end="url(#a)"/>
+  <path class="ln dash" d="M475.0,130 L475.0,298" marker-end="url(#a)"/>
+  <path class="ln dash" d="M580.0,130 L580.0,298" marker-end="url(#a)"/>
+  <path class="ln dash" d="M635,230 L635,298" marker-end="url(#a)"/>
+  <path class="ln dash" d="M740,230 L740,298" marker-end="url(#a)"/>
+  <text x="85" y="262" class="s">for memory, path names</text>
+  <text x="85" y="276" class="s">and child processes</text>
+  <text x="30" y="80" class="s">requests</text>
+</svg>

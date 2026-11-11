@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="430" viewBox="0 0 800 430" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="430" fill="#ffffff"/>
+  <rect class="k" x="20" y="15" width="630" height="66" rx="4"/>
+  <text x="335.0" y="37" class="h c">proc/   process 1: the managers and built-in servers, as kernel threads</text>
+  <text x="335.0" y="55" class="s c">process, memory and pathname managers; spawn and the ELF loader;</text>
+  <text x="335.0" y="69" class="s c">the image file system, /proc, the consoles; the boot script</text>
+  <rect class="k" x="20" y="95" width="470" height="66" rx="4"/>
+  <text x="255.0" y="117" class="h c">ker/   the kernel calls</text>
+  <text x="255.0" y="135" class="s c">channels, messages, events, synchronization, signals, threads,</text>
+  <text x="255.0" y="149" class="s c">timers, clocks, interrupts, pipes, message queues; processes; user memory</text>
+  <rect class="k" x="500" y="95" width="150" height="66" rx="4"/>
+  <text x="575.0" y="117" class="h c">personality/</text>
+  <text x="575.0" y="135" class="s c">what differs between</text>
+  <text x="575.0" y="149" class="s c">native and QNX processes</text>
+  <rect class="k" x="20" y="175" width="400" height="80" rx="4"/>
+  <text x="220.0" y="197" class="h c">the core (files directly in kernel/src)</text>
+  <text x="220.0" y="215" class="s c">sched, sporadic: threads and the scheduler</text>
+  <text x="220.0" y="229" class="s c">clock, timeout: the tick and deadlines</text>
+  <text x="220.0" y="243" class="s c">interrupt, ipi, smp, percpu, sync, console, syspage</text>
+  <rect class="k" x="430" y="175" width="220" height="80" rx="4"/>
+  <text x="540.0" y="197" class="h c">vm/   memory</text>
+  <text x="540.0" y="215" class="s c">pmem: frames;  kmem: kernel pages</text>
+  <text x="540.0" y="229" class="s c">heap: the allocator</text>
+  <text x="540.0" y="243" class="s c">map, object: mappings, objects</text>
+  <rect class="k" x="20" y="269" width="630" height="52" rx="4"/>
+  <text x="335.0" y="291" class="h c">arch/aarch64/   the processor</text>
+  <text x="335.0" y="309" class="s c">exception vectors, kernel entry and exit, context switch, MMU, user address spaces, timer, interrupt code</text>
+  <rect class="y" x="20" y="345" width="630" height="40" rx="4"/>
+  <text x="335" y="362" class="h c">system page and callouts</text>
+  <text x="335" y="377" class="s c">the machine, described by the startup; the only place the kernel learns about it</text>
+  <path class="ln" d="M700,30 L700,315" marker-end="url(#a)"/>
+  <text x="712" y="160" class="s">each layer</text>
+  <text x="712" y="174" class="s">uses the</text>
+  <text x="712" y="188" class="s">ones below</text>
+  <path class="life" d="M660,333 L790,333"/>
+  <path class="life" d="M10,333 L20,333"/>
+  <text x="712" y="358" class="s">data and code</text>
+  <text x="712" y="372" class="s">from outside</text>
+  <text x="712" y="386" class="s">the kernel</text>
+  <text x="335" y="412" class="s c">One Rust crate, one executable: the microkernel (the four lower layers) and process 1 (the top one).</text>
+</svg>

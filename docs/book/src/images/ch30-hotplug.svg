@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="500" fill="#ffffff"/>
+  <rect class="n" x="15" y="14" width="120" height="36" rx="4"/>
+  <text x="75" y="30" class="b c">adapter</text>
+  <text x="75" y="43" class="s c">plugged in</text>
+  <path class="life" d="M75,50 L75,470"/>
+  <rect class="g" x="145" y="14" width="120" height="36" rx="4"/>
+  <text x="205" y="30" class="b c">USB core</text>
+  <text x="205" y="43" class="s c">usbd: hub driver</text>
+  <path class="life" d="M205,50 L205,470"/>
+  <rect class="k" x="275" y="14" width="120" height="36" rx="4"/>
+  <text x="335" y="30" class="b c">/dev/usbd</text>
+  <text x="335" y="43" class="s c">usbd: generation</text>
+  <path class="life" d="M335,50 L335,470"/>
+  <rect class="k" x="415" y="14" width="120" height="36" rx="4"/>
+  <text x="475" y="30" class="b c">watcher</text>
+  <text x="475" y="43" class="s c">netd: usbcl's thread</text>
+  <path class="life" d="M475,50 L475,470"/>
+  <rect class="g" x="550" y="14" width="120" height="36" rx="4"/>
+  <text x="610" y="30" class="b c">USB core</text>
+  <text x="610" y="43" class="s c">netd: hub driver</text>
+  <path class="life" d="M610,50 L610,470"/>
+  <rect class="g" x="675" y="14" width="120" height="36" rx="4"/>
+  <text x="735" y="30" class="b c">if_cdce</text>
+  <text x="735" y="43" class="s c">netd: class driver</text>
+  <path class="life" d="M735,50 L735,470"/>
+  <path class="frame" d="M405,8 L405,480"/>
+  <text x="398" y="66" class="s e">usbd</text>
+  <text x="412" y="66" class="s">netd</text>
+  <rect class="y" x="425" y="76" width="100" height="150" rx="3"/>
+  <text x="475" y="140" class="s c">blocked in</text>
+  <text x="475" y="153" class="ms c">USBDIOCWAIT</text>
+  <text x="475" y="168" class="s c">generation 4</text>
+  <path class="ln" d="M75,100 L205,100" marker-end="url(#a)"/>
+  <circle cx="89" cy="88" r="9" fill="#333333"/>
+  <text x="89" y="92" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">1</text>
+  <text x="103" y="92" class="s">port change</text>
+  <rect class="g" x="143" y="110" width="124" height="40" rx="3"/>
+  <text x="205" y="127" class="s c">enumerates:</text>
+  <text x="205" y="141" class="s c">address, descriptors</text>
+  <path class="lnk" d="M205,182 L335,182" marker-end="url(#ak)"/>
+  <circle cx="219" cy="170" r="9" fill="#2c5d9b"/>
+  <text x="219" y="174" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">2</text>
+  <text x="233" y="174" class="s">event: ATTACH</text>
+  <rect class="y" x="285" y="190" width="100" height="26" rx="3"/>
+  <text x="335" y="207" class="s c">generation 5</text>
+  <path class="lng" d="M335,240 L475,240" marker-end="url(#ag)"/>
+  <circle cx="349" cy="228" r="9" fill="#3e7b34"/>
+  <text x="349" y="232" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">3</text>
+  <text x="363" y="232" class="s">the wait returns 5</text>
+  <path class="lnk" d="M475,276 L335,276" marker-end="url(#ak)"/>
+  <circle cx="349" cy="264" r="9" fill="#2c5d9b"/>
+  <text x="349" y="268" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">4</text>
+  <text x="363" y="268" class="s">USBDIOCLIST</text>
+  <rect class="y" x="411" y="286" width="128" height="40" rx="3"/>
+  <text x="475" y="303" class="s c">a new device:</text>
+  <text x="475" y="317" class="s c">root port 1 connected</text>
+  <path class="lnk" d="M475,352 L610,352" marker-end="url(#ak)"/>
+  <circle cx="489" cy="340" r="9" fill="#2c5d9b"/>
+  <text x="489" y="344" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">5</text>
+  <text x="503" y="344" class="s">port change</text>
+  <path class="lnk" d="M610,388 L335,388" marker-end="url(#ak)"/>
+  <circle cx="349" cy="376" r="9" fill="#2c5d9b"/>
+  <text x="349" y="380" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">6</text>
+  <text x="363" y="380" class="s">USBDIOCCTRL: descriptors (SET_ADDRESS stays local)</text>
+  <path class="lnk" d="M610,424 L735,424" marker-end="url(#ak)"/>
+  <circle cx="624" cy="412" r="9" fill="#2c5d9b"/>
+  <text x="624" y="416" class="c" style="fill:#ffffff;font-size:11px;font-weight:bold">7</text>
+  <text x="638" y="416" class="s">probe, attach</text>
+  <rect class="g" x="695" y="434" width="80" height="26" rx="3"/>
+  <text x="735" y="451" class="m c">ue0</text>
+  <text x="400" y="494" class="s c">The device is enumerated twice: by usbd on the real bus, then by netd's core on the client controller's root hub.</text>
+</svg>

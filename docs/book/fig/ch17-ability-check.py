@@ -1,0 +1,38 @@
+from svg import Fig
+f = Fig(800, 360)
+def q(x, y, w, lines, cls="y", h=None):
+    h = h or 14 + 15 * len(lines)
+    f.box(cls, x, y, w, h); f.lines(x + w / 2, y + 19, lines, "c", 15)
+    return h
+# row 1
+q(20, 30, 170, ["check(ability, value)", "by the calling process"], "k")
+f.arrow([(190, 52), (228, 52)])
+q(230, 30, 170, ["effective user ID", "is 0?"])
+f.arrow([(400, 42), (448, 42)]); f.text(424, 36, "yes", "s c")
+f.arrow([(400, 62), (424, 62), (424, 92), (448, 92)]); f.text(412, 86, "no", "s c")
+f.box("wk", 450, 28, 150, 28); f.text(525, 46, "root domain", "c")
+f.box("wk", 450, 78, 150, 28); f.text(525, 96, "non-root domain", "c")
+f.line([(600, 42), (630, 42), (630, 92), (600, 92)])
+f.arrow([(630, 67), (700, 67), (700, 140), (105, 140), (105, 168)])
+f.text(560, 132, "every ability has one setting per domain", "s c")
+# row 2
+q(20, 170, 170, ["has this process", "changed the ability?"])
+f.arrow([(105, 218), (105, 268)]); f.text(112, 246, "no", "s")
+q(20, 270, 170, ["the default:", "root: every ability", "non-root: a fixed few"], "w")
+f.arrow([(190, 194), (228, 194)]); f.text(209, 188, "yes", "s c")
+q(230, 170, 150, ["allowed in this", "domain?"])
+f.arrow([(380, 194), (418, 194)]); f.text(399, 188, "yes", "s c")
+q(420, 170, 150, ["restricted to", "ranges of values?"])
+f.arrow([(570, 194), (608, 194)]); f.text(589, 188, "yes", "s c")
+q(610, 170, 170, ["is the value", "inside one range?"])
+# results
+f.box("g", 420, 286, 150, 34); f.text(495, 308, "allowed", "h c")
+f.box("r", 230, 286, 150, 34); f.text(305, 308, "EPERM", "h c")
+f.arrow([(305, 218), (305, 284)], "lnr", "ar"); f.text(312, 250, "no", "s")
+f.arrow([(495, 218), (495, 284)], "lng", "ag"); f.text(502, 250, "no", "s")
+f.arrow([(640, 218), (640, 303), (572, 303)], "lng", "ag"); f.text(648, 250, "yes", "s")
+f.box("r", 680, 286, 100, 34); f.text(730, 308, "EPERM", "h c")
+f.arrow([(730, 218), (730, 284)], "lnr", "ar"); f.text(738, 250, "no", "s")
+f.arrow([(190, 296), (228, 296)], "lnr", "ar"); f.text(209, 290, "no", "s c")
+f.arrow([(190, 312), (210, 312), (210, 336), (495, 336), (495, 322)], "lng", "ag"); f.text(400, 332, "yes", "s c")
+f.save("ch17-ability-check.svg")

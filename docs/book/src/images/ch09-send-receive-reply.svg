@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="800" height="520" fill="#ffffff"/>
+  <rect class="u" x="20" y="20" width="220" height="40" rx="4"/>
+  <text x="130" y="44" class="c">client thread</text>
+  <rect class="k" x="280" y="20" width="240" height="40" rx="4"/>
+  <text x="400" y="44" class="c">kernel: the channel</text>
+  <rect class="u" x="560" y="20" width="220" height="40" rx="4"/>
+  <text x="670" y="44" class="c">server thread</text>
+  <polyline class="life" points="130,60 130,455"/>
+  <polyline class="life" points="400,60 400,455"/>
+  <polyline class="life" points="670,60 670,455"/>
+  <polyline class="ln" points="670,90 404,90" marker-end="url(#a)"/>
+  <text x="535" y="83" class="s c">MsgReceive(chid, buf)</text>
+  <rect class="y" x="615" y="98" width="110" height="144" rx="4"/>
+  <text x="670" y="166.5" class="s c">RECEIVE-</text>
+  <text x="670" y="181.5" class="s c">blocked</text>
+  <text x="410" y="112" class="s">nothing queued</text>
+  <polyline class="ln" points="130,160 396,160" marker-end="url(#a)"/>
+  <text x="265" y="153" class="s c">MsgSend(coid, msg, reply)</text>
+  <rect class="wk" x="250" y="172" width="300" height="74" rx="4"/>
+  <text x="400" y="192" class="c">transfer(): copy msg into buf</text>
+  <text x="400" y="206" class="s c">server's result = rcvid (client tid)</text>
+  <text x="400" y="220" class="s c">client → repliers: REPLY-blocked</text>
+  <text x="400" y="234" class="s c">wake(server)</text>
+  <rect class="y" x="75" y="168" width="110" height="252" rx="4"/>
+  <text x="130" y="290.5" class="s c">REPLY-</text>
+  <text x="130" y="305.5" class="s c">blocked</text>
+  <polyline class="lng" points="404,262 670,262" marker-end="url(#ag)"/>
+  <text x="535" y="255" class="s c">returns rcvid, runs at the client's priority</text>
+  <rect class="wu" x="570" y="274" width="200" height="44" rx="4"/>
+  <text x="670" y="292.5" class="c">works on the request</text>
+  <text x="670" y="307.5" class="s c">MsgRead(), MsgWrite() as needed</text>
+  <polyline class="ln" points="670,340 404,340" marker-end="url(#a)"/>
+  <text x="535" y="333" class="s c">MsgReply(rcvid, status, data)</text>
+  <rect class="wk" x="250" y="352" width="300" height="58" rx="4"/>
+  <text x="400" y="371" class="c">complete(): copy data into reply</text>
+  <text x="400" y="385" class="s c">client's result = status</text>
+  <text x="400" y="399" class="s c">wake(client)</text>
+  <polyline class="lng" points="396,428 130,428" marker-end="url(#ag)"/>
+  <text x="265" y="421" class="s c">MsgSend() returns status</text>
+  <polyline class="ln" points="404,440 670,440" marker-end="url(#a)"/>
+  <text x="535" y="433" class="s c">MsgReply() returns 0</text>
+  <text x="400" y="476" class="s c">If no server is receiving, the client queues on senders (SEND-blocked)</text>
+  <text x="400" y="491" class="s c">and the server's MsgReceive() does the transfer: the second to arrive copies.</text>
+</svg>

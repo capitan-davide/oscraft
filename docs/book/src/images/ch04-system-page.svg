@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="790" height="500" viewBox="0 0 790 500" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker><marker id="ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c5d9b"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#aa2222"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3e7b34"/></marker></defs>
+  <style>
+    .k  { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .u  { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .n  { fill: #eeeeee; stroke: #666666; stroke-width: 1.2; }
+    .g  { fill: #e2f0dc; stroke: #3e7b34; stroke-width: 1.2; }
+    .r  { fill: #f8e0e0; stroke: #aa2222; stroke-width: 1.2; }
+    .y  { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .w  { fill: #ffffff; stroke: #666666; stroke-width: 1; }
+    .wk { fill: #ffffff; stroke: #2c5d9b; stroke-width: 1; }
+    .wu { fill: #ffffff; stroke: #9a6b2f; stroke-width: 1; }
+    .frame { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 5 4; }
+    .ln  { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .lnk { fill: none; stroke: #2c5d9b; stroke-width: 1.3; }
+    .lnr { fill: none; stroke: #aa2222; stroke-width: 1.3; }
+    .lng { fill: none; stroke: #3e7b34; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .life { fill: none; stroke: #999999; stroke-width: 1; stroke-dasharray: 3 3; }
+    text { fill: #222222; font-size: 12px; }
+    .b  { font-weight: bold; }
+    .h  { font-size: 13px; font-weight: bold; }
+    .s  { font-size: 10.5px; fill: #444444; }
+    .m  { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 11px; }
+    .ms { font-family: DejaVu Sans Mono, Menlo, Consolas, monospace; font-size: 10px; }
+    .c  { text-anchor: middle; }
+    .e  { text-anchor: end; }
+    .red { fill: #aa2222; }
+    .blue { fill: #2c5d9b; }
+    .green { fill: #3e7b34; }
+  </style>
+  <rect x="0" y="0" width="790" height="500" fill="#ffffff"/>
+  <text x="20" y="26" class="h">struct syspage_entry</text>
+  <text x="420" y="26" class="h">sections, at offsets from the start of the page</text>
+  <rect class="k" x="20" y="40" width="230" height="300" rx="0"/>
+  <text x="30" y="59" class="m">size, type, num_cpu, ...</text>
+  <line x1="20" y1="70" x2="250" y2="70" stroke="#2c5d9b" stroke-width="1"/>
+  <text x="30" y="89" class="m">system_private</text>
+  <text x="242" y="89" class="s e">offset, size</text>
+  <rect class="wk" x="420" y="40" width="340" height="30" rx="4"/>
+  <text x="590" y="59" class="c">system_private: page size, per-CPU pages</text>
+  <polyline class="lnk" points="250,85 418,55" marker-end="url(#ak)"/>
+  <line x1="20" y1="100" x2="250" y2="100" stroke="#2c5d9b" stroke-width="1"/>
+  <text x="30" y="119" class="m">qtime</text>
+  <text x="242" y="119" class="s e">offset, size</text>
+  <rect class="wk" x="420" y="78" width="340" height="30" rx="4"/>
+  <text x="590" y="97" class="c">qtime: counter Hz, timer interrupt, boot_cc</text>
+  <polyline class="lnk" points="250,115 418,93" marker-end="url(#ak)"/>
+  <line x1="20" y1="130" x2="250" y2="130" stroke="#2c5d9b" stroke-width="1"/>
+  <text x="30" y="149" class="m">callout</text>
+  <text x="242" y="149" class="s e">offset, size</text>
+  <rect class="u" x="420" y="116" width="340" height="30" rx="4"/>
+  <text x="590" y="135" class="c">callout: console output and input, reboot</text>
+  <polyline class="lnk" points="250,145 418,131" marker-end="url(#ak)"/>
+  <line x1="20" y1="160" x2="250" y2="160" stroke="#2c5d9b" stroke-width="1"/>
+  <text x="30" y="179" class="m">smp</text>
+  <text x="242" y="179" class="s e">offset, size</text>
+  <rect class="wk" x="420" y="154" width="340" height="30" rx="4"/>
+  <text x="590" y="173" class="c">smp: send_ipi, start_addr</text>
+  <polyline class="lnk" points="250,175 418,169" marker-end="url(#ak)"/>
+  <line x1="20" y1="190" x2="250" y2="190" stroke="#2c5d9b" stroke-width="1"/>
+  <text x="30" y="209" class="m">strings</text>
+  <text x="242" y="209" class="s e">offset, size</text>
+  <rect class="wk" x="420" y="192" width="340" height="30" rx="4"/>
+  <text x="590" y="211" class="c">strings: the names the sections use</text>
+  <polyline class="lnk" points="250,205 418,207" marker-end="url(#ak)"/>
+  <line x1="20" y1="220" x2="250" y2="220" stroke="#2c5d9b" stroke-width="1"/>
+  <text x="30" y="239" class="m">asinfo [ ]</text>
+  <text x="242" y="239" class="s e">offset, size</text>
+  <rect class="wk" x="420" y="230" width="340" height="30" rx="4"/>
+  <text x="590" y="249" class="c">asinfo × n: the physical memory map (a tree)</text>
+  <polyline class="lnk" points="250,235 418,245" marker-end="url(#ak)"/>
+  <line x1="20" y1="250" x2="250" y2="250" stroke="#2c5d9b" stroke-width="1"/>
+  <text x="30" y="269" class="m">cpuinfo [ ]</text>
+  <text x="242" y="269" class="s e">offset, size</text>
+  <rect class="wk" x="420" y="268" width="340" height="30" rx="4"/>
+  <text x="590" y="287" class="c">cpuinfo × CPUs: ID, speed, caches</text>
+  <polyline class="lnk" points="250,265 418,283" marker-end="url(#ak)"/>
+  <line x1="20" y1="280" x2="250" y2="280" stroke="#2c5d9b" stroke-width="1"/>
+  <text x="30" y="299" class="m">intrinfo [ ]</text>
+  <text x="242" y="299" class="s e">offset, size</text>
+  <rect class="wk" x="420" y="306" width="340" height="30" rx="4"/>
+  <text x="590" y="325" class="c">intrinfo × controllers: vectors, id/eoi code</text>
+  <polyline class="lnk" points="250,295 418,321" marker-end="url(#ak)"/>
+  <line x1="20" y1="310" x2="250" y2="310" stroke="#2c5d9b" stroke-width="1"/>
+  <text x="30" y="329" class="m">cacheattr [ ], ...</text>
+  <rect class="u" x="420" y="370" width="340" height="56" rx="4"/>
+  <text x="590" y="387" class="c">callout code, copied and patched by startup</text>
+  <text x="590" y="402" class="s c">display_char, poll_key, reboot, send_ipi,</text>
+  <text x="590" y="417" class="s c">interrupt id / eoi / mask / unmask</text>
+  <polyline class="ln dash" points="760,131 772,131 772,398 762,398" marker-end="url(#a)"/>
+  <polyline class="ln dash" points="760,169 772,169 772,398 762,398" marker-end="url(#a)"/>
+  <polyline class="ln dash" points="760,321 772,321 772,398 762,398" marker-end="url(#a)"/>
+  <text x="20" y="370" class="s">Array sections also record their element size,</text>
+  <text x="20" y="385" class="s">so a newer startup can add fields to an element.</text>
+  <text x="420" y="450" class="s">Dashed: sections that hold pointers to callout code.</text>
+</svg>

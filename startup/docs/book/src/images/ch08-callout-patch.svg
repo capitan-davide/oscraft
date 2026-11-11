@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="362" viewBox="0 0 820 362" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333333"/></marker></defs>
+  <style>
+    .k { fill: #dce9f8; stroke: #2c5d9b; stroke-width: 1.2; }
+    .y { fill: #fbf3c8; stroke: #9a8420; stroke-width: 1.2; }
+    .u { fill: #f6e7d2; stroke: #9a6b2f; stroke-width: 1.2; }
+    .ln { fill: none; stroke: #333333; stroke-width: 1.3; }
+    .dash { stroke-dasharray: 5 4; }
+    .t { text-anchor: middle; }
+    .b { font-weight: bold; }
+    .s { font-size: 10px; fill: #444444; }
+    .m { font-family: DejaVu Sans Mono, monospace; font-size: 11px; }
+    .pv { fill: #b03a2e; font-weight: bold; }
+    .ca { fill: #1f5fa8; font-weight: bold; }
+  </style>
+  <rect width="820" height="362" fill="#ffffff"/>
+  <!-- startup text -->
+  <text class="b" x="20" y="24">1. In startup's text</text>
+  <rect class="k" x="20" y="34" width="230" height="150" rx="4"/>
+  <text class="m" x="32" y="56">movz x7, #0</text>
+  <text class="m" x="32" y="72">movk x7, #0, lsl #16</text>
+  <text class="m" x="32" y="88">movk x7, #0, lsl #32</text>
+  <text class="m" x="32" y="104">movk x7, #0, lsl #48</text>
+  <text class="m" x="32" y="124">0: ldr w2, [x7, #STATUS]</text>
+  <text class="m" x="32" y="140">...</text>
+  <text class="s" x="32" y="160">DISPLAY_CHAR: four placeholders</text>
+  <text class="s" x="32" y="174">for one patch value</text>
+  <!-- section ref -->
+  <text class="b" x="20" y="214">2. In a section, until output</text>
+  <rect class="y" x="20" y="224" width="230" height="56" rx="4"/>
+  <text class="m" x="32" y="246">callout.debug[0].display_char</text>
+  <text class="m" x="32" y="264">  = 0x0ca11007_00000000 | 0</text>
+  <text class="s" x="32" y="302">a tagged reference to entry 0 of the</text>
+  <text class="s" x="32" y="316">callout table, which keeps the patch</text>
+  <text class="s" x="32" y="330">value, the UART's virtual address:</text>
+  <text class="m" x="32" y="348"><tspan class="pv">ffffff80_40213000</tspan></text>
+  <!-- system page copy -->
+  <text class="b" x="320" y="24">3. Copied to the system page, patched</text>
+  <rect class="k" x="320" y="34" width="250" height="150" rx="4"/>
+  <text class="m" x="332" y="56">movz x7, #<tspan class="pv">0x3000</tspan></text>
+  <text class="m" x="332" y="72">movk x7, #<tspan class="pv">0x4021</tspan>, lsl #16</text>
+  <text class="m" x="332" y="88">movk x7, #<tspan class="pv">0xff80</tspan>, lsl #32</text>
+  <text class="m" x="332" y="104">movk x7, #<tspan class="pv">0xffff</tspan>, lsl #48</text>
+  <text class="m" x="332" y="124">0: ldr w2, [x7, #STATUS]</text>
+  <text class="m" x="332" y="140">...</text>
+  <text class="s" x="332" y="160">x7: the patch value, the UART's address</text>
+  <text class="s" x="332" y="174">this copy is at <tspan class="m ca">ffffff80_40207000</tspan></text>
+  <path class="ln" d="M250,100 L318,100" marker-end="url(#a)"/>
+  <text class="t s" x="284" y="92">copy</text>
+  <!-- section resolved -->
+  <rect class="y" x="320" y="224" width="250" height="56" rx="4"/>
+  <text class="m" x="332" y="246">callout.debug[0].display_char</text>
+  <text class="m" x="332" y="264">  = <tspan class="ca">ffffff80_40207000</tspan></text>
+  <text class="s" x="332" y="302">the reference, replaced by the copy's</text>
+  <text class="s" x="332" y="316">address (not the patch value)</text>
+  <path class="ln" d="M250,254 L318,254" marker-end="url(#a)"/>
+  <text class="t s" x="284" y="246">resolve</text>
+  <path class="ln dash" d="M445,224 L445,186" marker-end="url(#a)"/>
+  <!-- kernel -->
+  <text class="b" x="630" y="24">4. The kernel calls it</text>
+  <rect class="u" x="630" y="34" width="170" height="150" rx="4"/>
+  <text class="t" x="715" y="84">procnto's debug</text>
+  <text class="t" x="715" y="100">output</text>
+  <text class="t s m" x="715" y="126">display_char(syspage, c)</text>
+  <text class="t s" x="715" y="142">for each character</text>
+  <path class="ln" d="M628,110 L572,110" marker-end="url(#a)"/>
+  <path class="ln dash" d="M715,186 C715,254 640,254 572,254" marker-end="url(#a)"/>
+  <text class="s" x="650" y="276">finds it through</text>
+  <text class="s" x="650" y="290">the section</text>
+</svg>

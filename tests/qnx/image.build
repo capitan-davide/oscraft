@@ -1,0 +1,169 @@
+###############################################################################
+# The QNX test programs, the oracle the QNX personality is measured
+# against, for `make test QNX=1`: appended by the Makefile to
+# images/qemu-virt.build (less its console) and images/qnx.build. Built
+# with the SDP's GCC against QNX's libc (tests/qnx, the Makefile's
+# qnx-tests). The tests are typed into QNX's shell, so this file ends the
+# boot script with QNX's serial driver and ksh as the console.
+###############################################################################
+
+[+script] .script = {
+    qnxhello
+    qnx-hello one two
+    qnx-sysinfo
+    qnx-hello-dyn
+    /compat/qnx/bin/ksh -c "echo hello from ksh"
+    # QNX's serial driver on the PL011 (0x09000000, GIC SPI 1: vector 33,
+    # a 24 MHz clock), then the session on it: QNX's shell is the console.
+    /compat/qnx/sbin/devc-serpl011 -b115200 -c24000000 -e -F -u1 0x09000000,33 &
+    waitfor /dev/ser1
+    reopen /dev/ser1
+    [+session] /compat/qnx/bin/ksh &
+}
+
+# The minimal program of the QNX personality: Rust, no libc, QNX's
+# kernel-call ABI (tests/qnx/qnxhello).
+/proc/boot/qnxhello=${OSCRAFT_USER}/qnxhello
+
+# The QNX test programs (tests/qnx, built with the SDP's GCC).
+/proc/boot/qnx-hello=${OSCRAFT_QNX_TESTS}/hello-static
+/proc/boot/qnx-sysinfo=${OSCRAFT_QNX_TESTS}/sysinfo-static
+/proc/boot/qnx-hello-dyn=${OSCRAFT_QNX_TESTS}/hello-dyn
+/proc/boot/spawntest=${OSCRAFT_QNX_TESTS}/spawntest
+/proc/boot/shmtest=${OSCRAFT_QNX_TESTS}/shmtest
+/proc/boot/jointest=${OSCRAFT_QNX_TESTS}/jointest
+/proc/boot/chantest=${OSCRAFT_QNX_TESTS}/chantest
+/proc/boot/roottest=${OSCRAFT_QNX_TESTS}/roottest
+/proc/boot/credtest=${OSCRAFT_QNX_TESTS}/credtest
+/proc/boot/sigtest=${OSCRAFT_QNX_TESTS}/sigtest
+/proc/boot/bench=${OSCRAFT_QNX_TESTS}/bench
+/proc/boot/forktest=${OSCRAFT_QNX_TESTS}/forktest
+/proc/boot/canceltest=${OSCRAFT_QNX_TESTS}/canceltest
+/proc/boot/synctest=${OSCRAFT_QNX_TESTS}/synctest
+/proc/boot/mqtest=${OSCRAFT_QNX_TESTS}/mqtest
+/proc/boot/pitest=${OSCRAFT_QNX_TESTS}/pitest
+/proc/boot/leaktest=${OSCRAFT_QNX_TESTS}/leaktest
+/proc/boot/superlocktest=${OSCRAFT_QNX_TESTS}/superlocktest
+/proc/boot/reservetest=${OSCRAFT_QNX_TESTS}/reservetest
+/proc/boot/netdtest=${OSCRAFT_QNX_TESTS}/netdtest
+/proc/boot/hrtest=${OSCRAFT_QNX_TESTS}/hrtest
+/proc/boot/ipitest=${OSCRAFT_QNX_TESTS}/ipitest
+/proc/boot/kcrash=${OSCRAFT_QNX_TESTS}/kcrash
+/proc/boot/drvtest=${OSCRAFT_QNX_TESTS}/drvtest
+/proc/boot/robusttest=${OSCRAFT_QNX_TESTS}/robusttest
+/proc/boot/abiltest=${OSCRAFT_QNX_TESTS}/abiltest
+/proc/boot/sig2test=${OSCRAFT_QNX_TESTS}/sig2test
+/proc/boot/evtest=${OSCRAFT_QNX_TESTS}/evtest
+/proc/boot/sessiontest=${OSCRAFT_QNX_TESTS}/sessiontest
+/proc/boot/spawn2test=${OSCRAFT_QNX_TESTS}/spawn2test
+/proc/boot/ev2test=${OSCRAFT_QNX_TESTS}/ev2test
+/proc/boot/semtest=${OSCRAFT_QNX_TESTS}/semtest
+/proc/boot/errtest=${OSCRAFT_QNX_TESTS}/errtest
+/proc/boot/fstest=${OSCRAFT_QNX_TESTS}/fstest
+/proc/boot/proctest=${OSCRAFT_QNX_TESTS}/proctest
+/proc/boot/msg2test=${OSCRAFT_QNX_TESTS}/msg2test
+/proc/boot/sig3test=${OSCRAFT_QNX_TESTS}/sig3test
+/proc/boot/sync2test=${OSCRAFT_QNX_TESTS}/sync2test
+/proc/boot/clocktest=${OSCRAFT_QNX_TESTS}/clocktest
+/proc/boot/tctltest=${OSCRAFT_QNX_TESTS}/tctltest
+/proc/boot/schedtest=${OSCRAFT_QNX_TESTS}/schedtest
+/proc/boot/nametest=${OSCRAFT_QNX_TESTS}/nametest
+/proc/boot/pathtest=${OSCRAFT_QNX_TESTS}/pathtest
+/proc/boot/shm2test=${OSCRAFT_QNX_TESTS}/shm2test
+/proc/boot/pevtest=${OSCRAFT_QNX_TESTS}/pevtest
+/proc/boot/shm3test=${OSCRAFT_QNX_TESTS}/shm3test
+/proc/boot/ttytest=${OSCRAFT_QNX_TESTS}/ttytest
+/proc/boot/pathflagtest=${OSCRAFT_QNX_TESTS}/pathflagtest
+/proc/boot/devinotest=${OSCRAFT_QNX_TESTS}/devinotest
+/proc/boot/plsexectest=${OSCRAFT_QNX_TESTS}/plsexectest
+/proc/boot/eintrtest=${OSCRAFT_QNX_TESTS}/eintrtest
+/proc/boot/sigqtest=${OSCRAFT_QNX_TESTS}/sigqtest
+/proc/boot/stacktest=${OSCRAFT_QNX_TESTS}/stacktest
+/proc/boot/kpipetest=${OSCRAFT_QNX_TESTS}/kpipetest
+/proc/boot/offlinetest=${OSCRAFT_QNX_TESTS}/offlinetest
+/proc/boot/rsrctest=${OSCRAFT_QNX_TESTS}/rsrctest
+/proc/boot/abil2test=${OSCRAFT_QNX_TESTS}/abil2test
+/proc/boot/procmsgtest=${OSCRAFT_QNX_TESTS}/procmsgtest
+/proc/boot/sigdoomtest=${OSCRAFT_QNX_TESTS}/sigdoomtest
+/proc/boot/jobpulsetest=${OSCRAFT_QNX_TESTS}/jobpulsetest
+/proc/boot/ipcreviewtest=${OSCRAFT_QNX_TESTS}/ipcreviewtest
+/proc/boot/interptest=${OSCRAFT_QNX_TESTS}/interptest
+/proc/boot/pmreviewtest=${OSCRAFT_QNX_TESTS}/pmreviewtest
+/proc/boot/devshmtest=${OSCRAFT_QNX_TESTS}/devshmtest
+/proc/boot/traceviewtest=${OSCRAFT_QNX_TESTS}/traceviewtest
+/proc/boot/servmontest=${OSCRAFT_QNX_TESTS}/servmontest
+/proc/boot/pidtest=${OSCRAFT_QNX_TESTS}/pidtest
+/proc/boot/iomsgtest=${OSCRAFT_QNX_TESTS}/iomsgtest
+/proc/boot/scoidtest=${OSCRAFT_QNX_TESTS}/scoidtest
+/proc/boot/debugevtest=${OSCRAFT_QNX_TESTS}/debugevtest
+/proc/boot/mqidtest=${OSCRAFT_QNX_TESTS}/mqidtest
+/proc/boot/robust2test=${OSCRAFT_QNX_TESTS}/robust2test
+/proc/boot/mmustress=${OSCRAFT_QNX_TESTS}/mmustress
+/proc/boot/maprace=${OSCRAFT_QNX_TESTS}/maprace
+/proc/boot/forkfail=${OSCRAFT_QNX_TESTS}/forkfail
+/proc/boot/schedpermtest=${OSCRAFT_QNX_TESTS}/schedpermtest
+/proc/boot/qnxddeathtest=${OSCRAFT_QNX_TESTS}/qnxddeathtest
+/proc/boot/overlaytest=${OSCRAFT_QNX_TESTS}/overlaytest
+/proc/boot/shmpermtest=${OSCRAFT_QNX_TESTS}/shmpermtest
+/proc/boot/pipeinfotest=${OSCRAFT_QNX_TESTS}/pipeinfotest
+/proc/boot/priochaintest=${OSCRAFT_QNX_TESTS}/priochaintest
+/proc/boot/priochain=${OSCRAFT_NATIVE}/priochain
+/proc/boot/badexectest=${OSCRAFT_QNX_TESTS}/badexectest
+/proc/boot/shmcopytest=${OSCRAFT_QNX_TESTS}/shmcopytest
+/proc/boot/execwaittest=${OSCRAFT_QNX_TESTS}/execwaittest
+/proc/boot/procacctest=${OSCRAFT_QNX_TESTS}/procacctest
+/proc/boot/biglentest=${OSCRAFT_QNX_TESTS}/biglentest
+/proc/boot/iovtest=${OSCRAFT_QNX_TESTS}/iovtest
+/proc/boot/copyunmaptest=${OSCRAFT_QNX_TESTS}/copyunmaptest
+/proc/boot/msglatencytest=${OSCRAFT_QNX_TESTS}/msglatencytest
+/proc/boot/pevsemtest=${OSCRAFT_QNX_TESTS}/pevsemtest
+/proc/boot/cdetachtest=${OSCRAFT_QNX_TESTS}/cdetachtest
+/proc/boot/pathinotest=${OSCRAFT_QNX_TESTS}/pathinotest
+/proc/boot/execfailtest=${OSCRAFT_QNX_TESTS}/execfailtest
+/proc/boot/contigtest=${OSCRAFT_QNX_TESTS}/contigtest
+/proc/boot/syspagetest=${OSCRAFT_QNX_TESTS}/syspagetest
+/proc/boot/replyfaulttest=${OSCRAFT_QNX_TESTS}/replyfaulttest
+/proc/boot/auxvtest=${OSCRAFT_QNX_TESTS}/auxvtest
+/proc/boot/setpgidtest=${OSCRAFT_QNX_TESTS}/setpgidtest
+/proc/boot/tymemtest=${OSCRAFT_QNX_TESTS}/tymemtest
+/proc/boot/stackleaktest=${OSCRAFT_QNX_TESTS}/stackleaktest
+/proc/boot/execclosetest=${OSCRAFT_QNX_TESTS}/execclosetest
+/proc/boot/execsidetest=${OSCRAFT_QNX_TESTS}/execsidetest
+/proc/boot/tidtest=${OSCRAFT_QNX_TESTS}/tidtest
+/proc/boot/ceiltest=${OSCRAFT_QNX_TESTS}/ceiltest
+/proc/boot/bootfailtest=${OSCRAFT_QNX_TESTS}/bootfailtest
+/proc/boot/sigevstacktest=${OSCRAFT_QNX_TESTS}/sigevstacktest
+/proc/boot/detachtest=${OSCRAFT_QNX_TESTS}/detachtest
+/proc/boot/sigracetest=${OSCRAFT_QNX_TESTS}/sigracetest
+/proc/boot/pulseprioritytest=${OSCRAFT_QNX_TESTS}/pulseprioritytest
+/proc/boot/canceltimeouttest=${OSCRAFT_QNX_TESTS}/canceltimeouttest
+/proc/boot/inherittest=${OSCRAFT_QNX_TESTS}/inherittest
+/proc/boot/msgcaptest=${OSCRAFT_QNX_TESTS}/msgcaptest
+/proc/boot/shmbacktest=${OSCRAFT_QNX_TESTS}/shmbacktest
+/proc/boot/nozombietest=${OSCRAFT_QNX_TESTS}/nozombietest
+/proc/boot/stopsigtest=${OSCRAFT_QNX_TESTS}/stopsigtest
+/proc/boot/todtoptest=${OSCRAFT_QNX_TESTS}/todtoptest
+/proc/boot/eventregtest=${OSCRAFT_QNX_TESTS}/eventregtest
+/proc/boot/mmapflagtest=${OSCRAFT_QNX_TESTS}/mmapflagtest
+/proc/boot/endtimetest=${OSCRAFT_QNX_TESTS}/endtimetest
+/proc/boot/bigreadtest=${OSCRAFT_QNX_TESTS}/bigreadtest
+/proc/boot/exitwaittest=${OSCRAFT_QNX_TESTS}/exitwaittest
+/proc/boot/sigqueuetest=${OSCRAFT_QNX_TESTS}/sigqueuetest
+/proc/boot/msgwritetest=${OSCRAFT_QNX_TESTS}/msgwritetest
+/proc/boot/sendfaulttest=${OSCRAFT_QNX_TESTS}/sendfaulttest
+/proc/boot/longoptest=${OSCRAFT_QNX_TESTS}/longoptest
+/proc/boot/bigwritetest=${OSCRAFT_QNX_TESTS}/bigwritetest
+/proc/boot/shmfailtest=${OSCRAFT_QNX_TESTS}/shmfailtest
+/proc/boot/ocbbusytest=${OSCRAFT_QNX_TESTS}/ocbbusytest
+/proc/boot/getfltest=${OSCRAFT_QNX_TESTS}/getfltest
+/proc/boot/devctltest=${OSCRAFT_QNX_TESTS}/devctltest
+/proc/boot/ptytest=${OSCRAFT_QNX_TESTS}/ptytest
+/proc/boot/credlocktest=${OSCRAFT_QNX_TESTS}/credlocktest
+/proc/boot/dbgtest=${OSCRAFT_QNX_TESTS}/dbgtest
+/proc/boot/spawntest.txt = {
+from a file
+}
+
+# A link to QNX's loader under another name: interptest is linked with it
+# as its interpreter (an interpreter found through a link, #326).
+[type=link] /usr/lib/ld-oscraft.so.1=/compat/qnx/lib/ldqnx-64.so.2

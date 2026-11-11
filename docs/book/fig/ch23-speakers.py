@@ -1,0 +1,17 @@
+from svg import Fig
+f = Fig(800, 340)
+f.box("k", 20, 90, 180, 170); f.text(110, 114, "process 1", "h c")
+f.text(110, 140, "looks up the sender's", "s c"); f.text(110, 155, "personality and answers", "s c"); f.text(110, 170, "each in its own layouts", "s c")
+f.text(110, 200, "FreeBSD's struct stat", "s c"); f.text(110, 215, "to a native process,", "s c"); f.text(110, 230, "QNX's to a QNX one", "s c")
+f.box("g", 310, 30, 180, 60); f.text(400, 56, "a native program", "h c"); f.text(400, 74, "libsys, FreeBSD's layouts", "s c")
+f.box("r", 310, 250, 180, 60); f.text(400, 276, "a QNX program", "h c"); f.text(400, 294, "QNX's library and layouts", "s c")
+f.box("k", 600, 30, 180, 60); f.text(690, 56, "a native server", "h c"); f.text(690, 74, "tmpfs, pipe, pty, netd", "s c")
+f.box("y", 600, 180, 180, 60); f.text(690, 206, "qnxd", "h c"); f.text(690, 224, "converts both ways", "s c")
+# arrows
+f.arrow([(490, 60), (598, 60)], "lng", "ag"); f.text(544, 50, "MI_NATIVE in", "s c"); f.text(544, 76, "the message info", "s c")
+f.arrow([(310, 60), (202, 130)], "lng", "ag"); f.text(228, 76, "FreeBSD's", "s c")
+f.arrow([(310, 280), (202, 222)], "lnr", "ar"); f.text(236, 278, "QNX's", "s c")
+f.arrow([(490, 280), (598, 222)], "lnr", "ar"); f.text(556, 278, "the kernel sends it here first", "s")
+f.arrow([(690, 180), (690, 92)], "ln", "a"); f.text(682, 132, "forwarded,", "s e"); f.text(682, 147, "in FreeBSD's layouts", "s e")
+f.text(400, 196, "(a QNX program's plain reads and", "s c"); f.text(400, 211, "writes go straight to the server)", "s c")
+f.save("ch23-speakers.svg")

@@ -1,0 +1,36 @@
+#
+# OSCRAFT_NET: FreeBSD's network stack for OsCraft's netd, a user process.
+# Not a kernel: config(8) picks the sources and writes the opt_*.h headers,
+# from which libbsdnet.a is built. bsdkern supplies what the rest of the
+# kernel would.
+#
+
+cpu		ARM64
+ident		OSCRAFT_NET
+makeoptions	CONF_CFLAGS="-DOSCRAFT_BSDKERN -DMUTEX_NOINLINE -DRWLOCK_NOINLINE -DSX_NOINLINE"
+makeoptions	WITHOUT_MODULES=1
+makeoptions	DEBUG=-g
+
+options 	INET
+options 	INET6
+options 	SMP
+options 	MAXCPU=8
+options 	MAXMEMDOM=1
+
+device		loop
+device		ether
+
+# For netd's USB modules (usb.ko: the core and bsdkern's client controller;
+# if_cdce.ko): their headers and interfaces; the sources are the modules'.
+device		usb
+device		uether
+device		cdce
+device		miibus
+
+# For netd's PCI modules (pci.ko: bsdkern's PCI client bus, over pcid;
+# virtio.ko, virtio_pci.ko, if_vtnet.ko: the virtio network device of
+# QEMU's virt): their headers and interfaces; the sources are the modules'.
+device		pci
+device		virtio
+device		virtio_pci
+device		vtnet
